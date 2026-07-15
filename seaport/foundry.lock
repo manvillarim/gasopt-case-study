@@ -1,0 +1,38 @@
+{
+  "lib/ds-test": {
+    "rev": "e282159d5170298eb2455a6c05280ab5a73a4ef0"
+  },
+  "lib/forge-std": {
+    "branch": {
+      "name": "v1.5.0",
+      "rev": "cffb5628775fbf120bfc3c123149f6a6d99dc275"
+    }
+  },
+  "lib/murky": {
+    "rev": "1d9566b908b9702c45d354a1caabe8ef5a69938d"
+  },
+  "lib/openzeppelin-contracts": {
+    "rev": "5a00628ed3d6ce3154cee4d2cc93fad920e8ea30"
+  },
+  "lib/seaport-core": {
+    "rev": "1a0a4758cced1d3de962817cd37c2387fb290eea"
+  },
+  "lib/seaport-sol": {
+    "rev": "7b480ce2b5f258f283726c3a001b8bf7a8ae62fc"
+  },
+  "lib/seaport-types": {
+    "rev": "b72493221ee1d2f2fb30ed94a3cc535a9028d09f"
+  },
+  "lib/solady": {
+    "branch": {
+      "name": "v0.0.84",
+      "rev": "3d57528984275d1746ee6597acd36277f51c091d"
+    }
+  },
+  "lib/solarray": {
+    "rev": "4c3b8ff8e90c8cd11d30e02c1b6b2fcf9bc0f3db"
+  },
+  "lib/solmate": {
+    "rev": "1b3adf677e7e383cc684b5d5bd441da86bf4bf1c"
+  }
+}

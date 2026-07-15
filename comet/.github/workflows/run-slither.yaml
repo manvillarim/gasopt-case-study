@@ -1,0 +1,31 @@
+name: Run Slither
+on:
+  workflow_dispatch:
+  pull_request:
+jobs:
+  slither-analyzer:
+    name: Slither analyzer
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+
+      - name: Install packages
+        run: pip install slither-analyzer solc-select
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+
+      - name: Switch to solidity version
+        run: solc-select install 0.8.15;solc-select use 0.8.15
+
+      - name: Function clash analysis
+        run: yarn slither:fn-clashes &> tmp_res; cat tmp_res | grep 'Function id collision found' && exit 1 || exit 0

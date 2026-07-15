@@ -1,0 +1,39 @@
+name: Coverage
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+
+jobs:
+  coverage:
+    name: Hardhat / Unit Tests
+    runs-on: ubuntu-latest
+    env:
+      NODE_OPTIONS: --max_old_space_size=6400
+
+    permissions:
+      contents: write
+      issues: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@df4cb1c069e1874edd31b4311f1884172cec0e10 # v6.0.3
+
+      - name: Common setup
+        uses: ./.github/workflows/setup
+
+      - name: Collect coverage
+        run: yarn test:coverage
+
+      - name: Produce the coverage report
+        uses: lidofinance/coverage-action@b036d2354d1aeffd162da773e5be853283d28888
+        with:
+          path: ./coverage/cobertura-coverage.xml
+          publish: true
+          threshold: 95
+          diff: true
+          diff-branch: master
+          diff-storage: _core_coverage_reports
+          coverage-summary-title: "Hardhat Unit Tests Coverage Summary"
+          togglable-report: true

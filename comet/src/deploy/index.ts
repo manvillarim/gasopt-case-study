@@ -1,0 +1,343 @@
+import { AssetConfigStruct } from '../../build/types/CometWithExtendedAssetList';
+import { BigNumberish, Contract, PopulatedTransaction, utils } from 'ethers';
+
+export { cloneGov, deployNetworkComet as deployComet, sameAddress } from './Network';
+export { getConfiguration, getConfigurationStruct } from './NetworkConfiguration';
+export { exp, getBlock, wait } from '../../test/helpers';
+export { debug } from '../../plugins/deployment_manager/Utils';
+import { writeFileSync, mkdirSync } from 'fs';
+import path from 'path';
+
+
+export interface ProtocolConfiguration {
+  name?: string;
+  symbol?: string;
+  governor?: string;
+  pauseGuardian?: string;
+  baseToken?: string;
+  baseTokenPriceFeed?: string;
+  extensionDelegate?: string;
+  supplyKink?: BigNumberish;
+  supplyPerYearInterestRateBase?: BigNumberish;
+  supplyPerYearInterestRateSlopeLow?: BigNumberish;
+  supplyPerYearInterestRateSlopeHigh?: BigNumberish;
+  borrowKink?: BigNumberish;
+  borrowPerYearInterestRateBase?: BigNumberish;
+  borrowPerYearInterestRateSlopeLow?: BigNumberish;
+  borrowPerYearInterestRateSlopeHigh?: BigNumberish;
+  storeFrontPriceFactor?: BigNumberish;
+  trackingIndexScale?: BigNumberish;
+  baseTrackingSupplySpeed?: BigNumberish;
+  baseTrackingBorrowSpeed?: BigNumberish;
+  baseMinForRewards?: BigNumberish;
+  baseBorrowMin?: BigNumberish;
+  targetReserves?: BigNumberish;
+  assetConfigs?: AssetConfigStruct[];
+  rewardTokenAddress?: string;
+}
+
+// If `all` is specified, it takes precedence.
+// Other options are independent of one another.
+export interface DeploySpec {
+  all?: boolean; // Re-deploy everything (including proxies and proxy admin)
+  cometMain?: boolean; // Re-deploy the main interface (config impl + comet factory + comet impl)
+  cometExt?: boolean; // Re-deploy the ext interface (comet ext)
+  rewards?: boolean; // Re-deploy the rewards contract
+}
+
+export interface ContractAction {
+  contract: Contract;
+  value?: BigNumberish;
+  signature: string;
+  args: any[];
+}
+
+export interface TargetAction {
+  target: string;
+  value?: BigNumberish;
+  signature: string;
+  calldata: string;
+}
+
+export type ProposalAction = ContractAction | TargetAction;
+export type Proposal = [
+  string[], // targets
+  BigNumberish[], // values
+  string[], // calldatas
+  string, // description
+  string[] // signatures
+];
+export type TestnetProposal = [
+  string[], // targets
+  BigNumberish[], // values
+  string[], // signatures
+  string[], // calldatas
+  string // description
+];
+
+// Note: this list could change over time
+// Ideally these wouldn't be hardcoded, but other solutions are much more complex, and slower
+export const COMP_WHALES = {
+  mainnet: [
+    '0x66cD62c6F8A4BB0Cd8720488BCBd1A6221B765F9',
+    '0xb06df4dd01a5c5782f360ada9345c87e86adae3d',
+    '0x3FB19771947072629C8EEE7995a2eF23B72d4C8A',
+    '0x8169522c2C57883E8EF80C498aAB7820dA539806',
+    '0x36cc7B13029B5DEe4034745FB4F24034f3F2ffc6',
+  ],
+
+  testnet: ['0xbbfe34e868343e6f4f5e8b5308de980d7bd88c46']
+};
+
+export const WHALES = {
+  mainnet: [
+    '0xf977814e90da44bfa03b6295a0616a897441acec',
+    '0x0548f59fee79f8832c299e01dca5c76f034f558e',
+    '0x218b95be3ed99141b0144dba6ce88807c4ad7c09',
+    '0xf04a5cc80b1e94c69b48f5ee68a08cd2f09a7c3e',
+    '0x2775b1c75658be0f640272ccb8c72ac986009e38',
+    '0x1a9c8182c09f50c8318d769245bea52c32be35bc',
+    '0x3c22ec75ea5D745c78fc84762F7F1E6D82a2c5BF',
+    '0x3B95bC951EE0f553ba487327278cAc44f29715E5', // wUSDM whale
+    '0x88a1493366D48225fc3cEFbdae9eBb23E323Ade3', // USDe whale
+    '0x43594da5d6A03b2137a04DF5685805C676dEf7cB', // rsETH whale
+    '0x3d9819210a31b4961b30ef54be2aed79b9c9cd3b',
+    '0x0B925eD163218f6662a35e0f0371Ac234f9E9371', // wstETH whale
+    '0x3b3501f6778Bfc56526cF2aC33b78b2fDBE4bc73', // solvBTC.BBN whale
+    '0x8bc93498b861fd98277c3b51d240e7E56E48F23c', // solvBTC.BBN whale
+    '0xD5cf704dC17403343965b4F9cd4D7B5e9b20CC52', // solvBTC.BBN whale
+    '0x3154Cf16ccdb4C6d922629664174b904d80F2C35', // cbETH whale
+    '0x5f556Cc5C294D7D3EfFaFFeb0B1195256a7A19D7', // EIGEN whale
+    '0xdCa0A2341ed5438E06B9982243808A76B9ADD6d0', // woETH whale
+    '0x34C0bD5877A5Ee7099D0f5688D65F4bB9158BDE2', // sFRAX whale
+    '0x9152e9C04e8fE8373EDaa8f5841E25d4015658B7', // pumpBTC whale
+    '0xd4Cc9b31e9eF33E392FF2f81AD52BE8523e0993b', // pumpBTC whale
+    '0x65906988ADEe75306021C417a1A3458040239602', // LBTC whale
+    '0xF469fBD2abcd6B9de8E169d128226C0Fc90a012e', // wbtc whale
+    '0x7667095Caa12b79fCa489ff6E2198Ca01fDAe057',
+  ],
+  polygon: [
+    '0xF977814e90dA44bFA03b6295A0616a897441aceC', // USDT whale
+    '0x2093b4281990a568c9d588b8bce3bfd7a1557ebd', // WETH whale
+    '0xe50fA9b3c56FfB159cB0FCA61F5c9D750e8128c8', // WETH whale
+    '0x62ac55b745F9B08F1a81DCbbE630277095Cf4Be1', // WETH whale
+    '0xd814b26554204245a30f8a42c289af582421bf04', // WBTC whale
+    '0x167384319b41f7094e62f7506409eb38079abff8', // WMATIC whale
+    '0x6d80113e533a2C0fe82EaBD35f1875DcEA89Ea97', // WMATIC whale
+    '0x4D97DCd97eC945f40cF65F87097ACe5EA0476045', // USDC.e whale
+  ],
+  arbitrum: [
+    '0x8eb270e296023e9d92081fdf967ddd7878724424', // rETH whale
+    '0x78e88887d80451cb08fdc4b9046c9d01fb8d048d', // rETH whale
+    '0xc0cf4b266be5b3229c49590b59e67a09c15b22f4', // rETH whale
+    '0x84446698694b348eaece187b55df06ab4ce72b35', // rETH whale
+    '0x42c248d137512907048021b30d9da17f48b5b7b2', // wstETH whale
+    '0xc3e5607cd4ca0d5fe51e09b60ed97a0ae6f874dd', // WETH whale
+    '0xf89d7b9c864f589bbf53a82105107622b35eaa40', // USDC whale
+    '0x7b7b957c284c2c227c980d6e2f804311947b84d0', // WBTC whale
+    '0x1c6b5795be43ddff8812b3e577ac752764635bc5', // COMP whale
+    '0xdead767ba9f8072c986a4619c27ae46bcc226c13', // COMP whale
+    '0xde5167c19a5286889752cb0f31a1c7f28a99fefb', // COMP whale
+    '0xdfa19e743421c394d904f5a113121c2227d2364b', // COMP whale
+    '0xee3273f6d29ddfff08ffd9d513cff314734f01a2', // COMP whale
+    '0x9e786a8fc88ee74b758b125071d45853356024c3', // COMP whale
+    '0xd93f76944e870900779c09ddf1c46275f9d8bf9b', // COMP whale
+    '0xe68ee8a12c611fd043fb05d65e1548dc1383f2b9', // native USDC whale
+    '0x56CC5A9c0788e674f17F7555dC8D3e2F1C0313C0', // wUSDM whale
+    '0x8437d7C167dFB82ED4Cb79CD44B7a32A1dd95c77', // weETH whale
+    '0x6b030Ff3FB9956B1B69f475B77aE0d3Cf2CC5aFa', // rsETH whale
+    '0x186cF879186986A20aADFb7eAD50e3C20cb26CeC', // tBTC whale
+    '0x620Fe90b1EAcaEa936ea199e7B05F998CA65836a', // tBTC whale
+    '0x54b5569deC8A6A8AE61A36Fd34e5c8945810db8b', // tBTC whale
+    '0xd98Be00b5D27fc98112BdE293e487f8D4cA57d07', // tBTC whale
+    '0x68863dDE14303BcED249cA8ec6AF85d4694dea6A', // tBTC whale
+    '0xDBD974Eb5360d053ea0c56B4DaCF4A9D3E894Ee2', // tETH whale
+    '0xbA1333333333a1BA1108E8412f11850A5C319bA9', // tETH whale
+    '0xEA1132120ddcDDA2F119e99Fa7A27a0d036F7Ac9', // ezETH whale
+  ],
+  base: [
+    '0x6D3c5a4a7aC4B1428368310E4EC3bB1350d01455', // USDbC whale
+    '0x46e6b214b524310239732D51387075E0e70970bf', // ezETH whale
+    '0xDD5745756C2de109183c6B5bB886F9207bEF114D', // ezETH whale
+    '0x7c468017FA704A1Cca3aa3d075eC21018FAd5E72', // ezETH whale
+    '0x6e01Eb6BbEd4407deA78EBF532055B04d0d08f0F', // ezETH whale
+    '0x07CFA5Df24fB17486AF0CBf6C910F24253a674D3', // cbETH whale TODO: need to update this whale, not enough
+    '0xBBBBBbbBBb9cC5e90e3b3Af64bdAF62C37EEFFCb', // cbETH whale
+    '0x3bf93770f2d4a794c3d9EBEfBAeBAE2a8f09A5E5', // cbETH whale
+    '0xcf3D55c10DB69f28fD1A75Bd73f3D8A2d9c595ad', // cbETH whale
+    '0xb125E6687d4313864e53df431d5425969c15Eb2F', // cbETH whale
+    '0x1539A4611f16a139891c14365Cab86599F3A8AFC', // tBTC whale
+    '0x0a1d576f3eFeF75b330424287a95A366e8281D54', // USDbC whale
+    '0x98c7A2338336d2d354663246F64676009c7bDa97', // USDbC whale
+    '0x0E635F8EeED4F7279d56692D552F034ECE136019', // USDbC whale
+    '0x58Ee32056D946a37f5b49582dE3dEE1dAc0Bb974', // USDbC whale
+    '0x80a94C36747CF51b2FbabDfF045f6D22c1930eD1', // wrsETH whale
+  ],
+  scroll: [
+    '0xaaaaAAAACB71BF2C8CaE522EA5fa455571A74106', // USDC whale
+    '0x5B1322eeb46240b02e20062b8F0F9908d525B09c', // wstETH whale
+    '0x7fA3dC8729b7D56dC36651D01aB4a27e882fDCF1', // wstETH whale
+    `0xf610A9dfB7C89644979b4A0f27063E9e7d7Cda32`, // wstETH whale
+  ],
+  optimism: [
+    '0x2A82Ae142b2e62Cb7D10b55E323ACB1Cab663a26', // OP whale
+    '0x966A8bcE7dc11f4Ec5a8885a7d31F0f170e3E00d', // USDM whale
+    '0x5F82C97e9b1755237692a946aE814998Bc0e2124', // USDM whale
+    '0x8af3827a41c26c7f32c81e93bb66e837e0210d5c', // USDC whale
+    '0xc45A479877e1e9Dfe9FcD4056c699575a1045dAA', // wstETH whale
+    '0x6e57181D6b4b7c138a6F956AD16DAF4f27FC5E04', // COMP whale
+    '0xE36A30D249f7761327fd973001A32010b521b6Fd', // ezETH whale
+    '0xb40DA71c49c745Dd3ab801882b1D410760541678', // ezETH whale
+    '0x540B1E0D69244057cD0Da2AF4Bca87dA87A824bE', // ezETH whale
+    '0x12ee4BE944b993C81b6840e088bA1dCc57F07B1D', // ezETH whale
+    '0x87711795890ea632E3c8851F6B47BA1c6b2CF0Ee', // ezETH whale
+    '0xE36A30D249f7761327fd973001A32010b521b6Fd', // weETH whale
+    '0xb2cFb909e8657C0EC44D3dD898C1053b87804755', // weETH whale
+    '0xb8051464C8c92209C92F3a4CD9C73746C4c3CFb3', // weETH whale
+    '0x2478d48B8a5Dd0A9876a12858C917D556EB93811', // weETH whale
+    '0xE36A30D249f7761327fd973001A32010b521b6Fd', // wrsETH whale
+    '0x181bA797ccF779D8aB339721ED6ee827E758668e', // wrsETH whale
+    '0xbA1333333333a1BA1108E8412f11850A5C319bA9', // wrsETH whale
+    '0x44ed9cE901B367B1EF9DDBD4974C82A514c50DEc', // wrsETH whale
+  ],
+  mantle: [
+    '0x588846213A30fd36244e0ae0eBB2374516dA836C', // USDe whale
+    '0xd374a62AA68D01cdB420e17b9840706e86BC840B', // mETH whale
+    '0x88a1493366D48225fc3cEFbdae9eBb23E323Ade3', // mETH whale
+    '0xEe6281d94Fed46A90379F2033B6BbdcDa4EF462E', // mETH whale
+    '0xC455fE28a76da80022d4C35A37eB08FF405Eb78f', // FBTC whale
+    '0x524db930F0886CdE7B5FFFc920Aae85e98C2abfb', // FBTC whale
+    '0x651C9D1F9da787688225f49d63ad1623ba89A8D5', // FBTC whale
+    '0x72c7d27320e042417506e594697324dB5Fbf334C', // FBTC whale
+    '0x3880233e78966eb13a9c2881d5f162d646633178', // FBTC whale
+    '0x233493E9DC68e548AC27E4933A600A3A4682c0c3', // FBTC whale
+    '0xd8169F099ce16C87A99d2A8494023574B5eEA9c5', // mETH whale
+    '0x15Bb5D31048381c84a157526cEF9513531b8BE1e', // FBTC whale
+    '0xfa14c9DE267b59A586043372bd98Ed99e3Ee0533', // FBTC whale
+    '0xCd83CbBFCE149d141A5171C3D6a0F0fCCeE225Ab', // COMP whale
+  ],
+  'unichain': [
+    '0x4200000000000000000000000000000000000006', // WETH whale
+    '0x7Ae0911198AD568E1FE4af3cf81e36A29983778f', // wstETH whale
+    '0x4B2cf5C94A88934870B523983B22e6d2dd1b6577', // wstETH whale
+    '0x8f5ae9CddB9f68de460C77730b018Ae7E04a140A', // wstETH whale
+    '0xbaD024786995Fa29bc6311c9454d377D3B73F576', // wstETH whale
+  ],
+  linea: [
+    '0xe5D7C2a44FfDDf6b295A15c148167daaAf5Cf34f', // ETH whale
+    '0x9be5e24F05bBAfC28Da814bD59284878b388a40f', // WBTC whale
+    '0xCeEd853798ff1c95cEB4dC48f68394eb7A86A782', // wstETH whale
+    '0x03dDD23943b3C698442C5f2841eae70058DbAb8B', // wstETH whale
+    '0x0180912F869065c7a44617Cd4c288bE6Bce5d192', // wstETH whale
+    '0x7160570BB153Edd0Ea1775EC2b2Ac9b65F1aB61B', // wstETH whale
+    '0x0684FC172a0B8e6A65cF4684eDb2082272fe9050', // ezETH whale
+    '0x3A0ee670EE34D889B52963bD20728dEcE4D9f8FE', // ezETH whale
+    '0x96d6cE4e83dB947fF6bD1Ab0B377F23cd5D9ec2D', // ezETH whale
+    '0x8a90D208666Deec08123444F67Bf5B1836074a67', // ezETH whale
+    '0x935EfCBeFc1dF0541aFc3fE145134f8c9a0beB89', // ezETH whale
+    '0x6a72F4F191720c411Cd1fF6A5EA8DeDEC3A64771', // USDT whale
+    '0x2c7118c4C88B9841FCF839074c26Ae8f035f2921', // COMP whale
+    '0x8D38A3d6B3c3B7d96D6536DA7Eef94A9d7dbC991', // wstETH whale
+  ],
+  ronin: [
+    '0x41058bcc968f809e9dbb955f402de150a3e5d1b5',
+    '0x68a57af44503da4223bb6f494de012410fda1ae0',
+    '0x66d13a86cb33d65731e199fb29e8270ecdc14424',
+    '0xb6ed66133816d117403bcc9f079c7e9ef8aa9562',
+    '0x02b60267bceeafdc45005e0fa0dd783efebc9f1b',
+    '0xc055492f9fa0585c4194eefd58986112d643720b',
+    '0xdebbff7bc4b51d722db968863409f4d1b0d52bd6',
+    '0xb66f05cc5ead3e15fe03115af4c306ed109773ae',
+    '0x5b714f5ce0a09ab2fec8362dc1c254c7b7d6e6bd',
+    '0x0cf8ff40a508bdbc39fbe1bb679dcba64e65c7df',
+    '0x2ecb08f87f075b5769fe543d0e52e40140575ea7',
+    '0x05b0bb3c1c320b280501b86706c3551995bc8571',
+    '0x392d372f2a51610e9ac5b741379d5631ca9a1c7f', // USDC whale
+    '0x245db945c485b68fdc429e4f7085a1761aa4d45d', // WETH whale
+  ]
+};
+
+export async function calldata(req: Promise<PopulatedTransaction>): Promise<string> {
+  // Splice out the first 4 bytes (function selector) of the tx data
+  return '0x' + (await req).data.slice(2 + 8);
+}
+
+export async function testnetProposal(actions: ProposalAction[], description: string): Promise<TestnetProposal> {
+  const targets = [],
+    values = [],
+    signatures = [],
+    calldatas = [];
+  for (const action of actions) {
+    if (action['contract']) {
+      const { contract, value, signature, args } = action as ContractAction;
+      targets.push(contract.address);
+      values.push(value ?? 0);
+      signatures.push(signature);
+      calldatas.push(await calldata(contract.populateTransaction[signature](...args)));
+    } else {
+      const { target, value, signature, calldata } = action as TargetAction;
+      targets.push(target);
+      values.push(value ?? 0);
+      signatures.push(signature);
+      calldatas.push(calldata);
+    }
+  }
+
+  return [targets, values, signatures, calldatas, description];
+
+}
+
+export async function proposal(
+  actions: ProposalAction[],
+  description: string
+): Promise<Proposal> {
+  const targets   = [];
+  const values = [];
+  const calldatas = [];
+  const signatures = [];
+
+  for (const action of actions) {
+    if ('contract' in action) {
+      const { contract, value, signature, args } = action as ContractAction;
+      targets.push(contract.address);
+      values.push(value ?? 0);
+      calldatas.push(
+        utils
+          .id(signature)
+          .slice(0, 10) +
+        (await calldata(contract.populateTransaction[signature](...args))).slice(2)
+      );
+      signatures.push('');
+    } else {
+      const { target, value, signature, calldata: cd } = action as TargetAction;
+      targets.push(target);
+      values.push(value ?? 0);
+      calldatas.push(signature ? utils.id(signature).slice(0, 10) + cd.slice(2) : cd);
+      signatures.push('');
+    }
+  }
+
+  const fullProposal: Proposal = [targets, values, calldatas, description, signatures];
+  
+  stashProposal(fullProposal);
+  fullProposal.pop();
+  return fullProposal;
+}
+
+function stashProposal(prop: Proposal) {
+  try {
+    const cacheDir = path.resolve(__dirname, '../../', 'cache');
+    mkdirSync(cacheDir, { recursive: true });
+    const file = path.join(cacheDir, 'currentProposal.json');
+
+    const safeJson = JSON.stringify(prop, (_key, value) =>
+      typeof value === 'bigint' ? value.toString() : value,
+    2
+    );
+
+    writeFileSync(file, safeJson);
+    console.log(`Proposal cached ${file}`);
+  } catch (e) {
+    console.warn('Failed to cache proposal:', e);
+  }
+}

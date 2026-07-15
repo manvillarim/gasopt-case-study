@@ -1,0 +1,4 @@
+{
+  "root": false,
+  "extends": ["@gearbox-protocol/eslint-config"]
+}

@@ -1,0 +1,35 @@
+name: Test PR
+
+on:
+  pull_request:
+    types: [opened, reopened, synchronize]
+
+jobs:
+  tests:
+    name: Run Foundry tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install Foundry
+        uses: foundry-rs/foundry-toolchain@v1
+        with:
+          version: nightly
+
+      - name: Install dependencies
+        run: forge install
+
+      - name: Compile contracts
+        run: forge build
+
+      - name: Run unit tests
+        run: forge test --mt test_U
+        timeout-minutes: 10
+
+      - name: Run integration tests
+        run: forge test --mt test_I
+        timeout-minutes: 10
+
+      - name: Run gas tests
+        run: forge test --mt test_G -vv

@@ -1,0 +1,212 @@
+import { RelationConfigMap } from '../plugins/deployment_manager/RelationConfig';
+
+const relationConfigMap: RelationConfigMap = {
+  comptrollerV2: {
+    delegates: {
+      field: async (comptroller) => comptroller.comptrollerImplementation(),
+    },
+  },
+
+  comet: {
+    delegates: {
+      field: {
+        slot: '0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc',
+      },
+    },
+    relations: {
+      baseToken: {
+        alias: async (token) => token.symbol(),
+      },
+      'cometExt': {
+        field: async (comet) => comet.extensionDelegate(),
+      },
+      'assetListFactory': {
+        field: async (cometExt) => {
+          try {
+            return cometExt.assetListFactory();
+          }
+          catch (e) {
+            return '0x0000000000000000000000000000000000000000';
+          }
+        },
+      },
+      baseTokenPriceFeed: {
+        field: async (comet) => comet.baseTokenPriceFeed(),
+        alias: async (_, { baseToken }) => `${await baseToken[0].symbol()}:priceFeed`,
+      },
+      assets: {
+        field: async (comet) => {
+          const n = await comet.numAssets();
+          return Promise.all(
+            Array(n).fill(0).map(async (_, i) => {
+              const assetInfo = await comet.getAssetInfo(i);
+              return assetInfo.asset;
+            })
+          );
+        },
+        alias: async (token) => {
+          const address = token.address.toLowerCase();
+
+          try {
+            const symbol = await token.symbol();
+            return symbol;
+          }
+          catch (e) {
+            // If symbol() fails (e.g., proxy contract in fork), try to get it from storage
+            // This is a workaround for contracts that don't work in Hardhat fork
+
+            // invalid opcode when calling symbol()
+            if (address === '0xd09acb80c1e8f2291862c4978a008791c9167003') {
+              return 'tETH';
+            }
+            if (address === '0x5a7facb970d094b6c7ff1df0ea68d99e6e73cbff') {
+              return 'weETH';
+            }
+            if (address.toLowerCase() === '0x87eee96d50fb761ad85b1c982d28a042169d61b1') {
+              return 'wrsETH';
+            }
+            // Mantle-specific known contract mapping
+            if (address === '0xcda86a272531e8640cd7f1a92c01839911b90bb0') {
+              return 'mETH';
+            }
+
+            throw new Error(`Failed to get symbol for token ${token.address}: ${e.message}`);
+          }
+        },
+      },
+      assetPriceFeeds: {
+        field: async (comet) => {
+          const n = await comet.numAssets();
+          return Promise.all(
+            Array(n).fill(0).map(async (_, i) => {
+              const assetInfo = await comet.getAssetInfo(i);
+              return assetInfo.priceFeed;
+            })
+          );
+        },
+        alias: async (_, { assets }, i) => {
+          try {
+            return `${await assets[i].symbol()}:priceFeed`;
+          } catch (e) {
+            // invalid opcode when calling symbol()
+            const address = assets[i].address.toLowerCase();
+            
+            // Known contract mappings for Arbitrum
+            if (address === '0xd09acb80c1e8f2291862c4978a008791c9167003') {
+              return 'tETH:priceFeed';
+            }
+            if (address === '0x5a7facb970d094b6c7ff1df0ea68d99e6e73cbff') {
+              return 'weETH:priceFeed';
+            }
+            if (address === '0x87eee96d50fb761ad85b1c982d28a042169d61b1') {
+              return 'wrsETH:priceFeed';
+            }
+            // Known contract mapping for Mantle
+            if (address === '0xcda86a272531e8640cd7f1a92c01839911b90bb0') {
+              return 'mETH:priceFeed';
+            }
+            
+            throw new Error(`Failed to get symbol for token ${assets[i].address}: ${e.message}`);
+          }
+        },
+      },
+      cometAdmin: {
+        field: {
+          slot: '0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103',
+        },
+      },
+    },
+  },
+  'comet:implementation': {
+    artifact: 'contracts/CometWithExtendedAssetList.sol:CometWithExtendedAssetList',
+    delegates: {
+      field: async (comet) => comet.extensionDelegate(),
+    },
+  },
+  configurator: {
+    delegates: {
+      field: {
+        slot: '0x360894a13ba1a3210667c828492db98dca3e2076cc3735a920a3ca505d382bbc',
+      }
+    },
+    relations: {
+      configuratorAdmin: {
+        field: {
+          slot: '0xb53127684a568b3173ae13b9f8a6016e243e63b6e8ee1178d6a717850b5d6103',
+        }
+      },
+      cometFactory: {
+        field: async (configurator, { comet }) => configurator.factory(comet[0].address),
+      }
+    }
+  },
+  cometAdmin: {
+    relations: {
+      timelock: {
+        field: async (cometAdmin) => cometAdmin.owner()
+      }
+    }
+  },
+  timelock: {
+    relations: {
+      governor: {
+        field: async (timelock) => timelock.admin(),
+      }
+    }
+  },
+
+  governor: {
+    artifact: 'contracts/interfaces/IProxy.sol:IProxy',
+    delegates: {
+      field: {
+        slot: '0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b',
+      }
+    },
+    relations: {
+      COMP: {
+        field: async (governor) => {
+          if (governor.address === '0x309a862bbC1A00e45506cB8A802D1ff10004c8C0') return governor.token();
+          return governor.comp();
+        },
+      }
+    }
+  },
+  'governor:implementation': {
+    artifact: 'contracts/interfaces/IGovernorBravo.sol:IGovernorBravo',
+  },
+
+  COMP: {
+    artifact: 'contracts/interfaces/IComp.sol:IComp',
+  },
+
+  FiatTokenProxy: {
+    artifact: 'contracts/interfaces/ERC20.sol:ERC20',
+    relations: {
+      fiatTokenAdmin: {
+        field: {
+          slot: '0x10d6a54a4754c8869d6886b5f5d7fbfa5b4522237ea5c60d11bc4e7a1ff9390b',
+        },
+        alias: async (_admin, _ctx, _i, [token]) => `${await token.symbol()}:admin`,
+      }
+    },
+    delegates: {
+      field: {
+        slot: '0x7050c9e0f4ca769c69bd3a8ef740bc37934f8e2c036e5a723fd8ee048ed3f8c3',
+      },
+    },
+  },
+
+  rewards: {
+    relations: {
+      rewardToken: {
+        field: async (rewards, { comet }) => {
+          const rewardToken = (await rewards.rewardConfig(comet[0].address)).token;
+          return rewardToken !== '0x0000000000000000000000000000000000000000' ? rewardToken : null;
+        },
+        alias: async (token) => token.symbol(),
+      },
+    },
+  },
+};
+
+export default relationConfigMap;
