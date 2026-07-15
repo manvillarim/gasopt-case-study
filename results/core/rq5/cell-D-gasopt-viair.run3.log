@@ -1,0 +1,567 @@
+Warning: Found unknown `version` config key in section `additional_compiler_profiles` defined in core/foundry.toml.
+Warning: Found unknown `version` config key in section `additional_compiler_profiles` defined in core/foundry.toml.
+Failed to merge compilation restrictions for /home/manoel/projeto/case-study-tool/core/contracts/0.8.25/vaults/VaultHub.sol
+Failed to merge compilation restrictions for /home/manoel/projeto/case-study-tool/core/contracts/0.8.25/vaults/VaultHub.sol
+Error: Compiler run failed:
+Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+node_modules/@aragon/os/contracts/lib/ens/PublicResolver.sol:45:44: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+        if (ens.owner(node) != msg.sender) throw;
+                                           ^---^
+Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+node_modules/@aragon/os/contracts/lib/ens/PublicResolver.sol:53:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function PublicResolver(AbstractENS ensAddr) public {
+    ^ (Relevant source part starts here and spans across multiple lines).
+Warning: Use of the "var" keyword is deprecated.
+node_modules/@aragon/os/contracts/lib/ens/PublicResolver.sol:146:9: Warning: Use of the "var" keyword is deprecated.
+        var record = records[node];
+        ^--------^
+Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+node_modules/@aragon/os/contracts/lib/ens/PublicResolver.sol:166:53: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+        if (((contentType - 1) & contentType) != 0) throw;
+                                                    ^---^
+Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+node_modules/@aragon/os/contracts/lib/ens/ENS.sol:22:48: Warning: "throw" is deprecated in favour of "revert()", "require()" and "assert()".
+        if (records[node].owner != msg.sender) throw;
+                                               ^---^
+Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+node_modules/@aragon/os/contracts/lib/ens/ENS.sol:29:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function ENS() public {
+    ^ (Relevant source part starts here and spans across multiple lines).
+Warning: Use of the "var" keyword is deprecated.
+node_modules/@aragon/os/contracts/lib/ens/ENS.sol:73:9: Warning: Use of the "var" keyword is deprecated.
+        var subnode = keccak256(node, label);
+        ^---------^
+Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+node_modules/@aragon/minime/contracts/MiniMeToken.sol:37:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function Controlled()  public { controller = msg.sender;}
+    ^-------------------------------------------------------^
+Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+node_modules/@aragon/minime/contracts/MiniMeToken.sol:123:5: Warning: Defining constructors as functions with the same name as the contract is deprecated. Use "constructor(...) { ... }" instead.
+    function MiniMeToken(
+    ^ (Relevant source part starts here and spans across multiple lines).
+Warning: Use of the "var" keyword is deprecated.
+node_modules/@aragon/minime/contracts/MiniMeToken.sol:195:9: Warning: Use of the "var" keyword is deprecated.
+        var previousBalanceFrom = balanceOfAt(_from, block.number);
+        ^---------------------^
+Warning: Use of the "var" keyword is deprecated.
+node_modules/@aragon/minime/contracts/MiniMeToken.sol:209:9: Warning: Use of the "var" keyword is deprecated.
+        var previousBalanceTo = balanceOfAt(_to, block.number);
+        ^-------------------^
+Warning: This declaration shadows an existing declaration.
+contracts/common/interfaces/ILidoLocator.sol:33:9: Warning: This declaration shadows an existing declaration.
+        address elRewardsVault,
+        ^--------------------^
+contracts/common/interfaces/ILidoLocator.sol:11:5: The shadowed declaration is here:
+    function elRewardsVault() external view returns(address);
+    ^-------------------------------------------------------^
+
+Warning: This declaration shadows an existing declaration.
+contracts/common/interfaces/ILidoLocator.sol:34:9: Warning: This declaration shadows an existing declaration.
+        address oracleReportSanityChecker,
+        ^-------------------------------^
+contracts/common/interfaces/ILidoLocator.sol:13:5: The shadowed declaration is here:
+    function oracleReportSanityChecker() external view returns(address);
+    ^------------------------------------------------------------------^
+
+Warning: This declaration shadows an existing declaration.
+contracts/common/interfaces/ILidoLocator.sol:35:9: Warning: This declaration shadows an existing declaration.
+        address stakingRouter,
+        ^-------------------^
+contracts/common/interfaces/ILidoLocator.sol:15:5: The shadowed declaration is here:
+    function stakingRouter() external view returns(address);
+    ^------------------------------------------------------^
+
+Warning: This declaration shadows an existing declaration.
+contracts/common/interfaces/ILidoLocator.sol:36:9: Warning: This declaration shadows an existing declaration.
+        address treasury,
+        ^--------------^
+contracts/common/interfaces/ILidoLocator.sol:16:5: The shadowed declaration is here:
+    function treasury() external view returns(address);
+    ^-------------------------------------------------^
+
+Warning: This declaration shadows an existing declaration.
+contracts/common/interfaces/ILidoLocator.sol:37:9: Warning: This declaration shadows an existing declaration.
+        address withdrawalQueue,
+        ^---------------------^
+contracts/common/interfaces/ILidoLocator.sol:18:5: The shadowed declaration is here:
+    function withdrawalQueue() external view returns(address);
+    ^--------------------------------------------------------^
+
+Warning: This declaration shadows an existing declaration.
+contracts/common/interfaces/ILidoLocator.sol:38:9: Warning: This declaration shadows an existing declaration.
+        address withdrawalVault
+        ^---------------------^
+contracts/common/interfaces/ILidoLocator.sol:19:5: The shadowed declaration is here:
+    function withdrawalVault() external view returns(address);
+    ^--------------------------------------------------------^
+
+Warning: This declaration shadows an existing declaration.
+contracts/common/interfaces/ILidoLocator.sol:44:9: Warning: This declaration shadows an existing declaration.
+        address accountingOracle,
+        ^----------------------^
+contracts/common/interfaces/ILidoLocator.sol:9:5: The shadowed declaration is here:
+    function accountingOracle() external view returns(address);
+    ^---------------------------------------------------------^
+
+Warning: This declaration shadows an existing declaration.
+contracts/common/interfaces/ILidoLocator.sol:45:9: Warning: This declaration shadows an existing declaration.
+        address oracleReportSanityChecker,
+        ^-------------------------------^
+contracts/common/interfaces/ILidoLocator.sol:13:5: The shadowed declaration is here:
+    function oracleReportSanityChecker() external view returns(address);
+    ^------------------------------------------------------------------^
+
+Warning: This declaration shadows an existing declaration.
+contracts/common/interfaces/ILidoLocator.sol:46:9: Warning: This declaration shadows an existing declaration.
+        address burner,
+        ^------------^
+contracts/common/interfaces/ILidoLocator.sol:14:5: The shadowed declaration is here:
+    function burner() external view returns(address);
+    ^-----------------------------------------------^
+
+Warning: This declaration shadows an existing declaration.
+contracts/common/interfaces/ILidoLocator.sol:47:9: Warning: This declaration shadows an existing declaration.
+        address withdrawalQueue,
+        ^---------------------^
+contracts/common/interfaces/ILidoLocator.sol:18:5: The shadowed declaration is here:
+    function withdrawalQueue() external view returns(address);
+    ^--------------------------------------------------------^
+
+Warning: This declaration shadows an existing declaration.
+contracts/common/interfaces/ILidoLocator.sol:48:9: Warning: This declaration shadows an existing declaration.
+        address postTokenRebaseReceiver,
+        ^-----------------------------^
+contracts/common/interfaces/ILidoLocator.sol:20:5: The shadowed declaration is here:
+    function postTokenRebaseReceiver() external view returns(address);
+    ^----------------------------------------------------------------^
+
+Warning: This declaration shadows an existing declaration.
+contracts/common/interfaces/ILidoLocator.sol:49:9: Warning: This declaration shadows an existing declaration.
+        address stakingRouter,
+        ^-------------------^
+contracts/common/interfaces/ILidoLocator.sol:15:5: The shadowed declaration is here:
+    function stakingRouter() external view returns(address);
+    ^------------------------------------------------------^
+
+Warning: This declaration shadows an existing declaration.
+contracts/common/interfaces/ILidoLocator.sol:50:9: Warning: This declaration shadows an existing declaration.
+        address vaultHub
+        ^--------------^
+contracts/common/interfaces/ILidoLocator.sol:25:5: The shadowed declaration is here:
+    function vaultHub() external view returns (address);
+    ^--------------------------------------------------^
+
+Warning: This declaration shadows an existing declaration.
+node_modules/@aragon/id/contracts/ens/IPublicResolver.sol:7:36: Warning: This declaration shadows an existing declaration.
+    function setAddr(bytes32 node, address addr);
+                                   ^----------^
+node_modules/@aragon/id/contracts/ens/IPublicResolver.sol:6:5: The shadowed declaration is here:
+    function addr(bytes32 node) constant returns (address ret);
+    ^---------------------------------------------------------^
+
+Warning: This declaration shadows an existing declaration.
+node_modules/@aragon/id/contracts/ens/IPublicResolver.sol:9:36: Warning: This declaration shadows an existing declaration.
+    function setHash(bytes32 node, bytes32 hash);
+                                   ^----------^
+node_modules/@aragon/id/contracts/ens/IPublicResolver.sol:8:5: The shadowed declaration is here:
+    function hash(bytes32 node) constant returns (bytes32 ret);
+    ^---------------------------------------------------------^
+
+Warning: This declaration shadows an existing declaration.
+node_modules/@aragon/os/contracts/lib/ens/PublicResolver.sol:87:36: Warning: This declaration shadows an existing declaration.
+    function setAddr(bytes32 node, address addr) only_owner(node) public {
+                                   ^----------^
+node_modules/@aragon/os/contracts/lib/ens/PublicResolver.sol:77:5: The shadowed declaration is here:
+    function addr(bytes32 node) public constant returns (address ret) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning: This declaration shadows an existing declaration.
+node_modules/@aragon/os/contracts/lib/ens/PublicResolver.sol:132:36: Warning: This declaration shadows an existing declaration.
+    function setName(bytes32 node, string name) only_owner(node) public {
+                                   ^---------^
+node_modules/@aragon/os/contracts/lib/ens/PublicResolver.sol:122:5: The shadowed declaration is here:
+    function name(bytes32 node) public constant returns (string ret) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning: This declaration shadows an existing declaration.
+node_modules/@aragon/os/contracts/lib/ens/ENS.sol:60:37: Warning: This declaration shadows an existing declaration.
+    function setOwner(bytes32 node, address owner) only_owner(node) public {
+                                    ^-----------^
+node_modules/@aragon/os/contracts/lib/ens/ENS.sol:36:5: The shadowed declaration is here:
+    function owner(bytes32 node) public constant returns (address) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning: This declaration shadows an existing declaration.
+node_modules/@aragon/os/contracts/lib/ens/ENS.sol:72:59: Warning: This declaration shadows an existing declaration.
+    function setSubnodeOwner(bytes32 node, bytes32 label, address owner) only_owner(node) public {
+                                                          ^-----------^
+node_modules/@aragon/os/contracts/lib/ens/ENS.sol:36:5: The shadowed declaration is here:
+    function owner(bytes32 node) public constant returns (address) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning: This declaration shadows an existing declaration.
+node_modules/@aragon/os/contracts/lib/ens/ENS.sol:83:40: Warning: This declaration shadows an existing declaration.
+    function setResolver(bytes32 node, address resolver) only_owner(node) public {
+                                       ^--------------^
+node_modules/@aragon/os/contracts/lib/ens/ENS.sol:43:5: The shadowed declaration is here:
+    function resolver(bytes32 node) public constant returns (address) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning: This declaration shadows an existing declaration.
+node_modules/@aragon/os/contracts/lib/ens/ENS.sol:93:35: Warning: This declaration shadows an existing declaration.
+    function setTTL(bytes32 node, uint64 ttl) only_owner(node) public {
+                                  ^--------^
+node_modules/@aragon/os/contracts/lib/ens/ENS.sol:50:5: The shadowed declaration is here:
+    function ttl(bytes32 node) public constant returns (uint64) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning: Variable is shadowed in inline assembly by an instruction of the same name
+node_modules/@aragon/apps-vault/contracts/Vault.sol:76:5: Warning: Variable is shadowed in inline assembly by an instruction of the same name
+    function balance(address _token) public view returns (uint256) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+Warning: Variable is shadowed in inline assembly by an instruction of the same name
+node_modules/@aragon/apps-vault/contracts/Vault.sol:76:5: Warning: Variable is shadowed in inline assembly by an instruction of the same name
+    function balance(address _token) public view returns (uint256) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+Warning: Variable is shadowed in inline assembly by an instruction of the same name
+node_modules/@aragon/apps-vault/contracts/Vault.sol:76:5: Warning: Variable is shadowed in inline assembly by an instruction of the same name
+    function balance(address _token) public view returns (uint256) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+Warning: Variable is shadowed in inline assembly by an instruction of the same name
+node_modules/@aragon/apps-vault/contracts/Vault.sol:76:5: Warning: Variable is shadowed in inline assembly by an instruction of the same name
+    function balance(address _token) public view returns (uint256) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+Warning: Variable is shadowed in inline assembly by an instruction of the same name
+node_modules/@aragon/apps-vault/contracts/Vault.sol:76:5: Warning: Variable is shadowed in inline assembly by an instruction of the same name
+    function balance(address _token) public view returns (uint256) {
+    ^ (Relevant source part starts here and spans across multiple lines).
+Warning: Functions in interfaces should be declared external.
+node_modules/@aragon/os/contracts/acl/IACL.sol:13:5: Warning: Functions in interfaces should be declared external.
+    function hasPermission(address who, address where, bytes32 what, bytes how) public view returns (bool);
+    ^-----------------------------------------------------------------------------------------------------^
+Warning: Functions in interfaces should be declared external.
+node_modules/@aragon/os/contracts/evmscript/IEVMScriptRegistry.sol:24:5: Warning: Functions in interfaces should be declared external.
+    function getScriptExecutor(bytes script) public view returns (IEVMScriptExecutor);
+    ^--------------------------------------------------------------------------------^
+Warning: Functions in interfaces should be declared external.
+node_modules/@aragon/os/contracts/lib/ens/AbstractENS.sol:7:5: Warning: Functions in interfaces should be declared external.
+    function owner(bytes32 _node) public constant returns (address);
+    ^--------------------------------------------------------------^
+Warning: Functions in interfaces should be declared external.
+node_modules/@aragon/os/contracts/lib/ens/AbstractENS.sol:8:5: Warning: Functions in interfaces should be declared external.
+    function resolver(bytes32 _node) public constant returns (address);
+    ^-----------------------------------------------------------------^
+Warning: Functions in interfaces should be declared external.
+node_modules/@aragon/os/contracts/lib/ens/AbstractENS.sol:9:5: Warning: Functions in interfaces should be declared external.
+    function ttl(bytes32 _node) public constant returns (uint64);
+    ^-----------------------------------------------------------^
+Warning: Functions in interfaces should be declared external.
+node_modules/@aragon/os/contracts/lib/ens/AbstractENS.sol:10:5: Warning: Functions in interfaces should be declared external.
+    function setOwner(bytes32 _node, address _owner) public;
+    ^------------------------------------------------------^
+Warning: Functions in interfaces should be declared external.
+node_modules/@aragon/os/contracts/lib/ens/AbstractENS.sol:11:5: Warning: Functions in interfaces should be declared external.
+    function setSubnodeOwner(bytes32 _node, bytes32 label, address _owner) public;
+    ^----------------------------------------------------------------------------^
+Warning: Functions in interfaces should be declared external.
+node_modules/@aragon/os/contracts/lib/ens/AbstractENS.sol:12:5: Warning: Functions in interfaces should be declared external.
+    function setResolver(bytes32 _node, address _resolver) public;
+    ^------------------------------------------------------------^
+Warning: Functions in interfaces should be declared external.
+node_modules/@aragon/os/contracts/lib/ens/AbstractENS.sol:13:5: Warning: Functions in interfaces should be declared external.
+    function setTTL(bytes32 _node, uint64 _ttl) public;
+    ^-------------------------------------------------^
+Warning: Functions in interfaces should be declared external.
+node_modules/@aragon/id/contracts/ens/IPublicResolver.sol:5:5: Warning: Functions in interfaces should be declared external.
+    function supportsInterface(bytes4 interfaceID) constant returns (bool);
+    ^---------------------------------------------------------------------^
+Warning: Functions in interfaces should be declared external.
+node_modules/@aragon/id/contracts/ens/IPublicResolver.sol:6:5: Warning: Functions in interfaces should be declared external.
+    function addr(bytes32 node) constant returns (address ret);
+    ^---------------------------------------------------------^
+Warning: Functions in interfaces should be declared external.
+node_modules/@aragon/id/contracts/ens/IPublicResolver.sol:7:5: Warning: Functions in interfaces should be declared external.
+    function setAddr(bytes32 node, address addr);
+    ^-------------------------------------------^
+Warning: Functions in interfaces should be declared external.
+node_modules/@aragon/id/contracts/ens/IPublicResolver.sol:8:5: Warning: Functions in interfaces should be declared external.
+    function hash(bytes32 node) constant returns (bytes32 ret);
+    ^---------------------------------------------------------^
+Warning: Functions in interfaces should be declared external.
+node_modules/@aragon/id/contracts/ens/IPublicResolver.sol:9:5: Warning: Functions in interfaces should be declared external.
+    function setHash(bytes32 node, bytes32 hash);
+    ^-------------------------------------------^
+Warning: Functions in interfaces should be declared external.
+node_modules/@aragon/id/contracts/IFIFSResolvingRegistrar.sol:8:5: Warning: Functions in interfaces should be declared external.
+    function registerWithResolver(bytes32 _subnode, address _owner, IPublicResolver _resolver) public;
+    ^------------------------------------------------------------------------------------------------^
+Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+node_modules/@aragon/id/contracts/FIFSResolvingRegistrar.sol:55:24: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+        bytes32 node = keccak256(rootNode, _subnode);
+                       ^---------------------------^
+Warning: Invoking events without "emit" prefix is deprecated.
+node_modules/@aragon/os/contracts/lib/ens/PublicResolver.sol:89:9: Warning: Invoking events without "emit" prefix is deprecated.
+        AddrChanged(node, addr);
+        ^---------------------^
+Warning: Invoking events without "emit" prefix is deprecated.
+node_modules/@aragon/os/contracts/lib/ens/PublicResolver.sol:113:9: Warning: Invoking events without "emit" prefix is deprecated.
+        ContentChanged(node, hash);
+        ^------------------------^
+Warning: Invoking events without "emit" prefix is deprecated.
+node_modules/@aragon/os/contracts/lib/ens/PublicResolver.sol:134:9: Warning: Invoking events without "emit" prefix is deprecated.
+        NameChanged(node, name);
+        ^---------------------^
+Warning: Invoking events without "emit" prefix is deprecated.
+node_modules/@aragon/os/contracts/lib/ens/PublicResolver.sol:169:9: Warning: Invoking events without "emit" prefix is deprecated.
+        ABIChanged(node, contentType);
+        ^---------------------------^
+Warning: Invoking events without "emit" prefix is deprecated.
+node_modules/@aragon/os/contracts/lib/ens/PublicResolver.sol:190:9: Warning: Invoking events without "emit" prefix is deprecated.
+        PubkeyChanged(node, x, y);
+        ^-----------------------^
+Warning: Invoking events without "emit" prefix is deprecated.
+node_modules/@aragon/os/contracts/lib/ens/PublicResolver.sol:212:9: Warning: Invoking events without "emit" prefix is deprecated.
+        TextChanged(node, key, key);
+        ^-------------------------^
+Warning: Decimal literal assigned to bytesXX variable will be left-aligned. Use an explicit conversion to silence this warning.
+node_modules/@aragon/os/contracts/lib/ens/ENS.sol:30:17: Warning: Decimal literal assigned to bytesXX variable will be left-aligned. Use an explicit conversion to silence this warning.
+        records[0].owner = msg.sender;
+                ^
+Warning: Invoking events without "emit" prefix is deprecated.
+node_modules/@aragon/os/contracts/lib/ens/ENS.sol:61:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(node, owner);
+        ^-------------------^
+Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+node_modules/@aragon/os/contracts/lib/ens/ENS.sol:73:23: Warning: This function only accepts a single "bytes" argument. Please use "abi.encodePacked(...)" or a similar function to encode the data.
+        var subnode = keccak256(node, label);
+                      ^--------------------^
+Warning: Invoking events without "emit" prefix is deprecated.
+node_modules/@aragon/os/contracts/lib/ens/ENS.sol:74:9: Warning: Invoking events without "emit" prefix is deprecated.
+        NewOwner(node, label, owner);
+        ^--------------------------^
+Warning: Invoking events without "emit" prefix is deprecated.
+node_modules/@aragon/os/contracts/lib/ens/ENS.sol:84:9: Warning: Invoking events without "emit" prefix is deprecated.
+        NewResolver(node, resolver);
+        ^-------------------------^
+Warning: Invoking events without "emit" prefix is deprecated.
+node_modules/@aragon/os/contracts/lib/ens/ENS.sol:94:9: Warning: Invoking events without "emit" prefix is deprecated.
+        NewTTL(node, ttl);
+        ^---------------^
+Warning: Invoking events without "emit" prefix is deprecated.
+node_modules/@aragon/minime/contracts/MiniMeToken.sol:213:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(_from, _to, _amount);
+        ^---------------------------^
+Warning: Invoking events without "emit" prefix is deprecated.
+node_modules/@aragon/minime/contracts/MiniMeToken.sol:245:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Approval(msg.sender, _spender, _amount);
+        ^-------------------------------------^
+Warning: Invoking events without "emit" prefix is deprecated.
+node_modules/@aragon/minime/contracts/MiniMeToken.sol:373:9: Warning: Invoking events without "emit" prefix is deprecated.
+        NewCloneToken(address(cloneToken), snapshot);
+        ^------------------------------------------^
+Warning: Invoking events without "emit" prefix is deprecated.
+node_modules/@aragon/minime/contracts/MiniMeToken.sol:392:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(0, _owner, _amount);
+        ^--------------------------^
+Warning: Invoking events without "emit" prefix is deprecated.
+node_modules/@aragon/minime/contracts/MiniMeToken.sol:408:9: Warning: Invoking events without "emit" prefix is deprecated.
+        Transfer(_owner, 0, _amount);
+        ^--------------------------^
+Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+node_modules/@aragon/minime/contracts/MiniMeToken.sol:511:33: Warning: Using contract member "balance" inherited from the address type is deprecated. Convert the contract to "address" type to access the member, for example use "address(contract).balance" instead.
+            controller.transfer(this.balance);
+                                ^----------^
+Warning: Invoking events without "emit" prefix is deprecated.
+node_modules/@aragon/minime/contracts/MiniMeToken.sol:518:9: Warning: Invoking events without "emit" prefix is deprecated.
+        ClaimedTokens(_token, controller, balance);
+        ^----------------------------------------^
+Warning: Invoking events without "emit" prefix is deprecated.
+node_modules/@aragon/minime/contracts/MiniMeToken.sol:576:9: Warning: Invoking events without "emit" prefix is deprecated.
+        NewFactoryCloneToken(address(newToken), address(_parentToken), _snapshotBlock);
+        ^----------------------------------------------------------------------------^
+Warning: Functions in interfaces should be declared external.
+node_modules/@aragon/os/contracts/common/IForwarder.sol:13:5: Warning: Functions in interfaces should be declared external.
+    function canForward(address sender, bytes evmCallScript) public view returns (bool);
+    ^----------------------------------------------------------------------------------^
+Warning: Functions in interfaces should be declared external.
+node_modules/@aragon/os/contracts/common/IForwarder.sol:17:5: Warning: Functions in interfaces should be declared external.
+    function forward(bytes evmCallScript) public;
+    ^-------------------------------------------^
+Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+node_modules/@aragon/os/contracts/common/VaultRecoverable.sol:49:34: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function allowRecoverability(address token) public view returns (bool) {
+                                 ^-----------^
+Warning: No visibility specified. Defaulting to "public". In interfaces it defaults to external.
+node_modules/@aragon/id/contracts/ens/IPublicResolver.sol:5:5: Warning: No visibility specified. Defaulting to "public". In interfaces it defaults to external.
+    function supportsInterface(bytes4 interfaceID) constant returns (bool);
+    ^---------------------------------------------------------------------^
+Warning: No visibility specified. Defaulting to "public". In interfaces it defaults to external.
+node_modules/@aragon/id/contracts/ens/IPublicResolver.sol:6:5: Warning: No visibility specified. Defaulting to "public". In interfaces it defaults to external.
+    function addr(bytes32 node) constant returns (address ret);
+    ^---------------------------------------------------------^
+Warning: No visibility specified. Defaulting to "public". In interfaces it defaults to external.
+node_modules/@aragon/id/contracts/ens/IPublicResolver.sol:7:5: Warning: No visibility specified. Defaulting to "public". In interfaces it defaults to external.
+    function setAddr(bytes32 node, address addr);
+    ^-------------------------------------------^
+Warning: No visibility specified. Defaulting to "public". In interfaces it defaults to external.
+node_modules/@aragon/id/contracts/ens/IPublicResolver.sol:8:5: Warning: No visibility specified. Defaulting to "public". In interfaces it defaults to external.
+    function hash(bytes32 node) constant returns (bytes32 ret);
+    ^---------------------------------------------------------^
+Warning: No visibility specified. Defaulting to "public". In interfaces it defaults to external.
+node_modules/@aragon/id/contracts/ens/IPublicResolver.sol:9:5: Warning: No visibility specified. Defaulting to "public". In interfaces it defaults to external.
+    function setHash(bytes32 node, bytes32 hash);
+    ^-------------------------------------------^
+Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+node_modules/@aragon/apps-lido/apps/voting/contracts/Voting.sol:183:80: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function newVote(bytes _executionScript, string _metadata, bool _castVote, bool _executesIfDecided_deprecated)
+                                                                               ^--------------------------------^
+Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+node_modules/@aragon/apps-lido/apps/voting/contracts/Voting.sol:200:52: Warning: Unused function parameter. Remove or comment out the variable name to silence this warning.
+    function vote(uint256 _voteId, bool _supports, bool _executesIfDecided_deprecated) external voteExists(_voteId) {
+                                                   ^--------------------------------^
+Warning: Function state mutability can be restricted to pure
+node_modules/@aragon/apps-finance/contracts/Finance.sol:840:5: Warning: Function state mutability can be restricted to pure
+    function getMaxPeriodTransitions() internal view returns (uint64) { return MAX_UINT64; }
+    ^--------------------------------------------------------------------------------------^
+Warning: Function state mutability can be restricted to pure
+test/0.4.24/lib/packed64x4.t.sol:11:5: Warning: Function state mutability can be restricted to pure
+    function test_set() public {
+    ^ (Relevant source part starts here and spans across multiple lines).
+Warning (3628): This contract has a payable fallback function, but no receive ether function. Consider adding a receive ether function.
+  --> contracts/0.8.25/vaults/PinnedBeaconProxy.sol:24:1:
+   |
+24 | contract PinnedBeaconProxy is BeaconProxy {
+   | ^ (Relevant source part starts here and spans across multiple lines).
+Note: The payable fallback function is defined here.
+  --> node_modules/@openzeppelin/contracts-v5.2/proxy/Proxy.sol:66:5:
+   |
+66 |     fallback() external payable virtual {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to view
+  --> test/0.8.25/vaults/refSlotCache/refSlotCache.t.sol:79:5:
+   |
+79 |     function invariant_currentValue() external {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to view
+  --> test/0.8.25/vaults/refSlotCache/refSlotCache.t.sol:91:5:
+   |
+91 |     function invariant_valueOnRefSlot() external {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to view
+   --> test/common/lib/BLS.t.sol:110:5:
+    |
+110 |     function _withValidPubkeySignBit(bytes memory pubkey, BLS12_381.Fp memory pubkeyY) internal returns (bytes memory) {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to pure
+   --> test/common/lib/BLS.t.sol:187:5:
+    |
+187 |     function test_zeroingForStaticArrays() public view {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to view
+   --> test/common/lib/BLS.t.sol:520:5:
+    |
+520 |     function _buildValidPubkey(BLS12_381.Fp memory pubkeyY) internal returns (bytes memory) {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to view
+   --> test/common/lib/BLS.t.sol:539:5:
+    |
+539 |     function _buildValidSignature(BLS12_381.Fp2 memory signatureY) internal returns (bytes memory) {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to view
+   --> test/common/lib/BLS.t.sol:855:5:
+    |
+855 |     function testFuzz_signBitParityInvariant_Pubkey(bytes32 yA, bytes32 yB) external {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to view
+   --> test/common/lib/BLS.t.sol:883:5:
+    |
+883 |     function testFuzz_signBitParityInvariant_Signature(BLS12_381.Fp2 memory signatureY) external {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to view
+  --> test/common/lib/GIndex.t.sol:42:5:
+   |
+42 |     function test_pack() public {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to view
+  --> test/common/lib/GIndex.t.sol:55:5:
+   |
+55 |     function test_isRootTrue() public {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to pure
+  --> test/common/lib/GIndex.t.sol:59:5:
+   |
+59 |     function test_isRootFalse() public {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to view
+  --> test/common/lib/GIndex.t.sol:78:5:
+   |
+78 |     function test_concat() public {
+   |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to view
+   --> test/common/lib/GIndex.t.sol:113:5:
+    |
+113 |     function testFuzz_concat_WithRoot(GIndex rhs) public {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to pure
+   --> test/common/lib/GIndex.t.sol:118:5:
+    |
+118 |     function testFuzz_unpack(uint248 index, uint8 pow) public {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to pure
+   --> test/common/lib/GIndex.t.sol:124:5:
+    |
+124 |     function test_shr() public {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to pure
+   --> test/common/lib/GIndex.t.sol:143:5:
+    |
+143 |     function test_shr_AfterConcat() public {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to pure
+   --> test/common/lib/GIndex.t.sol:199:5:
+    |
+199 |     function test_shl() public {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to pure
+   --> test/common/lib/GIndex.t.sol:218:5:
+    |
+218 |     function test_shl_AfterConcat() public {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to view
+   --> test/common/lib/GIndex.t.sol:271:5:
+    |
+271 |     function testFuzz_shl_shr_Idempotent(GIndex gI, uint256 shift) public {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to view
+   --> test/common/lib/GIndex.t.sol:279:5:
+    |
+279 |     function testFuzz_shr_shl_Idempotent(GIndex gI, uint256 shift) public {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Warning (2018): Function state mutability can be restricted to pure
+   --> test/common/lib/GIndex.t.sol:287:5:
+    |
+287 |     function test_fls() public {
+    |     ^ (Relevant source part starts here and spans across multiple lines).
+
+Error: Internal compiler error (/solidity/libsolidity/codegen/ir/IRGeneratorForStatements.cpp:2906):

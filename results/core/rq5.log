@@ -1,0 +1,25 @@
+=== cell cell-C-gasopt-standard  (dir=core via_ir=false) ===
+  run1 rc=0 bytes=9772  (cell-C-gasopt-standard)
+  run2 rc=0 bytes=9771  (cell-C-gasopt-standard)
+  run3 rc=0 bytes=9771  (cell-C-gasopt-standard)
+=== cell cell-D-gasopt-viair  (dir=core via_ir=true) ===
+  run1 rc=1 bytes=0  (cell-D-gasopt-viair)
+  run2 rc=1 bytes=0  (cell-D-gasopt-viair)
+  run3 rc=1 bytes=0  (cell-D-gasopt-viair)
+=== preparing original-code worktree at 4f74252b20a8dc6d2a310d299aff6539222e51b3 -> /tmp/gasopt-rq5-orig-icyY5N ===
+=== cell cell-A-orig-standard  (dir=/tmp/gasopt-rq5-orig-icyY5N via_ir=false) ===
+  run1 rc=0 bytes=9770  (cell-A-orig-standard)
+  run2 rc=0 bytes=9771  (cell-A-orig-standard)
+  run3 rc=0 bytes=9771  (cell-A-orig-standard)
+=== cell cell-B-orig-viair  (dir=/tmp/gasopt-rq5-orig-icyY5N via_ir=true) ===
+  run1 rc=1 bytes=0  (cell-B-orig-viair)
+  run2 rc=1 bytes=0  (cell-B-orig-viair)
+  run3 rc=1 bytes=0  (cell-B-orig-viair)
+=== factorial done for results/core ===
+
+[NOTE] Cells B and D (via-IR) FAILED for Lido and are recorded as unmeasured (empty JSON).
+Cause: Lido spans compiler generations 0.4.24/0.6.11/0.6.12/0.8.9/0.8.25; forcing a whole-
+project via-IR build hits an Internal Compiler Error compiling the pre-0.8.13 contracts
+(via-IR did not exist before ~0.8.13). This is a property of the subject, not a gasopt or
+harness defect. Lido's RQ5 therefore reports the standard-optimizer comparison (A orig+std vs
+C gasopt+std) only; the via-IR column is not applicable.

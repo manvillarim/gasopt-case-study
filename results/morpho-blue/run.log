@@ -1,0 +1,699 @@
+gasopt commit: 02bd38ae2d0598c3544f239b26fecc16fa145f46
+protocol baseline HEAD: fb3755e4a7e7e630fedac3c1bf36b712410cff15
+start: qua 15 jul 2026 09:14:44 UTC
+cmd: node dist/index.js src --report report.json --gas-report gas.json --gas-seed 42 --gas-repeats 3 --remappings remappings.txt --exclude test --exclude script --exclude mocks
+========================================
+[INFO] Remappings: 2 entries from /home/manoel/projeto/case-study-tool/morpho-blue
+[INFO] No solc pinned (--solc-version or foundry.toml). Falling back to per-file exact pragma; pass --solc-version to match the project's build.
+[INFO] Using evm_version from foundry.toml: paris
+[INFO] Scanning: src
+[INFO] Excluding: test, script, mocks
+[INFO] Found 17 .sol file(s)
+
+  Morpho.sol ... 2 rewrite(s)
+  interfaces/IERC20.sol ... no rules
+  interfaces/IIrm.sol ... no rules
+  interfaces/IMorpho.sol ... no rules
+  interfaces/IMorphoCallbacks.sol ... no rules
+  interfaces/IOracle.sol ... no rules
+  libraries/ConstantsLib.sol ... no rules
+  libraries/ErrorsLib.sol ... no rules
+  libraries/EventsLib.sol ... no rules
+  libraries/MarketParamsLib.sol ... 1 rewrite(s)
+  libraries/MathLib.sol ... no rules
+  libraries/SafeTransferLib.sol ... no rules
+  libraries/SharesMathLib.sol ... no rules
+  libraries/UtilsLib.sol ... no rules
+  libraries/periphery/MorphoBalancesLib.sol ... no rules
+  libraries/periphery/MorphoLib.sol ... no rules
+  libraries/periphery/MorphoStorageLib.sol ... no rules
+
+══════════════════════════════════
+            SUMMARY
+══════════════════════════════════
+Files:        2 optimised / 17 total
+  Skipped:    0  (0 unresolved imports, 0 compile errors, 0 verify-failed)
+Contracts:    2 had at least one rule applied
+Rewrites:     3 total
+
+Rules applied (rewrites):
+  delete-storage           1
+  const-folding-state      1
+  payable-constructor      1
+
+Layout safety (skipped): 3 contracts, 0 structs
+
+Report saved: /home/manoel/projeto/case-study-tool/results/morpho-blue/report.json
+  NOTE: counts are source rewrites applied, NOT bytes or gas. Measure gas with: forge snapshot --diff
+
+[WARNING] Review unchecked blocks and custom errors before deploying.
+
+══════════════════════════════════
+     GAS VERIFICATION (Foundry)
+══════════════════════════════════
+[gas-benchmark] checking out pre-rewrite baseline (fb3755e4a7e7) into a temporary worktree...
+Preparing worktree (detached HEAD fb3755e)
+[gas-benchmark] initializing submodules in the temporary worktree (reusing the main checkout's cache)...
+Cloning into '/tmp/gasopt-original-277455-1784106886181/lib/forge-std'...
+Submodule 'lib/ds-test' (https://github.com/dapphub/ds-test) registered for path 'lib/forge-std/lib/ds-test'
+Cloning into '/tmp/gasopt-original-277455-1784106886181/lib/forge-std/lib/ds-test'...
+[gas-benchmark] generating seeded baseline (FOUNDRY_FUZZ_SEED=42) from the pre-rewrite tree...
+[gas-benchmark] generating seeded gas-report (deploy cost/size + per-function) from the pre-rewrite tree...
+[gas-benchmark] seeded diff against the rewritten tree (1/3)...
+[gas-benchmark] seeded gas-report against the rewritten tree (1/3)...
+[gas-benchmark] seeded diff against the rewritten tree (2/3)...
+[gas-benchmark] seeded gas-report against the rewritten tree (2/3)...
+[gas-benchmark] seeded diff against the rewritten tree (3/3)...
+[gas-benchmark] seeded gas-report against the rewritten tree (3/3)...
+
+No files changed, compilation skipped
+
+Ran 1 test for test/MarketParamsLibTest.sol:MarketParamsLibTest
+[PASS] testMarketParamsId((address,address,address,address,uint256)) (runs: 256, μ: 896, ~: 896)
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 12.30ms (12.02ms CPU time)
+
+Ran 1 test for test/integration/ExtSloadIntegrationTest.sol:ExtSloadIntegrationTest
+[PASS] testExtSloads(uint256,bytes32) (runs: 256, μ: 10291, ~: 10291)
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 40.43ms (35.69ms CPU time)
+
+Ran 8 tests for test/libraries/MathLibTest.sol:MathLibTest
+[PASS] testMulDivDown(uint256,uint256,uint256) (runs: 256, μ: 934, ~: 1057)
+[PASS] testMulDivDownOverflow(uint256,uint256,uint256) (runs: 256, μ: 8343, ~: 8448)
+[PASS] testMulDivDownZeroDenominator(uint256,uint256) (runs: 256, μ: 3324, ~: 3326)
+[PASS] testMulDivUp(uint256,uint256,uint256) (runs: 256, μ: 6261, ~: 6165)
+[PASS] testMulDivUpOverflow(uint256,uint256,uint256) (runs: 256, μ: 8756, ~: 8855)
+[PASS] testMulDivUpUnderverflow(uint256,uint256) (runs: 256, μ: 3804, ~: 3806)
+[PASS] testMulDivUpZeroDenominator(uint256,uint256) (runs: 256, μ: 3368, ~: 3370)
+[PASS] testWTaylorCompounded(uint256,uint256) (runs: 256, μ: 10898, ~: 10885)
+Suite result: ok. 8 passed; 0 failed; 0 skipped; finished in 98.94ms (98.36ms CPU time)
+
+Ran 6 tests for test/integration/CreateMarketIntegrationTest.sol:CreateMarketIntegrationTest
+[PASS] testCreateMarketAlreadyCreated((address,address,address,address,uint256)) (runs: 256, μ: 196975, ~: 197869)
+[PASS] testCreateMarketWithEnabledIrmAndLltv((address,address,address,address,uint256)) (runs: 256, μ: 215555, ~: 216449)
+[PASS] testCreateMarketWithEnabledIrmAndNotEnabledLltv((address,address,address,address,uint256)) (runs: 256, μ: 46531, ~: 46531)
+[PASS] testCreateMarketWithNotEnabledIrmAndEnabledLltv((address,address,address,address,uint256)) (runs: 256, μ: 17147, ~: 17147)
+[PASS] testCreateMarketWithNotEnabledIrmAndNotEnabledLltv((address,address,address,address,uint256)) (runs: 256, μ: 20272, ~: 20272)
+[PASS] testIdToMarketParams((address,address,address,address,uint256)) (runs: 256, μ: 195759, ~: 196653)
+Suite result: ok. 6 passed; 0 failed; 0 skipped; finished in 183.96ms (179.72ms CPU time)
+
+Ran 1 test for test/libraries/periphery/MorphoStorageLibTest.sol:MorphoStorageLibTest
+[PASS] testStorage(uint256,uint256,uint256,uint256) (runs: 256, μ: 459609, ~: 460431)
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 304.20ms (298.87ms CPU time)
+
+Ran 5 tests for test/libraries/UtilsLibTest.sol:UtilsLibTest
+[PASS] testExactlyOneZero(uint256,uint256) (runs: 256, μ: 553, ~: 554)
+[PASS] testMin(uint256,uint256) (runs: 256, μ: 291, ~: 287)
+[PASS] testToUint128(uint256) (runs: 256, μ: 3505, ~: 3505)
+[PASS] testToUint128Revert(uint256) (runs: 256, μ: 4414, ~: 4414)
+[PASS] testZeroFloorSub(uint256,uint256) (runs: 256, μ: 589, ~: 573)
+Suite result: ok. 5 passed; 0 failed; 0 skipped; finished in 31.52ms (31.33ms CPU time)
+
+Ran 8 tests for test/integration/CallbacksIntegrationTest.sol:CallbacksIntegrationTest
+[PASS] testFlashActions(uint256) (runs: 256, μ: 338055, ~: 338034)
+[PASS] testFlashLoan(uint256) (runs: 256, μ: 178558, ~: 178497)
+[PASS] testFlashLoanShouldRevertIfNotReimbursed(uint256) (runs: 256, μ: 161745, ~: 161637)
+[PASS] testFlashLoanZero() (gas: 12453)
+[PASS] testLiquidateCallback(uint256) (runs: 256, μ: 372898, ~: 372877)
+[PASS] testRepayCallback(uint256) (runs: 256, μ: 315716, ~: 315696)
+[PASS] testSupplyCallback(uint256) (runs: 256, μ: 224141, ~: 224033)
+[PASS] testSupplyCollateralCallback(uint256) (runs: 256, μ: 148377, ~: 148300)
+Suite result: ok. 8 passed; 0 failed; 0 skipped; finished in 724.32ms (714.55ms CPU time)
+
+Ran 6 tests for test/integration/AccrueInterestIntegrationTest.sol:AccrueInterestIntegrationTest
+[PASS] testAccrueInterestIrmZero((address,address,address,address,uint256),uint256) (runs: 256, μ: 116599, ~: 116914)
+[PASS] testAccrueInterestMarketNotCreated((address,address,address,address,uint256)) (runs: 256, μ: 23656, ~: 23656)
+[PASS] testAccrueInterestNoBorrow(uint256,uint256) (runs: 256, μ: 193894, ~: 193866)
+[PASS] testAccrueInterestNoFee(uint256,uint256,uint256) (runs: 256, μ: 367320, ~: 367560)
+[PASS] testAccrueInterestNoTimeElapsed(uint256,uint256) (runs: 256, μ: 344110, ~: 344416)
+[PASS] testAccrueInterestWithFees(uint256,uint256,uint256,uint256) (runs: 256, μ: 396146, ~: 404421)
+Suite result: ok. 6 passed; 0 failed; 0 skipped; finished in 752.35ms (533.37ms CPU time)
+
+Ran 11 tests for test/integration/BorrowIntegrationTest.sol:BorrowIntegrationTest
+[PASS] testBorrowAssets(uint256,uint256,uint256,uint256) (runs: 256, μ: 337782, ~: 338212)
+[PASS] testBorrowAssetsOnBehalf(uint256,uint256,uint256,uint256) (runs: 256, μ: 340146, ~: 340576)
+[PASS] testBorrowInconsistentInput(address,uint256,uint256) (runs: 256, μ: 30102, ~: 30137)
+[PASS] testBorrowInsufficientLiquidity(uint256,uint256,uint256,uint256) (runs: 256, μ: 288384, ~: 288498)
+[PASS] testBorrowMarketNotCreated((address,address,address,address,uint256),address,uint256) (runs: 256, μ: 26841, ~: 26841)
+[PASS] testBorrowShares(uint256,uint256,uint256,uint256) (runs: 256, μ: 337766, ~: 338351)
+[PASS] testBorrowSharesOnBehalf(uint256,uint256,uint256,uint256) (runs: 256, μ: 340543, ~: 341128)
+[PASS] testBorrowToZeroAddress(address,uint256) (runs: 256, μ: 154821, ~: 154781)
+[PASS] testBorrowUnauthorized(address,address,uint256) (runs: 256, μ: 253567, ~: 253528)
+[PASS] testBorrowUnhealthyPosition(uint256,uint256,uint256,uint256) (runs: 256, μ: 287243, ~: 287317)
+[PASS] testBorrowZeroAmount(address) (runs: 256, μ: 25672, ~: 25672)
+Suite result: ok. 11 passed; 0 failed; 0 skipped; finished in 789.67ms (786.66ms CPU time)
+
+Ran 5 tests for test/integration/SupplyCollateralIntegrationTest.sol:SupplyCollateralIntegrationTest
+[PASS] testSupplyCollateral(uint256) (runs: 256, μ: 128232, ~: 128156)
+[PASS] testSupplyCollateralMarketNotCreated((address,address,address,address,uint256),uint256) (runs: 256, μ: 26461, ~: 26461)
+[PASS] testSupplyCollateralOnBehalfZeroAddress(uint256) (runs: 256, μ: 29158, ~: 29051)
+[PASS] testSupplyCollateralTokenNotCreated(uint256,address) (runs: 256, μ: 208905, ~: 209003)
+[PASS] testSupplyCollateralZeroAmount() (gas: 25507)
+Suite result: ok. 5 passed; 0 failed; 0 skipped; finished in 126.33ms (124.71ms CPU time)
+
+Ran 7 tests for test/integration/WithdrawCollateralIntegrationTest.sol:WithdrawCollateralIntegrationTest
+[PASS] testWithdrawCollateral(uint256,uint256,uint256,uint256,uint256) (runs: 256, μ: 366717, ~: 367472)
+[PASS] testWithdrawCollateralMarketNotCreated((address,address,address,address,uint256)) (runs: 256, μ: 28900, ~: 28900)
+[PASS] testWithdrawCollateralOnBehalf(uint256,uint256,uint256,uint256,uint256) (runs: 256, μ: 371583, ~: 372338)
+[PASS] testWithdrawCollateralToZeroAddress(uint256) (runs: 256, μ: 119722, ~: 119646)
+[PASS] testWithdrawCollateralUnauthorized(address,uint256) (runs: 256, μ: 124608, ~: 124532)
+[PASS] testWithdrawCollateralUnhealthyPosition(uint256,uint256,uint256,uint256) (runs: 256, μ: 323718, ~: 324149)
+[PASS] testWithdrawCollateralZeroAmount(uint256) (runs: 256, μ: 119823, ~: 119747)
+Suite result: ok. 7 passed; 0 failed; 0 skipped; finished in 471.32ms (468.92ms CPU time)
+
+Ran 10 tests for test/integration/LiquidateIntegrationTest.sol:LiquidateIntegrationTest
+[PASS] testBadDebtOverTotalBorrowAssets() (gas: 366452)
+[PASS] testLiquidateBadDebtRealized(uint256,uint256,uint256,uint256,uint256) (runs: 256, μ: 574509, ~: 574530)
+[PASS] testLiquidateHealthyPosition(uint256,uint256,uint256,uint256,uint256,uint256) (runs: 256, μ: 537226, ~: 537313)
+[PASS] testLiquidateInconsistentInput(uint256,uint256) (runs: 256, μ: 30154, ~: 30176)
+[PASS] testLiquidateMargin((uint256,uint256,uint256,uint256,uint256),uint256,uint256) (runs: 256, μ: 552599, ~: 552892)
+[PASS] testLiquidateNotCreatedMarket((address,address,address,address,uint256),uint256) (runs: 256, μ: 231141, ~: 231136)
+[PASS] testLiquidateSeizedInputNoBadDebtRealized((uint256,uint256,uint256,uint256,uint256),uint256) (runs: 256, μ: 617997, ~: 618353)
+[PASS] testLiquidateSharesInputNoBadDebtRealized((uint256,uint256,uint256,uint256,uint256),uint256) (runs: 256, μ: 624938, ~: 630466)
+[PASS] testLiquidateZeroAmount(uint256) (runs: 256, μ: 230681, ~: 230678)
+[PASS] testSeizedAssetsRoundUp() (gas: 550174)
+Suite result: ok. 10 passed; 0 failed; 0 skipped; finished in 1.01s (1.01s CPU time)
+
+Ran 6 tests for test/libraries/SafeTransferLibTest.sol:SafeTransferLibTest
+[PASS] testSafeTransfer(address,uint256) (runs: 256, μ: 37102, ~: 37881)
+[PASS] testSafeTransferFrom(address,address,uint256) (runs: 256, μ: 37988, ~: 38069)
+[PASS] testSafeTransferFromTokenNotCreated(address,address,address,uint256) (runs: 256, μ: 8785, ~: 8795)
+[PASS] testSafeTransferFromWithBoolFalse(address,address,uint256) (runs: 256, μ: 41052, ~: 41130)
+[PASS] testSafeTransferTokenNotCreated(address,address,uint256) (runs: 256, μ: 8430, ~: 8450)
+[PASS] testSafeTransferWithBoolFalse(address,uint256) (runs: 256, μ: 40396, ~: 41149)
+Suite result: ok. 6 passed; 0 failed; 0 skipped; finished in 511.83ms (64.80ms CPU time)
+
+Ran 7 tests for test/integration/SupplyIntegrationTest.sol:SupplyIntegrationTest
+[PASS] testSupplyAssets(uint256) (runs: 256, μ: 173973, ~: 173864)
+[PASS] testSupplyInconsistentInput(uint256,uint256) (runs: 256, μ: 30319, ~: 30335)
+[PASS] testSupplyMarketNotCreated((address,address,address,address,uint256),uint256) (runs: 256, μ: 26839, ~: 26839)
+[PASS] testSupplyOnBehalfZeroAddress(uint256) (runs: 256, μ: 29726, ~: 29617)
+[PASS] testSupplyShares(uint256) (runs: 256, μ: 174328, ~: 174228)
+[PASS] testSupplyTokenNotCreated(uint256,address) (runs: 256, μ: 231424, ~: 231633)
+[PASS] testSupplyZeroAmount() (gas: 26654)
+Suite result: ok. 7 passed; 0 failed; 0 skipped; finished in 690.38ms (1.61s CPU time)
+
+Ran 7 tests for test/integration/RepayIntegrationTest.sol:RepayIntegrationTest
+[PASS] testRepayAssets(uint256,uint256,uint256,uint256,uint256) (runs: 256, μ: 363096, ~: 363477)
+[PASS] testRepayInconsistentInput(uint256,uint256) (runs: 256, μ: 27338, ~: 27352)
+[PASS] testRepayMarketNotCreated((address,address,address,address,uint256)) (runs: 256, μ: 23762, ~: 23762)
+[PASS] testRepayMax(uint256) (runs: 256, μ: 305734, ~: 305288)
+[PASS] testRepayOnBehalfZeroAddress(uint256,bool) (runs: 256, μ: 26588, ~: 26587)
+[PASS] testRepayShares(uint256,uint256,uint256,uint256,uint256) (runs: 256, μ: 363321, ~: 363580)
+[PASS] testRepayZeroAmount() (gas: 23131)
+Suite result: ok. 7 passed; 0 failed; 0 skipped; finished in 751.39ms (1.33s CPU time)
+
+Ran 18 tests for test/integration/OnlyOwnerIntegrationTest.sol:OnlyOwnerIntegrationTest
+[PASS] testDeployEmitOwner() (gas: 3185626)
+[PASS] testDeployWithAddressZero() (gas: 39615)
+[PASS] testEnableIrm(address) (runs: 256, μ: 42232, ~: 42232)
+[PASS] testEnableIrmAlreadySet() (gas: 18981)
+[PASS] testEnableIrmWhenNotOwner(address,address) (runs: 256, μ: 17291, ~: 17291)
+[PASS] testEnableLltv(uint256) (runs: 256, μ: 45089, ~: 45165)
+[PASS] testEnableLltvAlreadySet() (gas: 18672)
+[PASS] testEnableLltvWhenNotOwner(address,uint256) (runs: 256, μ: 17386, ~: 17386)
+[PASS] testEnableTooHighLltv(uint256) (runs: 256, μ: 20210, ~: 20141)
+[PASS] testSetFee(uint256) (runs: 256, μ: 55350, ~: 55445)
+[PASS] testSetFeeRecipient(address) (runs: 256, μ: 24261, ~: 24280)
+[PASS] testSetFeeRecipientWhenNotOwner(address) (runs: 256, μ: 14973, ~: 14973)
+[PASS] testSetFeeWhenMarketNotCreated((address,address,address,address,uint256),uint256) (runs: 256, μ: 28912, ~: 28912)
+[PASS] testSetFeeWhenNotOwner(address,uint256) (runs: 256, μ: 25338, ~: 25338)
+[PASS] testSetOwner(address) (runs: 256, μ: 20780, ~: 20799)
+[PASS] testSetOwnerAlreadySet() (gas: 14346)
+[PASS] testSetOwnerWhenNotOwner(address) (runs: 256, μ: 14316, ~: 14316)
+[PASS] testSetTooHighFee(uint256) (runs: 256, μ: 31521, ~: 31455)
+Suite result: ok. 18 passed; 0 failed; 0 skipped; finished in 1.54s (1.54s CPU time)
+
+Ran 10 tests for test/integration/WithdrawIntegrationTest.sol:WithdrawIntegrationTest
+[PASS] testWithdrawAssets(uint256,uint256,uint256) (runs: 256, μ: 372491, ~: 372880)
+[PASS] testWithdrawAssetsOnBehalf(uint256,uint256,uint256) (runs: 256, μ: 376019, ~: 376408)
+[PASS] testWithdrawInconsistentInput(uint256,uint256) (runs: 256, μ: 155242, ~: 155263)
+[PASS] testWithdrawInsufficientLiquidity(uint256,uint256) (runs: 256, μ: 288323, ~: 288325)
+[PASS] testWithdrawMarketNotCreated((address,address,address,address,uint256)) (runs: 256, μ: 23952, ~: 23952)
+[PASS] testWithdrawShares(uint256,uint256,uint256) (runs: 256, μ: 366133, ~: 371742)
+[PASS] testWithdrawSharesOnBehalf(uint256,uint256,uint256) (runs: 256, μ: 370716, ~: 376325)
+[PASS] testWithdrawToZeroAddress(uint256) (runs: 256, μ: 154360, ~: 154251)
+[PASS] testWithdrawUnauthorized(address,uint256) (runs: 256, μ: 158024, ~: 157950)
+[PASS] testWithdrawZeroAmount(uint256) (runs: 256, μ: 154499, ~: 154390)
+Suite result: ok. 10 passed; 0 failed; 0 skipped; finished in 9.48s (756.28ms CPU time)
+
+Ran 7 tests for test/integration/AuthorizationIntegrationTest.sol:AuthorizationIntegrationTest
+[PASS] testAlreadySet(address) (runs: 256, μ: 41026, ~: 41026)
+[PASS] testAuthorizationFailsWithReusedSig((address,address,bool,uint256,uint256),uint256) (runs: 256, μ: 75759, ~: 75819)
+[PASS] testAuthorizationWithSig((address,address,bool,uint256,uint256),uint256) (runs: 256, μ: 74996, ~: 75056)
+[PASS] testAuthorizationWithSigWrongNonce((address,address,bool,uint256,uint256),uint256) (runs: 256, μ: 43693, ~: 43752)
+[PASS] testAuthorizationWithSigWrongPK((address,address,bool,uint256,uint256),uint256) (runs: 256, μ: 46619, ~: 46679)
+[PASS] testSetAuthorization(address) (runs: 256, μ: 28714, ~: 28697)
+[PASS] testSetAuthorizationWithSignatureDeadlineOutdated((address,address,bool,uint256,uint256),uint256,uint256) (runs: 256, μ: 21909, ~: 21898)
+Suite result: ok. 7 passed; 0 failed; 0 skipped; finished in 10.04s (575.71ms CPU time)
+
+Ran 6 tests for test/libraries/periphery/MorphoBalancesLibTest.sol:MorphoBalancesLibTest
+[PASS] testExpectedBorrowBalance(uint256,uint256,uint256,uint256) (runs: 256, μ: 370306, ~: 365499)
+[PASS] testExpectedSupplyBalance(uint256,uint256,uint256,uint256) (runs: 256, μ: 368126, ~: 363303)
+[PASS] testExpectedTotalBorrow(uint256,uint256,uint256,uint256) (runs: 256, μ: 358133, ~: 353326)
+[PASS] testExpectedTotalSupply(uint256,uint256,uint256,uint256) (runs: 256, μ: 357967, ~: 353160)
+[PASS] testExpectedTotalSupplyShares(uint256,uint256,uint256,uint256) (runs: 256, μ: 357986, ~: 353179)
+[PASS] testVirtualAccrueInterest(uint256,uint256,uint256,uint256) (runs: 256, μ: 368144, ~: 363337)
+Suite result: ok. 6 passed; 0 failed; 0 skipped; finished in 9.94s (724.25ms CPU time)
+
+Ran 1 test for test/invariant/StaticInvariantTest.sol:StaticInvariantTest
+[PASS] invariantHealthy() (runs: 1024, calls: 32768, reverts: 0)
+
+╭---------------------+------------------------------------+-------+---------+----------╮
+| Contract            | Selector                           | Calls | Reverts | Discards |
++=======================================================================================+
+| StaticInvariantTest | borrowAssetsOnBehalfNoRevert       | 4071  | 0       | 11       |
+|---------------------+------------------------------------+-------+---------+----------|
+| StaticInvariantTest | repayAssetsOnBehalfNoRevert        | 4194  | 0       | 0        |
+|---------------------+------------------------------------+-------+---------+----------|
+| StaticInvariantTest | repaySharesOnBehalfNoRevert        | 4033  | 0       | 0        |
+|---------------------+------------------------------------+-------+---------+----------|
+| StaticInvariantTest | supplyAssetsOnBehalfNoRevert       | 4128  | 0       | 0        |
+|---------------------+------------------------------------+-------+---------+----------|
+| StaticInvariantTest | supplyCollateralOnBehalfNoRevert   | 4117  | 0       | 0        |
+|---------------------+------------------------------------+-------+---------+----------|
+| StaticInvariantTest | supplySharesOnBehalfNoRevert       | 4108  | 0       | 0        |
+|---------------------+------------------------------------+-------+---------+----------|
+| StaticInvariantTest | withdrawAssetsOnBehalfNoRevert     | 4097  | 0       | 22       |
+|---------------------+------------------------------------+-------+---------+----------|
+| StaticInvariantTest | withdrawCollateralOnBehalfNoRevert | 4079  | 0       | 26       |
+╰---------------------+------------------------------------+-------+---------+----------╯
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 15.33s (15.31s CPU time)
+
+Ran 9 tests for test/libraries/periphery/MorphoLibTest.sol:MorphoLibTest
+[PASS] testBorrowShares(uint256,uint256,uint256,uint256) (runs: 256, μ: 344399, ~: 345672)
+[PASS] testCollateral(uint256,uint256,uint256,uint256) (runs: 256, μ: 344509, ~: 345782)
+[PASS] testFee(uint256,uint256,uint256,uint256) (runs: 256, μ: 342370, ~: 343643)
+[PASS] testLastUpdate(uint256,uint256,uint256,uint256) (runs: 256, μ: 342133, ~: 343406)
+[PASS] testSupplyShares(uint256,uint256,uint256,uint256) (runs: 256, μ: 344409, ~: 345682)
+[PASS] testTotalBorrowAssets(uint256,uint256,uint256,uint256) (runs: 256, μ: 341967, ~: 343240)
+[PASS] testTotalBorrowShares(uint256,uint256,uint256,uint256) (runs: 256, μ: 342137, ~: 343410)
+[PASS] testTotalSupplyAssets(uint256,uint256,uint256,uint256) (runs: 256, μ: 342043, ~: 343316)
+[PASS] testTotalSupplyShares(uint256,uint256,uint256,uint256) (runs: 256, μ: 342194, ~: 343467)
+Suite result: ok. 9 passed; 0 failed; 0 skipped; finished in 17.13s (938.01ms CPU time)
+
+Ran 5 tests for test/invariant/DynamicInvariantTest.sol:DynamicInvariantTest
+[PASS] invariantBadDebt() (runs: 1024, calls: 32768, reverts: 0)
+
+╭----------------------+------------------------------------+-------+---------+----------╮
+| Contract             | Selector                           | Calls | Reverts | Discards |
++========================================================================================+
+| DynamicInvariantTest | borrowAssetsOnBehalfNoRevert       | 2598  | 0       | 10       |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | liquidateRepaidSharesNoRevert      | 2495  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | liquidateSeizedAssetsNoRevert      | 2552  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | mine                               | 2442  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | repayAssetsOnBehalfNoRevert        | 2542  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | repaySharesOnBehalfNoRevert        | 2566  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | setFeeNoRevert                     | 2486  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | setPrice                           | 2439  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | supplyAssetsOnBehalfNoRevert       | 2583  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | supplyCollateralOnBehalfNoRevert   | 2555  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | supplySharesOnBehalfNoRevert       | 2486  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | withdrawAssetsOnBehalfNoRevert     | 2572  | 0       | 17       |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | withdrawCollateralOnBehalfNoRevert | 2492  | 0       | 13       |
+╰----------------------+------------------------------------+-------+---------+----------╯
+
+[PASS] invariantBorrowShares() (runs: 1024, calls: 32768, reverts: 0)
+
+╭----------------------+------------------------------------+-------+---------+----------╮
+| Contract             | Selector                           | Calls | Reverts | Discards |
++========================================================================================+
+| DynamicInvariantTest | borrowAssetsOnBehalfNoRevert       | 2584  | 0       | 14       |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | liquidateRepaidSharesNoRevert      | 2500  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | liquidateSeizedAssetsNoRevert      | 2568  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | mine                               | 2433  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | repayAssetsOnBehalfNoRevert        | 2550  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | repaySharesOnBehalfNoRevert        | 2545  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | setFeeNoRevert                     | 2498  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | setPrice                           | 2444  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | supplyAssetsOnBehalfNoRevert       | 2585  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | supplyCollateralOnBehalfNoRevert   | 2552  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | supplySharesOnBehalfNoRevert       | 2479  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | withdrawAssetsOnBehalfNoRevert     | 2582  | 0       | 14       |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | withdrawCollateralOnBehalfNoRevert | 2487  | 0       | 11       |
+╰----------------------+------------------------------------+-------+---------+----------╯
+
+[PASS] invariantMorphoBalance() (runs: 1024, calls: 32768, reverts: 0)
+
+╭----------------------+------------------------------------+-------+---------+----------╮
+| Contract             | Selector                           | Calls | Reverts | Discards |
++========================================================================================+
+| DynamicInvariantTest | borrowAssetsOnBehalfNoRevert       | 2584  | 0       | 10       |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | liquidateRepaidSharesNoRevert      | 2507  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | liquidateSeizedAssetsNoRevert      | 2555  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | mine                               | 2436  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | repayAssetsOnBehalfNoRevert        | 2543  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | repaySharesOnBehalfNoRevert        | 2564  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | setFeeNoRevert                     | 2497  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | setPrice                           | 2434  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | supplyAssetsOnBehalfNoRevert       | 2587  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | supplyCollateralOnBehalfNoRevert   | 2550  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | supplySharesOnBehalfNoRevert       | 2465  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | withdrawAssetsOnBehalfNoRevert     | 2585  | 0       | 15       |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | withdrawCollateralOnBehalfNoRevert | 2500  | 0       | 14       |
+╰----------------------+------------------------------------+-------+---------+----------╯
+
+[PASS] invariantSupplyShares() (runs: 1024, calls: 32768, reverts: 0)
+
+╭----------------------+------------------------------------+-------+---------+----------╮
+| Contract             | Selector                           | Calls | Reverts | Discards |
++========================================================================================+
+| DynamicInvariantTest | borrowAssetsOnBehalfNoRevert       | 2593  | 0       | 19       |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | liquidateRepaidSharesNoRevert      | 2507  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | liquidateSeizedAssetsNoRevert      | 2545  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | mine                               | 2437  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | repayAssetsOnBehalfNoRevert        | 2546  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | repaySharesOnBehalfNoRevert        | 2556  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | setFeeNoRevert                     | 2508  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | setPrice                           | 2440  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | supplyAssetsOnBehalfNoRevert       | 2582  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | supplyCollateralOnBehalfNoRevert   | 2541  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | supplySharesOnBehalfNoRevert       | 2488  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | withdrawAssetsOnBehalfNoRevert     | 2585  | 0       | 10       |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | withdrawCollateralOnBehalfNoRevert | 2476  | 0       | 7        |
+╰----------------------+------------------------------------+-------+---------+----------╯
+
+[PASS] invariantTotalSupplyGeTotalBorrow() (runs: 1024, calls: 32768, reverts: 0)
+
+╭----------------------+------------------------------------+-------+---------+----------╮
+| Contract             | Selector                           | Calls | Reverts | Discards |
++========================================================================================+
+| DynamicInvariantTest | borrowAssetsOnBehalfNoRevert       | 2586  | 0       | 8        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | liquidateRepaidSharesNoRevert      | 2502  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | liquidateSeizedAssetsNoRevert      | 2548  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | mine                               | 2443  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | repayAssetsOnBehalfNoRevert        | 2552  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | repaySharesOnBehalfNoRevert        | 2549  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | setFeeNoRevert                     | 2506  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | setPrice                           | 2434  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | supplyAssetsOnBehalfNoRevert       | 2585  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | supplyCollateralOnBehalfNoRevert   | 2553  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | supplySharesOnBehalfNoRevert       | 2489  | 0       | 0        |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | withdrawAssetsOnBehalfNoRevert     | 2573  | 0       | 11       |
+|----------------------+------------------------------------+-------+---------+----------|
+| DynamicInvariantTest | withdrawCollateralOnBehalfNoRevert | 2481  | 0       | 14       |
+╰----------------------+------------------------------------+-------+---------+----------╯
+
+Suite result: ok. 5 passed; 0 failed; 0 skipped; finished in 17.13s (63.97s CPU time)
+
+Ran 22 test suites in 17.13s (87.09s CPU time): 145 tests passed, 0 failed, 0 skipped (145 total tests)
+━ MarketParamsLibTest::testMarketParamsId((address,address,address,address,uint256)) (gas: 896 → 896 | 0 0.000%)
+━ AccrueInterestIntegrationTest::testAccrueInterestIrmZero((address,address,address,address,uint256),uint256) (gas: 116914 → 116914 | 0 0.000%)
+━ AccrueInterestIntegrationTest::testAccrueInterestMarketNotCreated((address,address,address,address,uint256)) (gas: 23656 → 23656 | 0 0.000%)
+━ AccrueInterestIntegrationTest::testAccrueInterestNoBorrow(uint256,uint256) (gas: 193866 → 193866 | 0 0.000%)
+━ AccrueInterestIntegrationTest::testAccrueInterestNoFee(uint256,uint256,uint256) (gas: 367560 → 367560 | 0 0.000%)
+━ AuthorizationIntegrationTest::testAlreadySet(address) (gas: 41026 → 41026 | 0 0.000%)
+━ AuthorizationIntegrationTest::testAuthorizationFailsWithReusedSig((address,address,bool,uint256,uint256),uint256) (gas: 75819 → 75819 | 0 0.000%)
+━ AuthorizationIntegrationTest::testAuthorizationWithSig((address,address,bool,uint256,uint256),uint256) (gas: 75056 → 75056 | 0 0.000%)
+━ AuthorizationIntegrationTest::testAuthorizationWithSigWrongNonce((address,address,bool,uint256,uint256),uint256) (gas: 43752 → 43752 | 0 0.000%)
+━ AuthorizationIntegrationTest::testAuthorizationWithSigWrongPK((address,address,bool,uint256,uint256),uint256) (gas: 46679 → 46679 | 0 0.000%)
+━ AuthorizationIntegrationTest::testSetAuthorization(address) (gas: 28697 → 28697 | 0 0.000%)
+━ AuthorizationIntegrationTest::testSetAuthorizationWithSignatureDeadlineOutdated((address,address,bool,uint256,uint256),uint256,uint256) (gas: 21898 → 21898 | 0 0.000%)
+━ BorrowIntegrationTest::testBorrowInconsistentInput(address,uint256,uint256) (gas: 30137 → 30137 | 0 0.000%)
+━ BorrowIntegrationTest::testBorrowMarketNotCreated((address,address,address,address,uint256),address,uint256) (gas: 26841 → 26841 | 0 0.000%)
+━ BorrowIntegrationTest::testBorrowToZeroAddress(address,uint256) (gas: 154781 → 154781 | 0 0.000%)
+━ BorrowIntegrationTest::testBorrowUnauthorized(address,address,uint256) (gas: 253528 → 253528 | 0 0.000%)
+━ BorrowIntegrationTest::testBorrowZeroAmount(address) (gas: 25672 → 25672 | 0 0.000%)
+━ CallbacksIntegrationTest::testFlashLoan(uint256) (gas: 178497 → 178497 | 0 0.000%)
+━ CallbacksIntegrationTest::testFlashLoanShouldRevertIfNotReimbursed(uint256) (gas: 161637 → 161637 | 0 0.000%)
+━ CallbacksIntegrationTest::testFlashLoanZero() (gas: 12453 → 12453 | 0 0.000%)
+━ CallbacksIntegrationTest::testRepayCallback(uint256) (gas: 315696 → 315696 | 0 0.000%)
+━ CallbacksIntegrationTest::testSupplyCallback(uint256) (gas: 224033 → 224033 | 0 0.000%)
+━ CallbacksIntegrationTest::testSupplyCollateralCallback(uint256) (gas: 148300 → 148300 | 0 0.000%)
+━ CreateMarketIntegrationTest::testCreateMarketAlreadyCreated((address,address,address,address,uint256)) (gas: 197869 → 197869 | 0 0.000%)
+━ CreateMarketIntegrationTest::testCreateMarketWithEnabledIrmAndLltv((address,address,address,address,uint256)) (gas: 216449 → 216449 | 0 0.000%)
+━ CreateMarketIntegrationTest::testCreateMarketWithEnabledIrmAndNotEnabledLltv((address,address,address,address,uint256)) (gas: 46531 → 46531 | 0 0.000%)
+━ CreateMarketIntegrationTest::testCreateMarketWithNotEnabledIrmAndEnabledLltv((address,address,address,address,uint256)) (gas: 17147 → 17147 | 0 0.000%)
+━ CreateMarketIntegrationTest::testCreateMarketWithNotEnabledIrmAndNotEnabledLltv((address,address,address,address,uint256)) (gas: 20272 → 20272 | 0 0.000%)
+━ CreateMarketIntegrationTest::testIdToMarketParams((address,address,address,address,uint256)) (gas: 196653 → 196653 | 0 0.000%)
+━ ExtSloadIntegrationTest::testExtSloads(uint256,bytes32) (gas: 10291 → 10291 | 0 0.000%)
+━ LiquidateIntegrationTest::testBadDebtOverTotalBorrowAssets() (gas: 366452 → 366452 | 0 0.000%)
+━ LiquidateIntegrationTest::testLiquidateBadDebtRealized(uint256,uint256,uint256,uint256,uint256) (gas: 574530 → 574530 | 0 0.000%)
+━ LiquidateIntegrationTest::testLiquidateInconsistentInput(uint256,uint256) (gas: 30176 → 30176 | 0 0.000%)
+━ LiquidateIntegrationTest::testLiquidateNotCreatedMarket((address,address,address,address,uint256),uint256) (gas: 231136 → 231136 | 0 0.000%)
+━ LiquidateIntegrationTest::testLiquidateZeroAmount(uint256) (gas: 230678 → 230678 | 0 0.000%)
+━ LiquidateIntegrationTest::testSeizedAssetsRoundUp() (gas: 550174 → 550174 | 0 0.000%)
+━ OnlyOwnerIntegrationTest::testEnableIrm(address) (gas: 42232 → 42232 | 0 0.000%)
+━ OnlyOwnerIntegrationTest::testEnableIrmAlreadySet() (gas: 18981 → 18981 | 0 0.000%)
+━ OnlyOwnerIntegrationTest::testEnableIrmWhenNotOwner(address,address) (gas: 17291 → 17291 | 0 0.000%)
+━ OnlyOwnerIntegrationTest::testEnableLltv(uint256) (gas: 45165 → 45165 | 0 0.000%)
+━ OnlyOwnerIntegrationTest::testEnableLltvAlreadySet() (gas: 18672 → 18672 | 0 0.000%)
+━ OnlyOwnerIntegrationTest::testEnableLltvWhenNotOwner(address,uint256) (gas: 17386 → 17386 | 0 0.000%)
+━ OnlyOwnerIntegrationTest::testEnableTooHighLltv(uint256) (gas: 20141 → 20141 | 0 0.000%)
+━ OnlyOwnerIntegrationTest::testSetFee(uint256) (gas: 55445 → 55445 | 0 0.000%)
+━ OnlyOwnerIntegrationTest::testSetFeeRecipient(address) (gas: 24280 → 24280 | 0 0.000%)
+━ OnlyOwnerIntegrationTest::testSetFeeRecipientWhenNotOwner(address) (gas: 14973 → 14973 | 0 0.000%)
+━ OnlyOwnerIntegrationTest::testSetFeeWhenMarketNotCreated((address,address,address,address,uint256),uint256) (gas: 28912 → 28912 | 0 0.000%)
+━ OnlyOwnerIntegrationTest::testSetFeeWhenNotOwner(address,uint256) (gas: 25338 → 25338 | 0 0.000%)
+━ OnlyOwnerIntegrationTest::testSetOwner(address) (gas: 20799 → 20799 | 0 0.000%)
+━ OnlyOwnerIntegrationTest::testSetOwnerAlreadySet() (gas: 14346 → 14346 | 0 0.000%)
+━ OnlyOwnerIntegrationTest::testSetOwnerWhenNotOwner(address) (gas: 14316 → 14316 | 0 0.000%)
+━ OnlyOwnerIntegrationTest::testSetTooHighFee(uint256) (gas: 31455 → 31455 | 0 0.000%)
+━ RepayIntegrationTest::testRepayAssets(uint256,uint256,uint256,uint256,uint256) (gas: 363477 → 363477 | 0 0.000%)
+━ RepayIntegrationTest::testRepayInconsistentInput(uint256,uint256) (gas: 27352 → 27352 | 0 0.000%)
+━ RepayIntegrationTest::testRepayMarketNotCreated((address,address,address,address,uint256)) (gas: 23762 → 23762 | 0 0.000%)
+━ RepayIntegrationTest::testRepayMax(uint256) (gas: 305288 → 305288 | 0 0.000%)
+━ RepayIntegrationTest::testRepayOnBehalfZeroAddress(uint256,bool) (gas: 26587 → 26587 | 0 0.000%)
+━ RepayIntegrationTest::testRepayShares(uint256,uint256,uint256,uint256,uint256) (gas: 363580 → 363580 | 0 0.000%)
+━ RepayIntegrationTest::testRepayZeroAmount() (gas: 23131 → 23131 | 0 0.000%)
+━ SupplyCollateralIntegrationTest::testSupplyCollateral(uint256) (gas: 128156 → 128156 | 0 0.000%)
+━ SupplyCollateralIntegrationTest::testSupplyCollateralMarketNotCreated((address,address,address,address,uint256),uint256) (gas: 26461 → 26461 | 0 0.000%)
+━ SupplyCollateralIntegrationTest::testSupplyCollateralOnBehalfZeroAddress(uint256) (gas: 29051 → 29051 | 0 0.000%)
+━ SupplyCollateralIntegrationTest::testSupplyCollateralTokenNotCreated(uint256,address) (gas: 209003 → 209003 | 0 0.000%)
+━ SupplyCollateralIntegrationTest::testSupplyCollateralZeroAmount() (gas: 25507 → 25507 | 0 0.000%)
+━ SupplyIntegrationTest::testSupplyAssets(uint256) (gas: 173864 → 173864 | 0 0.000%)
+━ SupplyIntegrationTest::testSupplyInconsistentInput(uint256,uint256) (gas: 30335 → 30335 | 0 0.000%)
+━ SupplyIntegrationTest::testSupplyMarketNotCreated((address,address,address,address,uint256),uint256) (gas: 26839 → 26839 | 0 0.000%)
+━ SupplyIntegrationTest::testSupplyOnBehalfZeroAddress(uint256) (gas: 29617 → 29617 | 0 0.000%)
+━ SupplyIntegrationTest::testSupplyShares(uint256) (gas: 174228 → 174228 | 0 0.000%)
+━ SupplyIntegrationTest::testSupplyTokenNotCreated(uint256,address) (gas: 231633 → 231633 | 0 0.000%)
+━ SupplyIntegrationTest::testSupplyZeroAmount() (gas: 26654 → 26654 | 0 0.000%)
+━ WithdrawCollateralIntegrationTest::testWithdrawCollateralMarketNotCreated((address,address,address,address,uint256)) (gas: 28900 → 28900 | 0 0.000%)
+━ WithdrawCollateralIntegrationTest::testWithdrawCollateralToZeroAddress(uint256) (gas: 119646 → 119646 | 0 0.000%)
+━ WithdrawCollateralIntegrationTest::testWithdrawCollateralUnauthorized(address,uint256) (gas: 124532 → 124532 | 0 0.000%)
+━ WithdrawCollateralIntegrationTest::testWithdrawCollateralUnhealthyPosition(uint256,uint256,uint256,uint256) (gas: 324149 → 324149 | 0 0.000%)
+━ WithdrawCollateralIntegrationTest::testWithdrawCollateralZeroAmount(uint256) (gas: 119747 → 119747 | 0 0.000%)
+━ WithdrawIntegrationTest::testWithdrawAssets(uint256,uint256,uint256) (gas: 372880 → 372880 | 0 0.000%)
+━ WithdrawIntegrationTest::testWithdrawAssetsOnBehalf(uint256,uint256,uint256) (gas: 376408 → 376408 | 0 0.000%)
+━ WithdrawIntegrationTest::testWithdrawInconsistentInput(uint256,uint256) (gas: 155263 → 155263 | 0 0.000%)
+━ WithdrawIntegrationTest::testWithdrawInsufficientLiquidity(uint256,uint256) (gas: 288325 → 288325 | 0 0.000%)
+━ WithdrawIntegrationTest::testWithdrawMarketNotCreated((address,address,address,address,uint256)) (gas: 23952 → 23952 | 0 0.000%)
+━ WithdrawIntegrationTest::testWithdrawShares(uint256,uint256,uint256) (gas: 371742 → 371742 | 0 0.000%)
+━ WithdrawIntegrationTest::testWithdrawSharesOnBehalf(uint256,uint256,uint256) (gas: 376325 → 376325 | 0 0.000%)
+━ WithdrawIntegrationTest::testWithdrawToZeroAddress(uint256) (gas: 154251 → 154251 | 0 0.000%)
+━ WithdrawIntegrationTest::testWithdrawZeroAmount(uint256) (gas: 154390 → 154390 | 0 0.000%)
+━ MathLibTest::testMulDivDown(uint256,uint256,uint256) (gas: 1057 → 1057 | 0 0.000%)
+━ MathLibTest::testMulDivDownOverflow(uint256,uint256,uint256) (gas: 8448 → 8448 | 0 0.000%)
+━ MathLibTest::testMulDivDownZeroDenominator(uint256,uint256) (gas: 3326 → 3326 | 0 0.000%)
+━ MathLibTest::testMulDivUp(uint256,uint256,uint256) (gas: 6165 → 6165 | 0 0.000%)
+━ MathLibTest::testMulDivUpOverflow(uint256,uint256,uint256) (gas: 8855 → 8855 | 0 0.000%)
+━ MathLibTest::testMulDivUpUnderverflow(uint256,uint256) (gas: 3806 → 3806 | 0 0.000%)
+━ MathLibTest::testMulDivUpZeroDenominator(uint256,uint256) (gas: 3370 → 3370 | 0 0.000%)
+━ SafeTransferLibTest::testSafeTransferFrom(address,address,uint256) (gas: 38069 → 38069 | 0 0.000%)
+━ SafeTransferLibTest::testSafeTransferFromTokenNotCreated(address,address,address,uint256) (gas: 8795 → 8795 | 0 0.000%)
+━ SafeTransferLibTest::testSafeTransferFromWithBoolFalse(address,address,uint256) (gas: 41130 → 41130 | 0 0.000%)
+━ SafeTransferLibTest::testSafeTransferTokenNotCreated(address,address,uint256) (gas: 8450 → 8450 | 0 0.000%)
+━ UtilsLibTest::testExactlyOneZero(uint256,uint256) (gas: 554 → 554 | 0 0.000%)
+━ UtilsLibTest::testMin(uint256,uint256) (gas: 287 → 287 | 0 0.000%)
+━ UtilsLibTest::testToUint128(uint256) (gas: 3505 → 3505 | 0 0.000%)
+━ UtilsLibTest::testToUint128Revert(uint256) (gas: 4414 → 4414 | 0 0.000%)
+━ UtilsLibTest::testZeroFloorSub(uint256,uint256) (gas: 573 → 573 | 0 0.000%)
+━ MorphoStorageLibTest::testStorage(uint256,uint256,uint256,uint256) (gas: 460431 → 460431 | 0 0.000%)
+↓ AccrueInterestIntegrationTest::testAccrueInterestWithFees(uint256,uint256,uint256,uint256) (gas: 404422 → 404421 | -1 -0.000%)
+↑ BorrowIntegrationTest::testBorrowSharesOnBehalf(uint256,uint256,uint256,uint256) (gas: 341127 → 341128 | 1 0.000%)
+↑ BorrowIntegrationTest::testBorrowShares(uint256,uint256,uint256,uint256) (gas: 338350 → 338351 | 1 0.000%)
+↑ LiquidateIntegrationTest::testLiquidateSharesInputNoBadDebtRealized((uint256,uint256,uint256,uint256,uint256),uint256) (gas: 630464 → 630466 | 2 0.000%)
+↓ OnlyOwnerIntegrationTest::testDeployEmitOwner() (gas: 3185647 → 3185626 | -21 -0.001%)
+↑ WithdrawCollateralIntegrationTest::testWithdrawCollateralOnBehalf(uint256,uint256,uint256,uint256,uint256) (gas: 372334 → 372338 | 4 0.001%)
+↑ WithdrawCollateralIntegrationTest::testWithdrawCollateral(uint256,uint256,uint256,uint256,uint256) (gas: 367468 → 367472 | 4 0.001%)
+↑ SafeTransferLibTest::testSafeTransferWithBoolFalse(address,uint256) (gas: 41148 → 41149 | 1 0.002%)
+↑ SafeTransferLibTest::testSafeTransfer(address,uint256) (gas: 37880 → 37881 | 1 0.003%)
+↓ BorrowIntegrationTest::testBorrowUnhealthyPosition(uint256,uint256,uint256,uint256) (gas: 287325 → 287317 | -8 -0.003%)
+↑ AccrueInterestIntegrationTest::testAccrueInterestNoTimeElapsed(uint256,uint256) (gas: 344406 → 344416 | 10 0.003%)
+↑ LiquidateIntegrationTest::testLiquidateSeizedInputNoBadDebtRealized((uint256,uint256,uint256,uint256,uint256),uint256) (gas: 618332 → 618353 | 21 0.003%)
+↑ BorrowIntegrationTest::testBorrowAssetsOnBehalf(uint256,uint256,uint256,uint256) (gas: 340564 → 340576 | 12 0.004%)
+↑ BorrowIntegrationTest::testBorrowAssets(uint256,uint256,uint256,uint256) (gas: 338200 → 338212 | 12 0.004%)
+↑ LiquidateIntegrationTest::testLiquidateMargin((uint256,uint256,uint256,uint256,uint256),uint256,uint256) (gas: 552869 → 552892 | 23 0.004%)
+↑ BorrowIntegrationTest::testBorrowInsufficientLiquidity(uint256,uint256,uint256,uint256) (gas: 288482 → 288498 | 16 0.006%)
+↑ LiquidateIntegrationTest::testLiquidateHealthyPosition(uint256,uint256,uint256,uint256,uint256,uint256) (gas: 537277 → 537313 | 36 0.007%)
+↑ CallbacksIntegrationTest::testLiquidateCallback(uint256) (gas: 372841 → 372877 | 36 0.010%)
+↑ CallbacksIntegrationTest::testFlashActions(uint256) (gas: 337998 → 338034 | 36 0.011%)
+↓ MorphoBalancesLibTest::testExpectedBorrowBalance(uint256,uint256,uint256,uint256) (gas: 365552 → 365499 | -53 -0.014%)
+↓ MorphoBalancesLibTest::testVirtualAccrueInterest(uint256,uint256,uint256,uint256) (gas: 363390 → 363337 | -53 -0.015%)
+↓ MorphoBalancesLibTest::testExpectedSupplyBalance(uint256,uint256,uint256,uint256) (gas: 363356 → 363303 | -53 -0.015%)
+↓ MorphoBalancesLibTest::testExpectedTotalBorrow(uint256,uint256,uint256,uint256) (gas: 353379 → 353326 | -53 -0.015%)
+↓ MorphoBalancesLibTest::testExpectedTotalSupplyShares(uint256,uint256,uint256,uint256) (gas: 353232 → 353179 | -53 -0.015%)
+↓ MorphoBalancesLibTest::testExpectedTotalSupply(uint256,uint256,uint256,uint256) (gas: 353213 → 353160 | -53 -0.015%)
+↓ MorphoLibTest::testCollateral(uint256,uint256,uint256,uint256) (gas: 345843 → 345782 | -61 -0.018%)
+↓ MorphoLibTest::testSupplyShares(uint256,uint256,uint256,uint256) (gas: 345743 → 345682 | -61 -0.018%)
+↓ MorphoLibTest::testBorrowShares(uint256,uint256,uint256,uint256) (gas: 345733 → 345672 | -61 -0.018%)
+↓ MorphoLibTest::testFee(uint256,uint256,uint256,uint256) (gas: 343704 → 343643 | -61 -0.018%)
+↓ MorphoLibTest::testTotalSupplyShares(uint256,uint256,uint256,uint256) (gas: 343528 → 343467 | -61 -0.018%)
+↓ MorphoLibTest::testTotalBorrowShares(uint256,uint256,uint256,uint256) (gas: 343471 → 343410 | -61 -0.018%)
+↓ MorphoLibTest::testLastUpdate(uint256,uint256,uint256,uint256) (gas: 343467 → 343406 | -61 -0.018%)
+↓ MorphoLibTest::testTotalSupplyAssets(uint256,uint256,uint256,uint256) (gas: 343377 → 343316 | -61 -0.018%)
+↓ MorphoLibTest::testTotalBorrowAssets(uint256,uint256,uint256,uint256) (gas: 343301 → 343240 | -61 -0.018%)
+↑ WithdrawIntegrationTest::testWithdrawUnauthorized(address,uint256) (gas: 157912 → 157950 | 38 0.024%)
+↓ OnlyOwnerIntegrationTest::testDeployWithAddressZero() (gas: 39636 → 39615 | -21 -0.053%)
+↓ MathLibTest::testWTaylorCompounded(uint256,uint256) (gas: 10900 → 10885 | -15 -0.138%)
+━ DynamicInvariantTest::invariantBadDebt() (gas: 0 → 0 | 0 NaN%)
+━ DynamicInvariantTest::invariantBorrowShares() (gas: 0 → 0 | 0 NaN%)
+━ DynamicInvariantTest::invariantMorphoBalance() (gas: 0 → 0 | 0 NaN%)
+━ DynamicInvariantTest::invariantSupplyShares() (gas: 0 → 0 | 0 NaN%)
+━ DynamicInvariantTest::invariantTotalSupplyGeTotalBorrow() (gas: 0 → 0 | 0 NaN%)
+━ StaticInvariantTest::invariantHealthy() (gas: 0 → 0 | 0 NaN%)
+
+--------------------------------------------------------------------------------
+Total tests: 145, ↑ 17, ↓ 20, ━ 108
+Overall gas change: -679 (-0.003%)
+145 tests | up 17 (regressions), down 20 (savings), unchanged 108 | overall -679 gas (-0.003%)
+[WARN] 52 test(s) were non-deterministic across 3 repeated runs with the same seed — see nonDeterministicTests in the report.
+[WARN] 17 gas regression(s) survived a seeded, repeated diff against the pre-rewrite baseline. Inspect the report before merging.
+
+══════════════════════════════════
+ GAS REPORT (forge test --gas-report)
+══════════════════════════════════
+
+↓ src/Morpho.sol:Morpho [deploy cost] (gas: 3436690 → 3436553 | -137 -0.004%)
+↓ src/Morpho.sol:Morpho [deploy size] (bytes: 16046 → 16038 | -8 -0.05%)
+  ━ src/Morpho.sol:Morpho::DOMAIN_SEPARATOR() (avg gas: 281 → 281 | 0 0%) [min 281→281, median 281→281, max 281→281, calls 1542→1542]
+  ↓ src/Morpho.sol:Morpho::accrueInterest((address,address,address,address,uint256)) (avg gas: 49699 → 49517 | -182 -0.366%) [min 24982→24982, median 47869→47869, max 73369→73369, calls 3084→3084]
+  ↑ src/Morpho.sol:Morpho::borrow((address,address,address,address,uint256),uint256,uint256,address,address) (avg gas: 93810 → 93835 | 25 0.027%) [min 26090→26090, median 103162→103150, max 120973→121105, calls 12596→12625]
+  ↑ src/Morpho.sol:Morpho::createMarket((address,address,address,address,uint256)) (avg gas: 136907 → 136924 | 17 0.012%) [min 25344→25344, median 172819→172819, max 172843→172843, calls 4524→4525]
+  ━ src/Morpho.sol:Morpho::enableIrm(address) (avg gas: 41826 → 41826 | 0 0%) [min 24153→24153, median 47612→47612, max 47828→47828, calls 1022→1022]
+  ↑ src/Morpho.sol:Morpho::enableLltv(uint256) (avg gas: 44467 → 44470 | 3 0.007%) [min 24042→24042, median 47635→47635, max 47635→47635, calls 3613→3617]
+  ━ src/Morpho.sol:Morpho::extSloads(bytes32[]) (avg gas: 3508 → 3508 | 0 0%) [min 3423→3423, median 3423→3423, max 39185→39185, calls 115018→114924]
+  ━ src/Morpho.sol:Morpho::feeRecipient() (avg gas: 2412 → 2412 | 0 0%) [min 2412→2412, median 2412→2412, max 2412→2412, calls 771→771]
+  ↓ src/Morpho.sol:Morpho::flashLoan(address,uint256,bytes) (avg gas: 64808 → 64803 | -5 -0.008%) [min 23619→23619, median 63046→63046, max 66845→66845, calls 515→515]
+  ━ src/Morpho.sol:Morpho::idToMarketParams(bytes32) (avg gas: 10963 → 10963 | 0 0%) [min 10963→10963, median 10963→10963, max 10963→10963, calls 514→514]
+  ━ src/Morpho.sol:Morpho::isAuthorized(address,address) (avg gas: 2810 → 2810 | 0 0%) [min 2810→2810, median 2810→2810, max 2810→2810, calls 3498→3506]
+  ━ src/Morpho.sol:Morpho::isIrmEnabled(address) (avg gas: 2980 → 2980 | 0 0%) [min 2980→2980, median 2980→2980, max 2980→2980, calls 1542→1542]
+  ━ src/Morpho.sol:Morpho::isLltvEnabled(uint256) (avg gas: 2814 → 2814 | 0 0%) [min 2814→2814, median 2814→2814, max 2814→2814, calls 3981→3981]
+  ↓ src/Morpho.sol:Morpho::liquidate((address,address,address,address,uint256),address,uint256,uint256,bytes) (avg gas: 71897 → 71844 | -53 -0.074%) [min 26596→26596, median 84796→84796, max 127752→127752, calls 2573→2572]
+  ━ src/Morpho.sol:Morpho::market(bytes32) (avg gas: 6929 → 6929 | 0 0%) [min 6929→6929, median 6929→6929, max 6929→6929, calls 22922→22882]
+  ━ src/Morpho.sol:Morpho::nonce(address) (avg gas: 2687 → 2687 | 0 0%) [min 2687→2687, median 2687→2687, max 2687→2687, calls 514→514]
+  ━ src/Morpho.sol:Morpho::owner() (avg gas: 2676 → 2676 | 0 0%) [min 2676→2676, median 2676→2676, max 2676→2676, calls 514→514]
+  ━ src/Morpho.sol:Morpho::position(bytes32,address) (avg gas: 5045 → 5045 | 0 0%) [min 5045→5045, median 5045→5045, max 5045→5045, calls 771→771]
+  ↑ src/Morpho.sol:Morpho::repay((address,address,address,address,uint256),uint256,uint256,address,bytes) (avg gas: 56783 → 56802 | 19 0.033%) [min 26202→26202, median 54940→54940, max 117834→117834, calls 2400→2386]
+  ━ src/Morpho.sol:Morpho::setAuthorization(address,bool) (avg gas: 35080 → 35080 | 0 0%) [min 24796→24796, median 25338→25338, max 47250→47250, calls 1410→1410]
+  ↑ src/Morpho.sol:Morpho::setAuthorizationWithSig((address,address,bool,uint256,uint256),(uint8,bytes32,bytes32)) (avg gas: 54906 → 54907 | 1 0.002%) [min 24408→24408, median 51120→51120, max 77478→77478, calls 1799→1799]
+  ↑ src/Morpho.sol:Morpho::setFee((address,address,address,address,uint256),uint256) (avg gas: 42480 → 42515 | 35 0.082%) [min 25982→25982, median 46629→46641, max 52749→78237, calls 8464→8455]
+  ↑ src/Morpho.sol:Morpho::setFeeRecipient(address) (avg gas: 31640 → 31648 | 8 0.025%) [min 24477→24477, median 30628→30628, max 47944→47944, calls 639→639]
+  ↑ src/Morpho.sol:Morpho::setOwner(address) (avg gas: 26067 → 26078 | 11 0.042%) [min 23142→23142, median 24170→24170, max 28182→28182, calls 515→515]
+  ↑ src/Morpho.sol:Morpho::supply((address,address,address,address,uint256),uint256,uint256,address,bytes) (avg gas: 108956 → 108994 | 38 0.035%) [min 26629→26629, median 124519→124519, max 131128→131128, calls 23674→23661]
+  ↑ src/Morpho.sol:Morpho::supplyCollateral((address,address,address,address,uint256),uint256,address,bytes) (avg gas: 82026 → 82034 | 8 0.01%) [min 26040→26028, median 86283→86283, max 198190→198190, calls 17909→17930]
+  ↓ src/Morpho.sol:Morpho::withdraw((address,address,address,address,uint256),uint256,uint256,address,address) (avg gas: 60554 → 60422 | -132 -0.218%) [min 26359→26347, median 78579→78609, max 96750→96750, calls 3962→3930]
+  ↑ src/Morpho.sol:Morpho::withdrawCollateral((address,address,address,address,uint256),uint256,address,address) (avg gas: 54759 → 54937 | 178 0.325%) [min 26308→26308, median 69932→69932, max 92599→92599, calls 2584→2601]
+━ src/mocks/ERC20Mock.sol:ERC20Mock [deploy cost] (gas: 387548 → 387548 | 0 0%)
+━ src/mocks/ERC20Mock.sol:ERC20Mock [deploy size] (bytes: 1580 → 1580 | 0 0%)
+  ━ src/mocks/ERC20Mock.sol:ERC20Mock::approve(address,uint256) (avg gas: 35201 → 35201 | 0 0%) [min 23916→23916, median 28908→28908, max 46200→46200, calls 3825→3825]
+  ━ src/mocks/ERC20Mock.sol:ERC20Mock::balanceOf(address) (avg gas: 2419 → 2419 | 0 0%) [min 459→459, median 2459→2459, max 2459→2459, calls 12856→12856]
+  ↑ src/mocks/ERC20Mock.sol:ERC20Mock::setBalance(address,uint256) (avg gas: 61560 → 61567 | 7 0.011%) [min 26618→26618, median 66609→66609, max 66753→66753, calls 41670→41663]
+━ src/mocks/IrmMock.sol:IrmMock [deploy cost] (gas: 190318 → 190318 | 0 0%)
+━ src/mocks/IrmMock.sol:IrmMock [deploy size] (bytes: 666 → 666 | 0 0%)
+  ━ src/mocks/IrmMock.sol:IrmMock::borrowRate((address,address,address,address,uint256),(uint128,uint128,uint128,uint128,uint128,uint128)) (avg gas: 1044 → 1044 | 0 0%) [min 1044→1044, median 1044→1044, max 1044→1044, calls 257→257]
+  ━ src/mocks/IrmMock.sol:IrmMock::borrowRateView((address,address,address,address,uint256),(uint128,uint128,uint128,uint128,uint128,uint128)) (avg gas: 1025 → 1025 | 0 0%) [min 1025→1025, median 1025→1025, max 1025→1025, calls 1552→1575]
+━ src/mocks/OracleMock.sol:OracleMock [deploy cost] (gas: 91445 → 91445 | 0 0%)
+━ src/mocks/OracleMock.sol:OracleMock [deploy size] (bytes: 203 → 203 | 0 0%)
+  ━ src/mocks/OracleMock.sol:OracleMock::price() (avg gas: 2266 → 2266 | 0 0%) [min 2266→2266, median 2266→2266, max 2266→2266, calls 31154→31212]
+  ↓ src/mocks/OracleMock.sol:OracleMock::setPrice(uint256) (avg gas: 26421 → 26420 | -1 -0.004%) [min 23668→23668, median 26516→26516, max 43568→43568, calls 9213→9203]
+↓ test/invariant/DynamicInvariantTest.sol:DynamicInvariantTest [deploy cost] (gas: 12176960 → 12175347 | -1613 -0.013%)
+↓ test/invariant/DynamicInvariantTest.sol:DynamicInvariantTest [deploy size] (bytes: 61224 → 61216 | -8 -0.013%)
+  ↑ test/invariant/DynamicInvariantTest.sol:DynamicInvariantTest::borrowAssetsOnBehalfNoRevert(uint256,uint256,uint256,address) (avg gas: 54398 → 56233 | 1835 3.373%) [min 32457→32457, median 32457→32457, max 260896→261024, calls 3149→3168]
+  ↑ test/invariant/DynamicInvariantTest.sol:DynamicInvariantTest::liquidateRepaidSharesNoRevert(uint256,uint256,uint256) (avg gas: 56338 → 56356 | 18 0.032%) [min 56297→56297, median 56297→56297, max 62042→62844, calls 3302→3306]
+  ↓ test/invariant/DynamicInvariantTest.sol:DynamicInvariantTest::liquidateSeizedAssetsNoRevert(uint256,uint256,uint256) (avg gas: 55986 → 55927 | -59 -0.105%) [min 55882→55882, median 55947→55882, max 285425→62429, calls 3266→3257]
+  ━ test/invariant/DynamicInvariantTest.sol:DynamicInvariantTest::mine(uint256) (avg gas: 7467 → 7467 | 0 0%) [min 7230→7230, median 7568→7568, max 7568→7568, calls 2920→2921]
+  ↑ test/invariant/DynamicInvariantTest.sol:DynamicInvariantTest::repayAssetsOnBehalfNoRevert(uint256,uint256,uint256) (avg gas: 30336 → 30579 | 243 0.801%) [min 29477→29477, median 29477→29477, max 202930→203026, calls 3296→3298]
+  ↓ test/invariant/DynamicInvariantTest.sol:DynamicInvariantTest::repaySharesOnBehalfNoRevert(uint256,uint256,uint256) (avg gas: 30794 → 30488 | -306 -0.994%) [min 29763→29763, median 29763→29763, max 206955→200540, calls 3270→3263]
+  ↑ test/invariant/DynamicInvariantTest.sol:DynamicInvariantTest::setFeeNoRevert(uint256,uint256) (avg gas: 76774 → 76794 | 20 0.026%) [min 26703→26703, median 71028→71028, max 90075→115563, calls 3103→3098]
+  ↓ test/invariant/DynamicInvariantTest.sol:DynamicInvariantTest::setPrice(uint256) (avg gas: 35913 → 35912 | -1 -0.003%) [min 35258→35258, median 35937→35937, max 35973→35973, calls 3175→3165]
+  ↓ test/invariant/DynamicInvariantTest.sol:DynamicInvariantTest::supplyAssetsOnBehalfNoRevert(uint256,uint256,uint256) (avg gas: 204394 → 204063 | -331 -0.162%) [min 42597→42597, median 216596→216596, max 257451→257451, calls 3101→3096]
+  ↓ test/invariant/DynamicInvariantTest.sol:DynamicInvariantTest::supplyCollateralOnBehalfNoRevert(uint256,uint256,uint256) (avg gas: 176243 → 176102 | -141 -0.08%) [min 31891→31891, median 168214→168214, max 202426→202426, calls 3113→3124]
+  ↑ test/invariant/DynamicInvariantTest.sol:DynamicInvariantTest::supplySharesOnBehalfNoRevert(uint256,uint256,uint256) (avg gas: 219164 → 219458 | 294 0.134%) [min 46924→46924, median 232246→232246, max 273137→272625, calls 3045→3043]
+  ↓ test/invariant/DynamicInvariantTest.sol:DynamicInvariantTest::withdrawAssetsOnBehalfNoRevert(uint256,uint256,uint256,address) (avg gas: 75174 → 73966 | -1208 -1.607%) [min 32695→32695, median 32695→32695, max 191093→184968, calls 3304→3289]
+  ↑ test/invariant/DynamicInvariantTest.sol:DynamicInvariantTest::withdrawCollateralOnBehalfNoRevert(uint256,uint256,uint256,address) (avg gas: 62824 → 62943 | 119 0.189%) [min 32369→32369, median 32369→32369, max 226766→226766, calls 3076→3092]
+↓ test/invariant/StaticInvariantTest.sol:StaticInvariantTest [deploy cost] (gas: 11347972 → 11346372 | -1600 -0.014%)
+↓ test/invariant/StaticInvariantTest.sol:StaticInvariantTest [deploy size] (bytes: 57031 → 57023 | -8 -0.014%)
+  ↓ test/invariant/StaticInvariantTest.sol:StaticInvariantTest::borrowAssetsOnBehalfNoRevert(uint256,uint256,uint256,address) (avg gas: 71793 → 67746 | -4047 -5.637%) [min 32391→32391, median 32391→32391, max 243038→243046, calls 1033→1032]
+  ↓ test/invariant/StaticInvariantTest.sol:StaticInvariantTest::repayAssetsOnBehalfNoRevert(uint256,uint256,uint256) (avg gas: 32119 → 31673 | -446 -1.389%) [min 29411→29411, median 29411→29411, max 180570→180606, calls 1066→1065]
+  ↓ test/invariant/StaticInvariantTest.sol:StaticInvariantTest::repaySharesOnBehalfNoRevert(uint256,uint256,uint256) (avg gas: 33697 → 32353 | -1344 -3.988%) [min 29653→29653, median 29653→29653, max 181080→181080, calls 1009→1007]
+  ↓ test/invariant/StaticInvariantTest.sol:StaticInvariantTest::supplyAssetsOnBehalfNoRevert(uint256,uint256,uint256) (avg gas: 191698 → 191453 | -245 -0.128%) [min 42553→42553, median 202743→202731, max 251420→251420, calls 1034→1032]
+  ↑ test/invariant/StaticInvariantTest.sol:StaticInvariantTest::supplyCollateralOnBehalfNoRevert(uint256,uint256,uint256) (avg gas: 170382 → 170666 | 284 0.167%) [min 31781→31781, median 167700→167664, max 202316→202316, calls 1011→1018]
+  ↓ test/invariant/StaticInvariantTest.sol:StaticInvariantTest::supplySharesOnBehalfNoRevert(uint256,uint256,uint256) (avg gas: 208486 → 208145 | -341 -0.164%) [min 46764→46764, median 220421→220433, max 269134→269134, calls 1003→1002]
+  ↑ test/invariant/StaticInvariantTest.sol:StaticInvariantTest::withdrawAssetsOnBehalfNoRevert(uint256,uint256,uint256,address) (avg gas: 88940 → 89209 | 269 0.302%) [min 32585→32585, median 32585→32585, max 166987→166987, calls 1039→1040]
+  ↑ test/invariant/StaticInvariantTest.sol:StaticInvariantTest::withdrawCollateralOnBehalfNoRevert(uint256,uint256,uint256,address) (avg gas: 70652 → 72743 | 2091 2.96%) [min 32325→32325, median 32325→32325, max 208852→208852, calls 1029→1028]
+━ test/libraries/SafeTransferLibTest.sol:ERC20WithBooleanAlwaysFalse [deploy cost] (gas: 199054 → 199054 | 0 0%)
+━ test/libraries/SafeTransferLibTest.sol:ERC20WithBooleanAlwaysFalse [deploy size] (bytes: 704 → 704 | 0 0%)
+  ↑ test/libraries/SafeTransferLibTest.sol:ERC20WithBooleanAlwaysFalse::setBalance(address,uint256) (avg gas: 43705 → 43745 | 40 0.092%) [min 24091→24091, median 44063→44075, max 44375→44375, calls 514→514]
+━ test/libraries/SafeTransferLibTest.sol:ERC20WithoutBoolean [deploy cost] (gas: 196864 → 196864 | 0 0%)
+━ test/libraries/SafeTransferLibTest.sol:ERC20WithoutBoolean [deploy size] (bytes: 694 → 694 | 0 0%)
+  ↑ test/libraries/SafeTransferLibTest.sol:ERC20WithoutBoolean::setBalance(address,uint256) (avg gas: 43705 → 43745 | 40 0.092%) [min 24091→24091, median 44063→44075, max 44375→44375, calls 514→514]
+━ test/libraries/SafeTransferLibTest.sol:SafeTransferLibTest [deploy cost] (gas: 2126057 → 2126057 | 0 0%)
+━ test/libraries/SafeTransferLibTest.sol:SafeTransferLibTest [deploy size] (bytes: 10449 → 10449 | 0 0%)
+  ↑ test/libraries/SafeTransferLibTest.sol:SafeTransferLibTest::safeTransfer(address,address,uint256) (avg gas: 42536 → 42590 | 54 0.127%) [min 22736→22736, median 48961→48961, max 54748→54748, calls 771→771]
+  ━ test/libraries/SafeTransferLibTest.sol:SafeTransferLibTest::safeTransferFrom(address,address,address,uint256) (avg gas: 43331 → 43331 | 0 0%) [min 22968→22968, median 49455→49455, max 55182→55182, calls 771→771]
+9 contract(s) | deploy cost -3350 gas, deploy size -24 bytes | 60 function(s): 16 cheaper, 24 pricier, 20 unchanged (avg gas)
+[WARN] 36 gas-report entry(ies) were non-deterministic across 3 repeated runs with the same seed — see gasReportTable.nonDeterministic in the report.
+[WARN] 24 function(s) got MORE expensive (avg gas) per the gas-report table. Inspect before merging.
+
+Gas report saved: /home/manoel/projeto/case-study-tool/results/morpho-blue/gas.json
+EXIT=0 finished: qua 15 jul 2026 09:24:16 UTC

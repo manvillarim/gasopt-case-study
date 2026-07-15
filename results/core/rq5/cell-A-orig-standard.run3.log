@@ -1,0 +1,4 @@
+Warning: Found unknown `version` config key in section `additional_compiler_profiles` defined in /tmp/gasopt-rq5-orig-icyY5N/foundry.toml.
+Warning: Found unknown `version` config key in section `additional_compiler_profiles` defined in /tmp/gasopt-rq5-orig-icyY5N/foundry.toml.
+Failed to merge compilation restrictions for /tmp/gasopt-rq5-orig-icyY5N/contracts/0.8.25/vaults/VaultHub.sol
+Failed to merge compilation restrictions for /tmp/gasopt-rq5-orig-icyY5N/contracts/0.8.25/vaults/VaultHub.sol

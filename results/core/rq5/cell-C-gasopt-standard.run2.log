@@ -1,0 +1,4 @@
+Warning: Found unknown `version` config key in section `additional_compiler_profiles` defined in core/foundry.toml.
+Warning: Found unknown `version` config key in section `additional_compiler_profiles` defined in core/foundry.toml.
+Failed to merge compilation restrictions for /home/manoel/projeto/case-study-tool/core/contracts/0.8.25/vaults/VaultHub.sol
+Failed to merge compilation restrictions for /home/manoel/projeto/case-study-tool/core/contracts/0.8.25/vaults/VaultHub.sol

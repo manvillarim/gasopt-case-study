@@ -1,0 +1,4 @@
+Preparing worktree (detached HEAD 4f74252b2)
+HEAD is now at 4f74252b2 case-study: add remappings.txt for gasopt gas baseline
+Cloning into '/tmp/gasopt-rq5-orig-icyY5N/foundry/lib/forge-std'...
+Submodule path 'foundry/lib/forge-std': checked out '8f24d6b04c92975e0795b5868aa0d783251cdeaa'

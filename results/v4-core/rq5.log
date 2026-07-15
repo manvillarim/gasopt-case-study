@@ -1,0 +1,18 @@
+=== cell cell-C-gasopt-standard  (dir=v4-core via_ir=false) ===
+  run1 rc=0 bytes=11026  (cell-C-gasopt-standard)
+  run2 rc=0 bytes=11026  (cell-C-gasopt-standard)
+  run3 rc=0 bytes=11026  (cell-C-gasopt-standard)
+=== cell cell-D-gasopt-viair  (dir=v4-core via_ir=true) ===
+  run1 rc=0 bytes=11024  (cell-D-gasopt-viair)
+  run2 rc=0 bytes=11024  (cell-D-gasopt-viair)
+  run3 rc=0 bytes=11024  (cell-D-gasopt-viair)
+=== preparing original-code worktree at 46c6834698c48bc4a463a86d8420f4eb1d7f3b75 -> /tmp/gasopt-rq5-orig-KR607D ===
+=== cell cell-A-orig-standard  (dir=/tmp/gasopt-rq5-orig-KR607D via_ir=false) ===
+  run1 rc=0 bytes=11026  (cell-A-orig-standard)
+  run2 rc=0 bytes=11026  (cell-A-orig-standard)
+  run3 rc=0 bytes=11026  (cell-A-orig-standard)
+=== cell cell-B-orig-viair  (dir=/tmp/gasopt-rq5-orig-KR607D via_ir=true) ===
+  run1 rc=0 bytes=11024  (cell-B-orig-viair)
+  run2 rc=0 bytes=11024  (cell-B-orig-viair)
+  run3 rc=0 bytes=11024  (cell-B-orig-viair)
+=== factorial done for results/v4-core ===

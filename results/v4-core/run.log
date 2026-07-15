@@ -1,0 +1,109 @@
+gasopt commit: 02bd38ae2d0598c3544f239b26fecc16fa145f46
+protocol baseline HEAD: 46c6834698c48bc4a463a86d8420f4eb1d7f3b75
+start: qua 15 jul 2026 10:10:44 UTC
+cmd: gasopt src --report --gas-report --gas-seed 42 --gas-repeats 3 --remappings remappings.txt --solc-version 0.8.26 --exclude test --exclude script --exclude mocks
+NOTE: foundry.toml default = via_ir + optimizer_runs=44444444 (slow)
+========================================
+[INFO] Remappings: 6 entries from /home/manoel/projeto/case-study-tool/v4-core
+[INFO] Using compiler from --solc-version: 0.8.26
+[INFO] Using evm_version from foundry.toml: cancun
+[INFO] Scanning: src
+[INFO] Excluding: test, script, mocks
+[INFO] Found 46 .sol file(s)
+
+  ERC6909.sol ... no rules
+  ERC6909Claims.sol ... no rules
+  Extsload.sol ... no rules
+  Exttload.sol ... no rules
+  NoDelegateCall.sol ... no rules
+  PoolManager.sol ... 1 rewrite(s)
+  ProtocolFees.sol ... no rules
+  interfaces/IExtsload.sol ... no rules
+  interfaces/IExttload.sol ... no rules
+  interfaces/IHooks.sol ... no rules
+  interfaces/IPoolManager.sol ... no rules
+  interfaces/IProtocolFees.sol ... no rules
+  interfaces/callback/IUnlockCallback.sol ... no rules
+  interfaces/external/IERC20Minimal.sol ... no rules
+  interfaces/external/IERC6909Claims.sol ... no rules
+  libraries/BitMath.sol ... no rules
+  libraries/CurrencyDelta.sol ... no rules
+  libraries/CurrencyReserves.sol ... no rules
+  libraries/CustomRevert.sol ... no rules
+  libraries/FixedPoint128.sol ... no rules
+  libraries/FixedPoint96.sol ... no rules
+  libraries/FullMath.sol ... no rules
+  libraries/Hooks.sol ... no rules
+  libraries/LPFeeLibrary.sol ... no rules
+  libraries/LiquidityMath.sol ... no rules
+  libraries/Lock.sol ... no rules
+  libraries/NonzeroDeltaCount.sol ... no rules
+  libraries/ParseBytes.sol ... no rules
+  libraries/Pool.sol ... 1 rewrite(s)
+  libraries/Position.sol ... no rules
+  libraries/ProtocolFeeLibrary.sol ... no rules
+  libraries/SafeCast.sol ... no rules
+  libraries/SqrtPriceMath.sol ... no rules
+  libraries/StateLibrary.sol ... no rules
+  libraries/SwapMath.sol ... no rules
+  libraries/TickBitmap.sol ... no rules
+  libraries/TickMath.sol ... no rules
+  libraries/TransientStateLibrary.sol ... no rules
+  libraries/UnsafeMath.sol ... no rules
+  types/BalanceDelta.sol ... no rules
+  types/BeforeSwapDelta.sol ... no rules
+  types/Currency.sol ... no rules
+  types/PoolId.sol ... no rules
+  types/PoolKey.sol ... no rules
+  types/PoolOperation.sol ... no rules
+  types/Slot0.sol ... no rules
+
+══════════════════════════════════
+            SUMMARY
+══════════════════════════════════
+Files:        2 optimised / 46 total
+  Skipped:    0  (0 unresolved imports, 0 compile errors, 0 verify-failed)
+Contracts:    2 had at least one rule applied
+Rewrites:     2 total
+
+Rules applied (rewrites):
+  avoid-zero-init          1
+  payable-constructor      1
+
+Layout safety (skipped): 21 contracts, 9 structs
+
+Report saved: /home/manoel/projeto/case-study-tool/results/v4-core/report.json
+  NOTE: counts are source rewrites applied, NOT bytes or gas. Measure gas with: forge snapshot --diff
+
+[WARNING] Review unchecked blocks and custom errors before deploying.
+
+══════════════════════════════════
+     GAS VERIFICATION (Foundry)
+══════════════════════════════════
+[gas-benchmark] checking out pre-rewrite baseline (46c6834698c4) into a temporary worktree...
+Preparing worktree (detached HEAD 46c68346)
+[gas-benchmark] initializing submodules in the temporary worktree (reusing the main checkout's cache)...
+Cloning into '/tmp/gasopt-original-310866-1784110249206/lib/forge-std'...
+Cloning into '/tmp/gasopt-original-310866-1784110249206/lib/openzeppelin-contracts'...
+Cloning into '/tmp/gasopt-original-310866-1784110249206/lib/solmate'...
+Submodule 'lib/erc4626-tests' (https://github.com/a16z/erc4626-tests.git) registered for path 'lib/openzeppelin-contracts/lib/erc4626-tests'
+Submodule 'lib/forge-std' (https://github.com/foundry-rs/forge-std) registered for path 'lib/openzeppelin-contracts/lib/forge-std'
+Cloning into '/tmp/gasopt-original-310866-1784110249206/lib/openzeppelin-contracts/lib/erc4626-tests'...
+Cloning into '/tmp/gasopt-original-310866-1784110249206/lib/openzeppelin-contracts/lib/forge-std'...
+Submodule 'lib/ds-test' (https://github.com/dapphub/ds-test) registered for path 'lib/openzeppelin-contracts/lib/forge-std/lib/ds-test'
+Cloning into '/tmp/gasopt-original-310866-1784110249206/lib/openzeppelin-contracts/lib/forge-std/lib/ds-test'...
+Submodule 'lib/ds-test' (https://github.com/dapphub/ds-test) registered for path 'lib/solmate/lib/ds-test'
+Cloning into '/tmp/gasopt-original-310866-1784110249206/lib/solmate/lib/ds-test'...
+[gas-benchmark] generating seeded baseline (FOUNDRY_FUZZ_SEED=42) from the pre-rewrite tree...
+
+========================================
+[POST-CRASH NOTE 2026-07-15]
+The project-default gas.json (Phase 3) was NOT produced: v4-core's foundry.toml default
+compiler is via-IR with optimizer_runs=44,444,444, and the full-suite baseline build under
+those settings exhausts the machine's 16 GiB RAM (OOM; it crashed the host once). Recorded as
+"not measured — project-default compiler (via-IR, optimizer_runs=44,444,444) exceeds available
+memory". This affects only RQ3/RQ4 project-default deploy/bytecode numbers. v4-core's RQ5 2x2
+factorial WAS measured in full at optimizer_runs=200 (results/v4-core/rq5/, 4 cells x 3 runs,
+all rc=0); Cell A (orig+std) vs Cell C (gasopt+std) gives before/after deployment gas at
+runs=200 for the RQ3 narrative. gasopt behaviour-preservation for v4-core is evidenced by
+Cells C/D passing the same full Foundry suite (rc=0) that Cells A/B pass.

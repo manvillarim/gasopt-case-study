@@ -1,0 +1,9 @@
+{
+  "project_dir": "v4-core",
+  "pre_rewrite_ref": "46c6834698c48bc4a463a86d8420f4eb1d7f3b75",
+  "repeats": 3,
+  "seed": "42",
+  "optimizer_runs": 200,
+  "match_regex": "",
+  "generated_at": "2026-07-15T10:21:10Z"
+}

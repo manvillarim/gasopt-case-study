@@ -1,0 +1,73 @@
+{
+  "_doc": "Per-protocol config for the analysis. prod_prefixes/exclude_substrings filter gasReportTable + RQ5 cell contracts to real production deployables. pre_rewrite_ref = git HEAD when gasopt ran (baseline for RQ5 cells A/B). Filled in incrementally as each protocol is processed.",
+  "protocols": {
+    "morpho-blue": {
+      "project_dir": "morpho-blue",
+      "prod_target": "src",
+      "prod_prefixes": [
+        "src/"
+      ],
+      "exclude_substrings": [
+        "src/mocks/",
+        "test/",
+        "script/"
+      ],
+      "pre_rewrite_ref": "fb3755e4a7e7e630fedac3c1bf36b712410cff15",
+      "default_compiler": "via-ir",
+      "gasopt_commit": "02bd38ae2d0598c3544f239b26fecc16fa145f46",
+      "notes": "foundry.toml default is via_ir + optimizer_runs=999999, so the Phase-3 gas.json is a via-IR (B->D) comparison; RQ5 factorial re-measures under runs=200 with via_ir as the only factor."
+    },
+    "v4-core": {
+      "project_dir": "v4-core",
+      "prod_target": "src",
+      "prod_prefixes": [
+        "src/"
+      ],
+      "exclude_substrings": [
+        "test/",
+        "script/",
+        "src/test/"
+      ],
+      "pre_rewrite_ref": "46c6834698c48bc4a463a86d8420f4eb1d7f3b75",
+      "default_compiler": "via-ir",
+      "gasopt_commit": "02bd38ae2d0598c3544f239b26fecc16fa145f46",
+      "notes": "solc 0.8.26, evm cancun, via_ir + optimizer_runs=44444444 (very slow). remappings.txt shipped by the repo (no prep commit). Submodules were uninitialized on disk; ran git submodule update --init --recursive as Phase-2 prep (no tracked change)."
+    },
+    "core": {
+      "project_dir": "core",
+      "prod_target": "contracts",
+      "prod_prefixes": [
+        "contracts/"
+      ],
+      "exclude_substrings": [
+        "test/",
+        "script/",
+        "mocks/",
+        "tooling/",
+        "template/"
+      ],
+      "pre_rewrite_ref": "4f74252b20a8dc6d2a310d299aff6539222e51b3",
+      "default_compiler": "mixed",
+      "gasopt_commit": "3534bf2",
+      "notes": "Lido. Multi-version (0.4.24/0.6.11/0.6.12/0.8.9/0.8.25); default profile optimizer_runs=200, per-path via_ir compilation_restrictions for contracts/0.8.25/** and contracts/upgrade/**. Deps vendored via `yarn install` (node-modules linker); remappings.txt = `forge remappings` committed as pre_rewrite_ref. Required the FIXED gasopt build (commit 3534bf2): range-pragma resolution, version-gated require-error/unchecked, version-aware ASTWriter, AST-only parse, verify via-IR retry + pre-existing-error baseline. 50/128 files optimised, 3 skips (LidoTemplate/WithdrawalQueueBase verify-reverted, OmnibusBase version-intersection) \u2014 all safely handled."
+    },
+    "aave-v3-origin": {
+      "project_dir": "aave-v3-origin",
+      "prod_target": "src",
+      "prod_prefixes": [
+        "src/"
+      ],
+      "exclude_substrings": [
+        "src/contracts/mocks/",
+        "/mocks/",
+        "/test/",
+        "/tests/",
+        "/script/"
+      ],
+      "pre_rewrite_ref": "50660c8b9a0d42556e8baf19fede6f2c85926ca4",
+      "default_compiler": "standard",
+      "gasopt_commit": "3534bf2408df633d61e54c4fdd486d046088fb38",
+      "notes": "Aave V3 Origin (self-contained, 0 fork sites). solc 0.8.27, optimizer_runs=200, no via_ir default -> Phase-3 gas.json IS Cell C (gasopt+standard), so A->C is the gasopt-alone comparison. RQ5 factorial re-measures all 4 cells at runs=200. Gas run RE-DONE after a crash mid repeat 1/3; deterministic, 0 skippedAfterRewriteOnly, overall -0.221% suite gas (995 tests). remappings.txt tracked at pre_rewrite_ref (prep commit 'complete remappings'). RQ5 RESUME: Cells A/C measured (standard, runs=200, 3 deterministic runs); Cells B/D via-IR NOT measurable (solc SIGKILL/OOM on whole-codebase via-IR compile at 16GiB, confirmed also with a single run -> compile-time OOM, not run-count). A->C is the gasopt-alone comparison."
+    }
+  }
+}

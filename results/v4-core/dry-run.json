@@ -1,0 +1,473 @@
+{
+  "tool": "solidity-gas-optimizer",
+  "generatedAt": "2026-07-15T10:05:47.474Z",
+  "target": "/home/manoel/projeto/case-study-tool/v4-core/src",
+  "dryRun": true,
+  "closedWorld": false,
+  "verify": true,
+  "enabledTransforms": [
+    "state-packing",
+    "struct-packing",
+    "avoid-zero-init",
+    "remove-const-loop",
+    "factor-loops",
+    "const-folding",
+    "demorgan",
+    "single-line-swap",
+    "delete-storage",
+    "cache-storage",
+    "cache-array-member",
+    "cache-array-length",
+    "loop-invariant",
+    "pre-increment",
+    "unchecked",
+    "require-error",
+    "short-circuit",
+    "const-folding-state",
+    "use-immutable",
+    "use-constant",
+    "avoid-zero-init-state",
+    "visibility",
+    "calldata-params",
+    "payable-constructor",
+    "loop-fusion"
+  ],
+  "summary": {
+    "filesTotal": 46,
+    "filesOptimised": 2,
+    "filesUnchanged": 44,
+    "filesSkipped": {
+      "imports": 0,
+      "compileErrors": 0,
+      "verifyFailed": 0
+    },
+    "contractsOptimised": 2,
+    "totalRewrites": 2,
+    "rulesApplied": {
+      "avoid-zero-init": 1,
+      "payable-constructor": 1
+    },
+    "layoutSafetySkips": {
+      "contracts": 21,
+      "structs": 9
+    }
+  },
+  "files": [
+    {
+      "file": "ERC6909.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC6909",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC6909",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC6909",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "ERC6909Claims.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC6909Claims",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC6909Claims",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC6909Claims",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "Extsload.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Extsload",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Extsload",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Extsload",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "Exttload.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Exttload",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Exttload",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Exttload",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "NoDelegateCall.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "NoDelegateCall",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "NoDelegateCall",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "NoDelegateCall",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "PoolManager.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "PoolManager",
+          "rewrites": 1,
+          "rules": {
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "PoolManager",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "PoolManager",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "PoolManager",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "ProtocolFees.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ProtocolFees",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ProtocolFees",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ProtocolFees",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "interfaces/IExtsload.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IExttload.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IHooks.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IPoolManager.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IProtocolFees.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/callback/IUnlockCallback.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/external/IERC20Minimal.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/external/IERC6909Claims.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/BitMath.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/CurrencyDelta.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/CurrencyReserves.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/CustomRevert.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/FixedPoint128.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/FixedPoint96.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/FullMath.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/Hooks.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Permissions",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "libraries/LPFeeLibrary.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/LiquidityMath.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/Lock.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/NonzeroDeltaCount.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/ParseBytes.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/Pool.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "Pool",
+          "rewrites": 1,
+          "rules": {
+            "avoid-zero-init": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "TickInfo",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "State",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ModifyLiquidityParams",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ModifyLiquidityState",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "SwapResult",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "StepComputations",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "SwapParams",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "libraries/Position.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "State",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "libraries/ProtocolFeeLibrary.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/SafeCast.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/SqrtPriceMath.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/StateLibrary.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/SwapMath.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/TickBitmap.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/TickMath.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/TransientStateLibrary.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/UnsafeMath.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "types/BalanceDelta.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "types/BeforeSwapDelta.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "types/Currency.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "types/PoolId.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "types/PoolKey.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "types/PoolOperation.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "types/Slot0.sol",
+      "status": "unchanged",
+      "contracts": []
+    }
+  ]
+}

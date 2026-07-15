@@ -1,0 +1,9 @@
+{
+  "project_dir": "/home/manoel/projeto/case-study-tool/aave-v3-origin",
+  "pre_rewrite_ref": "50660c8b9a0d42556e8baf19fede6f2c85926ca4",
+  "repeats": 3,
+  "seed": "42",
+  "optimizer_runs": 200,
+  "match_regex": "",
+  "generated_at": "2026-07-15T16:03:17Z"
+}

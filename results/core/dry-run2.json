@@ -1,0 +1,1088 @@
+{
+  "tool": "solidity-gas-optimizer",
+  "generatedAt": "2026-07-15T10:40:28.973Z",
+  "target": "/home/manoel/projeto/case-study-tool/core/contracts",
+  "dryRun": true,
+  "closedWorld": false,
+  "verify": true,
+  "enabledTransforms": [
+    "state-packing",
+    "struct-packing",
+    "avoid-zero-init",
+    "remove-const-loop",
+    "factor-loops",
+    "const-folding",
+    "demorgan",
+    "single-line-swap",
+    "delete-storage",
+    "cache-storage",
+    "cache-array-member",
+    "cache-array-length",
+    "loop-invariant",
+    "pre-increment",
+    "unchecked",
+    "require-error",
+    "short-circuit",
+    "const-folding-state",
+    "use-immutable",
+    "use-constant",
+    "avoid-zero-init-state",
+    "visibility",
+    "calldata-params",
+    "payable-constructor",
+    "loop-fusion"
+  ],
+  "summary": {
+    "filesTotal": 128,
+    "filesOptimised": 5,
+    "filesUnchanged": 45,
+    "filesSkipped": {
+      "imports": 77,
+      "compileErrors": 0,
+      "verifyFailed": 1
+    },
+    "contractsOptimised": 6,
+    "totalRewrites": 29,
+    "rulesApplied": {
+      "avoid-zero-init": 16,
+      "pre-increment": 6,
+      "unchecked": 3,
+      "require-error": 2,
+      "payable-constructor": 2
+    },
+    "layoutSafetySkips": {
+      "contracts": 22,
+      "structs": 10
+    }
+  },
+  "files": [
+    {
+      "file": "0.4.24/Lido.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @aragon/os/contracts/apps/AragonApp.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/StETH.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/common/lib/Math256.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/StETHPermit.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/common/lib/Math256.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/lib/Packed64x4.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @aragon/os/contracts/lib/math/SafeMath.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/lib/SigningKeys.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @aragon/os/contracts/lib/math/SafeMath64.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/lib/StakeLimitUtils.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @aragon/os/contracts/common/UnstructuredStorage.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/nos/NodeOperatorsRegistry.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/0.4.24/utils/Versioned.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/template/IETHRegistrarController.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/template/IInterfaceResolver.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/template/Imports.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @aragon/id/contracts/FIFSResolvingRegistrar.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/template/LidoTemplate.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/0.4.24/nos/NodeOperatorsRegistry.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/utils/Pausable.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @aragon/os/contracts/common/UnstructuredStorage.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/utils/UnstructuredStorageExt.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @aragon/os/contracts/apps/AragonApp.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/utils/Versioned.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @aragon/os/contracts/common/UnstructuredStorage.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.6.11/deposit_contract.sol",
+      "status": "skipped",
+      "skipReason": "verify-failed",
+      "error": "codegen-verify-failed: Compiler Errors: ==== 0.6.11 ====: core/contracts/0.6.11/deposit_contract.sol:58:5: SyntaxError: No visibility specified. Did you intend to add \"public\"? constructor() payable { ^ (Relevant source part starts here and spans across multiple lines).",
+      "contracts": [
+        {
+          "name": "DepositContract",
+          "rewrites": 7,
+          "rules": {
+            "avoid-zero-init": 3,
+            "pre-increment": 3,
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "DepositContract",
+          "rule": "state-packing",
+          "reason": "reorder would save 0 slots (3 -> 3)"
+        }
+      ]
+    },
+    {
+      "file": "0.6.12/WstETH.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.6.12/interfaces/IStETH.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts/token/ERC20/IERC20.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/ValidatorExitDelayVerifier.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find contracts/common/lib/SSZ.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/utils/AccessControlConfirmable.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts-v5.2/access/extensions/AccessControlEnumerable.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/utils/Confirmable2Addresses.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Confirmable2Addresses",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Confirmable2Addresses",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Confirmable2Addresses",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.25/utils/Confirmations.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "Confirmations",
+          "rewrites": 7,
+          "rules": {
+            "avoid-zero-init": 5,
+            "unchecked": 2
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Confirmations",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ConfirmationStorage",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Confirmations",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Confirmations",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.25/utils/PausableUntilWithRoles.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find contracts/common/utils/PausableUntil.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/LazyOracle.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find contracts/common/interfaces/IHashConsensus.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/OperatorGrid.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find contracts/common/interfaces/IHashConsensus.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/PinnedBeaconProxy.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts-v5.2/proxy/ERC1967/ERC1967Utils.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/StakingVault.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find contracts/common/interfaces/IDepositContract.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/ValidatorConsolidationRequests.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find contracts/common/interfaces/ILidoLocator.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/VaultFactory.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find contracts/common/interfaces/IDepositContract.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/VaultHub.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find contracts/common/interfaces/IHashConsensus.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/dashboard/Dashboard.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/0.8.25/vaults/VaultHub.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/dashboard/NodeOperatorFee.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts-v5.2/utils/math/SafeCast.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/dashboard/Permissions.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/0.8.25/vaults/VaultHub.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/interfaces/IPinnedBeaconProxy.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/interfaces/IPredepositGuarantee.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find contracts/common/interfaces/IDepositContract.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/interfaces/IStakingVault.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find contracts/common/interfaces/IDepositContract.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/interfaces/IVaultFactory.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/lib/PinnedBeaconUtils.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts-v5.2/proxy/ERC1967/ERC1967Utils.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/lib/RecoverTokens.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts-v5.2/token/ERC20/IERC20.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/lib/RefSlotCache.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find contracts/common/interfaces/IHashConsensus.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/predeposit_guarantee/CLProofVerifier.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/0.8.25/vaults/interfaces/IPredepositGuarantee.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/predeposit_guarantee/MeIfNobodyElse.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/predeposit_guarantee/PredepositGuarantee.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/0.8.25/vaults/interfaces/IPredepositGuarantee.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/Accounting.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/common/lib/MemUtils.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/BeaconChainDepositor.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/common/lib/MemUtils.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/Burner.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts-v4.4/utils/introspection/ERC165.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/DepositSecurityModule.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/common/lib/ECDSA.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/EIP712StETH.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/common/interfaces/IEIP712StETH.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/LidoExecutionLayerRewardsVault.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts-v4.4/token/ERC20/utils/SafeERC20.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/LidoLocator.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find contracts/common/interfaces/ILidoLocator.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/OracleDaemonConfig.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts-v4.4/utils/introspection/ERC165.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/StakingRouter.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/common/lib/MemUtils.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/TokenRateNotifier.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts-v4.4/utils/introspection/ERC165Checker.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/TriggerableWithdrawalsGateway.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts-v4.4/utils/introspection/ERC165.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/WithdrawalQueue.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts-v4.4/utils/introspection/ERC165.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/WithdrawalQueueBase.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts-v4.4/utils/structs/EnumerableSet.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/WithdrawalQueueERC721.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts-v4.4/utils/introspection/ERC165.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/WithdrawalVault.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts-v4.4/token/ERC20/utils/SafeERC20.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/WithdrawalVaultEIP7002.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "WithdrawalVaultEIP7002",
+          "rewrites": 2,
+          "rules": {
+            "avoid-zero-init": 1,
+            "unchecked": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "WithdrawalVaultEIP7002",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "WithdrawalVaultEIP7002",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "WithdrawalVaultEIP7002",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/interfaces/IERC4906.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts-v4.4/token/ERC721/IERC721.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/interfaces/IPostTokenRebaseReceiver.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/interfaces/ISecondOpinionOracle.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/interfaces/ITokenRatePusher.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/lib/ExitLimitUtils.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "DataStorage",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/lib/Math.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/lib/PositiveTokenRebaseLimiter.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/common/lib/Math256.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/lib/UnstructuredRefStorage.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/lib/UnstructuredStorage.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/oracle/AccountingOracle.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/0.8.9/utils/access/AccessControlEnumerable.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/oracle/BaseOracle.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/0.8.9/utils/access/AccessControlEnumerable.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/oracle/HashConsensus.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/0.8.9/utils/access/AccessControlEnumerable.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/oracle/ValidatorsExitBus.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/0.8.9/utils/PausableUntil.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/oracle/ValidatorsExitBusOracle.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/0.8.9/utils/PausableUntil.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/proxy/OssifiableProxy.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts-v4.4/proxy/ERC1967/ERC1967Proxy.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/proxy/WithdrawalsManagerProxy.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "WithdrawalsManagerProxy",
+          "rewrites": 3,
+          "rules": {
+            "require-error": 2,
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Proxy",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Proxy",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Proxy",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC1967Proxy",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC1967Proxy",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC1967Proxy",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "AddressSlot",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "WithdrawalsManagerProxy",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "WithdrawalsManagerProxy",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "WithdrawalsManagerProxy",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/sanity_checks/OracleReportSanityChecker.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/0.8.9/interfaces/ISecondOpinionOracle.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/utils/DummyEmptyContract.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/utils/PausableUntil.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/0.8.9/lib/UnstructuredStorage.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/utils/Versioned.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/0.8.9/lib/UnstructuredStorage.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/utils/access/AccessControl.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts-v4.4/utils/introspection/ERC165.sol",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/utils/access/AccessControlEnumerable.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts-v4.4/utils/introspection/ERC165.sol",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IBurner.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IDepositContract.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IEIP712StETH.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IGateSeal.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IGateSealFactory.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IHashConsensus.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/ILazyOracle.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/ILido.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find contracts/common/interfaces/IVersioned.sol",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/ILidoLocator.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IOracleReportSanityChecker.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IOssifiableProxy.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IStakingModule.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IVaultHub.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IVersioned.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IWithdrawalQueue.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/ReportValues.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/lib/BLS.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Fp",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Fp2",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "G1Point",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "G2Point",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "DepositY",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "common/lib/BeaconTypes.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/lib/ECDSA.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/lib/GIndex.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/lib/Math256.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/lib/MemUtils.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/lib/MinFirstAllocationStrategy.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "MinFirstAllocationStrategy",
+          "rewrites": 4,
+          "rules": {
+            "avoid-zero-init": 4
+          }
+        }
+      ]
+    },
+    {
+      "file": "common/lib/SSZ.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/lib/SignatureUtils.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/lib/TriggerableWithdrawals.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "TriggerableWithdrawals",
+          "rewrites": 6,
+          "rules": {
+            "avoid-zero-init": 3,
+            "pre-increment": 3
+          }
+        }
+      ]
+    },
+    {
+      "file": "common/lib/UnstructuredStorage.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/utils/PausableUntil.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find contracts/common/lib/UnstructuredStorage.sol",
+      "contracts": []
+    },
+    {
+      "file": "openzeppelin/5.2/upgradeable/access/AccessControlUpgradeable.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/openzeppelin/5.2/upgradeable/proxy/utils/Initializable.sol",
+      "contracts": []
+    },
+    {
+      "file": "openzeppelin/5.2/upgradeable/access/Ownable2StepUpgradeable.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/openzeppelin/5.2/upgradeable/proxy/utils/Initializable.sol",
+      "contracts": []
+    },
+    {
+      "file": "openzeppelin/5.2/upgradeable/access/OwnableUpgradeable.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/openzeppelin/5.2/upgradeable/proxy/utils/Initializable.sol",
+      "contracts": []
+    },
+    {
+      "file": "openzeppelin/5.2/upgradeable/access/extensions/AccessControlEnumerableUpgradeable.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/openzeppelin/5.2/upgradeable/proxy/utils/Initializable.sol",
+      "contracts": []
+    },
+    {
+      "file": "openzeppelin/5.2/upgradeable/proxy/utils/Initializable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Initializable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "InitializableStorage",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Initializable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Initializable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "openzeppelin/5.2/upgradeable/utils/ContextUpgradeable.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/openzeppelin/5.2/upgradeable/proxy/utils/Initializable.sol",
+      "contracts": []
+    },
+    {
+      "file": "openzeppelin/5.2/upgradeable/utils/introspection/ERC165Upgradeable.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/openzeppelin/5.2/upgradeable/proxy/utils/Initializable.sol",
+      "contracts": []
+    },
+    {
+      "file": "tooling/AlertingHarness.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find contracts/0.8.25/vaults/predeposit_guarantee/PredepositGuarantee.sol",
+      "contracts": []
+    },
+    {
+      "file": "tooling/sepolia/SepoliaDepositAdapter.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/0.8.9/utils/Versioned.sol",
+      "contracts": []
+    },
+    {
+      "file": "upgrade/V3Addresses.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find contracts/common/interfaces/ILidoLocator.sol",
+      "contracts": []
+    },
+    {
+      "file": "upgrade/V3Template.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find contracts/common/interfaces/ILidoLocator.sol",
+      "contracts": []
+    },
+    {
+      "file": "upgrade/V3TemporaryAdmin.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find @openzeppelin/contracts-v4.4/access/AccessControl.sol",
+      "contracts": []
+    },
+    {
+      "file": "upgrade/V3VoteScript.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find contracts/0.8.25/vaults/OperatorGrid.sol",
+      "contracts": []
+    },
+    {
+      "file": "upgrade/interfaces/IDualGovernance.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "upgrade/interfaces/IEmergencyProtectedTimelock.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "upgrade/interfaces/IForwarder.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "upgrade/interfaces/IOracleReportSanityChecker_preV3.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "upgrade/interfaces/IVoting.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "upgrade/utils/CallScriptBuilder.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Context",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "upgrade/utils/OmnibusBase.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find core/contracts/upgrade/interfaces/IDualGovernance.sol",
+      "contracts": []
+    }
+  ]
+}

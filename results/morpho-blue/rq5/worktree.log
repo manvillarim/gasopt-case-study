@@ -1,0 +1,7 @@
+Preparing worktree (detached HEAD fb3755e)
+HEAD is now at fb3755e case-study prep: add remappings.txt for gasopt import resolution
+Cloning into '/tmp/gasopt-rq5-orig-vBaw8o/lib/forge-std'...
+Submodule path 'lib/forge-std': checked out '2f112697506eab12d433a65fdc31a639548fe365'
+Submodule 'lib/ds-test' (https://github.com/dapphub/ds-test) registered for path 'lib/forge-std/lib/ds-test'
+Cloning into '/tmp/gasopt-rq5-orig-vBaw8o/lib/forge-std/lib/ds-test'...
+Submodule path 'lib/forge-std/lib/ds-test': checked out 'e282159d5170298eb2455a6c05280ab5a73a4ef0'

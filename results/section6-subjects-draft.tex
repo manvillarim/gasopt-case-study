@@ -1,0 +1,28 @@
+%% DRAFT of the "Subjects" subsection for Section 6 (Empirical Study Design).
+%% Prose only — every quantitative claim (rule counts, gas, factorial) is filled from
+%% analysis/tables/*.csv in the RQ subsections, NOT here. Adoption phrasing avoids
+%% pinning TVL numbers we cannot source; it uses each project's own primary signal.
+
+\subsection{Subjects}
+\label{sec:subjects}
+
+Our subjects are ten of the most widely used Solidity codebases in production, spanning
+lending, decentralised exchange, liquid staking, leverage, NFT settlement, wallet
+infrastructure, and the de-facto standard contract library. Each was taken at a pinned
+commit of its canonical public repository, and we confirmed each identity from a primary
+source (the repository's own \texttt{git} remote, \texttt{README}, or \texttt{package.json}).
+Table~\ref{tab:subjects} lists them together with the production-contract directory that was
+the actual target of the rewrite: in every case we pointed gasopt at the project's
+production source tree (\texttt{src/} or \texttt{contracts/}), never at the repository as a
+whole, and excluded test, script, and mock paths, so that the ``production code'' distinction
+is real rather than nominal.
+
+The subjects were selected for real-world adoption. For the DeFi protocols this is naturally
+read as total value locked (Aave, Compound~III, Lido, Gearbox, Fluid, Morpho Blue, Uniswap~V4),
+but we deliberately do not force a single metric onto subjects where it does not apply:
+OpenZeppelin Contracts is the de-facto standard Solidity library, adopted as measured by the
+number of dependent projects and \texttt{@openzeppelin/contracts} package installs rather than
+any locked value; the eth-infinitism \texttt{account-abstraction} repository is the canonical
+ERC-4337 \texttt{EntryPoint}, whose adoption is the ubiquity of the singleton deployed across
+EVM networks; and Seaport's adoption is the NFT trading volume it settles as OpenSea's
+marketplace protocol.

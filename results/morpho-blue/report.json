@@ -1,0 +1,177 @@
+{
+  "tool": "solidity-gas-optimizer",
+  "generatedAt": "2026-07-15T09:14:46.167Z",
+  "target": "/home/manoel/projeto/case-study-tool/morpho-blue/src",
+  "dryRun": false,
+  "closedWorld": false,
+  "verify": true,
+  "enabledTransforms": [
+    "state-packing",
+    "struct-packing",
+    "avoid-zero-init",
+    "remove-const-loop",
+    "factor-loops",
+    "const-folding",
+    "demorgan",
+    "single-line-swap",
+    "delete-storage",
+    "cache-storage",
+    "cache-array-member",
+    "cache-array-length",
+    "loop-invariant",
+    "pre-increment",
+    "unchecked",
+    "require-error",
+    "short-circuit",
+    "const-folding-state",
+    "use-immutable",
+    "use-constant",
+    "avoid-zero-init-state",
+    "visibility",
+    "calldata-params",
+    "payable-constructor",
+    "loop-fusion"
+  ],
+  "summary": {
+    "filesTotal": 17,
+    "filesOptimised": 2,
+    "filesUnchanged": 15,
+    "filesSkipped": {
+      "imports": 0,
+      "compileErrors": 0,
+      "verifyFailed": 0
+    },
+    "contractsOptimised": 2,
+    "totalRewrites": 3,
+    "rulesApplied": {
+      "delete-storage": 1,
+      "const-folding-state": 1,
+      "payable-constructor": 1
+    },
+    "layoutSafetySkips": {
+      "contracts": 3,
+      "structs": 0
+    }
+  },
+  "files": [
+    {
+      "file": "Morpho.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "Morpho",
+          "rewrites": 2,
+          "rules": {
+            "payable-constructor": 1,
+            "delete-storage": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Morpho",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Morpho",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Morpho",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "interfaces/IERC20.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IIrm.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IMorpho.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IMorphoCallbacks.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IOracle.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/ConstantsLib.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/ErrorsLib.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/EventsLib.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/MarketParamsLib.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "MarketParamsLib",
+          "rewrites": 1,
+          "rules": {
+            "const-folding-state": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "libraries/MathLib.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/SafeTransferLib.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/SharesMathLib.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/UtilsLib.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/periphery/MorphoBalancesLib.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/periphery/MorphoLib.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/periphery/MorphoStorageLib.sol",
+      "status": "unchanged",
+      "contracts": []
+    }
+  ]
+}

@@ -1,0 +1,2465 @@
+{
+  "tool": "solidity-gas-optimizer",
+  "generatedAt": "2026-07-15T14:02:24.116Z",
+  "target": "/home/manoel/projeto/case-study-tool/core/contracts",
+  "dryRun": false,
+  "closedWorld": false,
+  "verify": true,
+  "enabledTransforms": [
+    "state-packing",
+    "struct-packing",
+    "avoid-zero-init",
+    "remove-const-loop",
+    "factor-loops",
+    "const-folding",
+    "demorgan",
+    "single-line-swap",
+    "delete-storage",
+    "cache-storage",
+    "cache-array-member",
+    "cache-array-length",
+    "loop-invariant",
+    "pre-increment",
+    "unchecked",
+    "require-error",
+    "short-circuit",
+    "const-folding-state",
+    "use-immutable",
+    "use-constant",
+    "avoid-zero-init-state",
+    "visibility",
+    "calldata-params",
+    "payable-constructor",
+    "loop-fusion"
+  ],
+  "summary": {
+    "filesTotal": 128,
+    "filesOptimised": 50,
+    "filesUnchanged": 75,
+    "filesSkipped": {
+      "imports": 0,
+      "compileErrors": 1,
+      "verifyFailed": 2
+    },
+    "contractsOptimised": 45,
+    "totalRewrites": 212,
+    "rulesApplied": {
+      "avoid-zero-init": 93,
+      "pre-increment": 38,
+      "payable-constructor": 34,
+      "unchecked": 14,
+      "delete-storage": 12,
+      "require-error": 6,
+      "short-circuit": 4,
+      "demorgan": 3,
+      "const-folding-state": 3,
+      "const-folding": 2,
+      "calldata-params": 2,
+      "state-packing": 1
+    },
+    "layoutSafetySkips": {
+      "contracts": 138,
+      "structs": 100
+    }
+  },
+  "files": [
+    {
+      "file": "0.4.24/Lido.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "Lido",
+          "rewrites": 3,
+          "rules": {
+            "avoid-zero-init": 1,
+            "demorgan": 1,
+            "pre-increment": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Lido",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Lido",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Lido",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.4.24/StETH.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/StETHPermit.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/lib/Packed64x4.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Packed",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "0.4.24/lib/SigningKeys.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/lib/StakeLimitUtils.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Data",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "0.4.24/nos/NodeOperatorsRegistry.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "NodeOperatorsRegistry",
+          "rewrites": 5,
+          "rules": {
+            "avoid-zero-init": 4,
+            "delete-storage": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "NodeOperatorsRegistry",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "NodeOperator",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "NodeOperatorSummary",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "NodeOperatorsRegistry",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "NodeOperatorsRegistry",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.4.24/template/IETHRegistrarController.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/template/IInterfaceResolver.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/template/Imports.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/template/LidoTemplate.sol",
+      "status": "skipped",
+      "skipReason": "verify-failed",
+      "error": "codegen-verify-failed: Compiler Errors: ==== custom:/home/manoel/.local/share/svm/0.4.24/solc-0.4.24 ====: /home/manoel/projeto/case-study-tool/core/contracts/0.4.24/template/LidoTemplate.sol:24:1: DeclarationError: Identifier already declared. import \"../nos/NodeOperatorsRegistry.s",
+      "contracts": [
+        {
+          "name": "LidoTemplate",
+          "rewrites": 2,
+          "rules": {
+            "payable-constructor": 1,
+            "avoid-zero-init": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "LidoTemplate",
+          "rule": "state-packing",
+          "reason": "reorder would save 0 slots (8 -> 8)"
+        },
+        {
+          "target": "APMRepos",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "DeployState",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "AppVersion",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "0.4.24/utils/Pausable.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/utils/UnstructuredStorageExt.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.4.24/utils/Versioned.sol",
+      "status": "optimised",
+      "contracts": []
+    },
+    {
+      "file": "0.6.11/deposit_contract.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "DepositContract",
+          "rewrites": 7,
+          "rules": {
+            "avoid-zero-init": 3,
+            "pre-increment": 3,
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "DepositContract",
+          "rule": "state-packing",
+          "reason": "reorder would save 0 slots (3 -> 3)"
+        }
+      ]
+    },
+    {
+      "file": "0.6.12/WstETH.sol",
+      "status": "optimised",
+      "contracts": []
+    },
+    {
+      "file": "0.6.12/interfaces/IStETH.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/ValidatorExitDelayVerifier.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "ValidatorExitDelayVerifier",
+          "rewrites": 6,
+          "rules": {
+            "avoid-zero-init": 2,
+            "pre-increment": 2,
+            "payable-constructor": 1,
+            "unchecked": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "0.8.25/utils/AccessControlConfirmable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "AccessControlConfirmable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "AccessControlConfirmable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "AccessControlConfirmable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.25/utils/Confirmable2Addresses.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Confirmable2Addresses",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Confirmable2Addresses",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Confirmable2Addresses",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.25/utils/Confirmations.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "Confirmations",
+          "rewrites": 7,
+          "rules": {
+            "avoid-zero-init": 5,
+            "unchecked": 2
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Confirmations",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ConfirmationStorage",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Confirmations",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Confirmations",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.25/utils/PausableUntilWithRoles.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "PausableUntilWithRoles",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "PausableUntilWithRoles",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "PausableUntilWithRoles",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.25/vaults/LazyOracle.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "LazyOracle",
+          "rewrites": 6,
+          "rules": {
+            "avoid-zero-init": 2,
+            "pre-increment": 2,
+            "payable-constructor": 1,
+            "delete-storage": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "LazyOracle",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Storage",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Quarantine",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "QuarantineInfo",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "VaultInfo",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "LazyOracle",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "LazyOracle",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.25/vaults/OperatorGrid.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "OperatorGrid",
+          "rewrites": 5,
+          "rules": {
+            "avoid-zero-init": 2,
+            "pre-increment": 2,
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "OperatorGrid",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Group",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Tier",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ERC7201Storage",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "OperatorGrid",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "OperatorGrid",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.25/vaults/PinnedBeaconProxy.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "PinnedBeaconProxy",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "PinnedBeaconProxy",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "PinnedBeaconProxy",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.25/vaults/StakingVault.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "StakingVault",
+          "rewrites": 5,
+          "rules": {
+            "payable-constructor": 1,
+            "avoid-zero-init": 1,
+            "delete-storage": 1,
+            "pre-increment": 1,
+            "unchecked": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "StakingVault",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Storage",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "StakingVault",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "StakingVault",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.25/vaults/ValidatorConsolidationRequests.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "ValidatorConsolidationRequests",
+          "rewrites": 9,
+          "rules": {
+            "avoid-zero-init": 5,
+            "pre-increment": 3,
+            "payable-constructor": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "0.8.25/vaults/VaultFactory.sol",
+      "status": "optimised",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/VaultHub.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "VaultHub",
+          "rewrites": 5,
+          "rules": {
+            "avoid-zero-init": 2,
+            "payable-constructor": 1,
+            "delete-storage": 1,
+            "pre-increment": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "VaultHub",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Storage",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "VaultConnection",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "VaultRecord",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Report",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "VaultHub",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "VaultHub",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.25/vaults/dashboard/Dashboard.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "Dashboard",
+          "rewrites": 8,
+          "rules": {
+            "avoid-zero-init": 3,
+            "pre-increment": 3,
+            "payable-constructor": 1,
+            "delete-storage": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Dashboard",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Dashboard",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Dashboard",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.25/vaults/dashboard/NodeOperatorFee.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "NodeOperatorFee",
+          "rewrites": 1,
+          "rules": {
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "NodeOperatorFee",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "NodeOperatorFee",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "NodeOperatorFee",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.25/vaults/dashboard/Permissions.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "Permissions",
+          "rewrites": 4,
+          "rules": {
+            "avoid-zero-init": 2,
+            "pre-increment": 2
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Permissions",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "RoleAssignment",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Permissions",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Permissions",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.25/vaults/interfaces/IPinnedBeaconProxy.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/interfaces/IPredepositGuarantee.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ValidatorStatus",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ValidatorWitness",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "0.8.25/vaults/interfaces/IStakingVault.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Deposit",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "0.8.25/vaults/interfaces/IVaultFactory.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/lib/PinnedBeaconUtils.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/lib/RecoverTokens.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/lib/RefSlotCache.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Uint104WithCache",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Int104WithCache",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "0.8.25/vaults/predeposit_guarantee/CLProofVerifier.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "CLProofVerifier",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "CLProofVerifier",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "CLProofVerifier",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.25/vaults/predeposit_guarantee/MeIfNobodyElse.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.25/vaults/predeposit_guarantee/PredepositGuarantee.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "PredepositGuarantee",
+          "rewrites": 9,
+          "rules": {
+            "avoid-zero-init": 3,
+            "pre-increment": 3,
+            "delete-storage": 2,
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "PredepositGuarantee",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC7201Storage",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "NodeOperatorBalance",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ValidatorTopUp",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "PredepositGuarantee",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "PredepositGuarantee",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/Accounting.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "Accounting",
+          "rewrites": 3,
+          "rules": {
+            "payable-constructor": 1,
+            "avoid-zero-init": 1,
+            "unchecked": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Contracts",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "PreReportState",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "CalculatedValues",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "FeeDistribution",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/BeaconChainDepositor.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "BeaconChainDepositor",
+          "rewrites": 1,
+          "rules": {
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "BeaconChainDepositor",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "BeaconChainDepositor",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "BeaconChainDepositor",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/Burner.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "Burner",
+          "rewrites": 1,
+          "rules": {
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Burner",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Storage",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "StorageV3Upgrade",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Burner",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Burner",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/DepositSecurityModule.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "DepositSecurityModule",
+          "rewrites": 10,
+          "rules": {
+            "short-circuit": 3,
+            "avoid-zero-init": 2,
+            "delete-storage": 2,
+            "state-packing": 1,
+            "calldata-params": 1,
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Signature",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "DepositSecurityModule",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "DepositSecurityModule",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/EIP712StETH.sol",
+      "status": "optimised",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/LidoExecutionLayerRewardsVault.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "LidoExecutionLayerRewardsVault",
+          "rewrites": 5,
+          "rules": {
+            "require-error": 4,
+            "payable-constructor": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/LidoLocator.sol",
+      "status": "optimised",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Config",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/OracleDaemonConfig.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "OracleDaemonConfig",
+          "rewrites": 3,
+          "rules": {
+            "avoid-zero-init": 2,
+            "payable-constructor": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/StakingRouter.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "StakingRouter",
+          "rewrites": 11,
+          "rules": {
+            "avoid-zero-init": 6,
+            "calldata-params": 1,
+            "payable-constructor": 1,
+            "unchecked": 1,
+            "short-circuit": 1,
+            "const-folding-state": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "StakingRouter",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "StakingModule",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "StakingModuleCache",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ValidatorExitData",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ValidatorsCountsCorrection",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "StakingModuleSummary",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "NodeOperatorSummary",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "StakingModuleDigest",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "NodeOperatorDigest",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "StakingRouter",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "StakingRouter",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/TokenRateNotifier.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "TokenRateNotifier",
+          "rewrites": 5,
+          "rules": {
+            "avoid-zero-init": 2,
+            "pre-increment": 2,
+            "payable-constructor": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/TriggerableWithdrawalsGateway.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "TriggerableWithdrawalsGateway",
+          "rewrites": 2,
+          "rules": {
+            "payable-constructor": 1,
+            "avoid-zero-init": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "ValidatorExitData",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/WithdrawalQueue.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "WithdrawalQueue",
+          "rewrites": 10,
+          "rules": {
+            "avoid-zero-init": 8,
+            "unchecked": 2
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "WithdrawalQueue",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "PermitInput",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "WithdrawalQueue",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "WithdrawalQueue",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/WithdrawalQueueBase.sol",
+      "status": "skipped",
+      "skipReason": "verify-failed",
+      "error": "codegen-verify-failed: Compiler Errors: ==== custom:/home/manoel/.local/share/svm/0.8.9/solc-0.8.9 ====: TypeError: Invalid array length, expected integer literal or constant expression. --> /home/manoel/projeto/case-study-tool/core/contracts/0.8.9/WithdrawalQueueBase.sol:109:17: |",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "WithdrawalQueueBase",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "WithdrawalRequest",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Checkpoint",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "WithdrawalRequestStatus",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "BatchesCalculationState",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "WithdrawalQueueBase",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "WithdrawalQueueBase",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/WithdrawalQueueERC721.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "WithdrawalQueueERC721",
+          "rewrites": 1,
+          "rules": {
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "WithdrawalQueueERC721",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "BaseURI",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "WithdrawalQueueERC721",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "WithdrawalQueueERC721",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/WithdrawalVault.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "WithdrawalVault",
+          "rewrites": 1,
+          "rules": {
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "WithdrawalVault",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "WithdrawalVault",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "WithdrawalVault",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/WithdrawalVaultEIP7002.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "WithdrawalVaultEIP7002",
+          "rewrites": 2,
+          "rules": {
+            "avoid-zero-init": 1,
+            "unchecked": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "WithdrawalVaultEIP7002",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "WithdrawalVaultEIP7002",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "WithdrawalVaultEIP7002",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/interfaces/IERC4906.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/interfaces/IPostTokenRebaseReceiver.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/interfaces/ISecondOpinionOracle.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/interfaces/ITokenRatePusher.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/lib/ExitLimitUtils.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "DataStorage",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/lib/Math.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/lib/PositiveTokenRebaseLimiter.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "PositiveTokenRebaseLimiter",
+          "rewrites": 1,
+          "rules": {
+            "const-folding-state": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/lib/UnstructuredRefStorage.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/lib/UnstructuredStorage.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/oracle/AccountingOracle.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "AccountingOracle",
+          "rewrites": 5,
+          "rules": {
+            "avoid-zero-init": 3,
+            "payable-constructor": 1,
+            "demorgan": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "AccountingOracle",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ExtraDataProcessingState",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ReportData",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ProcessingState",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ExtraDataIterState",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "StorageExtraDataProcessingState",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "AccountingOracle",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "AccountingOracle",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/oracle/BaseOracle.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "BaseOracle",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ConsensusReport",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "StorageConsensusReport",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "BaseOracle",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "BaseOracle",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/oracle/HashConsensus.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "HashConsensus",
+          "rewrites": 9,
+          "rules": {
+            "avoid-zero-init": 4,
+            "delete-storage": 2,
+            "unchecked": 2,
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "HashConsensus",
+          "rule": "state-packing",
+          "reason": "reorder would save 0 slots (9 -> 9)"
+        },
+        {
+          "target": "FrameConfig",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ConsensusFrame",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ReportingState",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "MemberState",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ReportVariant",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "MemberConsensusState",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/oracle/ValidatorsExitBus.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "ValidatorsExitBus",
+          "rewrites": 5,
+          "rules": {
+            "avoid-zero-init": 2,
+            "const-folding": 2,
+            "pre-increment": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "ValidatorData",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ValidatorsExitBus",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ExitRequestsData",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ValidatorData",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "RequestStatus",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ValidatorsExitBus",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ValidatorsExitBus",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/oracle/ValidatorsExitBusOracle.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "ValidatorsExitBusOracle",
+          "rewrites": 2,
+          "rules": {
+            "payable-constructor": 1,
+            "demorgan": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "ValidatorsExitBusOracle",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "DataProcessingState",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ReportData",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ProcessingState",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "StorageDataProcessingState",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ValidatorsExitBusOracle",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ValidatorsExitBusOracle",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/proxy/OssifiableProxy.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "OssifiableProxy",
+          "rewrites": 1,
+          "rules": {
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "OssifiableProxy",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "OssifiableProxy",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "OssifiableProxy",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/proxy/WithdrawalsManagerProxy.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "WithdrawalsManagerProxy",
+          "rewrites": 3,
+          "rules": {
+            "require-error": 2,
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Proxy",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Proxy",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Proxy",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC1967Proxy",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC1967Proxy",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC1967Proxy",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "AddressSlot",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "WithdrawalsManagerProxy",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "WithdrawalsManagerProxy",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "WithdrawalsManagerProxy",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/sanity_checks/OracleReportSanityChecker.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "OracleReportSanityChecker",
+          "rewrites": 6,
+          "rules": {
+            "pre-increment": 3,
+            "payable-constructor": 1,
+            "avoid-zero-init": 1,
+            "const-folding-state": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "WithdrawalRequestStatus",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "OracleReportSanityChecker",
+          "rule": "state-packing",
+          "reason": "reorder would save 0 slots (3 -> 3)"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/utils/DummyEmptyContract.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/utils/PausableUntil.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/utils/Versioned.sol",
+      "status": "optimised",
+      "contracts": []
+    },
+    {
+      "file": "0.8.9/utils/access/AccessControl.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "AccessControl",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "RoleData",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "AccessControl",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "AccessControl",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "0.8.9/utils/access/AccessControlEnumerable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "AccessControlEnumerable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "AccessControlEnumerable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "AccessControlEnumerable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "common/interfaces/IBurner.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IDepositContract.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IEIP712StETH.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IGateSeal.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IGateSealFactory.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IHashConsensus.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/ILazyOracle.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/ILido.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/ILidoLocator.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IOracleReportSanityChecker.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IOssifiableProxy.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IStakingModule.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IVaultHub.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IVersioned.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/IWithdrawalQueue.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/interfaces/ReportValues.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/lib/BLS.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Fp",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Fp2",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "G1Point",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "G2Point",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "DepositY",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "common/lib/BeaconTypes.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/lib/ECDSA.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/lib/GIndex.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/lib/Math256.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/lib/MemUtils.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/lib/MinFirstAllocationStrategy.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "MinFirstAllocationStrategy",
+          "rewrites": 4,
+          "rules": {
+            "avoid-zero-init": 4
+          }
+        }
+      ]
+    },
+    {
+      "file": "common/lib/SSZ.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/lib/SignatureUtils.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/lib/TriggerableWithdrawals.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "TriggerableWithdrawals",
+          "rewrites": 6,
+          "rules": {
+            "avoid-zero-init": 3,
+            "pre-increment": 3
+          }
+        }
+      ]
+    },
+    {
+      "file": "common/lib/UnstructuredStorage.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "common/utils/PausableUntil.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "PausableUntil",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "PausableUntil",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "PausableUntil",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "openzeppelin/5.2/upgradeable/access/AccessControlUpgradeable.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "AccessControlUpgradeable",
+          "rewrites": 1,
+          "rules": {
+            "delete-storage": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "AccessControlUpgradeable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "RoleData",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "AccessControlStorage",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "AccessControlUpgradeable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "AccessControlUpgradeable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "openzeppelin/5.2/upgradeable/access/Ownable2StepUpgradeable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Ownable2StepUpgradeable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Ownable2StepStorage",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Ownable2StepUpgradeable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Ownable2StepUpgradeable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "openzeppelin/5.2/upgradeable/access/OwnableUpgradeable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "OwnableUpgradeable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "OwnableStorage",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "OwnableUpgradeable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "OwnableUpgradeable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "openzeppelin/5.2/upgradeable/access/extensions/AccessControlEnumerableUpgradeable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "AccessControlEnumerableUpgradeable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "AccessControlEnumerableStorage",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "AccessControlEnumerableUpgradeable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "AccessControlEnumerableUpgradeable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "openzeppelin/5.2/upgradeable/proxy/utils/Initializable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Initializable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "InitializableStorage",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Initializable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Initializable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "openzeppelin/5.2/upgradeable/utils/ContextUpgradeable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ContextUpgradeable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ContextUpgradeable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ContextUpgradeable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "openzeppelin/5.2/upgradeable/utils/introspection/ERC165Upgradeable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC165Upgradeable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC165Upgradeable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC165Upgradeable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "tooling/AlertingHarness.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "AlertingHarness",
+          "rewrites": 7,
+          "rules": {
+            "avoid-zero-init": 6,
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "ContractInfo",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "VaultData",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "VaultConnectionData",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "VaultRecordData",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "VaultQuarantineInfoData",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "VaultPendingActivationsData",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "VaultContractInfoData",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "tooling/sepolia/SepoliaDepositAdapter.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "SepoliaDepositAdapter",
+          "rewrites": 1,
+          "rules": {
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "SepoliaDepositAdapter",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "SepoliaDepositAdapter",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "SepoliaDepositAdapter",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "upgrade/V3Addresses.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "V3Addresses",
+          "rewrites": 3,
+          "rules": {
+            "payable-constructor": 1,
+            "avoid-zero-init": 1,
+            "pre-increment": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "StakingModule",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "V3AddressesParams",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "upgrade/V3Template.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "V3Template",
+          "rewrites": 13,
+          "rules": {
+            "avoid-zero-init": 6,
+            "pre-increment": 3,
+            "unchecked": 3,
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "V3Template",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "V3Template",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "V3Template",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "upgrade/V3TemporaryAdmin.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "V3TemporaryAdmin",
+          "rewrites": 5,
+          "rules": {
+            "avoid-zero-init": 2,
+            "pre-increment": 2,
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "StakingModule",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "upgrade/V3VoteScript.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "V3VoteScript",
+          "rewrites": 3,
+          "rules": {
+            "avoid-zero-init": 2,
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "ScriptParams",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "upgrade/interfaces/IDualGovernance.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "upgrade/interfaces/IEmergencyProtectedTimelock.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "upgrade/interfaces/IForwarder.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "upgrade/interfaces/IOracleReportSanityChecker_preV3.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "upgrade/interfaces/IVoting.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "upgrade/utils/CallScriptBuilder.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Context",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "upgrade/utils/OmnibusBase.sol",
+      "status": "skipped",
+      "skipReason": "compile-error",
+      "error": "Compiler Errors: ==== custom:/home/manoel/.local/share/svm/0.8.31/solc-0.8.31 ====: ParserError: Source file requires different compiler version (current compiler is 0.8.31+commit.fd3a2265.Linux.g++) - note that nightly builds are considered to be strictly less than the released version --> /home/ma",
+      "contracts": []
+    }
+  ],
+  "testSuiteFixes": {
+    "filesScanned": 0,
+    "filesFixed": 0,
+    "occurrencesFixed": 0,
+    "filesDiscarded": []
+  }
+}

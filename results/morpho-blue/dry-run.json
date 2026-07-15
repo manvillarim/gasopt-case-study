@@ -1,0 +1,229 @@
+{
+  "tool": "solidity-gas-optimizer",
+  "generatedAt": "2026-07-15T09:09:54.655Z",
+  "target": "/home/manoel/projeto/case-study-tool/morpho-blue/src",
+  "dryRun": true,
+  "closedWorld": false,
+  "verify": true,
+  "enabledTransforms": [
+    "state-packing",
+    "struct-packing",
+    "avoid-zero-init",
+    "remove-const-loop",
+    "factor-loops",
+    "const-folding",
+    "demorgan",
+    "single-line-swap",
+    "delete-storage",
+    "cache-storage",
+    "cache-array-member",
+    "cache-array-length",
+    "loop-invariant",
+    "pre-increment",
+    "unchecked",
+    "require-error",
+    "short-circuit",
+    "const-folding-state",
+    "use-immutable",
+    "use-constant",
+    "avoid-zero-init-state",
+    "visibility",
+    "calldata-params",
+    "payable-constructor",
+    "loop-fusion"
+  ],
+  "summary": {
+    "filesTotal": 22,
+    "filesOptimised": 2,
+    "filesUnchanged": 11,
+    "filesSkipped": {
+      "imports": 9,
+      "compileErrors": 0,
+      "verifyFailed": 0
+    },
+    "contractsOptimised": 2,
+    "totalRewrites": 7,
+    "rulesApplied": {
+      "unchecked": 3,
+      "require-error": 2,
+      "delete-storage": 1,
+      "payable-constructor": 1
+    },
+    "layoutSafetySkips": {
+      "contracts": 4,
+      "structs": 0
+    }
+  },
+  "files": [
+    {
+      "file": "Morpho.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "Morpho",
+          "rewrites": 2,
+          "rules": {
+            "payable-constructor": 1,
+            "delete-storage": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Morpho",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Morpho",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Morpho",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "interfaces/IERC20.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IIrm.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IMorpho.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IMorphoCallbacks.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IOracle.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/ConstantsLib.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/ErrorsLib.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/EventsLib.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find src/interfaces/IMorpho.sol",
+      "contracts": []
+    },
+    {
+      "file": "libraries/MarketParamsLib.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find src/interfaces/IMorpho.sol",
+      "contracts": []
+    },
+    {
+      "file": "libraries/MathLib.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/SafeTransferLib.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find src/interfaces/IERC20.sol",
+      "contracts": []
+    },
+    {
+      "file": "libraries/SharesMathLib.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/UtilsLib.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/periphery/MorphoBalancesLib.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find src/libraries/MarketParamsLib.sol",
+      "contracts": []
+    },
+    {
+      "file": "libraries/periphery/MorphoLib.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find src/interfaces/IMorpho.sol",
+      "contracts": []
+    },
+    {
+      "file": "libraries/periphery/MorphoStorageLib.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find src/interfaces/IMorpho.sol",
+      "contracts": []
+    },
+    {
+      "file": "mocks/ERC20Mock.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "ERC20Mock",
+          "rewrites": 5,
+          "rules": {
+            "unchecked": 3,
+            "require-error": 2
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "ERC20Mock",
+          "rule": "state-packing",
+          "reason": "reorder would save 0 slots (3 -> 3)"
+        }
+      ]
+    },
+    {
+      "file": "mocks/FlashBorrowerMock.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find src/interfaces/IMorphoCallbacks.sol",
+      "contracts": []
+    },
+    {
+      "file": "mocks/IrmMock.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find src/libraries/MathLib.sol",
+      "contracts": []
+    },
+    {
+      "file": "mocks/OracleMock.sol",
+      "status": "skipped",
+      "skipReason": "import-missing",
+      "error": "Couldn't find src/interfaces/IOracle.sol",
+      "contracts": []
+    },
+    {
+      "file": "mocks/interfaces/IERC20.sol",
+      "status": "unchanged",
+      "contracts": []
+    }
+  ]
+}

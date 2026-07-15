@@ -1,0 +1,19 @@
+=== cell cell-C-gasopt-standard  (dir=/home/manoel/projeto/case-study-tool/morpho-blue via_ir=false) ===
+  run1 rc=0 bytes=7929  (cell-C-gasopt-standard)
+  run2 rc=0 bytes=7929  (cell-C-gasopt-standard)
+  run3 rc=0 bytes=7929  (cell-C-gasopt-standard)
+=== cell cell-D-gasopt-viair  (dir=/home/manoel/projeto/case-study-tool/morpho-blue via_ir=true) ===
+  run1 rc=0 bytes=7926  (cell-D-gasopt-viair)
+  run2 rc=0 bytes=7926  (cell-D-gasopt-viair)
+  run3 rc=0 bytes=7926  (cell-D-gasopt-viair)
+=== preparing original-code worktree at fb3755e4a7e7e630fedac3c1bf36b712410cff15 -> /tmp/gasopt-rq5-orig-vBaw8o ===
+=== cell cell-A-orig-standard  (dir=/tmp/gasopt-rq5-orig-vBaw8o via_ir=false) ===
+  run1 rc=0 bytes=7930  (cell-A-orig-standard)
+  run2 rc=0 bytes=7930  (cell-A-orig-standard)
+  run3 rc=0 bytes=7930  (cell-A-orig-standard)
+=== cell cell-B-orig-viair  (dir=/tmp/gasopt-rq5-orig-vBaw8o via_ir=true) ===
+  run1 rc=0 bytes=7927  (cell-B-orig-viair)
+  run2 rc=0 bytes=7927  (cell-B-orig-viair)
+  run3 rc=0 bytes=7927  (cell-B-orig-viair)
+=== factorial done for /home/manoel/projeto/case-study-tool/results/morpho-blue ===
+factorial exit=0
