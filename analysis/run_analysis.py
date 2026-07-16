@@ -23,9 +23,31 @@ import json
 import math
 from pathlib import Path
 import pandas as pd
+import math
+
 import matplotlib
 matplotlib.use("Agg")
 import matplotlib.pyplot as plt
+from matplotlib.patches import Rectangle
+
+# Article-figure style (validated palette; see gasopt_article.tex figures).
+ART_BLUE = "#2a78d6"
+ART_GREEN = "#008300"
+ART_MAGENTA = "#e87ba4"
+ART_RED = "#d03b3b"
+ART_INK = "#0b0b0b"
+ART_INK2 = "#52514e"
+ART_GRID = "#e4e3df"
+ART_NEUTRAL = "#c9c8c3"
+ART_SEQ = ["#cde2fb", "#b7d3f6", "#9ec5f4", "#86b6ef", "#6da7ec", "#5598e7",
+           "#3987e5", "#2a78d6", "#256abf", "#1c5cab", "#184f95", "#104281", "#0d366b"]
+ART_RC = {"font.size": 9, "font.family": "DejaVu Sans", "text.color": ART_INK,
+          "axes.edgecolor": ART_GRID, "axes.labelcolor": ART_INK,
+          "xtick.color": ART_INK2, "ytick.color": ART_INK2,
+          "figure.facecolor": "white", "axes.facecolor": "white"}
+NICE_NAME = {"aave-v3-origin": "Aave V3", "core": "Lido", "core-v3": "Gearbox V3",
+             "morpho-blue": "Morpho Blue", "openzeppelin-contracts": "OpenZeppelin",
+             "seaport": "Seaport", "v4-core": "Uniswap V4"}
 
 ROOT = Path(__file__).resolve().parent.parent          # case-study-tool/
 RESULTS = ROOT / "results"
@@ -154,17 +176,44 @@ def rq2_rule_coverage(protos: list[str]) -> pd.DataFrame:
     df.index.name = "rule"
     df.to_csv(TABLES / "rq2_rule_coverage.csv")
 
-    # stacked bar: rule x count, stacked by protocol (only rules that fired at least once)
-    fired = df[df["total_rewrites"] > 0]
+    # rule x protocol matrix (the article's fig:rq2): count-annotated cells on a
+    # sequential ramp, protocols ordered by total rewrites, per-rule totals in the margin.
+    fired = df[df["total_rewrites"] > 0].sort_values("total_rewrites", ascending=False)
     if not fired.empty:
-        ax = fired[protos].plot(kind="barh", stacked=True, figsize=(10, max(4, 0.4 * len(fired))))
-        ax.set_xlabel("rewrites applied (stacked by protocol)")
-        ax.set_ylabel("rule")
-        ax.set_title("RQ2: transformation rules fired on production code")
-        ax.legend(fontsize=7, ncol=2)
-        plt.tight_layout()
-        plt.savefig(FIGS / "rq2_rule_coverage.png", dpi=150)
-        plt.close()
+        proto_order = sorted(protos, key=lambda p: -int(df[p].sum()))
+        maxc = int(fired[proto_order].to_numpy().max())
+        with plt.rc_context(ART_RC):
+            fig, ax = plt.subplots(figsize=(6.8, 0.31 * len(fired) + 1.2))
+            nr, npr = len(fired), len(proto_order)
+            for i, (rule, row) in enumerate(fired.iterrows()):
+                for j, p in enumerate(proto_order):
+                    c = int(row[p])
+                    if not c:
+                        continue
+                    t = math.sqrt(c) / math.sqrt(maxc)
+                    col = ART_SEQ[min(int(t * (len(ART_SEQ) - 1) + 0.5), len(ART_SEQ) - 1)]
+                    ax.add_patch(Rectangle((j + 0.06, nr - 1 - i + 0.06), 0.88, 0.88,
+                                           facecolor=col, edgecolor="none"))
+                    ax.text(j + 0.5, nr - 1 - i + 0.5, str(c), ha="center", va="center",
+                            color="white" if t > 0.55 else ART_INK, fontsize=8.5)
+                ax.text(npr + 0.25, nr - 1 - i + 0.5, str(int(row["total_rewrites"])),
+                        ha="right", va="center", color=ART_INK, fontsize=8.5, fontweight="bold")
+                ax.text(npr + 0.45, nr - 1 - i + 0.5, f"({int(row['n_protocols'])})",
+                        ha="left", va="center", color=ART_INK2, fontsize=8)
+            ax.set_xlim(0, npr + 1.1); ax.set_ylim(0, nr)
+            ax.set_xticks([j + 0.5 for j in range(npr)])
+            ax.set_xticklabels([NICE_NAME.get(p, p) for p in proto_order],
+                               rotation=30, ha="right", fontsize=8.5)
+            ax.set_yticks([nr - 1 - i + 0.5 for i in range(nr)])
+            ax.set_yticklabels(list(fired.index), fontsize=8.5, fontfamily="DejaVu Sans Mono")
+            ax.text(npr + 0.25, nr + 0.25, "total", ha="right", va="bottom", fontsize=8, color=ART_INK2)
+            ax.text(npr + 0.45, nr + 0.25, "(subjects)", ha="left", va="bottom", fontsize=8, color=ART_INK2)
+            for s in ax.spines.values():
+                s.set_visible(False)
+            ax.tick_params(length=0)
+            plt.tight_layout()
+            plt.savefig(FIGS / "rq2_rule_matrix.png", dpi=220)
+            plt.close()
     return df
 
 
@@ -198,6 +247,7 @@ def rq3_effectiveness(protos: list[str]):
                         "mean_before": mb, "mean_after": ma,
                         "mean_delta": ma - mb,
                         "mean_delta_pct": (100.0 * (ma - mb) / mb) if mb else None,
+                        "calls_after": f.get("callsAfter"),
                     })
                     if mb:
                         fn_mean_deltas.append(100.0 * (ma - mb) / mb)
@@ -229,6 +279,60 @@ def rq3_effectiveness(protos: list[str]):
         plt.tight_layout()
         plt.savefig(FIGS / "rq3_deploy_gas.png", dpi=150)
         plt.close()
+
+    # per-function runtime scatter (the article's fig:rq3): mean per-call delta (%)
+    # vs. how often the suite calls the function; stable production entries only.
+    pts = dfc.dropna(subset=["mean_delta_pct", "calls_after"])
+    pts = pts[pts["calls_after"] > 0]
+    if not pts.empty:
+        # curated labels for the named outliers discussed in the article's RQ3 text
+        annot = {
+            ("PoolInstance", "flashLoan(address,address[],uint256[],uint256[],address,bytes,uint16)"):
+                ("Aave flashLoan  +3.0%", (0, 9), "center"),
+            ("AaveV3ConfigEngine",
+             "listAssetsCustom((string,string),((address,string,address,(uint256,uint256,uint256,uint256),"
+             "uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256,uint256),(address,address))[])"):
+                ("Aave listAssetsCustom  −1.9%", (8, -3), "left"),
+            ("RewardsController", "claimRewards(address[],uint256,address,address)"):
+                ("Aave claimRewards  +0.46%", (8, 4), "left"),
+            ("Morpho", "liquidate((address,address,address,address,uint256),address,uint256,uint256,bytes)"):
+                ("Morpho liquidate  −0.07%", (-10, -4), "right"),
+            ("ERC20Mock", "approve(address,uint256)"):
+                ("OZ ERC20Mock.approve  +0.03%", (-4, 9), "right"),
+            ("ATokenInstance", "burn(address,address,uint256,uint256,uint256)"):
+                ("Aave aToken.burn  −0.23%", (10, -13), "left"),
+        }
+        with plt.rc_context(ART_RC):
+            fig, ax = plt.subplots(figsize=(6.8, 3.9))
+            ax.axhline(0, color=ART_GRID, lw=1, zorder=1)
+            zero = pts[pts["mean_delta_pct"] == 0]
+            sav = pts[pts["mean_delta_pct"] < 0]
+            reg = pts[pts["mean_delta_pct"] > 0]
+            ax.scatter(zero["calls_after"], [0] * len(zero), s=12, color=ART_NEUTRAL,
+                       alpha=.55, linewidths=0, zorder=2)
+            ax.scatter(sav["calls_after"], sav["mean_delta_pct"], s=26, color=ART_BLUE,
+                       linewidths=0, zorder=3, label="cheaper after gasopt")
+            ax.scatter(reg["calls_after"], reg["mean_delta_pct"], s=26, color=ART_RED,
+                       linewidths=0, zorder=3, label="more expensive")
+            for _, r in pts[pts["mean_delta_pct"] != 0].iterrows():
+                key = (str(r["contract"]).split(":")[-1], r["function"])
+                if key in annot:
+                    lab, off, ha = annot[key]
+                    ax.annotate(lab, (r["calls_after"], r["mean_delta_pct"]),
+                                textcoords="offset points", xytext=off, fontsize=7.5,
+                                color=ART_INK, ha=ha)
+            ax.set_xscale("log")
+            ax.set_xlabel("calls made to the function across the suite (log)")
+            ax.set_ylabel("mean per-call gas change (%)")
+            ax.set_ylim(-2.4, 3.4)
+            ax.legend(frameon=False, fontsize=8, loc="upper left")
+            for s in ["top", "right"]:
+                ax.spines[s].set_visible(False)
+            ax.grid(axis="y", color=ART_GRID, lw=.6, alpha=.7)
+            ax.set_axisbelow(True)
+            plt.tight_layout()
+            plt.savefig(FIGS / "rq3_runtime_scatter.png", dpi=220)
+            plt.close()
     return dfp
 
 
@@ -327,15 +431,56 @@ def rq5_factorial(protos: list[str]) -> pd.DataFrame:
     df.to_csv(TABLES / "rq5_factorial.csv", index=False)
 
     if not df.empty:
-        sub = df.set_index("protocol")[["A_orig_standard", "B_orig_viair",
-                                        "C_gasopt_standard", "D_gasopt_viair"]]
-        ax = sub.plot(kind="bar", figsize=(10, 5))
-        ax.set_ylabel("summed deployment gas over compared contracts")
-        ax.set_title("RQ5: 2x2 factorial deployment gas (lower = cheaper)")
-        ax.legend(["A orig+std", "B orig+viaIR", "C gasopt+std", "D gasopt+viaIR"], fontsize=8)
-        plt.tight_layout()
-        plt.savefig(FIGS / "rq5_factorial.png", dpi=150)
-        plt.close()
+        # the article's fig:rq5: the three factorial comparisons per subject, as
+        # deployment-gas reductions on a log scale (they span four orders of magnitude).
+        series = [("compiler_alone_pct_A_to_B", "via-IR alone (A→B)", ART_BLUE, "o"),
+                  ("gasopt_alone_pct_A_to_C", "gasopt alone, standard optimiser (A→C)", ART_GREEN, "s"),
+                  ("gasopt_under_viair_pct_B_to_D", "gasopt on top of via-IR (B→D)", ART_MAGENTA, "D")]
+        order = [p for p in ["morpho-blue", "v4-core", "openzeppelin-contracts",
+                             "aave-v3-origin", "core", "core-v3"] if p in set(df["protocol"])]
+        order += [p for p in df["protocol"] if p not in order]
+        byp = df.set_index("protocol")
+        with plt.rc_context(ART_RC):
+            fig, ax = plt.subplots(figsize=(6.8, 0.55 * len(order) + 1.2))
+            for i, p in enumerate(order):
+                y = len(order) - 1 - i
+                r = byp.loc[p]
+                for key, lab, col, mk in series:
+                    v = r.get(key)
+                    if v is None or pd.isna(v):
+                        continue
+                    v = abs(float(v))
+                    ax.scatter([v], [y], s=46, color=col, marker=mk, zorder=3)
+                    txt = f"{v:.4f}%" if v < 0.05 else (f"{v:.2f}%" if v < 1 else f"{v:.1f}%")
+                    dy = 8 if key != "gasopt_under_viair_pct_B_to_D" else -15
+                    if p == "v4-core":  # avoid clash with the row above
+                        dy = -15 if key == "gasopt_alone_pct_A_to_C" else 8
+                    ax.annotate(txt, (v, y), textcoords="offset points", xytext=(0, dy),
+                                fontsize=7.3, color=ART_INK, ha="center")
+                if pd.isna(r.get("compiler_alone_pct_A_to_B")):
+                    reason = ("via-IR: stack too deep" if p == "core-v3"
+                              else "via-IR: out of memory (31 GiB)")
+                    ax.text(90, y, reason, fontsize=7.5, color=ART_INK2,
+                            va="center", ha="right", style="italic")
+            ax.set_yticks([len(order) - 1 - i for i in range(len(order))])
+            ax.set_yticklabels([NICE_NAME.get(p, p) for p in order], fontsize=9)
+            ax.set_xscale("log")
+            ax.set_xlim(0.0012, 120)
+            ax.set_xticks([0.01, 0.1, 1, 10])
+            ax.set_xticklabels(["0.01%", "0.1%", "1%", "10%"])
+            ax.set_xlabel("deployment-gas reduction, log scale (production contracts, optimizer_runs = 200)")
+            ax.legend(handles=[plt.Line2D([], [], marker=mk, color=col, linestyle="",
+                                          markersize=7, label=lab)
+                               for _, lab, col, mk in series],
+                      frameon=False, fontsize=8, loc="lower right", bbox_to_anchor=(1.0, 1.0))
+            for s in ["top", "right", "left"]:
+                ax.spines[s].set_visible(False)
+            ax.grid(axis="x", color=ART_GRID, lw=.6, alpha=.7)
+            ax.set_axisbelow(True)
+            ax.tick_params(left=False)
+            plt.tight_layout()
+            plt.savefig(FIGS / "rq5_factorial_pct.png", dpi=220)
+            plt.close()
     return df
 
 
