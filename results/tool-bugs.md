@@ -63,3 +63,50 @@ residual skips are acceptable per the user ("if the tool reverted it, it's fine"
   produces identical modern-syntax output for 0.8.x; fixes 4–5 only change the failure path.
   => rewrites unchanged; **RQ5 gas (from forge) is independent of these fixes.** A confirmation
   re-run of their `report.json` rule counts is planned (cheap, dry-run) before finalising.
+
+---
+
+# Bug found on the mfav machine (31GiB), forge 1.7.1, gasopt 3534bf2 -> 751da96
+
+## Bug 6 — `evm_version` dropped into PathOptions instead of solc compilerSettings
+- **Exposed by:** Seaport (`seaport/`, solc **0.8.24**, `evm_version='cancun'`).
+- **Category:** infrastructure / compiler-plumbing (an APPLICABILITY bug, not a
+  behaviour-preservation bug — it made gasopt SKIP too much, never emit unsafe output).
+- **Symptom:** every Seaport file that transitively imports `seaport-core`'s
+  `ReentrancyGuard.sol` (which uses EIP-1153 `tload`/`tstore`) was skipped with
+  `DeclarationError: Function "tload" not found` — dozens of `helpers/navigator/**` files.
+- **Root cause:** gasopt *did* read `evm_version` from `foundry.toml` (`readFoundryConfig`)
+  and intended to pass it to the compiler, but it assigned it to solc-typed-ast's
+  `PathOptions` object (`pathOptions.evmVersion = ...`). `PathOptions` has only
+  `{remapping, basePath, includePath}`, so the field was silently ignored and every compile
+  ran at solc's DEFAULT evm target. For solc **< 0.8.25** that default is *shanghai*, where
+  `tload`/`tstore` do not exist — hence the parse error. (solc >= 0.8.25 defaults to cancun,
+  which is why aave 0.8.27, v4 0.8.26, OZ 0.8.31, gearbox 0.8.23-without-tload, and Lido were
+  all unaffected: **blast radius = Seaport only** among the seven subjects.)
+- **Fix (gasopt commit `751da96`):** pass `evm_version` through solc's `compilerSettings`
+  argument (the 5th arg of `compileSol`, 6th of `compileSourceString`) in every compile site:
+  the AST parse (`optimizeFileOnDisk`, `optimizeSource`), the verify gate (`CompileVerify`,
+  merged into BOTH the base compile and the via-IR retry), and the test-suite fixer
+  (`TestSuiteFixer`). No precondition was touched — this is pure compiler plumbing, faithful
+  to the code's already-stated intent ("pass evm_version so cancun/shanghai opcodes are
+  recognised"); only the wiring was wrong.
+- **Regression fixture:** `test/fixtures/payable-constructor/positive/cancun-transient-storage.{sol,json}`
+  — a `tload`/`tstore` contract pinned to solc `0.8.24` + `evm_version:'cancun'`; it only
+  parses (and the rewrite only fires) with the fix. Fixture harness extended so a fixture can
+  pin `solcVersion`/`evmVersion` (`applyOne`, `tryCompile`, `FixtureMeta`). All 25 transforms'
+  fixtures still pass (payable-constructor 3/3 -> 4/4).
+- **Reprocessing impact:** Seaport had NOT been fully measured before the fix (its first run
+  was aborted the moment the skips appeared), so no prior Seaport number needs discarding. All
+  other subjects were measured with solc >= 0.8.25 (cancun default) or without tload, so their
+  numbers are unaffected. Seaport is (re-)run end-to-end on `751da96`; its `manifest.json`
+  `gasopt_commit` records `751da96`, distinct from the `3534bf2` used by the others.
+
+## Non-bug (recorded for provenance) — Gearbox does not compile under via-IR
+- **Observed:** in the RQ5 factorial, Gearbox (`core-v3`) cells B (original+via-IR) and D
+  (gasopt+via-IR) both fail to compile at `optimizer_runs=200` with the **byte-identical** Yul
+  error `Variable expr_component is 1 too deep in the stack [...]`.
+- **Diagnosis:** the failure is present in the ORIGINAL code (cell B) exactly as in the gasopt
+  code (cell D), so it is a property of Gearbox under via-IR, **not** a gasopt regression.
+  Gearbox's own default profile uses the standard optimiser at `runs=1000` (no via-IR); via-IR
+  is simply inapplicable to it. Its RQ5 via-IR column is therefore N/A and A->C (gasopt alone,
+  standard) is the comparison. No gasopt change warranted.

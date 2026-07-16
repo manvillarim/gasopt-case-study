@@ -1,0 +1,9 @@
+{
+  "project_dir": "/home/mfav/gasopt-case-study/seaport",
+  "pre_rewrite_ref": "c6223c33eeb09cd9609949bc82e908ced3c21c78",
+  "repeats": 3,
+  "seed": "42",
+  "optimizer_runs": 200,
+  "match_regex": "",
+  "generated_at": "2026-07-15T20:48:27Z"
+}

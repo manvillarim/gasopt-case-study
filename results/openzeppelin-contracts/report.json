@@ -1,0 +1,3841 @@
+{
+  "tool": "solidity-gas-optimizer",
+  "generatedAt": "2026-07-15T18:45:27.834Z",
+  "target": "/home/mfav/gasopt-case-study/openzeppelin-contracts/contracts",
+  "dryRun": false,
+  "closedWorld": false,
+  "verify": true,
+  "enabledTransforms": [
+    "state-packing",
+    "struct-packing",
+    "avoid-zero-init",
+    "remove-const-loop",
+    "factor-loops",
+    "const-folding",
+    "demorgan",
+    "single-line-swap",
+    "delete-storage",
+    "cache-storage",
+    "cache-array-member",
+    "cache-array-length",
+    "loop-invariant",
+    "pre-increment",
+    "unchecked",
+    "require-error",
+    "short-circuit",
+    "const-folding-state",
+    "use-immutable",
+    "use-constant",
+    "avoid-zero-init-state",
+    "visibility",
+    "calldata-params",
+    "payable-constructor",
+    "loop-fusion"
+  ],
+  "summary": {
+    "filesTotal": 248,
+    "filesOptimised": 39,
+    "filesUnchanged": 209,
+    "filesSkipped": {
+      "imports": 0,
+      "compileErrors": 0,
+      "verifyFailed": 0
+    },
+    "contractsOptimised": 38,
+    "totalRewrites": 173,
+    "rulesApplied": {
+      "avoid-zero-init": 95,
+      "unchecked": 34,
+      "const-folding": 13,
+      "pre-increment": 12,
+      "delete-storage": 8,
+      "demorgan": 5,
+      "payable-constructor": 5,
+      "const-folding-state": 1
+    },
+    "layoutSafetySkips": {
+      "contracts": 326,
+      "structs": 64
+    }
+  },
+  "files": [
+    {
+      "file": "access/AccessControl.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "AccessControl",
+          "rewrites": 1,
+          "rules": {
+            "delete-storage": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "AccessControl",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "RoleData",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "AccessControl",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "AccessControl",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "access/IAccessControl.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "access/Ownable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Ownable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Ownable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Ownable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "access/Ownable2Step.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Ownable2Step",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Ownable2Step",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Ownable2Step",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "access/extensions/AccessControlDefaultAdminRules.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "AccessControlDefaultAdminRules",
+          "rewrites": 1,
+          "rules": {
+            "demorgan": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "AccessControlDefaultAdminRules",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "AccessControlDefaultAdminRules",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "AccessControlDefaultAdminRules",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "access/extensions/AccessControlEnumerable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "AccessControlEnumerable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "AccessControlEnumerable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "AccessControlEnumerable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "access/extensions/IAccessControlDefaultAdminRules.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "access/extensions/IAccessControlEnumerable.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "access/manager/AccessManaged.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "AccessManaged",
+          "rewrites": 1,
+          "rules": {
+            "delete-storage": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "AccessManaged",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "AccessManaged",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "AccessManaged",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "access/manager/AccessManager.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "AccessManager",
+          "rewrites": 4,
+          "rules": {
+            "payable-constructor": 1,
+            "avoid-zero-init": 1,
+            "demorgan": 1,
+            "unchecked": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "TargetConfig",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Access",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Role",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Schedule",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "access/manager/AuthorityUtils.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "access/manager/IAccessManaged.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "access/manager/IAccessManager.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "access/manager/IAuthority.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "account/Account.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Account",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Account",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Account",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "account/extensions/draft-AccountERC7579.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "AccountERC7579",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "AccountERC7579",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "AccountERC7579",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "account/extensions/draft-AccountERC7579Hooked.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "AccountERC7579Hooked",
+          "rewrites": 1,
+          "rules": {
+            "delete-storage": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "AccountERC7579Hooked",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "AccountERC7579Hooked",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "AccountERC7579Hooked",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "account/extensions/draft-ERC7821.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC7821",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC7821",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC7821",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "account/paymaster/Paymaster.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Paymaster",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Paymaster",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Paymaster",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "account/paymaster/extensions/PaymasterERC20.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "PaymasterERC20",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "PaymasterERC20",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "PaymasterERC20",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "account/paymaster/extensions/PaymasterERC20Guarantor.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "PaymasterERC20Guarantor",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "PaymasterERC20Guarantor",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "PaymasterERC20Guarantor",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "account/paymaster/extensions/PaymasterERC721Owner.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "PaymasterERC721Owner",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "PaymasterERC721Owner",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "PaymasterERC721Owner",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "account/paymaster/extensions/PaymasterSigner.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "PaymasterSigner",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "PaymasterSigner",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "PaymasterSigner",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "account/utils/EIP7702Utils.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "account/utils/ERC4337Utils.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "account/utils/draft-ERC7579Utils.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "ERC7579Utils",
+          "rewrites": 1,
+          "rules": {
+            "avoid-zero-init": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "crosschain/CrosschainLinked.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "CrosschainLinked",
+          "rewrites": 2,
+          "rules": {
+            "avoid-zero-init": 1,
+            "unchecked": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "CrosschainLinked",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Link",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "CrosschainLinked",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "CrosschainLinked",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "crosschain/CrosschainRemoteExecutor.sol",
+      "status": "optimised",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "CrosschainRemoteExecutor",
+          "rule": "state-packing",
+          "reason": "reorder would save 0 slots (2 -> 2)"
+        }
+      ]
+    },
+    {
+      "file": "crosschain/ERC7786Recipient.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC7786Recipient",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC7786Recipient",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC7786Recipient",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "crosschain/bridges/BridgeERC1155.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "BridgeERC1155",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "BridgeERC1155",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "BridgeERC1155",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "crosschain/bridges/BridgeERC20.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "BridgeERC20",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "BridgeERC20",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "BridgeERC20",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "crosschain/bridges/BridgeERC721.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "BridgeERC721",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "BridgeERC721",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "BridgeERC721",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "crosschain/bridges/BridgeERC7802.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "BridgeERC7802",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "BridgeERC7802",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "BridgeERC7802",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "crosschain/bridges/abstract/BridgeFungible.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "BridgeFungible",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "BridgeFungible",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "BridgeFungible",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "crosschain/bridges/abstract/BridgeMultiToken.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "BridgeMultiToken",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "BridgeMultiToken",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "BridgeMultiToken",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "crosschain/bridges/abstract/BridgeNonFungible.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "BridgeNonFungible",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "BridgeNonFungible",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "BridgeNonFungible",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "finance/VestingWallet.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "VestingWallet",
+          "rule": "state-packing",
+          "reason": "reorder would save 0 slots (2 -> 2)"
+        }
+      ]
+    },
+    {
+      "file": "finance/VestingWalletCliff.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "VestingWalletCliff",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "VestingWalletCliff",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "VestingWalletCliff",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "governance/Governor.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "Governor",
+          "rewrites": 5,
+          "rules": {
+            "avoid-zero-init": 2,
+            "unchecked": 2,
+            "demorgan": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Governor",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ProposalCore",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Governor",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Governor",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "governance/IGovernor.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "governance/TimelockController.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "TimelockController",
+          "rewrites": 9,
+          "rules": {
+            "avoid-zero-init": 4,
+            "unchecked": 4,
+            "payable-constructor": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "governance/extensions/GovernorCountingFractional.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "GovernorCountingFractional",
+          "rewrites": 4,
+          "rules": {
+            "avoid-zero-init": 4
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "GovernorCountingFractional",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ProposalVote",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "GovernorCountingFractional",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "GovernorCountingFractional",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "governance/extensions/GovernorCountingOverridable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "GovernorCountingOverridable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "VoteReceipt",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ProposalVote",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "GovernorCountingOverridable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "GovernorCountingOverridable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "governance/extensions/GovernorCountingSimple.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "GovernorCountingSimple",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ProposalVote",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "GovernorCountingSimple",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "GovernorCountingSimple",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "governance/extensions/GovernorCrosschain.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "GovernorCrosschain",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "GovernorCrosschain",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "GovernorCrosschain",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "governance/extensions/GovernorNoncesKeyed.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "GovernorNoncesKeyed",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "GovernorNoncesKeyed",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "GovernorNoncesKeyed",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "governance/extensions/GovernorPreventLateQuorum.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "GovernorPreventLateQuorum",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "GovernorPreventLateQuorum",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "GovernorPreventLateQuorum",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "governance/extensions/GovernorProposalGuardian.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "GovernorProposalGuardian",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "GovernorProposalGuardian",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "GovernorProposalGuardian",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "governance/extensions/GovernorSequentialProposalId.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "GovernorSequentialProposalId",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "GovernorSequentialProposalId",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "GovernorSequentialProposalId",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "governance/extensions/GovernorSettings.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "GovernorSettings",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "GovernorSettings",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "GovernorSettings",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "governance/extensions/GovernorStorage.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "GovernorStorage",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ProposalDetails",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "GovernorStorage",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "GovernorStorage",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "governance/extensions/GovernorSuperQuorum.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "GovernorSuperQuorum",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "GovernorSuperQuorum",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "GovernorSuperQuorum",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "governance/extensions/GovernorTimelockAccess.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "GovernorTimelockAccess",
+          "rewrites": 10,
+          "rules": {
+            "avoid-zero-init": 6,
+            "unchecked": 4
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "GovernorTimelockAccess",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ExecutionPlan",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "GovernorTimelockAccess",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "GovernorTimelockAccess",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "governance/extensions/GovernorTimelockCompound.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "GovernorTimelockCompound",
+          "rewrites": 6,
+          "rules": {
+            "avoid-zero-init": 3,
+            "unchecked": 3
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "GovernorTimelockCompound",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "GovernorTimelockCompound",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "GovernorTimelockCompound",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "governance/extensions/GovernorTimelockControl.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "GovernorTimelockControl",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "GovernorTimelockControl",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "GovernorTimelockControl",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "governance/extensions/GovernorVotes.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "GovernorVotes",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "GovernorVotes",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "GovernorVotes",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "governance/extensions/GovernorVotesQuorumFraction.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "GovernorVotesQuorumFraction",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "GovernorVotesQuorumFraction",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "GovernorVotesQuorumFraction",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "governance/extensions/GovernorVotesSuperQuorumFraction.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "GovernorVotesSuperQuorumFraction",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "GovernorVotesSuperQuorumFraction",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "GovernorVotesSuperQuorumFraction",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "governance/utils/IVotes.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "governance/utils/Votes.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Votes",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Votes",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Votes",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "governance/utils/VotesExtended.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "VotesExtended",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "VotesExtended",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "VotesExtended",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "interfaces/IERC1155.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC1155MetadataURI.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC1155Receiver.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC1271.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC1363.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC1363Receiver.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC1363Spender.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC165.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC1820Implementer.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC1820Registry.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC1967.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC20.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC20Metadata.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC2309.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC2612.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC2981.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC3156.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC3156FlashBorrower.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC3156FlashLender.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC4337.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "UserOpsPerAggregator",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "interfaces/IERC4626.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC4906.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC5267.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC5313.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC5805.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC6372.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC6909.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC721.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC721Enumerable.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC721Metadata.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC721Receiver.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC7751.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC777.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC777Recipient.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC777Sender.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IERC7913.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/draft-IERC1822.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/draft-IERC3009.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/draft-IERC6093.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/draft-IERC7579.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/draft-IERC7674.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/draft-IERC7786.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/draft-IERC7802.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/draft-IERC7821.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "metatx/ERC2771Context.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC2771Context",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC2771Context",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC2771Context",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "metatx/ERC2771Forwarder.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "ERC2771Forwarder",
+          "rewrites": 2,
+          "rules": {
+            "payable-constructor": 1,
+            "unchecked": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "ERC2771Forwarder",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ForwardRequestData",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ERC2771Forwarder",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC2771Forwarder",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "proxy/Clones.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "proxy/ERC1967/ERC1967Clones.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "proxy/ERC1967/ERC1967Proxy.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC1967Proxy",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC1967Proxy",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC1967Proxy",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "proxy/ERC1967/ERC1967Utils.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "proxy/Proxy.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Proxy",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Proxy",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Proxy",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "proxy/beacon/BeaconProxy.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "BeaconProxy",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "BeaconProxy",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "BeaconProxy",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "proxy/beacon/IBeacon.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "proxy/beacon/UpgradeableBeacon.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "UpgradeableBeacon",
+          "rewrites": 1,
+          "rules": {
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "UpgradeableBeacon",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "UpgradeableBeacon",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "UpgradeableBeacon",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "proxy/transparent/ProxyAdmin.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "ProxyAdmin",
+          "rewrites": 1,
+          "rules": {
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "ProxyAdmin",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ProxyAdmin",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ProxyAdmin",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "proxy/transparent/TransparentUpgradeableProxy.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "TransparentUpgradeableProxy",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "TransparentUpgradeableProxy",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "TransparentUpgradeableProxy",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "proxy/utils/Initializable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Initializable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "InitializableStorage",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Initializable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Initializable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "proxy/utils/UUPSUpgradeable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "UUPSUpgradeable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "UUPSUpgradeable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "UUPSUpgradeable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC1155/ERC1155.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "ERC1155",
+          "rewrites": 3,
+          "rules": {
+            "avoid-zero-init": 2,
+            "unchecked": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "ERC1155",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC1155",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC1155",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC1155/IERC1155.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "token/ERC1155/IERC1155Receiver.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "token/ERC1155/extensions/ERC1155Burnable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC1155Burnable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC1155Burnable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC1155Burnable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC1155/extensions/ERC1155Crosschain.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC1155Crosschain",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC1155Crosschain",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC1155Crosschain",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC1155/extensions/ERC1155Pausable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC1155Pausable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC1155Pausable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC1155Pausable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC1155/extensions/ERC1155Supply.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "ERC1155Supply",
+          "rewrites": 4,
+          "rules": {
+            "avoid-zero-init": 4
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "ERC1155Supply",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC1155Supply",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC1155Supply",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC1155/extensions/ERC1155URIStorage.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC1155URIStorage",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC1155URIStorage",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC1155URIStorage",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC1155/extensions/IERC1155MetadataURI.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "token/ERC1155/utils/ERC1155Holder.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC1155Holder",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC1155Holder",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC1155Holder",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC1155/utils/ERC1155Utils.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "token/ERC20/ERC20.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC20",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC20",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC20",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC20/IERC20.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "token/ERC20/extensions/ERC1363.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC1363",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC1363",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC1363",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC20/extensions/ERC20Burnable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC20Burnable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC20Burnable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC20Burnable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC20/extensions/ERC20Capped.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC20Capped",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC20Capped",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC20Capped",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC20/extensions/ERC20Crosschain.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC20Crosschain",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC20Crosschain",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC20Crosschain",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC20/extensions/ERC20FlashMint.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC20FlashMint",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC20FlashMint",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC20FlashMint",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC20/extensions/ERC20Pausable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC20Pausable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC20Pausable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC20Pausable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC20/extensions/ERC20Permit.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC20Permit",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC20Permit",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC20Permit",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC20/extensions/ERC20TransferAuthorization.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC20TransferAuthorization",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC20TransferAuthorization",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC20TransferAuthorization",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC20/extensions/ERC20Votes.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC20Votes",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC20Votes",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC20Votes",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC20/extensions/ERC20Wrapper.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC20Wrapper",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC20Wrapper",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC20Wrapper",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC20/extensions/ERC4626.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC4626",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC4626",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC4626",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC20/extensions/IERC20Metadata.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "token/ERC20/extensions/IERC20Permit.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "token/ERC20/extensions/draft-ERC20Bridgeable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC20Bridgeable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC20Bridgeable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC20Bridgeable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC20/extensions/draft-ERC20TemporaryApproval.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC20TemporaryApproval",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC20TemporaryApproval",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC20TemporaryApproval",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC20/extensions/draft-ERC3009.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC3009",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC3009",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC3009",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC20/utils/ERC1363Utils.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "token/ERC20/utils/SafeERC20.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "token/ERC6909/ERC6909.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "token/ERC6909/extensions/ERC6909ContentURI.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "token/ERC6909/extensions/ERC6909Metadata.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "TokenMetadata",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC6909/extensions/ERC6909TokenSupply.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "token/ERC721/ERC721.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC721",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC721",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC721",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC721/IERC721.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "token/ERC721/IERC721Receiver.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "token/ERC721/extensions/ERC721Burnable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC721Burnable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC721Burnable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC721Burnable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC721/extensions/ERC721Consecutive.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC721Consecutive",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC721Consecutive",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC721Consecutive",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC721/extensions/ERC721Crosschain.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC721Crosschain",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC721Crosschain",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC721Crosschain",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC721/extensions/ERC721Enumerable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC721Enumerable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC721Enumerable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC721Enumerable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC721/extensions/ERC721Pausable.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC721Pausable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC721Pausable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC721Pausable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC721/extensions/ERC721Royalty.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC721Royalty",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC721Royalty",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC721Royalty",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC721/extensions/ERC721URIStorage.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC721URIStorage",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC721URIStorage",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC721URIStorage",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC721/extensions/ERC721Votes.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC721Votes",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC721Votes",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC721Votes",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC721/extensions/ERC721Wrapper.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "ERC721Wrapper",
+          "rewrites": 4,
+          "rules": {
+            "avoid-zero-init": 2,
+            "unchecked": 2
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "ERC721Wrapper",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC721Wrapper",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC721Wrapper",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC721/extensions/IERC721Enumerable.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "token/ERC721/extensions/IERC721Metadata.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "token/ERC721/utils/ERC721Holder.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC721Holder",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC721Holder",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC721Holder",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "token/ERC721/utils/ERC721Utils.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "token/common/ERC2981.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC2981",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "RoyaltyInfo",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "ERC2981",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC2981",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "utils/Address.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/Arrays.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "Arrays",
+          "rewrites": 5,
+          "rules": {
+            "avoid-zero-init": 5
+          }
+        }
+      ]
+    },
+    {
+      "file": "utils/Base58.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/Base64.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/BlockHeader.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/Blockhash.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/Bytes.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "Bytes",
+          "rewrites": 6,
+          "rules": {
+            "avoid-zero-init": 4,
+            "unchecked": 2
+          }
+        }
+      ]
+    },
+    {
+      "file": "utils/CAIP10.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/CAIP2.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/Calldata.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/Comparators.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/Context.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Context",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Context",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Context",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "utils/Create2.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/Create3.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/ERC6372Utils.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/Errors.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/LowLevelCall.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/Memory.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/Multicall.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "Multicall",
+          "rewrites": 2,
+          "rules": {
+            "avoid-zero-init": 1,
+            "pre-increment": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Multicall",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Multicall",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Multicall",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "utils/Nonces.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Nonces",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Nonces",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Nonces",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "utils/NoncesKeyed.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "NoncesKeyed",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "NoncesKeyed",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "NoncesKeyed",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "utils/Packing.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/Panic.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/Pausable.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "Pausable",
+          "rewrites": 1,
+          "rules": {
+            "delete-storage": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Pausable",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Pausable",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Pausable",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "utils/RLP.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Encoder",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "utils/RateLimiter.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "RefillingBucketItem",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "RefillingBucket",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "SlidingWindow",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "utils/ReentrancyGuard.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ReentrancyGuard",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ReentrancyGuard",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ReentrancyGuard",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "utils/ReentrancyGuardTransient.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ReentrancyGuardTransient",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ReentrancyGuardTransient",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ReentrancyGuardTransient",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "utils/RelayedCall.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/ShortStrings.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/SimulateCall.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/SlotDerivation.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/StorageSlot.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "AddressSlot",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "BooleanSlot",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Bytes32Slot",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Uint256Slot",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Int256Slot",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "StringSlot",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "BytesSlot",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "utils/Strings.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "Strings",
+          "rewrites": 8,
+          "rules": {
+            "avoid-zero-init": 4,
+            "unchecked": 3,
+            "const-folding-state": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "utils/TransientSlot.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/cryptography/ECDSA.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/cryptography/EIP712.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "EIP712",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "EIP712",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "EIP712",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "utils/cryptography/Hashes.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/cryptography/MerkleProof.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "MerkleProof",
+          "rewrites": 28,
+          "rules": {
+            "avoid-zero-init": 20,
+            "pre-increment": 8
+          }
+        }
+      ]
+    },
+    {
+      "file": "utils/cryptography/MessageHashUtils.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/cryptography/P256.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "P256",
+          "rewrites": 5,
+          "rules": {
+            "avoid-zero-init": 3,
+            "demorgan": 2
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "JPoint",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "utils/cryptography/RSA.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/cryptography/SignatureChecker.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "SignatureChecker",
+          "rewrites": 5,
+          "rules": {
+            "avoid-zero-init": 3,
+            "unchecked": 2
+          }
+        }
+      ]
+    },
+    {
+      "file": "utils/cryptography/TrieProof.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "TrieProof",
+          "rewrites": 3,
+          "rules": {
+            "avoid-zero-init": 2,
+            "unchecked": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "utils/cryptography/WebAuthn.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "WebAuthnAuth",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "utils/cryptography/draft-ERC7739Utils.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "ERC7739Utils",
+          "rewrites": 3,
+          "rules": {
+            "unchecked": 2,
+            "avoid-zero-init": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "utils/cryptography/signers/AbstractSigner.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "AbstractSigner",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "AbstractSigner",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "AbstractSigner",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "utils/cryptography/signers/MultiSignerERC7913.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "MultiSignerERC7913",
+          "rewrites": 6,
+          "rules": {
+            "avoid-zero-init": 3,
+            "unchecked": 3
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "MultiSignerERC7913",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "MultiSignerERC7913",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "MultiSignerERC7913",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "utils/cryptography/signers/MultiSignerERC7913Weighted.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "MultiSignerERC7913Weighted",
+          "rewrites": 4,
+          "rules": {
+            "avoid-zero-init": 3,
+            "unchecked": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "MultiSignerERC7913Weighted",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "MultiSignerERC7913Weighted",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "MultiSignerERC7913Weighted",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "utils/cryptography/signers/SignerECDSA.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "SignerECDSA",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "SignerECDSA",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "SignerECDSA",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "utils/cryptography/signers/SignerEIP7702.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "SignerEIP7702",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "SignerEIP7702",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "SignerEIP7702",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "utils/cryptography/signers/SignerERC7913.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "SignerERC7913",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "SignerERC7913",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "SignerERC7913",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "utils/cryptography/signers/SignerP256.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "SignerP256",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "SignerP256",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "SignerP256",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "utils/cryptography/signers/SignerRSA.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "SignerRSA",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "SignerRSA",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "SignerRSA",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "utils/cryptography/signers/SignerWebAuthn.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "SignerWebAuthn",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "SignerWebAuthn",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "SignerWebAuthn",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "utils/cryptography/signers/draft-ERC7739.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC7739",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC7739",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC7739",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "utils/cryptography/verifiers/ERC7913P256Verifier.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/cryptography/verifiers/ERC7913RSAVerifier.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/cryptography/verifiers/ERC7913WebAuthnVerifier.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/draft-InteroperableAddress.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/introspection/ERC165.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ERC165",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ERC165",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ERC165",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "utils/introspection/ERC165Checker.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "ERC165Checker",
+          "rewrites": 4,
+          "rules": {
+            "avoid-zero-init": 2,
+            "pre-increment": 2
+          }
+        }
+      ]
+    },
+    {
+      "file": "utils/introspection/IERC165.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/math/Math.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "Math",
+          "rewrites": 15,
+          "rules": {
+            "const-folding": 13,
+            "avoid-zero-init": 2
+          }
+        }
+      ]
+    },
+    {
+      "file": "utils/math/SafeCast.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/math/SignedMath.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "utils/structs/Accumulators.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Accumulator",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "AccumulatorEntry",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "utils/structs/BitMaps.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "BitMap",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "utils/structs/Checkpoints.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "Checkpoints",
+          "rewrites": 4,
+          "rules": {
+            "avoid-zero-init": 4
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Trace256",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Checkpoint256",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Trace224",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Checkpoint224",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Trace208",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Checkpoint208",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Trace160",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Checkpoint160",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "utils/structs/CircularBuffer.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "CircularBuffer",
+          "rewrites": 3,
+          "rules": {
+            "avoid-zero-init": 1,
+            "delete-storage": 1,
+            "unchecked": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Bytes32CircularBuffer",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "utils/structs/DoubleEndedQueue.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "DoubleEndedQueue",
+          "rewrites": 2,
+          "rules": {
+            "delete-storage": 2
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Bytes32Deque",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "utils/structs/EnumerableMap.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "EnumerableMap",
+          "rewrites": 2,
+          "rules": {
+            "avoid-zero-init": 2
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Bytes32ToBytes32Map",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "UintToUintMap",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "UintToAddressMap",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "UintToBytes32Map",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "AddressToUintMap",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "AddressToAddressMap",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "AddressToBytes32Map",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Bytes32ToUintMap",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Bytes32ToAddressMap",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Bytes4ToAddressMap",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "BytesToBytesMap",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "utils/structs/EnumerableSet.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "EnumerableSet",
+          "rewrites": 3,
+          "rules": {
+            "avoid-zero-init": 3
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Set",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Bytes32Set",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "Bytes4Set",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "AddressSet",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "UintSet",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "StringSet",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "BytesSet",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "utils/structs/Heap.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Uint256Heap",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "utils/structs/MerkleTree.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "MerkleTree",
+          "rewrites": 4,
+          "rules": {
+            "avoid-zero-init": 2,
+            "delete-storage": 1,
+            "pre-increment": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Bytes32PushTree",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "utils/types/Time.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "vendor/compound/ICompoundTimelock.sol",
+      "status": "unchanged",
+      "contracts": []
+    }
+  ]
+}

@@ -1,4 +1,8 @@
 protocol,gas_measured,skipped_after_rewrite_only,skipped_after_rewrite_tests,skipped_pre_existing,declined_rewrites,nondeterministic_tests
+aave-v3-origin,True,0.0,,0.0,243,0.0
 core,True,0.0,,0.0,238,4.0
+core-v3,True,0.0,,1.0,41,9.0
 morpho-blue,True,0.0,,0.0,3,52.0
-v4-core,False,,,,30,
+openzeppelin-contracts,True,0.0,,0.0,390,0.0
+seaport,False,,,,18,
+v4-core,True,0.0,,0.0,30,0.0

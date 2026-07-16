@@ -1,0 +1,9 @@
+{
+  "project_dir": "/home/mfav/gasopt-case-study/core-v3",
+  "pre_rewrite_ref": "c16226fedd7dbb22c906c32bc44b470f61da7c52",
+  "repeats": 3,
+  "seed": "42",
+  "optimizer_runs": 200,
+  "match_regex": "",
+  "generated_at": "2026-07-15T19:49:51Z"
+}

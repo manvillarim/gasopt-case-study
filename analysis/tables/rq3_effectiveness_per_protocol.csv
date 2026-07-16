@@ -1,3 +1,7 @@
-protocol,contracts_measured,deploy_gas_before,deploy_gas_after,deploy_gas_delta,deploy_gas_delta_pct,deploy_size_before,deploy_size_after,deploy_size_delta,deploy_size_delta_pct,mean_fn_gas_delta_pct_median,n_functions_measured,deterministic
-core,1,224716,221710,-3006,-1.3376884601007495,1170,1155,-15,-1.2820512820512822,,0,False
-morpho-blue,1,3436690,3436553,-137,-0.003986393884813585,16046,16038,-8,-0.04985666209647264,0.0,17,False
+protocol,scope,contracts_measured,deploy_gas_before,deploy_gas_after,deploy_gas_delta,deploy_gas_delta_pct,deploy_size_before,deploy_size_after,deploy_size_delta,deploy_size_delta_pct,mean_fn_gas_delta_pct_median,n_functions_measured,deterministic
+aave-v3-origin,production,34,80709345,79920745,-788600,-0.977086358463199,485533,480214,-5319,-1.0954971134814728,0.0,408,True
+core,production,1,224716,221710,-3006,-1.3376884601007495,1170,1155,-15,-1.2820512820512822,,0,False
+core-v3,production,13,17889423,17887339,-2084,-0.011649341624936702,136555,136343,-212,-0.15524880084947457,0.0,145,False
+morpho-blue,production,1,3436690,3436553,-137,-0.003986393884813585,16046,16038,-8,-0.04985666209647264,0.0,17,False
+openzeppelin-contracts,library-embedded,18,29118581,29116929,-1652,-0.005673353382158286,145454,145446,-8,-0.005500020625077344,0.0,49,True
+v4-core,production,1,4344280,4344080,-200,-0.004603754822433176,19951,19940,-11,-0.055135080948323395,0.0,17,True

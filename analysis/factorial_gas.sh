@@ -73,6 +73,12 @@ run_cell() {
     echo "  run$k rc=$rc bytes=$(wc -c < "$out" 2>/dev/null || echo 0)  ($label)"
     # If forge produced no parseable JSON, keep the (empty) file + log for the analysis
     # to record the cell as unmeasured rather than fabricating a number.
+    # A cell that emits NO gas JSON on run 1 has failed to compile/run (e.g. via-IR
+    # stack-too-deep) — a deterministic failure, so repeating it wastes a full compile.
+    if [ "$k" -eq 1 ] && [ ! -s "$out" ]; then
+      echo "  -> run1 produced no gas JSON (deterministic compile/run failure); skipping remaining repeats for $label"
+      break
+    fi
   done
 }
 

@@ -1,17 +1,16 @@
-=== cell cell-C-gasopt-standard  (dir=/home/manoel/projeto/case-study-tool/aave-v3-origin via_ir=false) ===
-  run1 rc=0 bytes=72584  (cell-C-gasopt-standard)
-  run2 rc=0 bytes=72584  (cell-C-gasopt-standard)
-  run3 rc=0 bytes=72584  (cell-C-gasopt-standard)
-=== cell cell-D-gasopt-viair  (dir=/home/manoel/projeto/case-study-tool/aave-v3-origin via_ir=true) ===
+=== cell cell-C-gasopt-standard  (dir=/home/mfav/gasopt-case-study/aave-v3-origin via_ir=false) ===
+  run1 rc=1 bytes=67473  (cell-C-gasopt-standard)
+  run2 rc=1 bytes=67473  (cell-C-gasopt-standard)
+  run3 rc=1 bytes=67473  (cell-C-gasopt-standard)
+=== cell cell-D-gasopt-viair  (dir=/home/mfav/gasopt-case-study/aave-v3-origin via_ir=true) ===
   run1 rc=1 bytes=0  (cell-D-gasopt-viair)
-
-=== RQ5 OUTCOME (resume after crash, 2026-07-15) ===
-Cell A (orig+standard, runs=200): MEASURED, 3 deterministic runs (72582 bytes each).
-Cell C (gasopt+standard, runs=200): MEASURED, 3 deterministic runs (72584 bytes each).
-Cell B (orig+via-IR) and Cell D (gasopt+via-IR): NOT MEASURABLE. solc SIGKILL (OOM) on the
-  via-IR compilation of the full Aave V3 Origin codebase at optimizer_runs=200 on this 16 GiB
-  machine. Retried Cell B and Cell D with a SINGLE run each (per the "fewer repeats for B/D"
-  allowance) -> both still OOM: the cost is the one-time via-IR (Yul) compilation, not the
-  per-run test execution, so reducing repeats does not avoid it. Same limitation as Lido's
-  0.4.24/0.6.x contracts (whole-project via-IR ICE/OOM). Recorded honestly; A->C (gasopt alone,
-  standard optimiser, the common production config) is the measurable comparison for aave.
+  -> run1 produced no gas JSON (deterministic compile/run failure); skipping remaining repeats for cell-D-gasopt-viair
+=== preparing original-code worktree at 034ccbe686b5a8434479f1deaf666043856a1418 -> /tmp/gasopt-rq5-orig-666b9o ===
+=== cell cell-A-orig-standard  (dir=/tmp/gasopt-rq5-orig-666b9o via_ir=false) ===
+  run1 rc=1 bytes=67471  (cell-A-orig-standard)
+  run2 rc=1 bytes=67471  (cell-A-orig-standard)
+  run3 rc=1 bytes=67471  (cell-A-orig-standard)
+=== cell cell-B-orig-viair  (dir=/tmp/gasopt-rq5-orig-666b9o via_ir=true) ===
+  run1 rc=1 bytes=0  (cell-B-orig-viair)
+  -> run1 produced no gas JSON (deterministic compile/run failure); skipping remaining repeats for cell-B-orig-viair
+=== factorial done for /home/mfav/gasopt-case-study/results/aave-v3-origin ===

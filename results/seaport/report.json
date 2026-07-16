@@ -1,0 +1,578 @@
+{
+  "tool": "solidity-gas-optimizer",
+  "generatedAt": "2026-07-15T20:46:08.654Z",
+  "target": "/home/mfav/gasopt-case-study/seaport/contracts",
+  "dryRun": false,
+  "closedWorld": false,
+  "verify": true,
+  "enabledTransforms": [
+    "state-packing",
+    "struct-packing",
+    "avoid-zero-init",
+    "remove-const-loop",
+    "factor-loops",
+    "const-folding",
+    "demorgan",
+    "single-line-swap",
+    "delete-storage",
+    "cache-storage",
+    "cache-array-member",
+    "cache-array-length",
+    "loop-invariant",
+    "pre-increment",
+    "unchecked",
+    "require-error",
+    "short-circuit",
+    "const-folding-state",
+    "use-immutable",
+    "use-constant",
+    "avoid-zero-init-state",
+    "visibility",
+    "calldata-params",
+    "payable-constructor",
+    "loop-fusion"
+  ],
+  "summary": {
+    "filesTotal": 48,
+    "filesOptimised": 20,
+    "filesUnchanged": 27,
+    "filesSkipped": {
+      "imports": 0,
+      "compileErrors": 1,
+      "verifyFailed": 0
+    },
+    "contractsOptimised": 19,
+    "totalRewrites": 86,
+    "rulesApplied": {
+      "avoid-zero-init": 26,
+      "pre-increment": 26,
+      "unchecked": 16,
+      "const-folding": 8,
+      "payable-constructor": 8,
+      "demorgan": 1,
+      "cache-array-length": 1
+    },
+    "layoutSafetySkips": {
+      "contracts": 18,
+      "structs": 0
+    }
+  },
+  "files": [
+    {
+      "file": "Seaport.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "Seaport",
+          "rewrites": 1,
+          "rules": {
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "Seaport",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "Seaport",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "Seaport",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "conduit/Conduit.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "conduit/ConduitController.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "helpers/ArrayHelpers.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "helpers/SeaportRouter.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "SeaportRouter",
+          "rewrites": 3,
+          "rules": {
+            "avoid-zero-init": 2,
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "SeaportRouter",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "SeaportRouter",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "SeaportRouter",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "helpers/TransferHelper.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "TransferHelper",
+          "rewrites": 2,
+          "rules": {
+            "payable-constructor": 1,
+            "avoid-zero-init": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "TransferHelper",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "TransferHelper",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "TransferHelper",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "helpers/navigator/SeaportNavigator.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "SeaportNavigator",
+          "rewrites": 3,
+          "rules": {
+            "payable-constructor": 1,
+            "cache-array-length": 1,
+            "pre-increment": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "helpers/navigator/lib/CriteriaHelper.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "helpers/navigator/lib/CriteriaHelperLib.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "CriteriaHelperLib",
+          "rewrites": 6,
+          "rules": {
+            "pre-increment": 3,
+            "avoid-zero-init": 2,
+            "unchecked": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "helpers/navigator/lib/ExecutionsHelper.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "helpers/navigator/lib/FulfillmentsHelper.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "helpers/navigator/lib/HelperInterface.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "helpers/navigator/lib/HelperItemLib.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "HelperItemLib",
+          "rewrites": 2,
+          "rules": {
+            "pre-increment": 2
+          }
+        }
+      ]
+    },
+    {
+      "file": "helpers/navigator/lib/MerkleLib.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "MerkleLib",
+          "rewrites": 11,
+          "rules": {
+            "const-folding": 8,
+            "avoid-zero-init": 3
+          }
+        }
+      ]
+    },
+    {
+      "file": "helpers/navigator/lib/NavigatorAdvancedOrderLib.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "NavigatorAdvancedOrderLib",
+          "rewrites": 9,
+          "rules": {
+            "pre-increment": 8,
+            "avoid-zero-init": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "helpers/navigator/lib/NavigatorContextLib.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "helpers/navigator/lib/NavigatorCriteriaResolverLib.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "helpers/navigator/lib/NavigatorDetailsLib.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "helpers/navigator/lib/NavigatorExecutionsLib.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "helpers/navigator/lib/NavigatorFulfillmentsLib.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "helpers/navigator/lib/NavigatorRequestValidatorLib.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "NavigatorRequestValidatorLib",
+          "rewrites": 1,
+          "rules": {
+            "pre-increment": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "helpers/navigator/lib/NavigatorSeaportValidatorLib.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "NavigatorSeaportValidatorLib",
+          "rewrites": 1,
+          "rules": {
+            "pre-increment": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "helpers/navigator/lib/NavigatorSuggestedActionLib.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "NavigatorSuggestedActionLib",
+          "rewrites": 12,
+          "rules": {
+            "avoid-zero-init": 7,
+            "unchecked": 5
+          }
+        }
+      ]
+    },
+    {
+      "file": "helpers/navigator/lib/OrderAvailabilityLib.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "OrderAvailabilityLib",
+          "rewrites": 2,
+          "rules": {
+            "avoid-zero-init": 1,
+            "pre-increment": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "helpers/navigator/lib/OrderDetailsHelper.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "helpers/navigator/lib/OrderStructureLib.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "OrderStructureLib",
+          "rewrites": 9,
+          "rules": {
+            "unchecked": 8,
+            "pre-increment": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "helpers/navigator/lib/RequestValidator.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "helpers/navigator/lib/SeaportNavigatorInterface.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "helpers/navigator/lib/SeaportNavigatorTypes.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "helpers/navigator/lib/SuggestedActionHelper.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "helpers/navigator/lib/ValidatorHelper.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "helpers/order-validator/SeaportValidator.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "SeaportValidator",
+          "rewrites": 5,
+          "rules": {
+            "pre-increment": 2,
+            "payable-constructor": 1,
+            "avoid-zero-init": 1,
+            "unchecked": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "helpers/order-validator/lib/ConsiderationTypeHashes.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "ConsiderationTypeHashes",
+          "rewrites": 3,
+          "rules": {
+            "avoid-zero-init": 2,
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "ConsiderationTypeHashes",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ConsiderationTypeHashes",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ConsiderationTypeHashes",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "helpers/order-validator/lib/ErrorsAndWarnings.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "ErrorsAndWarningsLib",
+          "rewrites": 6,
+          "rules": {
+            "avoid-zero-init": 3,
+            "pre-increment": 3
+          }
+        }
+      ]
+    },
+    {
+      "file": "helpers/order-validator/lib/Murky.sol",
+      "status": "skipped",
+      "skipReason": "compile-error",
+      "error": "Cannot read properties of undefined (reading 'nodeType')",
+      "contracts": []
+    },
+    {
+      "file": "helpers/order-validator/lib/ReadOnlyOrderValidator.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ReadOnlyOrderValidator",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ReadOnlyOrderValidator",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ReadOnlyOrderValidator",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "helpers/order-validator/lib/SafeStaticCall.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "helpers/order-validator/lib/SeaportValidatorHelper.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "SeaportValidatorHelper",
+          "rewrites": 8,
+          "rules": {
+            "avoid-zero-init": 3,
+            "pre-increment": 2,
+            "payable-constructor": 1,
+            "demorgan": 1,
+            "unchecked": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "helpers/order-validator/lib/SeaportValidatorInterface.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "helpers/order-validator/lib/SeaportValidatorTypes.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "IssueStringHelpers",
+          "rewrites": 1,
+          "rules": {
+            "pre-increment": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "interfaces/ImmutableCreate2FactoryInterface.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/ZoneInteractionErrors.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/ZoneInterface.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "zones/PausableZone.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "PausableZone",
+          "rewrites": 1,
+          "rules": {
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "PausableZone",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "PausableZone",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "PausableZone",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "zones/PausableZoneController.sol",
+      "status": "optimised",
+      "contracts": []
+    },
+    {
+      "file": "zones/interfaces/PausableZoneControllerInterface.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "zones/interfaces/PausableZoneEventsAndErrors.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "zones/interfaces/PausableZoneInterface.sol",
+      "status": "unchanged",
+      "contracts": []
+    }
+  ]
+}

@@ -1,0 +1,105 @@
+===== seaport full pipeline  Wed Jul 15 08:44:24 PM UTC 2026 =====
+gasopt commit  : 751da9620a2ecf95c77f7b3e7d74fda3f6c85eaf
+forge          : forge Version: 1.7.1
+target         : seaport/contracts
+pre_rewrite_ref: c6223c33eeb09cd9609949bc82e908ced3c21c78
+extra args     : --base-path seaport --remappings seaport/remappings.txt --exclude test
+=== STEP 1: gasopt --report --gas-report ===
+(gas benchmark forced to FOUNDRY_OPTIMIZER_RUNS=200 — project default is infeasible)
+[INFO] Remappings: 14 entries from /home/mfav/gasopt-case-study/seaport
+[INFO] Using project compiler from foundry.toml: 0.8.24
+[INFO] Using evm_version from foundry.toml: cancun
+[INFO] Scanning: seaport/contracts
+[INFO] Excluding: test
+[INFO] Found 48 .sol file(s)
+
+  Seaport.sol ... 1 rewrite(s)
+  conduit/Conduit.sol ... no rules
+  conduit/ConduitController.sol ... no rules
+  helpers/ArrayHelpers.sol ... no rules
+  helpers/SeaportRouter.sol ... 3 rewrite(s)
+  helpers/TransferHelper.sol ... 2 rewrite(s)
+  helpers/navigator/SeaportNavigator.sol ... 3 rewrite(s)
+  helpers/navigator/lib/CriteriaHelper.sol ... no rules
+  helpers/navigator/lib/CriteriaHelperLib.sol ... 6 rewrite(s)
+  helpers/navigator/lib/ExecutionsHelper.sol ... no rules
+  helpers/navigator/lib/FulfillmentsHelper.sol ... no rules
+  helpers/navigator/lib/HelperInterface.sol ... no rules
+  helpers/navigator/lib/HelperItemLib.sol ... 2 rewrite(s)
+  helpers/navigator/lib/MerkleLib.sol ... 11 rewrite(s)
+  helpers/navigator/lib/NavigatorAdvancedOrderLib.sol ... 9 rewrite(s)
+  helpers/navigator/lib/NavigatorContextLib.sol ... no rules
+  helpers/navigator/lib/NavigatorCriteriaResolverLib.sol ... no rules
+  helpers/navigator/lib/NavigatorDetailsLib.sol ... no rules
+  helpers/navigator/lib/NavigatorExecutionsLib.sol ... no rules
+  helpers/navigator/lib/NavigatorFulfillmentsLib.sol ... no rules
+  helpers/navigator/lib/NavigatorRequestValidatorLib.sol ... 1 rewrite(s)
+  helpers/navigator/lib/NavigatorSeaportValidatorLib.sol ... 1 rewrite(s)
+  helpers/navigator/lib/NavigatorSuggestedActionLib.sol ... 12 rewrite(s)
+  helpers/navigator/lib/OrderAvailabilityLib.sol ... 2 rewrite(s)
+  helpers/navigator/lib/OrderDetailsHelper.sol ... no rules
+  helpers/navigator/lib/OrderStructureLib.sol ... 9 rewrite(s)
+  helpers/navigator/lib/RequestValidator.sol ... no rules
+  helpers/navigator/lib/SeaportNavigatorInterface.sol ... no rules
+  helpers/navigator/lib/SeaportNavigatorTypes.sol ... no rules
+  helpers/navigator/lib/SuggestedActionHelper.sol ... no rules
+  helpers/navigator/lib/ValidatorHelper.sol ... no rules
+  helpers/order-validator/SeaportValidator.sol ... 5 rewrite(s)
+  helpers/order-validator/lib/ConsiderationTypeHashes.sol ... 3 rewrite(s)
+  helpers/order-validator/lib/ErrorsAndWarnings.sol ... 6 rewrite(s)
+  helpers/order-validator/lib/Murky.sol ... skipped (Cannot read properties of undefined (reading 'nodeType'))
+  helpers/order-validator/lib/ReadOnlyOrderValidator.sol ... no rules
+  helpers/order-validator/lib/SafeStaticCall.sol ... no rules
+  helpers/order-validator/lib/SeaportValidatorHelper.sol ... 8 rewrite(s)
+  helpers/order-validator/lib/SeaportValidatorInterface.sol ... no rules
+  helpers/order-validator/lib/SeaportValidatorTypes.sol ... 1 rewrite(s)
+  interfaces/ImmutableCreate2FactoryInterface.sol ... no rules
+  interfaces/ZoneInteractionErrors.sol ... no rules
+  interfaces/ZoneInterface.sol ... no rules
+  zones/PausableZone.sol ... 1 rewrite(s)
+  zones/PausableZoneController.sol ... no rules
+  zones/interfaces/PausableZoneControllerInterface.sol ... no rules
+  zones/interfaces/PausableZoneEventsAndErrors.sol ... no rules
+  zones/interfaces/PausableZoneInterface.sol ... no rules
+
+══════════════════════════════════
+            SUMMARY
+══════════════════════════════════
+Files:        20 optimised / 48 total
+  Skipped:    1  (0 unresolved imports, 1 compile errors, 0 verify-failed)
+Contracts:    19 had at least one rule applied
+Rewrites:     86 total
+
+Rules applied (rewrites):
+  avoid-zero-init          26
+  pre-increment            26
+  unchecked                16
+  const-folding            8
+  payable-constructor      8
+  demorgan                 1
+  cache-array-length       1
+
+Layout safety (skipped): 18 contracts, 0 structs
+
+Compile errors (1/1) — file found but solc rejected it:
+  - helpers/order-validator/lib/Murky.sol
+      Cannot read properties of undefined (reading 'nodeType')
+
+Report saved: /home/mfav/gasopt-case-study/results/seaport/report.json
+  NOTE: counts are source rewrites applied, NOT bytes or gas. Measure gas with: forge snapshot --diff
+
+[WARNING] Review unchecked blocks and custom errors before deploying.
+
+══════════════════════════════════
+     GAS VERIFICATION (Foundry)
+══════════════════════════════════
+[gas-benchmark] checking out pre-rewrite baseline (c6223c33eeb0) into a temporary worktree...
+Preparing worktree (detached HEAD c6223c3)
+[gas-benchmark] initializing submodules in the temporary worktree (reusing the main checkout's cache)...
+[gas-benchmark] generating seeded baseline (FOUNDRY_FUZZ_SEED=42) from the pre-rewrite tree...
+[gas-benchmark] 1 failing test(s) detected (setUp) — retrying with them skipped...
+[ERROR] --gas-report failed: gas-benchmark: 'forge snapshot' failed on the pre-rewrite tree (/tmp/gasopt-original-192871-1784148368676) even after skipping 1 failing test(s) (setUp): Command failed: forge snapshot --no-match-test setUp
+GASOPT-EXIT=1
+=== STEP 2: RQ5 2x2 factorial (runs=200) ===
+FACTORIAL-EXIT=0
+FACTORIAL-EXIT=0

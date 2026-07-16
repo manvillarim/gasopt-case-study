@@ -16,9 +16,32 @@ under `results/<protocol>/`. Nothing is hand-entered. A protocol with no measure
 - `rq5.log`     — factorial harness log.
 
 ## Tool + reproducibility
-- gasopt commit for all runs: recorded in `results/TOOL-COMMIT.txt` and each `run.log`.
-- forge 1.7.1, node 22, python 3.14 (pandas 2.3.3, matplotlib 3.10.7).
-- All gas runs use `--gas-seed 42` and, for the factorial, `FOUNDRY_FUZZ_SEED=42`.
+- gasopt commit per protocol: recorded in each `manifest.json` entry (`gasopt_commit`) and each
+  `run.log`. Six subjects used `3534bf2` (the multi-version/via-IR build); **Seaport required
+  `751da96`**, which fixes the `evm_version` bug that build exposed (see `tool-bugs.md` Bug 6).
+- **This run was reproduced on a 31 GiB / 20-core machine (`mfav`), forge 1.7.1** (installed via
+  `foundryup -i 1.7.1` to match the earlier `manoel` machine and remove a forge-version confound;
+  the box shipped with 1.2.3). node 22, python 3.14 (venv in `analysis/.venv`, pandas 2.3.3,
+  matplotlib 3.10.7).
+- Protocol sources are checked out pristine into each `<protocol>/` dir; a per-protocol git
+  baseline is created by `analysis/setup_baseline.sh` (fresh `git init` of the pristine source,
+  deps committed as plain files) so gasopt's `--gas-report` worktree and the RQ5 factorial work
+  offline. `pre_rewrite_ref` in each `manifest.json` entry is that baseline commit.
+- All gas runs use `--gas-seed 42`; the factorial uses `FOUNDRY_FUZZ_SEED=42`. The factorial
+  extracts per-contract DEPLOYMENT gas (compile-time, fuzz-independent), so it runs at a lowered
+  `FOUNDRY_FUZZ_RUNS` for speed without affecting any RQ5 number.
+
+## Final measured status (7 in-study subjects)
+- **RQ1/RQ2 (rewrite):** all 7 ran end-to-end, 709 rewrites, 14/24 default rules. Seaport only
+  after the `751da96` fix.
+- **RQ3/RQ4 (gas.json):** aave, core, core-v3, morpho, openzeppelin (library-embedded), v4 — all
+  deterministic, **0 `skippedAfterRewriteOnly`**. Seaport not gas-measurable (its suite deploys
+  production contracts only via `vm.getCode` from an infeasible via-IR build).
+- **RQ5 factorial:** full 2x2 for morpho, openzeppelin, v4; A/C only for aave, core, core-v3
+  (their via-IR cells OOM at 31 GiB, or stack-too-deep for Gearbox — a project property, not a
+  gasopt regression). v4 project-default gas.json OOMs; measured at runs=200 instead.
+- Helper scripts added this run: `analysis/setup_baseline.sh`, `analysis/run_protocol.sh`,
+  `analysis/rewrite_then_factorial.sh`, `analysis/mem_watchdog.sh`.
 
 ## Standing methodology decisions
 1. **Target = production dir only** (`src/` or `contracts/`), never the whole repo. Test/mock/

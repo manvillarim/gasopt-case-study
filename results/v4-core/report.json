@@ -1,7 +1,7 @@
 {
   "tool": "solidity-gas-optimizer",
-  "generatedAt": "2026-07-15T10:10:49.185Z",
-  "target": "/home/manoel/projeto/case-study-tool/v4-core/src",
+  "generatedAt": "2026-07-15T21:24:51.844Z",
+  "target": "/home/mfav/gasopt-case-study/v4-core/src",
   "dryRun": false,
   "closedWorld": false,
   "verify": true,

@@ -1,0 +1,233 @@
+===== aave-v3-origin rewrite+factorial  Wed Jul 15 08:56:54 PM UTC 2026 =====
+gasopt commit  : 751da9620a2ecf95c77f7b3e7d74fda3f6c85eaf
+pre_rewrite_ref: 034ccbe686b5a8434479f1deaf666043856a1418
+note           : gas.json already valid; re-applying rewrite ONLY to enable the factorial
+=== STEP 1: gasopt --report (rewrite tree; no gas benchmark) ===
+[INFO] Remappings: 9 entries from /home/mfav/gasopt-case-study/aave-v3-origin
+[INFO] Using project compiler from foundry.toml: 0.8.27
+[INFO] Using evm_version from foundry.toml: shanghai
+[INFO] Scanning: aave-v3-origin/src
+[INFO] Excluding: mocks
+[INFO] Found 186 .sol file(s)
+
+  contracts/dependencies/chainlink/AggregatorInterface.sol ... no rules
+  contracts/dependencies/gnosis/contracts/GPv2SafeERC20.sol ... no rules
+  contracts/dependencies/openzeppelin/contracts/AccessControl.sol ... 1 rewrite(s)
+  contracts/dependencies/openzeppelin/contracts/Address.sol ... no rules
+  contracts/dependencies/openzeppelin/contracts/Context.sol ... no rules
+  contracts/dependencies/openzeppelin/contracts/ERC165.sol ... no rules
+  contracts/dependencies/openzeppelin/contracts/IAccessControl.sol ... no rules
+  contracts/dependencies/openzeppelin/contracts/IERC165.sol ... no rules
+  contracts/dependencies/openzeppelin/contracts/Ownable.sol ... 2 rewrite(s)
+  contracts/dependencies/openzeppelin/contracts/Strings.sol ... 1 rewrite(s)
+  contracts/dependencies/openzeppelin/upgradeability/AdminUpgradeabilityProxy.sol ... no rules
+  contracts/dependencies/openzeppelin/upgradeability/BaseAdminUpgradeabilityProxy.sol ... no rules
+  contracts/dependencies/openzeppelin/upgradeability/BaseUpgradeabilityProxy.sol ... no rules
+  contracts/dependencies/openzeppelin/upgradeability/InitializableAdminUpgradeabilityProxy.sol ... no rules
+  contracts/dependencies/openzeppelin/upgradeability/InitializableUpgradeabilityProxy.sol ... no rules
+  contracts/dependencies/openzeppelin/upgradeability/Proxy.sol ... no rules
+  contracts/dependencies/openzeppelin/upgradeability/UpgradeabilityProxy.sol ... no rules
+  contracts/dependencies/weth/WETH9.sol ... 2 rewrite(s)
+  contracts/extensions/stata-token/ERC20AaveLMUpgradeable.sol ... 8 rewrite(s)
+  contracts/extensions/stata-token/ERC4626StataTokenUpgradeable.sol ... 1 rewrite(s)
+  contracts/extensions/stata-token/StataTokenFactory.sol ... 3 rewrite(s)
+  contracts/extensions/stata-token/StataTokenV2.sol ... 1 rewrite(s)
+  contracts/extensions/stata-token/interfaces/IAToken.sol ... no rules
+  contracts/extensions/stata-token/interfaces/IERC20AaveLM.sol ... no rules
+  contracts/extensions/stata-token/interfaces/IERC4626StataToken.sol ... no rules
+  contracts/extensions/stata-token/interfaces/IStataTokenFactory.sol ... no rules
+  contracts/extensions/stata-token/interfaces/IStataTokenV2.sol ... no rules
+  contracts/extensions/v3-config-engine/AaveV3ConfigEngine.sol ... 6 rewrite(s)
+  contracts/extensions/v3-config-engine/AaveV3Payload.sol ... no rules
+  contracts/extensions/v3-config-engine/EngineFlags.sol ... 1 rewrite(s)
+  contracts/extensions/v3-config-engine/IAaveV3ConfigEngine.sol ... no rules
+  contracts/extensions/v3-config-engine/libraries/BorrowEngine.sol ... 4 rewrite(s)
+  contracts/extensions/v3-config-engine/libraries/CapsEngine.sol ... 3 rewrite(s)
+  contracts/extensions/v3-config-engine/libraries/CollateralEngine.sol ... 5 rewrite(s)
+  contracts/extensions/v3-config-engine/libraries/EModeEngine.sol ... 12 rewrite(s)
+  contracts/extensions/v3-config-engine/libraries/ListingEngine.sol ... 6 rewrite(s)
+  contracts/extensions/v3-config-engine/libraries/PriceFeedEngine.sol ... 6 rewrite(s)
+  contracts/extensions/v3-config-engine/libraries/RateEngine.sol ... 5 rewrite(s)
+  contracts/helpers/AaveProtocolDataProvider.sol ... 5 rewrite(s)
+  contracts/helpers/L2Encoder.sol ... 1 rewrite(s)
+  contracts/helpers/LiquidationDataProvider.sol ... 2 rewrite(s)
+  contracts/helpers/UiIncentiveDataProviderV3.sol ... 8 rewrite(s)
+  contracts/helpers/UiPoolDataProviderV3.sol ... 12 rewrite(s)
+  contracts/helpers/WalletBalanceProvider.sol ... 8 rewrite(s)
+  contracts/helpers/WrappedTokenGatewayV3.sol ... 4 rewrite(s)
+  contracts/helpers/interfaces/IERC20DetailedBytes.sol ... no rules
+  contracts/helpers/interfaces/ILiquidationDataProvider.sol ... no rules
+  contracts/helpers/interfaces/IUiIncentiveDataProviderV3.sol ... no rules
+  contracts/helpers/interfaces/IUiPoolDataProviderV3.sol ... no rules
+  contracts/helpers/interfaces/IWETH.sol ... no rules
+  contracts/helpers/interfaces/IWrappedTokenGatewayV3.sol ... no rules
+  contracts/instances/ATokenInstance.sol ... 1 rewrite(s)
+  contracts/instances/ATokenWithDelegationInstance.sol ... 1 rewrite(s)
+  contracts/instances/L2PoolInstance.sol ... 1 rewrite(s)
+  contracts/instances/PoolConfiguratorInstance.sol ... no rules
+  contracts/instances/PoolInstance.sol ... 1 rewrite(s)
+  contracts/instances/VariableDebtTokenInstance.sol ... 1 rewrite(s)
+  contracts/instances/VariableDebtTokenMainnetInstanceGHO.sol ... 1 rewrite(s)
+  contracts/interfaces/IACLManager.sol ... no rules
+  contracts/interfaces/IAToken.sol ... no rules
+  contracts/interfaces/IATokenWithDelegation.sol ... no rules
+  contracts/interfaces/IAaveIncentivesController.sol ... no rules
+  contracts/interfaces/IAaveOracle.sol ... no rules
+  contracts/interfaces/ICreditDelegationToken.sol ... no rules
+  contracts/interfaces/IDefaultInterestRateStrategyV2.sol ... no rules
+  contracts/interfaces/IDelegationToken.sol ... no rules
+  contracts/interfaces/IERC20WithPermit.sol ... no rules
+  contracts/interfaces/IInitializableAToken.sol ... no rules
+  contracts/interfaces/IInitializableDebtToken.sol ... no rules
+  contracts/interfaces/IL2Pool.sol ... no rules
+  contracts/interfaces/IPool.sol ... no rules
+  contracts/interfaces/IPoolAddressesProvider.sol ... no rules
+  contracts/interfaces/IPoolAddressesProviderRegistry.sol ... no rules
+  contracts/interfaces/IPoolConfigurator.sol ... no rules
+  contracts/interfaces/IPoolDataProvider.sol ... no rules
+  contracts/interfaces/IPriceOracle.sol ... no rules
+  contracts/interfaces/IPriceOracleGetter.sol ... no rules
+  contracts/interfaces/IReserveInterestRateStrategy.sol ... no rules
+  contracts/interfaces/IScaledBalanceToken.sol ... no rules
+  contracts/interfaces/IVariableDebtToken.sol ... no rules
+  contracts/misc/AaveOracle.sol ... 5 rewrite(s)
+  contracts/misc/DefaultReserveInterestRateStrategyV2.sol ... no rules
+  contracts/misc/EmptyImplementation.sol ... no rules
+  contracts/misc/aave-upgradeability/BaseImmutableAdminUpgradeabilityProxy.sol ... 2 rewrite(s)
+  contracts/misc/aave-upgradeability/InitializableImmutableAdminUpgradeabilityProxy.sol ... 1 rewrite(s)
+  contracts/misc/aave-upgradeability/VersionedInitializable.sol ... 2 rewrite(s)
+  contracts/misc/flashloan/base/FlashLoanReceiverBase.sol ... no rules
+  contracts/misc/flashloan/base/FlashLoanSimpleReceiverBase.sol ... no rules
+  contracts/misc/flashloan/interfaces/IFlashLoanReceiver.sol ... no rules
+  contracts/misc/flashloan/interfaces/IFlashLoanSimpleReceiver.sol ... no rules
+  contracts/protocol/configuration/ACLManager.sol ... no rules
+  contracts/protocol/configuration/PoolAddressesProvider.sol ... no rules
+  contracts/protocol/configuration/PoolAddressesProviderRegistry.sol ... 4 rewrite(s)
+  contracts/protocol/libraries/configuration/EModeConfiguration.sol ... no rules
+  contracts/protocol/libraries/configuration/ReserveConfiguration.sol ... no rules
+  contracts/protocol/libraries/configuration/UserConfiguration.sol ... no rules
+  contracts/protocol/libraries/helpers/Errors.sol ... no rules
+  contracts/protocol/libraries/helpers/TokenMath.sol ... no rules
+  contracts/protocol/libraries/logic/BorrowLogic.sol ... no rules
+  contracts/protocol/libraries/logic/CalldataLogic.sol ... no rules
+  contracts/protocol/libraries/logic/ConfiguratorLogic.sol ... no rules
+  contracts/protocol/libraries/logic/FlashLoanLogic.sol ... 4 rewrite(s)
+  contracts/protocol/libraries/logic/GenericLogic.sol ... 2 rewrite(s)
+  contracts/protocol/libraries/logic/LiquidationLogic.sol ... 2 rewrite(s)
+  contracts/protocol/libraries/logic/PoolLogic.sol ... 5 rewrite(s)
+  contracts/protocol/libraries/logic/ReserveLogic.sol ... no rules
+  contracts/protocol/libraries/logic/SupplyLogic.sol ... no rules
+  contracts/protocol/libraries/logic/ValidationLogic.sol ... 7 rewrite(s)
+  contracts/protocol/libraries/math/MathUtils.sol ... no rules
+  contracts/protocol/libraries/math/PercentageMath.sol ... no rules
+  contracts/protocol/libraries/math/WadRayMath.sol ... no rules
+  contracts/protocol/libraries/types/ConfiguratorInputTypes.sol ... no rules
+  contracts/protocol/libraries/types/DataTypes.sol ... no rules
+  contracts/protocol/pool/L2Pool.sol ... no rules
+  contracts/protocol/pool/Pool.sol ... 3 rewrite(s)
+  contracts/protocol/pool/PoolConfigurator.sol ... 6 rewrite(s)
+  contracts/protocol/pool/PoolStorage.sol ... no rules
+  contracts/protocol/tokenization/AToken.sol ... no rules
+  contracts/protocol/tokenization/ATokenWithDelegation.sol ... no rules
+  contracts/protocol/tokenization/VariableDebtToken.sol ... no rules
+  contracts/protocol/tokenization/base/DebtTokenBase.sol ... no rules
+  contracts/protocol/tokenization/base/DelegationMode.sol ... no rules
+  contracts/protocol/tokenization/base/EIP712Base.sol ... no rules
+  contracts/protocol/tokenization/base/IncentivizedERC20.sol ... no rules
+  contracts/protocol/tokenization/base/MintableIncentivizedERC20.sol ... no rules
+  contracts/protocol/tokenization/base/ScaledBalanceTokenBase.sol ... 2 rewrite(s)
+  contracts/protocol/tokenization/delegation/BaseDelegation.sol ... no rules
+  contracts/protocol/tokenization/delegation/interfaces/IBaseDelegation.sol ... no rules
+  contracts/rewards/EmissionManager.sol ... 6 rewrite(s)
+  contracts/rewards/RewardsController.sol ... 21 rewrite(s)
+  contracts/rewards/RewardsDistributor.sol ... 21 rewrite(s)
+  contracts/rewards/interfaces/IEmissionManager.sol ... no rules
+  contracts/rewards/interfaces/IPullRewardsTransferStrategy.sol ... no rules
+  contracts/rewards/interfaces/IRewardsController.sol ... no rules
+  contracts/rewards/interfaces/IRewardsDistributor.sol ... no rules
+  contracts/rewards/interfaces/IStakedToken.sol ... no rules
+  contracts/rewards/interfaces/IStakedTokenTransferStrategy.sol ... no rules
+  contracts/rewards/interfaces/ITransferStrategyBase.sol ... no rules
+  contracts/rewards/libraries/RewardsDataTypes.sol ... no rules
+  contracts/rewards/transfer-strategies/PullRewardsTransferStrategy.sol ... no rules
+  contracts/rewards/transfer-strategies/StakedTokenTransferStrategy.sol ... 2 rewrite(s)
+  contracts/rewards/transfer-strategies/TransferStrategyBase.sol ... no rules
+  contracts/treasury/Collector.sol ... 3 rewrite(s)
+  contracts/treasury/ICollector.sol ... no rules
+  deployments/contracts/LibraryReportStorage.sol ... no rules
+  deployments/contracts/MarketReportStorage.sol ... no rules
+  deployments/contracts/procedures/AaveV3DefaultRateStrategyProcedure.sol ... no rules
+  deployments/contracts/procedures/AaveV3GettersProcedureOne.sol ... no rules
+  deployments/contracts/procedures/AaveV3GettersProcedureTwo.sol ... no rules
+  deployments/contracts/procedures/AaveV3HelpersProcedureOne.sol ... no rules
+  deployments/contracts/procedures/AaveV3HelpersProcedureTwo.sol ... no rules
+  deployments/contracts/procedures/AaveV3IncentiveProcedure.sol ... no rules
+  deployments/contracts/procedures/AaveV3L2PoolProcedure.sol ... no rules
+  deployments/contracts/procedures/AaveV3MiscProcedure.sol ... no rules
+  deployments/contracts/procedures/AaveV3OracleProcedure.sol ... no rules
+  deployments/contracts/procedures/AaveV3PoolConfigProcedure.sol ... no rules
+  deployments/contracts/procedures/AaveV3PoolProcedure.sol ... no rules
+  deployments/contracts/procedures/AaveV3SetupProcedure.sol ... no rules
+  deployments/contracts/procedures/AaveV3TokensProcedure.sol ... no rules
+  deployments/contracts/procedures/AaveV3TreasuryProcedure.sol ... no rules
+  deployments/contracts/utilities/Create2Utils.sol ... 2 rewrite(s)
+  deployments/contracts/utilities/DeployUtils.sol ... no rules
+  deployments/contracts/utilities/FfiUtils.sol ... no rules
+  deployments/contracts/utilities/MarketReportUtils.sol ... no rules
+  deployments/contracts/utilities/MetadataReporter.sol ... no rules
+  deployments/inputs/DefaultMarketInput.sol ... no rules
+  deployments/inputs/MarketInput.sol ... no rules
+  deployments/interfaces/IErrors.sol ... no rules
+  deployments/interfaces/ILibraryReportStorage.sol ... no rules
+  deployments/interfaces/IMarketReportStorage.sol ... no rules
+  deployments/interfaces/IMarketReportTypes.sol ... no rules
+  deployments/interfaces/IMetadataReporter.sol ... no rules
+  deployments/interfaces/IPoolReport.sol ... no rules
+  deployments/projects/aave-v3-batched/AaveV3BatchOrchestration.sol ... no rules
+  deployments/projects/aave-v3-batched/batches/AaveV3GettersBatchOne.sol ... no rules
+  deployments/projects/aave-v3-batched/batches/AaveV3GettersBatchTwo.sol ... no rules
+  deployments/projects/aave-v3-batched/batches/AaveV3HelpersBatchOne.sol ... no rules
+  deployments/projects/aave-v3-batched/batches/AaveV3HelpersBatchTwo.sol ... no rules
+  deployments/projects/aave-v3-batched/batches/AaveV3L2PoolBatch.sol ... no rules
+  deployments/projects/aave-v3-batched/batches/AaveV3MiscBatch.sol ... no rules
+  deployments/projects/aave-v3-batched/batches/AaveV3PeripheryBatch.sol ... no rules
+  deployments/projects/aave-v3-batched/batches/AaveV3PoolBatch.sol ... no rules
+  deployments/projects/aave-v3-batched/batches/AaveV3SetupBatch.sol ... no rules
+  deployments/projects/aave-v3-batched/batches/AaveV3TokensBatch.sol ... no rules
+  deployments/projects/aave-v3-libraries/AaveV3LibrariesBatch1.sol ... no rules
+  deployments/projects/aave-v3-libraries/AaveV3LibrariesBatch2.sol ... no rules
+
+[INFO] Fixing test-suite assertions for 49 converted require message(s)...
+  [FIX] /home/mfav/gasopt-case-study/aave-v3-origin/tests/extensions/v3-config-engine/AaveV3ConfigEngineTest.t.sol: 3 expectRevert assertion(s) updated to custom-error selector(s)
+  [FIX] /home/mfav/gasopt-case-study/aave-v3-origin/tests/helpers/WrappedTokenGateway.t.sol: 1 expectRevert assertion(s) updated to custom-error selector(s)
+  [FIX] /home/mfav/gasopt-case-study/aave-v3-origin/tests/protocol/pool/Pool.t.sol: 1 expectRevert assertion(s) updated to custom-error selector(s)
+  [FIX] /home/mfav/gasopt-case-study/aave-v3-origin/tests/rewards/RewardsController.t.sol: 1 expectRevert assertion(s) updated to custom-error selector(s)
+[INFO] Test suite: 6 expectRevert assertion(s) fixed across 4 file(s)
+
+══════════════════════════════════
+            SUMMARY
+══════════════════════════════════
+Files:        66 optimised / 186 total
+  Skipped:    0  (0 unresolved imports, 0 compile errors, 0 verify-failed)
+Contracts:    49 had at least one rule applied
+Rewrites:     213 total
+
+Rules applied (rewrites):
+  avoid-zero-init          69
+  pre-increment            61
+  require-error            41
+  payable-constructor      23
+  unchecked                8
+  delete-storage           6
+  demorgan                 2
+  cache-array-length       1
+  avoid-zero-init-state    1
+  calldata-params          1
+
+Layout safety (skipped): 151 contracts, 92 structs
+
+Report saved: /home/mfav/gasopt-case-study/results/aave-v3-origin/report.json
+  NOTE: counts are source rewrites applied, NOT bytes or gas. Measure gas with: forge snapshot --diff
+
+[WARNING] Review unchecked blocks and custom errors before deploying.
+GASOPT-EXIT=0

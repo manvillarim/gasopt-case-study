@@ -1,0 +1,1229 @@
+===== gasopt case-study run provenance (RE-RUN with node_modules) =====
+gasopt commit : 3534bf2408df633d61e54c4fdd486d046088fb38
+forge         : forge Version: 1.7.1
+protocol      : openzeppelin-contracts
+pre_rewrite_ref: b60a4b976f0804afbbfb2b957ab43681417261d8
+note          : npm ci installed hardhat-predeploy (2 predeploy test suites needed it)
+date          : Wed Jul 15 06:44:49 PM UTC 2026
+=======================================================================
+[INFO] Remappings: 1 entries from /home/mfav/gasopt-case-study/openzeppelin-contracts
+[INFO] Using project compiler from foundry.toml: 0.8.31
+[INFO] Using evm_version from foundry.toml: osaka
+[INFO] Scanning: openzeppelin-contracts/contracts
+[INFO] Excluding: mocks
+[INFO] Found 248 .sol file(s)
+
+  access/AccessControl.sol ... 1 rewrite(s)
+  access/IAccessControl.sol ... no rules
+  access/Ownable.sol ... no rules
+  access/Ownable2Step.sol ... no rules
+  access/extensions/AccessControlDefaultAdminRules.sol ... 1 rewrite(s)
+  access/extensions/AccessControlEnumerable.sol ... no rules
+  access/extensions/IAccessControlDefaultAdminRules.sol ... no rules
+  access/extensions/IAccessControlEnumerable.sol ... no rules
+  access/manager/AccessManaged.sol ... 1 rewrite(s)
+  access/manager/AccessManager.sol ... 4 rewrite(s)
+  access/manager/AuthorityUtils.sol ... no rules
+  access/manager/IAccessManaged.sol ... no rules
+  access/manager/IAccessManager.sol ... no rules
+  access/manager/IAuthority.sol ... no rules
+  account/Account.sol ... no rules
+  account/extensions/draft-AccountERC7579.sol ... no rules
+  account/extensions/draft-AccountERC7579Hooked.sol ... 1 rewrite(s)
+  account/extensions/draft-ERC7821.sol ... no rules
+  account/paymaster/Paymaster.sol ... no rules
+  account/paymaster/extensions/PaymasterERC20.sol ... no rules
+  account/paymaster/extensions/PaymasterERC20Guarantor.sol ... no rules
+  account/paymaster/extensions/PaymasterERC721Owner.sol ... no rules
+  account/paymaster/extensions/PaymasterSigner.sol ... no rules
+  account/utils/EIP7702Utils.sol ... no rules
+  account/utils/ERC4337Utils.sol ... no rules
+  account/utils/draft-ERC7579Utils.sol ... 1 rewrite(s)
+  crosschain/CrosschainLinked.sol ... 2 rewrite(s)
+  crosschain/CrosschainRemoteExecutor.sol ... no rules
+  crosschain/ERC7786Recipient.sol ... no rules
+  crosschain/bridges/BridgeERC1155.sol ... no rules
+  crosschain/bridges/BridgeERC20.sol ... no rules
+  crosschain/bridges/BridgeERC721.sol ... no rules
+  crosschain/bridges/BridgeERC7802.sol ... no rules
+  crosschain/bridges/abstract/BridgeFungible.sol ... no rules
+  crosschain/bridges/abstract/BridgeMultiToken.sol ... no rules
+  crosschain/bridges/abstract/BridgeNonFungible.sol ... no rules
+  finance/VestingWallet.sol ... no rules
+  finance/VestingWalletCliff.sol ... no rules
+  governance/Governor.sol ... 5 rewrite(s)
+  governance/IGovernor.sol ... no rules
+  governance/TimelockController.sol ... 9 rewrite(s)
+  governance/extensions/GovernorCountingFractional.sol ... 4 rewrite(s)
+  governance/extensions/GovernorCountingOverridable.sol ... no rules
+  governance/extensions/GovernorCountingSimple.sol ... no rules
+  governance/extensions/GovernorCrosschain.sol ... no rules
+  governance/extensions/GovernorNoncesKeyed.sol ... no rules
+  governance/extensions/GovernorPreventLateQuorum.sol ... no rules
+  governance/extensions/GovernorProposalGuardian.sol ... no rules
+  governance/extensions/GovernorSequentialProposalId.sol ... no rules
+  governance/extensions/GovernorSettings.sol ... no rules
+  governance/extensions/GovernorStorage.sol ... no rules
+  governance/extensions/GovernorSuperQuorum.sol ... no rules
+  governance/extensions/GovernorTimelockAccess.sol ... 10 rewrite(s)
+  governance/extensions/GovernorTimelockCompound.sol ... 6 rewrite(s)
+  governance/extensions/GovernorTimelockControl.sol ... no rules
+  governance/extensions/GovernorVotes.sol ... no rules
+  governance/extensions/GovernorVotesQuorumFraction.sol ... no rules
+  governance/extensions/GovernorVotesSuperQuorumFraction.sol ... no rules
+  governance/utils/IVotes.sol ... no rules
+  governance/utils/Votes.sol ... no rules
+  governance/utils/VotesExtended.sol ... no rules
+  interfaces/IERC1155.sol ... no rules
+  interfaces/IERC1155MetadataURI.sol ... no rules
+  interfaces/IERC1155Receiver.sol ... no rules
+  interfaces/IERC1271.sol ... no rules
+  interfaces/IERC1363.sol ... no rules
+  interfaces/IERC1363Receiver.sol ... no rules
+  interfaces/IERC1363Spender.sol ... no rules
+  interfaces/IERC165.sol ... no rules
+  interfaces/IERC1820Implementer.sol ... no rules
+  interfaces/IERC1820Registry.sol ... no rules
+  interfaces/IERC1967.sol ... no rules
+  interfaces/IERC20.sol ... no rules
+  interfaces/IERC20Metadata.sol ... no rules
+  interfaces/IERC2309.sol ... no rules
+  interfaces/IERC2612.sol ... no rules
+  interfaces/IERC2981.sol ... no rules
+  interfaces/IERC3156.sol ... no rules
+  interfaces/IERC3156FlashBorrower.sol ... no rules
+  interfaces/IERC3156FlashLender.sol ... no rules
+  interfaces/IERC4337.sol ... no rules
+  interfaces/IERC4626.sol ... no rules
+  interfaces/IERC4906.sol ... no rules
+  interfaces/IERC5267.sol ... no rules
+  interfaces/IERC5313.sol ... no rules
+  interfaces/IERC5805.sol ... no rules
+  interfaces/IERC6372.sol ... no rules
+  interfaces/IERC6909.sol ... no rules
+  interfaces/IERC721.sol ... no rules
+  interfaces/IERC721Enumerable.sol ... no rules
+  interfaces/IERC721Metadata.sol ... no rules
+  interfaces/IERC721Receiver.sol ... no rules
+  interfaces/IERC7751.sol ... no rules
+  interfaces/IERC777.sol ... no rules
+  interfaces/IERC777Recipient.sol ... no rules
+  interfaces/IERC777Sender.sol ... no rules
+  interfaces/IERC7913.sol ... no rules
+  interfaces/draft-IERC1822.sol ... no rules
+  interfaces/draft-IERC3009.sol ... no rules
+  interfaces/draft-IERC6093.sol ... no rules
+  interfaces/draft-IERC7579.sol ... no rules
+  interfaces/draft-IERC7674.sol ... no rules
+  interfaces/draft-IERC7786.sol ... no rules
+  interfaces/draft-IERC7802.sol ... no rules
+  interfaces/draft-IERC7821.sol ... no rules
+  metatx/ERC2771Context.sol ... no rules
+  metatx/ERC2771Forwarder.sol ... 2 rewrite(s)
+  proxy/Clones.sol ... no rules
+  proxy/ERC1967/ERC1967Clones.sol ... no rules
+  proxy/ERC1967/ERC1967Proxy.sol ... no rules
+  proxy/ERC1967/ERC1967Utils.sol ... no rules
+  proxy/Proxy.sol ... no rules
+  proxy/beacon/BeaconProxy.sol ... no rules
+  proxy/beacon/IBeacon.sol ... no rules
+  proxy/beacon/UpgradeableBeacon.sol ... 1 rewrite(s)
+  proxy/transparent/ProxyAdmin.sol ... 1 rewrite(s)
+  proxy/transparent/TransparentUpgradeableProxy.sol ... no rules
+  proxy/utils/Initializable.sol ... no rules
+  proxy/utils/UUPSUpgradeable.sol ... no rules
+  token/ERC1155/ERC1155.sol ... 3 rewrite(s)
+  token/ERC1155/IERC1155.sol ... no rules
+  token/ERC1155/IERC1155Receiver.sol ... no rules
+  token/ERC1155/extensions/ERC1155Burnable.sol ... no rules
+  token/ERC1155/extensions/ERC1155Crosschain.sol ... no rules
+  token/ERC1155/extensions/ERC1155Pausable.sol ... no rules
+  token/ERC1155/extensions/ERC1155Supply.sol ... 4 rewrite(s)
+  token/ERC1155/extensions/ERC1155URIStorage.sol ... no rules
+  token/ERC1155/extensions/IERC1155MetadataURI.sol ... no rules
+  token/ERC1155/utils/ERC1155Holder.sol ... no rules
+  token/ERC1155/utils/ERC1155Utils.sol ... no rules
+  token/ERC20/ERC20.sol ... no rules
+  token/ERC20/IERC20.sol ... no rules
+  token/ERC20/extensions/ERC1363.sol ... no rules
+  token/ERC20/extensions/ERC20Burnable.sol ... no rules
+  token/ERC20/extensions/ERC20Capped.sol ... no rules
+  token/ERC20/extensions/ERC20Crosschain.sol ... no rules
+  token/ERC20/extensions/ERC20FlashMint.sol ... no rules
+  token/ERC20/extensions/ERC20Pausable.sol ... no rules
+  token/ERC20/extensions/ERC20Permit.sol ... no rules
+  token/ERC20/extensions/ERC20TransferAuthorization.sol ... no rules
+  token/ERC20/extensions/ERC20Votes.sol ... no rules
+  token/ERC20/extensions/ERC20Wrapper.sol ... no rules
+  token/ERC20/extensions/ERC4626.sol ... no rules
+  token/ERC20/extensions/IERC20Metadata.sol ... no rules
+  token/ERC20/extensions/IERC20Permit.sol ... no rules
+  token/ERC20/extensions/draft-ERC20Bridgeable.sol ... no rules
+  token/ERC20/extensions/draft-ERC20TemporaryApproval.sol ... no rules
+  token/ERC20/extensions/draft-ERC3009.sol ... no rules
+  token/ERC20/utils/ERC1363Utils.sol ... no rules
+  token/ERC20/utils/SafeERC20.sol ... no rules
+  token/ERC6909/ERC6909.sol ... no rules
+  token/ERC6909/extensions/ERC6909ContentURI.sol ... no rules
+  token/ERC6909/extensions/ERC6909Metadata.sol ... no rules
+  token/ERC6909/extensions/ERC6909TokenSupply.sol ... no rules
+  token/ERC721/ERC721.sol ... no rules
+  token/ERC721/IERC721.sol ... no rules
+  token/ERC721/IERC721Receiver.sol ... no rules
+  token/ERC721/extensions/ERC721Burnable.sol ... no rules
+  token/ERC721/extensions/ERC721Consecutive.sol ... no rules
+  token/ERC721/extensions/ERC721Crosschain.sol ... no rules
+  token/ERC721/extensions/ERC721Enumerable.sol ... no rules
+  token/ERC721/extensions/ERC721Pausable.sol ... no rules
+  token/ERC721/extensions/ERC721Royalty.sol ... no rules
+  token/ERC721/extensions/ERC721URIStorage.sol ... no rules
+  token/ERC721/extensions/ERC721Votes.sol ... no rules
+  token/ERC721/extensions/ERC721Wrapper.sol ... 4 rewrite(s)
+  token/ERC721/extensions/IERC721Enumerable.sol ... no rules
+  token/ERC721/extensions/IERC721Metadata.sol ... no rules
+  token/ERC721/utils/ERC721Holder.sol ... no rules
+  token/ERC721/utils/ERC721Utils.sol ... no rules
+  token/common/ERC2981.sol ... no rules
+  utils/Address.sol ... no rules
+  utils/Arrays.sol ... 5 rewrite(s)
+  utils/Base58.sol ... no rules
+  utils/Base64.sol ... no rules
+  utils/BlockHeader.sol ... no rules
+  utils/Blockhash.sol ... no rules
+  utils/Bytes.sol ... 6 rewrite(s)
+  utils/CAIP10.sol ... no rules
+  utils/CAIP2.sol ... no rules
+  utils/Calldata.sol ... no rules
+  utils/Comparators.sol ... no rules
+  utils/Context.sol ... no rules
+  utils/Create2.sol ... no rules
+  utils/Create3.sol ... no rules
+  utils/ERC6372Utils.sol ... no rules
+  utils/Errors.sol ... no rules
+  utils/LowLevelCall.sol ... no rules
+  utils/Memory.sol ... no rules
+  utils/Multicall.sol ... 2 rewrite(s)
+  utils/Nonces.sol ... no rules
+  utils/NoncesKeyed.sol ... no rules
+  utils/Packing.sol ... no rules
+  utils/Panic.sol ... no rules
+  utils/Pausable.sol ... 1 rewrite(s)
+  utils/RLP.sol ... no rules
+  utils/RateLimiter.sol ... no rules
+  utils/ReentrancyGuard.sol ... no rules
+  utils/ReentrancyGuardTransient.sol ... no rules
+  utils/RelayedCall.sol ... no rules
+  utils/ShortStrings.sol ... no rules
+  utils/SimulateCall.sol ... no rules
+  utils/SlotDerivation.sol ... no rules
+  utils/StorageSlot.sol ... no rules
+  utils/Strings.sol ... 8 rewrite(s)
+  utils/TransientSlot.sol ... no rules
+  utils/cryptography/ECDSA.sol ... no rules
+  utils/cryptography/EIP712.sol ... no rules
+  utils/cryptography/Hashes.sol ... no rules
+  utils/cryptography/MerkleProof.sol ... 28 rewrite(s)
+  utils/cryptography/MessageHashUtils.sol ... no rules
+  utils/cryptography/P256.sol ... 5 rewrite(s)
+  utils/cryptography/RSA.sol ... no rules
+  utils/cryptography/SignatureChecker.sol ... 5 rewrite(s)
+  utils/cryptography/TrieProof.sol ... 3 rewrite(s)
+  utils/cryptography/WebAuthn.sol ... no rules
+  utils/cryptography/draft-ERC7739Utils.sol ... 3 rewrite(s)
+  utils/cryptography/signers/AbstractSigner.sol ... no rules
+  utils/cryptography/signers/MultiSignerERC7913.sol ... 6 rewrite(s)
+  utils/cryptography/signers/MultiSignerERC7913Weighted.sol ... 4 rewrite(s)
+  utils/cryptography/signers/SignerECDSA.sol ... no rules
+  utils/cryptography/signers/SignerEIP7702.sol ... no rules
+  utils/cryptography/signers/SignerERC7913.sol ... no rules
+  utils/cryptography/signers/SignerP256.sol ... no rules
+  utils/cryptography/signers/SignerRSA.sol ... no rules
+  utils/cryptography/signers/SignerWebAuthn.sol ... no rules
+  utils/cryptography/signers/draft-ERC7739.sol ... no rules
+  utils/cryptography/verifiers/ERC7913P256Verifier.sol ... no rules
+  utils/cryptography/verifiers/ERC7913RSAVerifier.sol ... no rules
+  utils/cryptography/verifiers/ERC7913WebAuthnVerifier.sol ... no rules
+  utils/draft-InteroperableAddress.sol ... no rules
+  utils/introspection/ERC165.sol ... no rules
+  utils/introspection/ERC165Checker.sol ... 4 rewrite(s)
+  utils/introspection/IERC165.sol ... no rules
+  utils/math/Math.sol ... 15 rewrite(s)
+  utils/math/SafeCast.sol ... no rules
+  utils/math/SignedMath.sol ... no rules
+  utils/structs/Accumulators.sol ... no rules
+  utils/structs/BitMaps.sol ... no rules
+  utils/structs/Checkpoints.sol ... 4 rewrite(s)
+  utils/structs/CircularBuffer.sol ... 3 rewrite(s)
+  utils/structs/DoubleEndedQueue.sol ... 2 rewrite(s)
+  utils/structs/EnumerableMap.sol ... 2 rewrite(s)
+  utils/structs/EnumerableSet.sol ... 3 rewrite(s)
+  utils/structs/Heap.sol ... no rules
+  utils/structs/MerkleTree.sol ... 4 rewrite(s)
+  utils/types/Time.sol ... no rules
+  vendor/compound/ICompoundTimelock.sol ... no rules
+
+══════════════════════════════════
+            SUMMARY
+══════════════════════════════════
+Files:        39 optimised / 248 total
+  Skipped:    0  (0 unresolved imports, 0 compile errors, 0 verify-failed)
+Contracts:    38 had at least one rule applied
+Rewrites:     173 total
+
+Rules applied (rewrites):
+  avoid-zero-init          95
+  unchecked                34
+  const-folding            13
+  pre-increment            12
+  delete-storage           8
+  demorgan                 5
+  payable-constructor      5
+  const-folding-state      1
+
+Layout safety (skipped): 326 contracts, 64 structs
+
+Report saved: /home/mfav/gasopt-case-study/results/openzeppelin-contracts/report.json
+  NOTE: counts are source rewrites applied, NOT bytes or gas. Measure gas with: forge snapshot --diff
+
+[WARNING] Review unchecked blocks and custom errors before deploying.
+
+══════════════════════════════════
+     GAS VERIFICATION (Foundry)
+══════════════════════════════════
+[gas-benchmark] checking out pre-rewrite baseline (b60a4b976f08) into a temporary worktree...
+Preparing worktree (detached HEAD b60a4b9)
+[gas-benchmark] initializing submodules in the temporary worktree (reusing the main checkout's cache)...
+[gas-benchmark] linking node_modules into the temporary worktree (reusing the main checkout's install)...
+[gas-benchmark] generating seeded baseline (FOUNDRY_FUZZ_SEED=42) from the pre-rewrite tree...
+[gas-benchmark] generating seeded gas-report (deploy cost/size + per-function) from the pre-rewrite tree...
+[gas-benchmark] seeded diff against the rewritten tree (1/3)...
+[gas-benchmark] seeded gas-report against the rewritten tree (1/3)...
+[gas-benchmark] seeded diff against the rewritten tree (2/3)...
+[gas-benchmark] seeded gas-report against the rewritten tree (2/3)...
+[gas-benchmark] seeded diff against the rewritten tree (3/3)...
+[gas-benchmark] seeded gas-report against the rewritten tree (3/3)...
+
+No files changed, compilation skipped
+
+Ran 1 test for test/utils/Create2.t.sol:Create2Test
+[PASS] testSymbolicComputeAddressSpillage(bytes32,bytes32,address) (runs: 5000, μ: 1849, ~: 2166)
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 143.87ms (140.48ms CPU time)
+
+Ran 2 tests for test/utils/Create3.t.sol:Create3Test
+[PASS] testSymbolicComputeAddressSpillage(bytes32,address) (runs: 5000, μ: 1244, ~: 1416)
+[PASS] testSymbolicDeployMatchesComputeAddress(bytes32) (runs: 5000, μ: 69558, ~: 69558)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 575.23ms (575.09ms CPU time)
+
+Ran 5 tests for test/utils/Blockhash.t.sol:BlockhashTest
+[PASS] testFuzzFutureBlocks(uint256,uint256) (runs: 5000, μ: 6599, ~: 6652)
+[PASS] testFuzzHistoryBlocks(uint16,uint256,bytes32) (runs: 5000, μ: 32618, ~: 32532)
+[PASS] testFuzzRecentBlocks(uint8,uint64,bytes32) (runs: 5000, μ: 4493, ~: 4493)
+[PASS] testFuzzVeryOldBlocks(uint256,uint256) (runs: 5000, μ: 6821, ~: 6784)
+[PASS] testUnsupportedChainsReturnZeroWhenOutOfRange() (gas: 3952)
+Suite result: ok. 5 passed; 0 failed; 0 skipped; finished in 1.20s (1.20s CPU time)
+
+Ran 3 tests for test/utils/Base58.t.sol:Base58Test
+[PASS] testEncodeDecode(bytes) (runs: 5000, μ: 35499, ~: 19671)
+[PASS] testEncodeDecodeEmpty() (gas: 3794)
+[PASS] testEncodeDecodeZeros() (gas: 15350)
+Suite result: ok. 3 passed; 0 failed; 0 skipped; finished in 1.34s (1.34s CPU time)
+
+Ran 6 tests for test/proxy/Clones.t.sol:ClonesTest
+[PASS] testCloneDeterministicDirty(bytes32) (runs: 5000, μ: 89594, ~: 89594)
+[PASS] testCloneDirty() (gas: 89397)
+[PASS] testFetchCloneArgs(bytes,bytes32) (runs: 5000, μ: 110004, ~: 106485)
+[PASS] testPredictDeterministicAddressDirty(bytes32) (runs: 5000, μ: 1007, ~: 1007)
+[PASS] testSymbolicPredictDeterministicAddressSpillage(address,bytes32) (runs: 5000, μ: 1240, ~: 1416)
+[PASS] testSymbolicPredictDeterministicAddressWithImmutableArgsSpillage(address,bytes32,bytes) (runs: 5000, μ: 4555, ~: 4546)
+Suite result: ok. 6 passed; 0 failed; 0 skipped; finished in 1.35s (1.35s CPU time)
+
+Ran 13 tests for test/utils/SlotDerivation.t.sol:SlotDerivationTest
+[PASS] testDeriveArray(uint256,uint256) (runs: 5000, μ: 23574, ~: 23243)
+[PASS] testDeriveMappingBytes(bytes) (runs: 5000, μ: 1599, ~: 1188)
+[PASS] testDeriveMappingString(string) (runs: 5000, μ: 1472, ~: 1248)
+[PASS] testSymbolicDeriveMappingAddress(address) (runs: 5000, μ: 615, ~: 648)
+[PASS] testSymbolicDeriveMappingAddressDirty(bytes32) (runs: 5000, μ: 777, ~: 864)
+[PASS] testSymbolicDeriveMappingBoolean(bool) (runs: 5000, μ: 464, ~: 464)
+[PASS] testSymbolicDeriveMappingBooleanDirty(bytes32) (runs: 5000, μ: 758, ~: 864)
+[PASS] testSymbolicDeriveMappingBytes32(bytes32) (runs: 5000, μ: 748, ~: 864)
+[PASS] testSymbolicDeriveMappingBytes4(bytes4) (runs: 5000, μ: 495, ~: 495)
+[PASS] testSymbolicDeriveMappingInt256(int256) (runs: 5000, μ: 620, ~: 465)
+[PASS] testSymbolicDeriveMappingInt32(int32) (runs: 5000, μ: 618, ~: 514)
+[PASS] testSymbolicDeriveMappingUint256(uint256) (runs: 5000, μ: 541, ~: 421)
+[PASS] testSymbolicDeriveMappingUint32(uint32) (runs: 5000, μ: 630, ~: 630)
+Suite result: ok. 13 passed; 0 failed; 0 skipped; finished in 1.39s (1.39s CPU time)
+
+Ran 7 tests for test/utils/Memory.t.sol:MemoryTest
+[PASS] testAsSliceToBytes(bytes) (runs: 5000, μ: 4422, ~: 4409)
+[PASS] testEqual(bytes,uint256,uint256,bytes,uint256,uint256) (runs: 5000, μ: 6727, ~: 6862)
+[PASS] testGetSetFreeMemoryPointer(uint256) (runs: 5000, μ: 1077, ~: 1277)
+[PASS] testInvalidSliceOutOfBound() (gas: 1282)
+[PASS] testSlice(bytes,uint256) (runs: 5000, μ: 6158, ~: 6221)
+[PASS] testSlice(bytes,uint256,uint256) (runs: 5000, μ: 7047, ~: 7190)
+[PASS] testSymbolicEqual(bytes,bytes) (runs: 5000, μ: 2747, ~: 2610)
+Suite result: ok. 7 passed; 0 failed; 0 skipped; finished in 1.59s (1.59s CPU time)
+
+Ran 2 tests for test/utils/cryptography/MessageHashUtils.t.sol:MessageHashUtilsTest
+[PASS] testToDataWithIntendedValidatorHash(address,bytes) (runs: 5000, μ: 1992, ~: 1602)
+[PASS] testToDataWithIntendedValidatorHash(address,bytes32) (runs: 5000, μ: 1376, ~: 1416)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 312.51ms (312.33ms CPU time)
+
+Ran 2 tests for test/utils/Base64.t.sol:Base64Test
+[PASS] testEncode(bytes) (runs: 5000, μ: 18097, ~: 16105)
+[PASS] testEncodeURL(bytes) (runs: 5000, μ: 28591, ~: 24564)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 2.25s (2.24s CPU time)
+
+Ran 2 tests for test/governance/Governor.t.sol:GovernorInternalTest
+[PASS] testInvalidDescriptionForProposer(string,address,address) (runs: 5000, μ: 31631, ~: 31714)
+[PASS] testValidDescriptionForProposer(string,address,bool) (runs: 5000, μ: 15639, ~: 27874)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 2.37s (2.37s CPU time)
+
+Ran 3 tests for test/utils/NoncesKeyed.t.sol:NoncesKeyedTest
+[PASS] testSymbolicUseCheckedNonceLiveness(address,uint192) (runs: 5000, μ: 31789, ~: 31797)
+[PASS] testSymbolicUseNonce(address,uint192) (runs: 5000, μ: 30113, ~: 30118)
+[PASS] testUseCheckedNonce(address,uint192,uint64) (runs: 5000, μ: 33453, ~: 33550)
+Suite result: ok. 3 passed; 0 failed; 0 skipped; finished in 1.04s (1.04s CPU time)
+
+Ran 6 tests for test/utils/Strings.t.sol:StringsTest
+[PASS] testParse(uint256) (runs: 5000, μ: 15146, ~: 9606)
+[PASS] testParseChecksumHex(address) (runs: 5000, μ: 37103, ~: 37220)
+[PASS] testParseHex(uint256) (runs: 5000, μ: 17189, ~: 11106)
+[PASS] testParseSigned(int256) (runs: 5000, μ: 14685, ~: 7120)
+[PASS] testTryParseAddressExtendedEnd(address,uint256) (runs: 5000, μ: 12540, ~: 12605)
+[PASS] testTryParseHexUintExtendedEnd(string) (runs: 5000, μ: 1392, ~: 1248)
+Suite result: ok. 6 passed; 0 failed; 0 skipped; finished in 5.13s (5.13s CPU time)
+
+Ran 2 tests for test/utils/cryptography/P256.t.sol:P256Test
+[PASS] testRecover(bytes32,uint256) (runs: 512, μ: 512637, ~: 512881)
+[PASS] testVerify(bytes32,uint256) (runs: 512, μ: 269150, ~: 269408)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 8.51s (8.51s CPU time)
+
+Ran 4 tests for test/account/utils/draft-ERC7579Utils.t.sol:ERC7579UtilsTest
+[PASS] testDecodeBatch() (gas: 33258)
+[PASS] testExecuteBatchDecodeCorrectly() (gas: 303830)
+[PASS] testExecuteBatchDecodeDifferent() (gas: 66243)
+[PASS] testExecuteBatchDecodeEmpty() (gas: 68094)
+Suite result: ok. 4 passed; 0 failed; 0 skipped; finished in 6.20ms (4.09ms CPU time)
+
+Ran 1 test for test/account/AccountEIP7702.t.sol:AccountEIP7702Test
+[PASS] testExecuteBatch(address,uint256,uint256) (runs: 5000, μ: 163234, ~: 163253)
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 11.07s (11.07s CPU time)
+
+Ran 2 tests for test/utils/draft-InteroperableAddress.t.sol:InteroperableAddressTest
+[PASS] testFormatParse(bytes2,bytes,bytes) (runs: 5000, μ: 25186, ~: 25130)
+[PASS] testFormatParseEVM(uint256,address) (runs: 5000, μ: 16378, ~: 16379)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 2.71s (2.71s CPU time)
+
+Ran 5 tests for test/utils/ShortStrings.t.sol:ShortStringsTest
+[PASS] testLengthShort(string) (runs: 5000, μ: 4012, ~: 4013)
+[PASS] testLengthWithFallback(string,string) (runs: 5000, μ: 58611, ~: 68619)
+[PASS] testRevertLong(string) (runs: 5000, μ: 6112, ~: 6108)
+[PASS] testRoundtripShort(string) (runs: 5000, μ: 4854, ~: 4855)
+[PASS] testRoundtripWithFallback(string,string) (runs: 5000, μ: 62154, ~: 71886)
+Suite result: ok. 5 passed; 0 failed; 0 skipped; finished in 2.87s (2.87s CPU time)
+
+Ran 7 tests for test/utils/math/SignedMath.t.sol:SignedMathTest
+[PASS] testAverage1(int256,int256) (runs: 5000, μ: 3203, ~: 3088)
+[PASS] testSymbolicAbs(int256) (runs: 5000, μ: 585, ~: 419)
+[PASS] testSymbolicAverage2(int256,int256) (runs: 5000, μ: 1326, ~: 1219)
+[PASS] testSymbolicMax(int256,int256) (runs: 5000, μ: 1059, ~: 1074)
+[PASS] testSymbolicMin(int256,int256) (runs: 5000, μ: 1038, ~: 1074)
+[PASS] testSymbolicMinMax(int256,int256) (runs: 5000, μ: 1042, ~: 1074)
+[PASS] testSymbolicTernary(bool,int256,int256) (runs: 5000, μ: 1221, ~: 1266)
+Suite result: ok. 7 passed; 0 failed; 0 skipped; finished in 905.15ms (904.89ms CPU time)
+
+Ran 9 tests for test/utils/cryptography/WebAuthn.t.sol:WebAuthnTest
+[PASS] testTryDecodeAuthInvalid() (gas: 19929)
+[PASS] testTryDecodeAuthValid(bytes32,bytes32,uint256,uint256,bytes,string) (runs: 5000, μ: 11271, ~: 11265)
+[PASS] testVerify(bytes,uint256) (runs: 512, μ: 24877, ~: 23290)
+[PASS] testVerifyFlagsBEBS(bytes,uint256) (runs: 512, μ: 58826, ~: 54077)
+[PASS] testVerifyFlagsUP(bytes,uint256) (runs: 512, μ: 15527, ~: 13949)
+[PASS] testVerifyFlagsUV(bytes,uint256) (runs: 512, μ: 58847, ~: 54098)
+[PASS] testVerifyIndexOutOfBounds(bytes,uint256) (runs: 512, μ: 23139, ~: 20773)
+[PASS] testVerifyInvalidChallenge(bytes,uint256) (runs: 512, μ: 14066, ~: 13248)
+[PASS] testVerifyInvalidType(bytes,uint256) (runs: 512, μ: 10657, ~: 9853)
+Suite result: ok. 9 passed; 0 failed; 0 skipped; finished in 10.99s (10.99s CPU time)
+
+Ran 3 tests for test/utils/structs/Accumulators.t.sol:AccumulatorsTest
+[PASS] testAccumulatorPush(bytes[]) (runs: 5000, μ: 282062, ~: 282387)
+[PASS] testAccumulatorPushShift() (gas: 8690)
+[PASS] testAccumulatorShift(bytes[]) (runs: 5000, μ: 279390, ~: 280599)
+Suite result: ok. 3 passed; 0 failed; 0 skipped; finished in 25.66s (25.66s CPU time)
+
+Ran 134 tests for test/utils/Packing.t.sol:PackingTest
+[PASS] testSymbolicPack(bytes1,bytes1) (runs: 5000, μ: 1143, ~: 1143)
+[PASS] testSymbolicPack(bytes10,bytes10) (runs: 5000, μ: 1122, ~: 1122)
+[PASS] testSymbolicPack(bytes10,bytes12) (runs: 5000, μ: 1167, ~: 1167)
+[PASS] testSymbolicPack(bytes10,bytes2) (runs: 5000, μ: 1147, ~: 1147)
+[PASS] testSymbolicPack(bytes10,bytes22) (runs: 5000, μ: 1021, ~: 1056)
+[PASS] testSymbolicPack(bytes10,bytes6) (runs: 5000, μ: 1123, ~: 1123)
+[PASS] testSymbolicPack(bytes12,bytes10) (runs: 5000, μ: 1123, ~: 1123)
+[PASS] testSymbolicPack(bytes12,bytes12) (runs: 5000, μ: 1179, ~: 1179)
+[PASS] testSymbolicPack(bytes12,bytes16) (runs: 5000, μ: 1153, ~: 1153)
+[PASS] testSymbolicPack(bytes12,bytes20) (runs: 5000, μ: 1048, ~: 1056)
+[PASS] testSymbolicPack(bytes12,bytes4) (runs: 5000, μ: 1167, ~: 1167)
+[PASS] testSymbolicPack(bytes12,bytes8) (runs: 5000, μ: 1145, ~: 1145)
+[PASS] testSymbolicPack(bytes16,bytes12) (runs: 5000, μ: 1049, ~: 1049)
+[PASS] testSymbolicPack(bytes16,bytes16) (runs: 5000, μ: 1021, ~: 1056)
+[PASS] testSymbolicPack(bytes16,bytes4) (runs: 5000, μ: 1106, ~: 1106)
+[PASS] testSymbolicPack(bytes16,bytes6) (runs: 5000, μ: 1064, ~: 1064)
+[PASS] testSymbolicPack(bytes16,bytes8) (runs: 5000, μ: 1041, ~: 1041)
+[PASS] testSymbolicPack(bytes2,bytes10) (runs: 5000, μ: 1122, ~: 1122)
+[PASS] testSymbolicPack(bytes2,bytes2) (runs: 5000, μ: 1188, ~: 1188)
+[PASS] testSymbolicPack(bytes2,bytes20) (runs: 5000, μ: 1191, ~: 1191)
+[PASS] testSymbolicPack(bytes2,bytes22) (runs: 5000, μ: 1200, ~: 1200)
+[PASS] testSymbolicPack(bytes2,bytes4) (runs: 5000, μ: 1168, ~: 1168)
+[PASS] testSymbolicPack(bytes2,bytes6) (runs: 5000, μ: 1144, ~: 1144)
+[PASS] testSymbolicPack(bytes2,bytes8) (runs: 5000, μ: 1188, ~: 1188)
+[PASS] testSymbolicPack(bytes20,bytes12) (runs: 5000, μ: 1044, ~: 1056)
+[PASS] testSymbolicPack(bytes20,bytes2) (runs: 5000, μ: 1062, ~: 1062)
+[PASS] testSymbolicPack(bytes20,bytes4) (runs: 5000, μ: 1109, ~: 1109)
+[PASS] testSymbolicPack(bytes20,bytes8) (runs: 5000, μ: 1004, ~: 1004)
+[PASS] testSymbolicPack(bytes22,bytes10) (runs: 5000, μ: 1017, ~: 1056)
+[PASS] testSymbolicPack(bytes22,bytes2) (runs: 5000, μ: 1066, ~: 1066)
+[PASS] testSymbolicPack(bytes22,bytes6) (runs: 5000, μ: 1048, ~: 1048)
+[PASS] testSymbolicPack(bytes24,bytes4) (runs: 5000, μ: 1016, ~: 1016)
+[PASS] testSymbolicPack(bytes24,bytes8) (runs: 5000, μ: 1022, ~: 1056)
+[PASS] testSymbolicPack(bytes28,bytes4) (runs: 5000, μ: 1006, ~: 1056)
+[PASS] testSymbolicPack(bytes4,bytes12) (runs: 5000, μ: 1188, ~: 1188)
+[PASS] testSymbolicPack(bytes4,bytes16) (runs: 5000, μ: 1164, ~: 1164)
+[PASS] testSymbolicPack(bytes4,bytes2) (runs: 5000, μ: 1210, ~: 1210)
+[PASS] testSymbolicPack(bytes4,bytes20) (runs: 5000, μ: 1157, ~: 1157)
+[PASS] testSymbolicPack(bytes4,bytes24) (runs: 5000, μ: 1111, ~: 1111)
+[PASS] testSymbolicPack(bytes4,bytes28) (runs: 5000, μ: 1020, ~: 1056)
+[PASS] testSymbolicPack(bytes4,bytes4) (runs: 5000, μ: 1145, ~: 1145)
+[PASS] testSymbolicPack(bytes4,bytes6) (runs: 5000, μ: 1124, ~: 1124)
+[PASS] testSymbolicPack(bytes4,bytes8) (runs: 5000, μ: 1210, ~: 1210)
+[PASS] testSymbolicPack(bytes6,bytes10) (runs: 5000, μ: 1122, ~: 1122)
+[PASS] testSymbolicPack(bytes6,bytes16) (runs: 5000, μ: 1188, ~: 1188)
+[PASS] testSymbolicPack(bytes6,bytes2) (runs: 5000, μ: 1124, ~: 1124)
+[PASS] testSymbolicPack(bytes6,bytes22) (runs: 5000, μ: 1132, ~: 1132)
+[PASS] testSymbolicPack(bytes6,bytes4) (runs: 5000, μ: 1211, ~: 1211)
+[PASS] testSymbolicPack(bytes6,bytes6) (runs: 5000, μ: 1190, ~: 1190)
+[PASS] testSymbolicPack(bytes8,bytes12) (runs: 5000, μ: 1210, ~: 1210)
+[PASS] testSymbolicPack(bytes8,bytes16) (runs: 5000, μ: 1199, ~: 1199)
+[PASS] testSymbolicPack(bytes8,bytes2) (runs: 5000, μ: 1168, ~: 1168)
+[PASS] testSymbolicPack(bytes8,bytes20) (runs: 5000, μ: 1155, ~: 1155)
+[PASS] testSymbolicPack(bytes8,bytes24) (runs: 5000, μ: 1049, ~: 1056)
+[PASS] testSymbolicPack(bytes8,bytes4) (runs: 5000, μ: 1167, ~: 1167)
+[PASS] testSymbolicPack(bytes8,bytes8) (runs: 5000, μ: 1166, ~: 1166)
+[PASS] testSymbolicReplace(bytes10,bytes1,uint8) (runs: 5000, μ: 2414, ~: 2670)
+[PASS] testSymbolicReplace(bytes10,bytes2,uint8) (runs: 5000, μ: 2396, ~: 2649)
+[PASS] testSymbolicReplace(bytes10,bytes4,uint8) (runs: 5000, μ: 2407, ~: 2645)
+[PASS] testSymbolicReplace(bytes10,bytes6,uint8) (runs: 5000, μ: 2448, ~: 2671)
+[PASS] testSymbolicReplace(bytes10,bytes8,uint8) (runs: 5000, μ: 2511, ~: 2714)
+[PASS] testSymbolicReplace(bytes12,bytes1,uint8) (runs: 5000, μ: 2467, ~: 2736)
+[PASS] testSymbolicReplace(bytes12,bytes10,uint8) (runs: 5000, μ: 2468, ~: 2671)
+[PASS] testSymbolicReplace(bytes12,bytes2,uint8) (runs: 5000, μ: 2427, ~: 2691)
+[PASS] testSymbolicReplace(bytes12,bytes4,uint8) (runs: 5000, μ: 2437, ~: 2690)
+[PASS] testSymbolicReplace(bytes12,bytes6,uint8) (runs: 5000, μ: 2455, ~: 2693)
+[PASS] testSymbolicReplace(bytes12,bytes8,uint8) (runs: 5000, μ: 2469, ~: 2692)
+[PASS] testSymbolicReplace(bytes16,bytes1,uint8) (runs: 5000, μ: 2436, ~: 2736)
+[PASS] testSymbolicReplace(bytes16,bytes10,uint8) (runs: 5000, μ: 2432, ~: 2670)
+[PASS] testSymbolicReplace(bytes16,bytes12,uint8) (runs: 5000, μ: 2447, ~: 2670)
+[PASS] testSymbolicReplace(bytes16,bytes2,uint8) (runs: 5000, μ: 2400, ~: 2690)
+[PASS] testSymbolicReplace(bytes16,bytes4,uint8) (runs: 5000, μ: 2372, ~: 2648)
+[PASS] testSymbolicReplace(bytes16,bytes6,uint8) (runs: 5000, μ: 2407, ~: 2671)
+[PASS] testSymbolicReplace(bytes16,bytes8,uint8) (runs: 5000, μ: 2438, ~: 2691)
+[PASS] testSymbolicReplace(bytes2,bytes1,uint8) (runs: 5000, μ: 2476, ~: 2517)
+[PASS] testSymbolicReplace(bytes20,bytes1,uint8) (runs: 5000, μ: 2333, ~: 2646)
+[PASS] testSymbolicReplace(bytes20,bytes10,uint8) (runs: 5000, μ: 2450, ~: 2714)
+[PASS] testSymbolicReplace(bytes20,bytes12,uint8) (runs: 5000, μ: 2481, ~: 2734)
+[PASS] testSymbolicReplace(bytes20,bytes16,uint8) (runs: 5000, μ: 2425, ~: 2648)
+[PASS] testSymbolicReplace(bytes20,bytes2,uint8) (runs: 5000, μ: 2360, ~: 2669)
+[PASS] testSymbolicReplace(bytes20,bytes4,uint8) (runs: 5000, μ: 2409, ~: 2714)
+[PASS] testSymbolicReplace(bytes20,bytes6,uint8) (runs: 5000, μ: 2379, ~: 2669)
+[PASS] testSymbolicReplace(bytes20,bytes8,uint8) (runs: 5000, μ: 2372, ~: 2648)
+[PASS] testSymbolicReplace(bytes22,bytes1,uint8) (runs: 5000, μ: 2410, ~: 2734)
+[PASS] testSymbolicReplace(bytes22,bytes10,uint8) (runs: 5000, μ: 2394, ~: 2670)
+[PASS] testSymbolicReplace(bytes22,bytes12,uint8) (runs: 5000, μ: 2427, ~: 2691)
+[PASS] testSymbolicReplace(bytes22,bytes16,uint8) (runs: 5000, μ: 2475, ~: 2713)
+[PASS] testSymbolicReplace(bytes22,bytes2,uint8) (runs: 5000, μ: 2393, ~: 2714)
+[PASS] testSymbolicReplace(bytes22,bytes20,uint8) (runs: 5000, μ: 2531, ~: 2734)
+[PASS] testSymbolicReplace(bytes22,bytes4,uint8) (runs: 5000, μ: 2426, ~: 2735)
+[PASS] testSymbolicReplace(bytes22,bytes6,uint8) (runs: 5000, μ: 2385, ~: 2690)
+[PASS] testSymbolicReplace(bytes22,bytes8,uint8) (runs: 5000, μ: 2381, ~: 2671)
+[PASS] testSymbolicReplace(bytes24,bytes1,uint8) (runs: 5000, μ: 2383, ~: 2713)
+[PASS] testSymbolicReplace(bytes24,bytes10,uint8) (runs: 5000, μ: 2402, ~: 2692)
+[PASS] testSymbolicReplace(bytes24,bytes12,uint8) (runs: 5000, μ: 2437, ~: 2713)
+[PASS] testSymbolicReplace(bytes24,bytes16,uint8) (runs: 5000, μ: 2393, ~: 2646)
+[PASS] testSymbolicReplace(bytes24,bytes2,uint8) (runs: 5000, μ: 2364, ~: 2692)
+[PASS] testSymbolicReplace(bytes24,bytes20,uint8) (runs: 5000, μ: 2424, ~: 2647)
+[PASS] testSymbolicReplace(bytes24,bytes22,uint8) (runs: 5000, μ: 2445, ~: 2648)
+[PASS] testSymbolicReplace(bytes24,bytes4,uint8) (runs: 5000, μ: 2372, ~: 2693)
+[PASS] testSymbolicReplace(bytes24,bytes6,uint8) (runs: 5000, μ: 2406, ~: 2715)
+[PASS] testSymbolicReplace(bytes24,bytes8,uint8) (runs: 5000, μ: 2406, ~: 2711)
+[PASS] testSymbolicReplace(bytes28,bytes1,uint8) (runs: 5000, μ: 2217, ~: 1878)
+[PASS] testSymbolicReplace(bytes28,bytes10,uint8) (runs: 5000, μ: 2319, ~: 2628)
+[PASS] testSymbolicReplace(bytes28,bytes12,uint8) (runs: 5000, μ: 2302, ~: 2607)
+[PASS] testSymbolicReplace(bytes28,bytes16,uint8) (runs: 5000, μ: 2354, ~: 2630)
+[PASS] testSymbolicReplace(bytes28,bytes2,uint8) (runs: 5000, μ: 2266, ~: 2455)
+[PASS] testSymbolicReplace(bytes28,bytes20,uint8) (runs: 5000, μ: 2400, ~: 2653)
+[PASS] testSymbolicReplace(bytes28,bytes22,uint8) (runs: 5000, μ: 2346, ~: 2584)
+[PASS] testSymbolicReplace(bytes28,bytes24,uint8) (runs: 5000, μ: 2340, ~: 2563)
+[PASS] testSymbolicReplace(bytes28,bytes4,uint8) (runs: 5000, μ: 2231, ~: 2414)
+[PASS] testSymbolicReplace(bytes28,bytes6,uint8) (runs: 5000, μ: 2257, ~: 2585)
+[PASS] testSymbolicReplace(bytes28,bytes8,uint8) (runs: 5000, μ: 2243, ~: 2564)
+[PASS] testSymbolicReplace(bytes32,bytes1,uint8) (runs: 5000, μ: 2104, ~: 1780)
+[PASS] testSymbolicReplace(bytes32,bytes10,uint8) (runs: 5000, μ: 2116, ~: 2444)
+[PASS] testSymbolicReplace(bytes32,bytes12,uint8) (runs: 5000, μ: 2143, ~: 2464)
+[PASS] testSymbolicReplace(bytes32,bytes16,uint8) (runs: 5000, μ: 2202, ~: 2507)
+[PASS] testSymbolicReplace(bytes32,bytes2,uint8) (runs: 5000, μ: 2130, ~: 1802)
+[PASS] testSymbolicReplace(bytes32,bytes20,uint8) (runs: 5000, μ: 2210, ~: 2486)
+[PASS] testSymbolicReplace(bytes32,bytes22,uint8) (runs: 5000, μ: 2244, ~: 2508)
+[PASS] testSymbolicReplace(bytes32,bytes24,uint8) (runs: 5000, μ: 2210, ~: 2463)
+[PASS] testSymbolicReplace(bytes32,bytes28,uint8) (runs: 5000, μ: 2187, ~: 2397)
+[PASS] testSymbolicReplace(bytes32,bytes4,uint8) (runs: 5000, μ: 2180, ~: 1845)
+[PASS] testSymbolicReplace(bytes32,bytes6,uint8) (runs: 5000, μ: 2168, ~: 2357)
+[PASS] testSymbolicReplace(bytes32,bytes8,uint8) (runs: 5000, μ: 2174, ~: 2357)
+[PASS] testSymbolicReplace(bytes4,bytes1,uint8) (runs: 5000, μ: 2452, ~: 2671)
+[PASS] testSymbolicReplace(bytes4,bytes2,uint8) (runs: 5000, μ: 2445, ~: 2648)
+[PASS] testSymbolicReplace(bytes6,bytes1,uint8) (runs: 5000, μ: 2506, ~: 2734)
+[PASS] testSymbolicReplace(bytes6,bytes2,uint8) (runs: 5000, μ: 2447, ~: 2670)
+[PASS] testSymbolicReplace(bytes6,bytes4,uint8) (runs: 5000, μ: 2490, ~: 2693)
+[PASS] testSymbolicReplace(bytes8,bytes1,uint8) (runs: 5000, μ: 2483, ~: 2733)
+[PASS] testSymbolicReplace(bytes8,bytes2,uint8) (runs: 5000, μ: 2410, ~: 2648)
+[PASS] testSymbolicReplace(bytes8,bytes4,uint8) (runs: 5000, μ: 2512, ~: 2735)
+[PASS] testSymbolicReplace(bytes8,bytes6,uint8) (runs: 5000, μ: 2465, ~: 2668)
+Suite result: ok. 134 passed; 0 failed; 0 skipped; finished in 27.73s (26.07s CPU time)
+
+Ran 6 tests for test/metatx/ERC2771Forwarder.t.sol:ERC2771ForwarderTest
+[PASS] testExecuteAvoidsETHStuck(uint256,uint256,bool) (runs: 5000, μ: 74428, ~: 74795)
+[PASS] testExecuteBatchAvoidsETHStuck(uint256,uint256,uint256) (runs: 5000, μ: 220135, ~: 234366)
+[PASS] testExecuteBatchTamperedValues(uint8) (runs: 5000, μ: 100639, ~: 93659)
+[PASS] testExecuteBatchTamperedValuesZeroReceiver(uint8) (runs: 5000, μ: 91824, ~: 91639)
+[PASS] testExecuteTamperedValues(uint8) (runs: 5000, μ: 43267, ~: 44516)
+[PASS] testVerifyTamperedValues(uint8) (runs: 5000, μ: 34869, ~: 35721)
+Suite result: ok. 6 passed; 0 failed; 0 skipped; finished in 50.89s (70.07s CPU time)
+
+Ran 19 tests for test/utils/Arrays.t.sol:ArraysTest
+[PASS] testReplaceAddress(address[],uint256,address[]) (runs: 5000, μ: 174773, ~: 172688)
+[PASS] testReplaceAddressFull(address[],uint256,address[],uint256,uint256) (runs: 5000, μ: 176514, ~: 176706)
+[PASS] testReplaceBytes32(bytes32[],uint256,bytes32[]) (runs: 5000, μ: 176639, ~: 175363)
+[PASS] testReplaceBytes32Full(bytes32[],uint256,bytes32[],uint256,uint256) (runs: 5000, μ: 176410, ~: 174014)
+[PASS] testReplaceUint256(uint256[],uint256,uint256[]) (runs: 5000, μ: 143985, ~: 142872)
+[PASS] testReplaceUint256Full(uint256[],uint256,uint256[],uint256,uint256) (runs: 5000, μ: 145831, ~: 145353)
+[PASS] testSliceAddress(address[],uint256,uint256) (runs: 5000, μ: 75006, ~: 72608)
+[PASS] testSliceAddressWithStartOnly(address[],uint256) (runs: 5000, μ: 77775, ~: 75414)
+[PASS] testSliceBytes32(bytes32[],uint256,uint256) (runs: 5000, μ: 83989, ~: 78159)
+[PASS] testSliceBytes32WithStartOnly(bytes32[],uint256) (runs: 5000, μ: 85628, ~: 80348)
+[PASS] testSliceUint256(uint256[],uint256,uint256) (runs: 5000, μ: 65214, ~: 64299)
+[PASS] testSliceUint256WithStartOnly(uint256[],uint256) (runs: 5000, μ: 65073, ~: 63135)
+[PASS] testSort(uint256[]) (runs: 5000, μ: 201434, ~: 197237)
+[PASS] testSpliceAddress(address[],uint256,uint256) (runs: 5000, μ: 66541, ~: 62529)
+[PASS] testSpliceAddressWithStartOnly(address[],uint256) (runs: 5000, μ: 69663, ~: 66142)
+[PASS] testSpliceBytes32(bytes32[],uint256,uint256) (runs: 5000, μ: 82528, ~: 76524)
+[PASS] testSpliceBytes32WithStartOnly(bytes32[],uint256) (runs: 5000, μ: 84047, ~: 78339)
+[PASS] testSpliceUint256(uint256[],uint256,uint256) (runs: 5000, μ: 57382, ~: 51639)
+[PASS] testSpliceUint256WithStartOnly(uint256[],uint256) (runs: 5000, μ: 57166, ~: 50556)
+Suite result: ok. 19 passed; 0 failed; 0 skipped; finished in 50.89s (89.25s CPU time)
+
+Ran 21 tests for test/utils/math/Math.t.sol:MathTest
+[PASS] testInvMod(uint256,uint256) (runs: 5000, μ: 4418, ~: 1941)
+[PASS] testInvModP256(uint256) (runs: 5000, μ: 6672, ~: 3615)
+[PASS] testLog10(uint256,uint8) (runs: 5000, μ: 5344, ~: 5500)
+[PASS] testLog2(uint256,uint8) (runs: 5000, μ: 4978, ~: 5108)
+[PASS] testLog256(uint256,uint8) (runs: 5000, μ: 5224, ~: 5422)
+[PASS] testModExp(uint256,uint256,uint256) (runs: 5000, μ: 19187, ~: 11086)
+[PASS] testModExpMemory(uint256,uint256,uint256) (runs: 5000, μ: 20405, ~: 12311)
+[PASS] testMul512(uint256,uint256) (runs: 5000, μ: 1887, ~: 1912)
+[PASS] testMulDiv(uint256,uint256,uint256) (runs: 5000, μ: 4135, ~: 4061)
+[PASS] testMulDivDomain(uint256,uint256,uint256) (runs: 5000, μ: 4389, ~: 4394)
+[PASS] testSqrt(uint256,uint8) (runs: 5000, μ: 5178, ~: 5254)
+[PASS] testSymbolicAdd512(uint256,uint256) (runs: 5000, μ: 943, ~: 894)
+[PASS] testSymbolicCeilDiv(uint256,uint256) (runs: 5000, μ: 3704, ~: 3710)
+[PASS] testSymbolicCountLeadingZeroes(uint256) (runs: 5000, μ: 1135, ~: 1139)
+[PASS] testSymbolicInvMod17(uint256) (runs: 5000, μ: 1980, ~: 2071)
+[PASS] testSymbolicInvMod2(uint256) (runs: 5000, μ: 1656, ~: 1664)
+[PASS] testSymbolicInvMod65537(uint256) (runs: 5000, μ: 2404, ~: 2543)
+[PASS] testSymbolicMinMax(uint256,uint256) (runs: 5000, μ: 978, ~: 894)
+[PASS] testSymbolicTernary(bool,uint256,uint256) (runs: 5000, μ: 1080, ~: 1068)
+[PASS] testTryModExp(uint256,uint256,uint256) (runs: 5000, μ: 19162, ~: 11098)
+[PASS] testTryModExpMemory(uint256,uint256,uint256) (runs: 5000, μ: 20318, ~: 12269)
+Suite result: ok. 21 passed; 0 failed; 0 skipped; finished in 48.99s (9.66s CPU time)
+
+Ran 27 tests for test/token/ERC20/extensions/ERC4626.t.sol:ERC4626StdTest
+[PASS] testFuzzDecimalsOverflow(uint8) (runs: 5000, μ: 1001581, ~: 1001741)
+[PASS] test_RT_deposit_redeem((address[4],uint256[4],uint256[4],int256),uint256) (runs: 5000, μ: 477326, ~: 487265)
+[PASS] test_RT_deposit_withdraw((address[4],uint256[4],uint256[4],int256),uint256) (runs: 5000, μ: 479611, ~: 489031)
+[PASS] test_RT_mint_redeem((address[4],uint256[4],uint256[4],int256),uint256) (runs: 5000, μ: 477541, ~: 487288)
+[PASS] test_RT_mint_withdraw((address[4],uint256[4],uint256[4],int256),uint256) (runs: 5000, μ: 479681, ~: 489041)
+[PASS] test_RT_redeem_deposit((address[4],uint256[4],uint256[4],int256),uint256) (runs: 5000, μ: 478388, ~: 487327)
+[PASS] test_RT_redeem_mint((address[4],uint256[4],uint256[4],int256),uint256) (runs: 5000, μ: 478269, ~: 487285)
+[PASS] test_RT_withdraw_deposit((address[4],uint256[4],uint256[4],int256),uint256) (runs: 5000, μ: 480177, ~: 489100)
+[PASS] test_RT_withdraw_mint((address[4],uint256[4],uint256[4],int256),uint256) (runs: 5000, μ: 480085, ~: 489072)
+[PASS] test_asset((address[4],uint256[4],uint256[4],int256)) (runs: 5000, μ: 432297, ~: 441684)
+[PASS] test_convertToAssets((address[4],uint256[4],uint256[4],int256),uint256) (runs: 5000, μ: 437544, ~: 446525)
+[PASS] test_convertToShares((address[4],uint256[4],uint256[4],int256),uint256) (runs: 5000, μ: 437553, ~: 446566)
+[PASS] test_deposit((address[4],uint256[4],uint256[4],int256),uint256,uint256) (runs: 5000, μ: 475285, ~: 484789)
+[PASS] test_maxDeposit((address[4],uint256[4],uint256[4],int256)) (runs: 5000, μ: 432325, ~: 441712)
+[PASS] test_maxMint((address[4],uint256[4],uint256[4],int256)) (runs: 5000, μ: 432333, ~: 441720)
+[PASS] test_maxRedeem((address[4],uint256[4],uint256[4],int256)) (runs: 5000, μ: 432557, ~: 441944)
+[PASS] test_maxWithdraw((address[4],uint256[4],uint256[4],int256)) (runs: 5000, μ: 434236, ~: 443536)
+[PASS] test_mint((address[4],uint256[4],uint256[4],int256),uint256,uint256) (runs: 5000, μ: 475429, ~: 484761)
+[PASS] test_previewDeposit((address[4],uint256[4],uint256[4],int256),uint256) (runs: 5000, μ: 469564, ~: 479532)
+[PASS] test_previewMint((address[4],uint256[4],uint256[4],int256),uint256) (runs: 5000, μ: 469784, ~: 479588)
+[PASS] test_previewRedeem((address[4],uint256[4],uint256[4],int256),uint256) (runs: 5000, μ: 472686, ~: 481865)
+[PASS] test_previewWithdraw((address[4],uint256[4],uint256[4],int256),uint256) (runs: 5000, μ: 474669, ~: 483658)
+[PASS] test_redeem((address[4],uint256[4],uint256[4],int256),uint256,uint256) (runs: 5000, μ: 476953, ~: 487072)
+[PASS] test_redeem_zero_allowance((address[4],uint256[4],uint256[4],int256),uint256) (runs: 5000, μ: 445614, ~: 452988)
+[PASS] test_totalAssets((address[4],uint256[4],uint256[4],int256)) (runs: 5000, μ: 432895, ~: 442282)
+[PASS] test_withdraw((address[4],uint256[4],uint256[4],int256),uint256,uint256) (runs: 5000, μ: 478649, ~: 488750)
+[PASS] test_withdraw_zero_allowance((address[4],uint256[4],uint256[4],int256),uint256) (runs: 5000, μ: 447482, ~: 454952)
+Suite result: ok. 27 passed; 0 failed; 0 skipped; finished in 50.89s (313.27s CPU time)
+
+Ran 18 tests for test/utils/RLP.t.sol:RLPTest
+[PASS] testComputeCreateAddress(address,uint256) (runs: 5000, μ: 6830, ~: 6556)
+[PASS] testEncodeAddress(address) (runs: 5000, μ: 6280, ~: 6280)
+[PASS] testEncodeBool(bool) (runs: 5000, μ: 6149, ~: 6149)
+[PASS] testEncodeBytes(bytes) (runs: 5000, μ: 7322, ~: 6976)
+[PASS] testEncodeBytes32(bytes32) (runs: 5000, μ: 6159, ~: 6159)
+[PASS] testEncodeBytesArray(bytes[]) (runs: 512, μ: 209493, ~: 212380)
+[PASS] testEncodeDecodeAddress(address) (runs: 5000, μ: 2332, ~: 2332)
+[PASS] testEncodeDecodeBool(bool) (runs: 5000, μ: 1754, ~: 1661)
+[PASS] testEncodeDecodeBytes(bytes) (runs: 5000, μ: 6055, ~: 5763)
+[PASS] testEncodeDecodeBytes32(bytes32) (runs: 5000, μ: 2046, ~: 2046)
+[PASS] testEncodeDecodeList(bytes[]) (runs: 512, μ: 102244, ~: 96316)
+[PASS] testEncodeDecodeString(string) (runs: 5000, μ: 5962, ~: 5799)
+[PASS] testEncodeDecodeUint256(uint256) (runs: 5000, μ: 2295, ~: 2371)
+[PASS] testEncodeEmpty() (gas: 4049)
+[PASS] testEncodeEncoder(bytes) (runs: 5000, μ: 9777, ~: 9255)
+[PASS] testEncodeMultiType(uint256,bytes,address) (runs: 5000, μ: 19644, ~: 19724)
+[PASS] testEncodeString(string) (runs: 5000, μ: 7242, ~: 7029)
+[PASS] testEncodeUint256(uint256) (runs: 5000, μ: 6742, ~: 6822)
+Suite result: ok. 18 passed; 0 failed; 0 skipped; finished in 27.44s (34.59s CPU time)
+
+Ran 2 tests for test/utils/structs/Checkpoints.t.sol:CheckpointsTrace160Test
+[PASS] testLookup(uint96[],uint160[],uint96) (runs: 5000, μ: 4252389, ~: 4505341)
+[PASS] testPush(uint96[],uint160[],uint96) (runs: 5000, μ: 4520917, ~: 4788567)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 50.89s (78.74s CPU time)
+
+Ran 5 tests for test/token/ERC721/extensions/ERC721Consecutive.t.sol:ERC721ConsecutiveTest
+[PASS] test_balance(address,uint256[],uint96) (runs: 5000, μ: 4587492, ~: 4532931)
+[PASS] test_burn(address,uint256[],uint256,uint96) (runs: 5000, μ: 4707007, ~: 4707495)
+[PASS] test_ownership(address,uint256[],uint256[2],uint96) (runs: 5000, μ: 4612495, ~: 4615279)
+[PASS] test_start_consecutive_id(address,uint256[2],uint256[2],uint96) (runs: 5000, μ: 1113464, ~: 1113703)
+[PASS] test_transfer(address[2],uint256[2],uint256[2],uint96) (runs: 5000, μ: 1211078, ~: 1211160)
+Suite result: ok. 5 passed; 0 failed; 0 skipped; finished in 33.62s (119.29s CPU time)
+
+Ran 22 tests for test/utils/Bytes.t.sol:BytesTest
+[PASS] testClz(bytes) (runs: 5000, μ: 3665, ~: 2280)
+[PASS] testIndexOf(bytes,bytes1,uint256) (runs: 5000, μ: 2704, ~: 1776)
+[PASS] testLastIndexOf(bytes,bytes1,uint256) (runs: 5000, μ: 15142, ~: 7517)
+[PASS] testReplace(bytes,uint256,bytes) (runs: 5000, μ: 17850, ~: 15049)
+[PASS] testReplaceFull(bytes,uint256,bytes,uint256,uint256) (runs: 5000, μ: 18471, ~: 15022)
+[PASS] testSlice(bytes,uint256,uint256) (runs: 5000, μ: 5775, ~: 4988)
+[PASS] testSliceWithStartOnly(bytes,uint256) (runs: 5000, μ: 5694, ~: 4899)
+[PASS] testSplice(bytes,uint256,uint256) (runs: 5000, μ: 5556, ~: 4777)
+[PASS] testSpliceWithStartOnly(bytes,uint256) (runs: 5000, μ: 5519, ~: 4732)
+[PASS] testSymbolicEqual(bytes) (runs: 5000, μ: 1479, ~: 1050)
+[PASS] testSymbolicIndexOf(bytes,bytes1) (runs: 5000, μ: 9843, ~: 6123)
+[PASS] testSymbolicLastIndexOf(bytes,bytes1) (runs: 5000, μ: 9835, ~: 6146)
+[PASS] testSymbolicReverseBytes16(bytes16) (runs: 5000, μ: 967, ~: 967)
+[PASS] testSymbolicReverseBytes16Dirty(bytes16) (runs: 5000, μ: 1562, ~: 1562)
+[PASS] testSymbolicReverseBytes2(bytes2) (runs: 5000, μ: 628, ~: 628)
+[PASS] testSymbolicReverseBytes2Dirty(bytes2) (runs: 5000, μ: 889, ~: 889)
+[PASS] testSymbolicReverseBytes32(bytes32) (runs: 5000, μ: 952, ~: 952)
+[PASS] testSymbolicReverseBytes4(bytes4) (runs: 5000, μ: 655, ~: 655)
+[PASS] testSymbolicReverseBytes4Dirty(bytes4) (runs: 5000, μ: 1053, ~: 1053)
+[PASS] testSymbolicReverseBytes8(bytes8) (runs: 5000, μ: 881, ~: 881)
+[PASS] testSymbolicReverseBytes8Dirty(bytes8) (runs: 5000, μ: 1536, ~: 1536)
+[PASS] testSymbolictoNibbles(bytes) (runs: 5000, μ: 31426, ~: 25301)
+Suite result: ok. 22 passed; 0 failed; 0 skipped; finished in 50.89s (8.05s CPU time)
+
+Ran 2 tests for test/utils/structs/Heap.t.sol:Uint256HeapTest
+[PASS] testFuzz(uint256[]) (runs: 5000, μ: 656138, ~: 549611)
+[PASS] testFuzzGt(uint256[]) (runs: 5000, μ: 681864, ~: 592983)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 50.89s (53.95s CPU time)
+
+Ran 2 tests for test/utils/structs/Checkpoints.t.sol:CheckpointsTrace224Test
+[PASS] testLookup(uint32[],uint224[],uint32) (runs: 5000, μ: 4129802, ~: 4381817)
+[PASS] testPush(uint32[],uint224[],uint32) (runs: 5000, μ: 4400360, ~: 4666166)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 50.89s (57.96s CPU time)
+
+Ran 2 tests for test/utils/structs/Checkpoints.t.sol:CheckpointsTrace208Test
+[PASS] testLookup(uint48[],uint208[],uint48) (runs: 5000, μ: 4172693, ~: 4429433)
+[PASS] testPush(uint48[],uint208[],uint48) (runs: 5000, μ: 4445478, ~: 4716522)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 50.89s (70.07s CPU time)
+
+Ran 2 tests for test/utils/structs/Checkpoints.t.sol:CheckpointsTrace256Test
+[PASS] testLookup(uint256[],uint256[],uint256) (runs: 5000, μ: 7830283, ~: 8285746)
+[PASS] testPush(uint256[],uint256[],uint256) (runs: 5000, μ: 8106476, ~: 8572224)
+Suite result: ok. 2 passed; 0 failed; 0 skipped; finished in 50.89s (73.22s CPU time)
+
+Ran 1 test for test/governance/extensions/GovernorSuperQuorumGreaterThanQuorum.t.sol:GovernorSuperQuorumGreaterThanQuorum
+[PASS] invariant_superQuorumGreaterThanQuorum() (runs: 5000, calls: 2500000, reverts: 2254264)
+
+╭-----------------+------------------------------+---------+---------+----------╮
+| Contract        | Selector                     | Calls   | Reverts | Discards |
++===============================================================================+
+| GovernorHandler | $_updateQuorumNumerator      | 1249986 | 1129277 | 0        |
+|-----------------+------------------------------+---------+---------+----------|
+| GovernorHandler | $_updateSuperQuorumNumerator | 1250014 | 1124987 | 0        |
+╰-----------------+------------------------------+---------+---------+----------╯
+
+Suite result: ok. 1 passed; 0 failed; 0 skipped; finished in 65.92s (65.92s CPU time)
+
+Ran 34 test suites in 68.17s (743.12s CPU time): 348 tests passed, 0 failed, 0 skipped (348 total tests)
+━ AccountEIP7702Test::testExecuteBatch(address,uint256,uint256) (gas: 163253 → 163253 | 0 0.000%)
+━ ERC7579UtilsTest::testDecodeBatch() (gas: 33258 → 33258 | 0 0.000%)
+━ ERC7579UtilsTest::testExecuteBatchDecodeCorrectly() (gas: 303830 → 303830 | 0 0.000%)
+━ ERC7579UtilsTest::testExecuteBatchDecodeDifferent() (gas: 66243 → 66243 | 0 0.000%)
+━ ERC7579UtilsTest::testExecuteBatchDecodeEmpty() (gas: 68094 → 68094 | 0 0.000%)
+━ GovernorInternalTest::testInvalidDescriptionForProposer(string,address,address) (gas: 31714 → 31714 | 0 0.000%)
+━ GovernorInternalTest::testValidDescriptionForProposer(string,address,bool) (gas: 27874 → 27874 | 0 0.000%)
+━ ERC2771ForwarderTest::testExecuteAvoidsETHStuck(uint256,uint256,bool) (gas: 74795 → 74795 | 0 0.000%)
+━ ERC2771ForwarderTest::testExecuteBatchTamperedValues(uint8) (gas: 93659 → 93659 | 0 0.000%)
+━ ERC2771ForwarderTest::testExecuteBatchTamperedValuesZeroReceiver(uint8) (gas: 91639 → 91639 | 0 0.000%)
+━ ERC2771ForwarderTest::testExecuteTamperedValues(uint8) (gas: 44516 → 44516 | 0 0.000%)
+━ ERC2771ForwarderTest::testVerifyTamperedValues(uint8) (gas: 35721 → 35721 | 0 0.000%)
+━ ClonesTest::testCloneDeterministicDirty(bytes32) (gas: 89594 → 89594 | 0 0.000%)
+━ ClonesTest::testCloneDirty() (gas: 89397 → 89397 | 0 0.000%)
+━ ClonesTest::testFetchCloneArgs(bytes,bytes32) (gas: 106485 → 106485 | 0 0.000%)
+━ ClonesTest::testPredictDeterministicAddressDirty(bytes32) (gas: 1007 → 1007 | 0 0.000%)
+━ ClonesTest::testSymbolicPredictDeterministicAddressSpillage(address,bytes32) (gas: 1416 → 1416 | 0 0.000%)
+━ ClonesTest::testSymbolicPredictDeterministicAddressWithImmutableArgsSpillage(address,bytes32,bytes) (gas: 4546 → 4546 | 0 0.000%)
+━ ERC4626StdTest::testFuzzDecimalsOverflow(uint8) (gas: 1001741 → 1001741 | 0 0.000%)
+━ ERC4626StdTest::test_asset((address[4],uint256[4],uint256[4],int256)) (gas: 441684 → 441684 | 0 0.000%)
+━ ERC4626StdTest::test_convertToAssets((address[4],uint256[4],uint256[4],int256),uint256) (gas: 446525 → 446525 | 0 0.000%)
+━ ERC4626StdTest::test_convertToShares((address[4],uint256[4],uint256[4],int256),uint256) (gas: 446566 → 446566 | 0 0.000%)
+━ ERC4626StdTest::test_maxDeposit((address[4],uint256[4],uint256[4],int256)) (gas: 441712 → 441712 | 0 0.000%)
+━ ERC4626StdTest::test_maxMint((address[4],uint256[4],uint256[4],int256)) (gas: 441720 → 441720 | 0 0.000%)
+━ ERC4626StdTest::test_maxRedeem((address[4],uint256[4],uint256[4],int256)) (gas: 441944 → 441944 | 0 0.000%)
+━ ERC4626StdTest::test_totalAssets((address[4],uint256[4],uint256[4],int256)) (gas: 442282 → 442282 | 0 0.000%)
+━ ERC4626StdTest::test_withdraw_zero_allowance((address[4],uint256[4],uint256[4],int256),uint256) (gas: 454952 → 454952 | 0 0.000%)
+━ ERC721ConsecutiveTest::test_start_consecutive_id(address,uint256[2],uint256[2],uint96) (gas: 1113703 → 1113703 | 0 0.000%)
+━ ERC721ConsecutiveTest::test_transfer(address[2],uint256[2],uint256[2],uint96) (gas: 1211160 → 1211160 | 0 0.000%)
+━ Base58Test::testEncodeDecode(bytes) (gas: 19671 → 19671 | 0 0.000%)
+━ Base58Test::testEncodeDecodeEmpty() (gas: 3794 → 3794 | 0 0.000%)
+━ Base58Test::testEncodeDecodeZeros() (gas: 15350 → 15350 | 0 0.000%)
+━ Base64Test::testEncode(bytes) (gas: 16105 → 16105 | 0 0.000%)
+━ Base64Test::testEncodeURL(bytes) (gas: 24564 → 24564 | 0 0.000%)
+━ BlockhashTest::testFuzzFutureBlocks(uint256,uint256) (gas: 6652 → 6652 | 0 0.000%)
+━ BlockhashTest::testFuzzHistoryBlocks(uint16,uint256,bytes32) (gas: 32532 → 32532 | 0 0.000%)
+━ BlockhashTest::testFuzzRecentBlocks(uint8,uint64,bytes32) (gas: 4493 → 4493 | 0 0.000%)
+━ BlockhashTest::testFuzzVeryOldBlocks(uint256,uint256) (gas: 6784 → 6784 | 0 0.000%)
+━ BlockhashTest::testUnsupportedChainsReturnZeroWhenOutOfRange() (gas: 3952 → 3952 | 0 0.000%)
+━ BytesTest::testClz(bytes) (gas: 2280 → 2280 | 0 0.000%)
+━ BytesTest::testIndexOf(bytes,bytes1,uint256) (gas: 1776 → 1776 | 0 0.000%)
+━ BytesTest::testReplace(bytes,uint256,bytes) (gas: 15049 → 15049 | 0 0.000%)
+━ BytesTest::testReplaceFull(bytes,uint256,bytes,uint256,uint256) (gas: 15022 → 15022 | 0 0.000%)
+━ BytesTest::testSlice(bytes,uint256,uint256) (gas: 4988 → 4988 | 0 0.000%)
+━ BytesTest::testSliceWithStartOnly(bytes,uint256) (gas: 4899 → 4899 | 0 0.000%)
+━ BytesTest::testSplice(bytes,uint256,uint256) (gas: 4777 → 4777 | 0 0.000%)
+━ BytesTest::testSpliceWithStartOnly(bytes,uint256) (gas: 4732 → 4732 | 0 0.000%)
+━ BytesTest::testSymbolicEqual(bytes) (gas: 1050 → 1050 | 0 0.000%)
+━ BytesTest::testSymbolicIndexOf(bytes,bytes1) (gas: 6123 → 6123 | 0 0.000%)
+━ BytesTest::testSymbolicLastIndexOf(bytes,bytes1) (gas: 6146 → 6146 | 0 0.000%)
+━ BytesTest::testSymbolicReverseBytes16(bytes16) (gas: 967 → 967 | 0 0.000%)
+━ BytesTest::testSymbolicReverseBytes16Dirty(bytes16) (gas: 1562 → 1562 | 0 0.000%)
+━ BytesTest::testSymbolicReverseBytes2(bytes2) (gas: 628 → 628 | 0 0.000%)
+━ BytesTest::testSymbolicReverseBytes2Dirty(bytes2) (gas: 889 → 889 | 0 0.000%)
+━ BytesTest::testSymbolicReverseBytes32(bytes32) (gas: 952 → 952 | 0 0.000%)
+━ BytesTest::testSymbolicReverseBytes4(bytes4) (gas: 655 → 655 | 0 0.000%)
+━ BytesTest::testSymbolicReverseBytes4Dirty(bytes4) (gas: 1053 → 1053 | 0 0.000%)
+━ BytesTest::testSymbolicReverseBytes8(bytes8) (gas: 881 → 881 | 0 0.000%)
+━ BytesTest::testSymbolicReverseBytes8Dirty(bytes8) (gas: 1536 → 1536 | 0 0.000%)
+━ BytesTest::testSymbolictoNibbles(bytes) (gas: 25301 → 25301 | 0 0.000%)
+━ Create2Test::testSymbolicComputeAddressSpillage(bytes32,bytes32,address) (gas: 2166 → 2166 | 0 0.000%)
+━ Create3Test::testSymbolicComputeAddressSpillage(bytes32,address) (gas: 1416 → 1416 | 0 0.000%)
+━ Create3Test::testSymbolicDeployMatchesComputeAddress(bytes32) (gas: 69558 → 69558 | 0 0.000%)
+━ MemoryTest::testAsSliceToBytes(bytes) (gas: 4409 → 4409 | 0 0.000%)
+━ MemoryTest::testGetSetFreeMemoryPointer(uint256) (gas: 1277 → 1277 | 0 0.000%)
+━ MemoryTest::testInvalidSliceOutOfBound() (gas: 1282 → 1282 | 0 0.000%)
+━ MemoryTest::testSlice(bytes,uint256) (gas: 6221 → 6221 | 0 0.000%)
+━ MemoryTest::testSlice(bytes,uint256,uint256) (gas: 7190 → 7190 | 0 0.000%)
+━ MemoryTest::testSymbolicEqual(bytes,bytes) (gas: 2610 → 2610 | 0 0.000%)
+━ NoncesKeyedTest::testSymbolicUseCheckedNonceLiveness(address,uint192) (gas: 31797 → 31797 | 0 0.000%)
+━ NoncesKeyedTest::testSymbolicUseNonce(address,uint192) (gas: 30118 → 30118 | 0 0.000%)
+━ NoncesKeyedTest::testUseCheckedNonce(address,uint192,uint64) (gas: 33550 → 33550 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes1,bytes1) (gas: 1143 → 1143 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes10,bytes10) (gas: 1122 → 1122 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes10,bytes12) (gas: 1167 → 1167 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes10,bytes2) (gas: 1147 → 1147 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes10,bytes22) (gas: 1056 → 1056 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes10,bytes6) (gas: 1123 → 1123 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes12,bytes10) (gas: 1123 → 1123 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes12,bytes12) (gas: 1179 → 1179 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes12,bytes16) (gas: 1153 → 1153 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes12,bytes20) (gas: 1056 → 1056 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes12,bytes4) (gas: 1167 → 1167 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes12,bytes8) (gas: 1145 → 1145 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes16,bytes12) (gas: 1049 → 1049 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes16,bytes16) (gas: 1056 → 1056 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes16,bytes4) (gas: 1106 → 1106 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes16,bytes6) (gas: 1064 → 1064 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes16,bytes8) (gas: 1041 → 1041 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes2,bytes10) (gas: 1122 → 1122 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes2,bytes2) (gas: 1188 → 1188 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes2,bytes20) (gas: 1191 → 1191 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes2,bytes22) (gas: 1200 → 1200 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes2,bytes4) (gas: 1168 → 1168 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes2,bytes6) (gas: 1144 → 1144 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes2,bytes8) (gas: 1188 → 1188 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes20,bytes12) (gas: 1056 → 1056 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes20,bytes2) (gas: 1062 → 1062 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes20,bytes4) (gas: 1109 → 1109 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes20,bytes8) (gas: 1004 → 1004 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes22,bytes10) (gas: 1056 → 1056 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes22,bytes2) (gas: 1066 → 1066 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes22,bytes6) (gas: 1048 → 1048 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes24,bytes4) (gas: 1016 → 1016 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes24,bytes8) (gas: 1056 → 1056 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes28,bytes4) (gas: 1056 → 1056 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes4,bytes12) (gas: 1188 → 1188 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes4,bytes16) (gas: 1164 → 1164 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes4,bytes2) (gas: 1210 → 1210 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes4,bytes20) (gas: 1157 → 1157 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes4,bytes24) (gas: 1111 → 1111 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes4,bytes28) (gas: 1056 → 1056 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes4,bytes4) (gas: 1145 → 1145 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes4,bytes6) (gas: 1124 → 1124 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes4,bytes8) (gas: 1210 → 1210 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes6,bytes10) (gas: 1122 → 1122 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes6,bytes16) (gas: 1188 → 1188 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes6,bytes2) (gas: 1124 → 1124 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes6,bytes22) (gas: 1132 → 1132 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes6,bytes4) (gas: 1211 → 1211 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes6,bytes6) (gas: 1190 → 1190 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes8,bytes12) (gas: 1210 → 1210 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes8,bytes16) (gas: 1199 → 1199 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes8,bytes2) (gas: 1168 → 1168 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes8,bytes20) (gas: 1155 → 1155 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes8,bytes24) (gas: 1056 → 1056 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes8,bytes4) (gas: 1167 → 1167 | 0 0.000%)
+━ PackingTest::testSymbolicPack(bytes8,bytes8) (gas: 1166 → 1166 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes10,bytes1,uint8) (gas: 2670 → 2670 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes10,bytes2,uint8) (gas: 2649 → 2649 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes10,bytes4,uint8) (gas: 2645 → 2645 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes10,bytes6,uint8) (gas: 2671 → 2671 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes10,bytes8,uint8) (gas: 2714 → 2714 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes12,bytes1,uint8) (gas: 2736 → 2736 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes12,bytes10,uint8) (gas: 2671 → 2671 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes12,bytes2,uint8) (gas: 2691 → 2691 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes12,bytes4,uint8) (gas: 2690 → 2690 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes12,bytes6,uint8) (gas: 2693 → 2693 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes12,bytes8,uint8) (gas: 2692 → 2692 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes16,bytes1,uint8) (gas: 2736 → 2736 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes16,bytes10,uint8) (gas: 2670 → 2670 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes16,bytes12,uint8) (gas: 2670 → 2670 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes16,bytes2,uint8) (gas: 2690 → 2690 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes16,bytes4,uint8) (gas: 2648 → 2648 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes16,bytes6,uint8) (gas: 2671 → 2671 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes16,bytes8,uint8) (gas: 2691 → 2691 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes2,bytes1,uint8) (gas: 2517 → 2517 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes20,bytes1,uint8) (gas: 2646 → 2646 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes20,bytes10,uint8) (gas: 2714 → 2714 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes20,bytes12,uint8) (gas: 2734 → 2734 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes20,bytes16,uint8) (gas: 2648 → 2648 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes20,bytes2,uint8) (gas: 2669 → 2669 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes20,bytes4,uint8) (gas: 2714 → 2714 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes20,bytes6,uint8) (gas: 2669 → 2669 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes20,bytes8,uint8) (gas: 2648 → 2648 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes22,bytes1,uint8) (gas: 2734 → 2734 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes22,bytes10,uint8) (gas: 2670 → 2670 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes22,bytes12,uint8) (gas: 2691 → 2691 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes22,bytes16,uint8) (gas: 2713 → 2713 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes22,bytes2,uint8) (gas: 2714 → 2714 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes22,bytes20,uint8) (gas: 2734 → 2734 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes22,bytes4,uint8) (gas: 2735 → 2735 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes22,bytes6,uint8) (gas: 2690 → 2690 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes22,bytes8,uint8) (gas: 2671 → 2671 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes24,bytes1,uint8) (gas: 2713 → 2713 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes24,bytes10,uint8) (gas: 2692 → 2692 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes24,bytes12,uint8) (gas: 2713 → 2713 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes24,bytes16,uint8) (gas: 2646 → 2646 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes24,bytes20,uint8) (gas: 2647 → 2647 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes24,bytes22,uint8) (gas: 2648 → 2648 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes24,bytes4,uint8) (gas: 2693 → 2693 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes24,bytes6,uint8) (gas: 2715 → 2715 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes24,bytes8,uint8) (gas: 2711 → 2711 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes28,bytes1,uint8) (gas: 1878 → 1878 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes28,bytes10,uint8) (gas: 2628 → 2628 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes28,bytes12,uint8) (gas: 2607 → 2607 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes28,bytes16,uint8) (gas: 2630 → 2630 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes28,bytes2,uint8) (gas: 2455 → 2455 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes28,bytes20,uint8) (gas: 2653 → 2653 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes28,bytes22,uint8) (gas: 2584 → 2584 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes28,bytes24,uint8) (gas: 2563 → 2563 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes28,bytes4,uint8) (gas: 2414 → 2414 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes28,bytes8,uint8) (gas: 2564 → 2564 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes32,bytes1,uint8) (gas: 1780 → 1780 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes32,bytes12,uint8) (gas: 2464 → 2464 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes32,bytes16,uint8) (gas: 2507 → 2507 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes32,bytes2,uint8) (gas: 1802 → 1802 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes32,bytes20,uint8) (gas: 2486 → 2486 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes32,bytes22,uint8) (gas: 2508 → 2508 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes32,bytes24,uint8) (gas: 2463 → 2463 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes32,bytes28,uint8) (gas: 2397 → 2397 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes32,bytes4,uint8) (gas: 1845 → 1845 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes32,bytes6,uint8) (gas: 2357 → 2357 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes32,bytes8,uint8) (gas: 2357 → 2357 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes4,bytes1,uint8) (gas: 2671 → 2671 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes4,bytes2,uint8) (gas: 2648 → 2648 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes6,bytes1,uint8) (gas: 2734 → 2734 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes6,bytes2,uint8) (gas: 2670 → 2670 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes6,bytes4,uint8) (gas: 2693 → 2693 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes8,bytes1,uint8) (gas: 2733 → 2733 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes8,bytes2,uint8) (gas: 2648 → 2648 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes8,bytes4,uint8) (gas: 2735 → 2735 | 0 0.000%)
+━ PackingTest::testSymbolicReplace(bytes8,bytes6,uint8) (gas: 2668 → 2668 | 0 0.000%)
+━ RLPTest::testComputeCreateAddress(address,uint256) (gas: 6556 → 6556 | 0 0.000%)
+━ RLPTest::testEncodeDecodeAddress(address) (gas: 2332 → 2332 | 0 0.000%)
+━ RLPTest::testEncodeDecodeBool(bool) (gas: 1661 → 1661 | 0 0.000%)
+━ RLPTest::testEncodeDecodeBytes(bytes) (gas: 5763 → 5763 | 0 0.000%)
+━ RLPTest::testEncodeDecodeBytes32(bytes32) (gas: 2046 → 2046 | 0 0.000%)
+━ RLPTest::testEncodeDecodeString(string) (gas: 5799 → 5799 | 0 0.000%)
+━ RLPTest::testEncodeDecodeUint256(uint256) (gas: 2371 → 2371 | 0 0.000%)
+━ RLPTest::testEncodeEmpty() (gas: 4049 → 4049 | 0 0.000%)
+━ ShortStringsTest::testLengthShort(string) (gas: 4013 → 4013 | 0 0.000%)
+━ ShortStringsTest::testLengthWithFallback(string,string) (gas: 68619 → 68619 | 0 0.000%)
+━ ShortStringsTest::testRevertLong(string) (gas: 6108 → 6108 | 0 0.000%)
+━ ShortStringsTest::testRoundtripShort(string) (gas: 4855 → 4855 | 0 0.000%)
+━ ShortStringsTest::testRoundtripWithFallback(string,string) (gas: 71886 → 71886 | 0 0.000%)
+━ SlotDerivationTest::testDeriveArray(uint256,uint256) (gas: 23243 → 23243 | 0 0.000%)
+━ SlotDerivationTest::testDeriveMappingBytes(bytes) (gas: 1188 → 1188 | 0 0.000%)
+━ SlotDerivationTest::testDeriveMappingString(string) (gas: 1248 → 1248 | 0 0.000%)
+━ SlotDerivationTest::testSymbolicDeriveMappingAddress(address) (gas: 648 → 648 | 0 0.000%)
+━ SlotDerivationTest::testSymbolicDeriveMappingAddressDirty(bytes32) (gas: 864 → 864 | 0 0.000%)
+━ SlotDerivationTest::testSymbolicDeriveMappingBoolean(bool) (gas: 464 → 464 | 0 0.000%)
+━ SlotDerivationTest::testSymbolicDeriveMappingBooleanDirty(bytes32) (gas: 864 → 864 | 0 0.000%)
+━ SlotDerivationTest::testSymbolicDeriveMappingBytes32(bytes32) (gas: 864 → 864 | 0 0.000%)
+━ SlotDerivationTest::testSymbolicDeriveMappingBytes4(bytes4) (gas: 495 → 495 | 0 0.000%)
+━ SlotDerivationTest::testSymbolicDeriveMappingInt256(int256) (gas: 465 → 465 | 0 0.000%)
+━ SlotDerivationTest::testSymbolicDeriveMappingInt32(int32) (gas: 514 → 514 | 0 0.000%)
+━ SlotDerivationTest::testSymbolicDeriveMappingUint256(uint256) (gas: 421 → 421 | 0 0.000%)
+━ SlotDerivationTest::testSymbolicDeriveMappingUint32(uint32) (gas: 630 → 630 | 0 0.000%)
+━ StringsTest::testParseChecksumHex(address) (gas: 37220 → 37220 | 0 0.000%)
+━ StringsTest::testParseHex(uint256) (gas: 11106 → 11106 | 0 0.000%)
+━ StringsTest::testTryParseAddressExtendedEnd(address,uint256) (gas: 12605 → 12605 | 0 0.000%)
+━ StringsTest::testTryParseHexUintExtendedEnd(string) (gas: 1248 → 1248 | 0 0.000%)
+━ MessageHashUtilsTest::testToDataWithIntendedValidatorHash(address,bytes) (gas: 1602 → 1602 | 0 0.000%)
+━ MessageHashUtilsTest::testToDataWithIntendedValidatorHash(address,bytes32) (gas: 1416 → 1416 | 0 0.000%)
+━ WebAuthnTest::testTryDecodeAuthInvalid() (gas: 19929 → 19929 | 0 0.000%)
+━ WebAuthnTest::testTryDecodeAuthValid(bytes32,bytes32,uint256,uint256,bytes,string) (gas: 11265 → 11265 | 0 0.000%)
+━ WebAuthnTest::testVerifyFlagsUP(bytes,uint256) (gas: 13949 → 13949 | 0 0.000%)
+━ WebAuthnTest::testVerifyIndexOutOfBounds(bytes,uint256) (gas: 20773 → 20773 | 0 0.000%)
+━ WebAuthnTest::testVerifyInvalidChallenge(bytes,uint256) (gas: 13248 → 13248 | 0 0.000%)
+━ WebAuthnTest::testVerifyInvalidType(bytes,uint256) (gas: 9853 → 9853 | 0 0.000%)
+━ InteroperableAddressTest::testFormatParse(bytes2,bytes,bytes) (gas: 25130 → 25130 | 0 0.000%)
+━ InteroperableAddressTest::testFormatParseEVM(uint256,address) (gas: 16379 → 16379 | 0 0.000%)
+━ MathTest::testLog2(uint256,uint8) (gas: 5108 → 5108 | 0 0.000%)
+━ MathTest::testLog256(uint256,uint8) (gas: 5422 → 5422 | 0 0.000%)
+━ MathTest::testMul512(uint256,uint256) (gas: 1912 → 1912 | 0 0.000%)
+━ MathTest::testMulDiv(uint256,uint256,uint256) (gas: 4061 → 4061 | 0 0.000%)
+━ MathTest::testMulDivDomain(uint256,uint256,uint256) (gas: 4394 → 4394 | 0 0.000%)
+━ MathTest::testSqrt(uint256,uint8) (gas: 5254 → 5254 | 0 0.000%)
+━ MathTest::testSymbolicAdd512(uint256,uint256) (gas: 894 → 894 | 0 0.000%)
+━ MathTest::testSymbolicCeilDiv(uint256,uint256) (gas: 3710 → 3710 | 0 0.000%)
+━ MathTest::testSymbolicCountLeadingZeroes(uint256) (gas: 1139 → 1139 | 0 0.000%)
+━ MathTest::testSymbolicInvMod17(uint256) (gas: 2071 → 2071 | 0 0.000%)
+━ MathTest::testSymbolicInvMod2(uint256) (gas: 1664 → 1664 | 0 0.000%)
+━ MathTest::testSymbolicInvMod65537(uint256) (gas: 2543 → 2543 | 0 0.000%)
+━ MathTest::testSymbolicMinMax(uint256,uint256) (gas: 894 → 894 | 0 0.000%)
+━ MathTest::testSymbolicTernary(bool,uint256,uint256) (gas: 1068 → 1068 | 0 0.000%)
+━ SignedMathTest::testAverage1(int256,int256) (gas: 3088 → 3088 | 0 0.000%)
+━ SignedMathTest::testSymbolicAbs(int256) (gas: 419 → 419 | 0 0.000%)
+━ SignedMathTest::testSymbolicAverage2(int256,int256) (gas: 1219 → 1219 | 0 0.000%)
+━ SignedMathTest::testSymbolicMax(int256,int256) (gas: 1074 → 1074 | 0 0.000%)
+━ SignedMathTest::testSymbolicMin(int256,int256) (gas: 1074 → 1074 | 0 0.000%)
+━ SignedMathTest::testSymbolicMinMax(int256,int256) (gas: 1074 → 1074 | 0 0.000%)
+━ SignedMathTest::testSymbolicTernary(bool,int256,int256) (gas: 1266 → 1266 | 0 0.000%)
+━ AccumulatorsTest::testAccumulatorPushShift() (gas: 8690 → 8690 | 0 0.000%)
+━ CheckpointsTrace160Test::testLookup(uint96[],uint160[],uint96) (gas: 4505341 → 4505341 | 0 0.000%)
+━ CheckpointsTrace160Test::testPush(uint96[],uint160[],uint96) (gas: 4788567 → 4788567 | 0 0.000%)
+━ CheckpointsTrace208Test::testLookup(uint48[],uint208[],uint48) (gas: 4429433 → 4429433 | 0 0.000%)
+━ CheckpointsTrace208Test::testPush(uint48[],uint208[],uint48) (gas: 4716522 → 4716522 | 0 0.000%)
+↓ AccumulatorsTest::testAccumulatorPush(bytes[]) (gas: 282388 → 282387 | -1 -0.000%)
+↓ AccumulatorsTest::testAccumulatorShift(bytes[]) (gas: 280600 → 280599 | -1 -0.000%)
+↑ ERC4626StdTest::test_deposit((address[4],uint256[4],uint256[4],int256),uint256,uint256) (gas: 484787 → 484789 | 2 0.000%)
+↑ ERC4626StdTest::test_previewRedeem((address[4],uint256[4],uint256[4],int256),uint256) (gas: 481863 → 481865 | 2 0.000%)
+↑ ERC4626StdTest::test_previewMint((address[4],uint256[4],uint256[4],int256),uint256) (gas: 479586 → 479588 | 2 0.000%)
+↑ ERC4626StdTest::test_RT_deposit_withdraw((address[4],uint256[4],uint256[4],int256),uint256) (gas: 489028 → 489031 | 3 0.001%)
+↑ ERC4626StdTest::test_RT_mint_redeem((address[4],uint256[4],uint256[4],int256),uint256) (gas: 487285 → 487288 | 3 0.001%)
+↑ ERC4626StdTest::test_RT_redeem_mint((address[4],uint256[4],uint256[4],int256),uint256) (gas: 487281 → 487285 | 4 0.001%)
+↑ ERC4626StdTest::test_previewDeposit((address[4],uint256[4],uint256[4],int256),uint256) (gas: 479528 → 479532 | 4 0.001%)
+↓ RLPTest::testEncodeBytesArray(bytes[]) (gas: 212382 → 212380 | -2 -0.001%)
+↑ ERC4626StdTest::test_withdraw((address[4],uint256[4],uint256[4],int256),uint256,uint256) (gas: 488745 → 488750 | 5 0.001%)
+↑ ERC4626StdTest::test_RT_redeem_deposit((address[4],uint256[4],uint256[4],int256),uint256) (gas: 487322 → 487327 | 5 0.001%)
+↑ ERC4626StdTest::test_RT_deposit_redeem((address[4],uint256[4],uint256[4],int256),uint256) (gas: 487260 → 487265 | 5 0.001%)
+↑ ERC4626StdTest::test_mint((address[4],uint256[4],uint256[4],int256),uint256,uint256) (gas: 484756 → 484761 | 5 0.001%)
+↓ RLPTest::testEncodeDecodeList(bytes[]) (gas: 96317 → 96316 | -1 -0.001%)
+↑ ERC4626StdTest::test_redeem((address[4],uint256[4],uint256[4],int256),uint256,uint256) (gas: 487064 → 487072 | 8 0.002%)
+↓ ERC4626StdTest::test_previewWithdraw((address[4],uint256[4],uint256[4],int256),uint256) (gas: 483666 → 483658 | -8 -0.002%)
+↑ ERC4626StdTest::test_maxWithdraw((address[4],uint256[4],uint256[4],int256)) (gas: 443528 → 443536 | 8 0.002%)
+↑ ERC4626StdTest::test_RT_withdraw_deposit((address[4],uint256[4],uint256[4],int256),uint256) (gas: 489090 → 489100 | 10 0.002%)
+↓ ERC4626StdTest::test_redeem_zero_allowance((address[4],uint256[4],uint256[4],int256),uint256) (gas: 452998 → 452988 | -10 -0.002%)
+↑ ERC4626StdTest::test_RT_withdraw_mint((address[4],uint256[4],uint256[4],int256),uint256) (gas: 489061 → 489072 | 11 0.002%)
+↑ ERC4626StdTest::test_RT_mint_withdraw((address[4],uint256[4],uint256[4],int256),uint256) (gas: 489025 → 489041 | 16 0.003%)
+↑ ArraysTest::testSort(uint256[]) (gas: 197227 → 197237 | 10 0.005%)
+↓ P256Test::testRecover(bytes32,uint256) (gas: 512910 → 512881 | -29 -0.006%)
+↓ P256Test::testVerify(bytes32,uint256) (gas: 269429 → 269408 | -21 -0.008%)
+↓ StringsTest::testParse(uint256) (gas: 9607 → 9606 | -1 -0.010%)
+↑ ERC721ConsecutiveTest::test_burn(address,uint256[],uint256,uint96) (gas: 4706952 → 4707495 | 543 0.012%)
+↓ StringsTest::testParseSigned(int256) (gas: 7121 → 7120 | -1 -0.014%)
+↓ RLPTest::testEncodeString(string) (gas: 7030 → 7029 | -1 -0.014%)
+↓ RLPTest::testEncodeBytes(bytes) (gas: 6977 → 6976 | -1 -0.014%)
+↓ RLPTest::testEncodeUint256(uint256) (gas: 6823 → 6822 | -1 -0.015%)
+↓ Uint256HeapTest::testFuzz(uint256[]) (gas: 549697 → 549611 | -86 -0.016%)
+↓ RLPTest::testEncodeAddress(address) (gas: 6281 → 6280 | -1 -0.016%)
+↓ RLPTest::testEncodeBytes32(bytes32) (gas: 6160 → 6159 | -1 -0.016%)
+↓ RLPTest::testEncodeBool(bool) (gas: 6150 → 6149 | -1 -0.016%)
+↓ MathTest::testLog10(uint256,uint8) (gas: 5501 → 5500 | -1 -0.018%)
+↓ RLPTest::testEncodeEncoder(bytes) (gas: 9257 → 9255 | -2 -0.022%)
+↓ ArraysTest::testReplaceUint256(uint256[],uint256,uint256[]) (gas: 142905 → 142872 | -33 -0.023%)
+↓ ArraysTest::testReplaceBytes32Full(bytes32[],uint256,bytes32[],uint256,uint256) (gas: 174057 → 174014 | -43 -0.025%)
+↓ WebAuthnTest::testVerifyFlagsUV(bytes,uint256) (gas: 54112 → 54098 | -14 -0.026%)
+↓ WebAuthnTest::testVerifyFlagsBEBS(bytes,uint256) (gas: 54091 → 54077 | -14 -0.026%)
+↑ ERC721ConsecutiveTest::test_ownership(address,uint256[],uint256[2],uint96) (gas: 4613893 → 4615279 | 1386 0.030%)
+↓ WebAuthnTest::testVerify(bytes,uint256) (gas: 23297 → 23290 | -7 -0.030%)
+↓ ArraysTest::testReplaceUint256Full(uint256[],uint256,uint256[],uint256,uint256) (gas: 145400 → 145353 | -47 -0.032%)
+↑ ArraysTest::testSliceAddressWithStartOnly(address[],uint256) (gas: 75372 → 75414 | 42 0.056%)
+↑ ArraysTest::testSliceUint256WithStartOnly(uint256[],uint256) (gas: 63099 → 63135 | 36 0.057%)
+↑ ERC721ConsecutiveTest::test_balance(address,uint256[],uint96) (gas: 4530191 → 4532931 | 2740 0.060%)
+↑ ArraysTest::testSliceBytes32WithStartOnly(bytes32[],uint256) (gas: 80296 → 80348 | 52 0.065%)
+↑ RLPTest::testEncodeMultiType(uint256,bytes,address) (gas: 19709 → 19724 | 15 0.076%)
+↑ Uint256HeapTest::testFuzzGt(uint256[]) (gas: 592498 → 592983 | 485 0.082%)
+↓ ArraysTest::testReplaceAddress(address[],uint256,address[]) (gas: 172833 → 172688 | -145 -0.084%)
+↓ ArraysTest::testSliceAddress(address[],uint256,uint256) (gas: 72671 → 72608 | -63 -0.087%)
+↓ MemoryTest::testEqual(bytes,uint256,uint256,bytes,uint256,uint256) (gas: 6868 → 6862 | -6 -0.087%)
+↑ CheckpointsTrace224Test::testPush(uint32[],uint224[],uint32) (gas: 4661888 → 4666166 | 4278 0.092%)
+↓ ArraysTest::testReplaceAddressFull(address[],uint256,address[],uint256,uint256) (gas: 176920 → 176706 | -214 -0.121%)
+↑ CheckpointsTrace224Test::testLookup(uint32[],uint224[],uint32) (gas: 4376103 → 4381817 | 5714 0.131%)
+↑ ArraysTest::testSpliceAddressWithStartOnly(address[],uint256) (gas: 66042 → 66142 | 100 0.151%)
+↓ ArraysTest::testSpliceUint256WithStartOnly(uint256[],uint256) (gas: 50636 → 50556 | -80 -0.158%)
+↓ ArraysTest::testSpliceBytes32WithStartOnly(bytes32[],uint256) (gas: 78465 → 78339 | -126 -0.161%)
+↓ ArraysTest::testSpliceBytes32(bytes32[],uint256,uint256) (gas: 76656 → 76524 | -132 -0.172%)
+↓ ArraysTest::testReplaceBytes32(bytes32[],uint256,bytes32[]) (gas: 175726 → 175363 | -363 -0.207%)
+↓ CheckpointsTrace256Test::testLookup(uint256[],uint256[],uint256) (gas: 8304343 → 8285746 | -18597 -0.224%)
+↑ ArraysTest::testSliceUint256(uint256[],uint256,uint256) (gas: 64143 → 64299 | 156 0.243%)
+↑ ERC2771ForwarderTest::testExecuteBatchAvoidsETHStuck(uint256,uint256,uint256) (gas: 233682 → 234366 | 684 0.293%)
+↑ ArraysTest::testSpliceUint256(uint256[],uint256,uint256) (gas: 51486 → 51639 | 153 0.297%)
+↓ CheckpointsTrace256Test::testPush(uint256[],uint256[],uint256) (gas: 8598295 → 8572224 | -26071 -0.303%)
+↓ ArraysTest::testSpliceAddress(address[],uint256,uint256) (gas: 62874 → 62529 | -345 -0.549%)
+↓ ArraysTest::testSliceBytes32(bytes32[],uint256,uint256) (gas: 78816 → 78159 | -657 -0.834%)
+↓ BytesTest::testLastIndexOf(bytes,bytes1,uint256) (gas: 7728 → 7517 | -211 -2.730%)
+↓ MathTest::testInvMod(uint256,uint256) (gas: 1997 → 1941 | -56 -2.804%)
+↑ MathTest::testModExpMemory(uint256,uint256,uint256) (gas: 11934 → 12311 | 377 3.159%)
+↑ MathTest::testTryModExpMemory(uint256,uint256,uint256) (gas: 11892 → 12269 | 377 3.170%)
+↑ MathTest::testInvModP256(uint256) (gas: 3497 → 3615 | 118 3.374%)
+↑ MathTest::testTryModExp(uint256,uint256,uint256) (gas: 10719 → 11098 | 379 3.536%)
+↑ MathTest::testModExp(uint256,uint256,uint256) (gas: 10707 → 11086 | 379 3.540%)
+↑ PackingTest::testSymbolicReplace(bytes24,bytes2,uint8) (gas: 2540 → 2692 | 152 5.984%)
+↑ PackingTest::testSymbolicReplace(bytes28,bytes6,uint8) (gas: 2433 → 2585 | 152 6.247%)
+↑ PackingTest::testSymbolicReplace(bytes32,bytes10,uint8) (gas: 2292 → 2444 | 152 6.632%)
+━ GovernorSuperQuorumGreaterThanQuorum::invariant_superQuorumGreaterThanQuorum() (gas: 0 → 0 | 0 NaN%)
+
+--------------------------------------------------------------------------------
+Total tests: 348, ↑ 39, ↓ 39, ━ 270
+Overall gas change: -28821 (-0.035%)
+348 tests | up 39 (regressions), down 39 (savings), unchanged 270 | overall -28821 gas (-0.035%)
+[WARN] 39 gas regression(s) survived a seeded, repeated diff against the pre-rewrite baseline. Inspect the report before merging.
+
+══════════════════════════════════
+ GAS REPORT (forge test --gas-report)
+══════════════════════════════════
+
+━ contracts/mocks/CallReceiverMock.sol:CallReceiverMockTrustingForwarder [deploy cost] (gas: 419535 → 419535 | 0 0%)
+━ contracts/mocks/CallReceiverMock.sol:CallReceiverMockTrustingForwarder [deploy size] (bytes: 1748 → 1748 | 0 0%)
+  ↓ contracts/mocks/CallReceiverMock.sol:CallReceiverMockTrustingForwarder::isTrustedForwarder(address) (avg gas: 1377 → 1376 | -1 -0.073%) [min 500→500, median 500→500, max 2500→2500, calls 3085→3072]
+━ contracts/mocks/token/ERC20Mock.sol:ERC20Mock [deploy cost] (gas: 527833 → 527833 | 0 0%)
+━ contracts/mocks/token/ERC20Mock.sol:ERC20Mock [deploy size] (bytes: 2420 → 2420 | 0 0%)
+  ━ contracts/mocks/token/ERC20Mock.sol:ERC20Mock::allowance(address,address) (avg gas: 2832 → 2832 | 0 0%) [min 2832→2832, median 2832→2832, max 2832→2832, calls 964→964]
+  ↑ contracts/mocks/token/ERC20Mock.sol:ERC20Mock::approve(address,uint256) (avg gas: 36313 → 36322 | 9 0.025%) [min 26394→26394, median 26394→26394, max 46678→46678, calls 55912→55912]
+  ↓ contracts/mocks/token/ERC20Mock.sol:ERC20Mock::balanceOf(address) (avg gas: 2474 → 2473 | -1 -0.04%) [min 559→559, median 2559→2559, max 2559→2559, calls 37119→37132]
+  ━ contracts/mocks/token/ERC20Mock.sol:ERC20Mock::burn(address,uint256) (avg gas: 34404 → 34404 | 0 0%) [min 34258→34258, median 34402→34390, max 34630→34618, calls 1391→1359]
+  ━ contracts/mocks/token/ERC20Mock.sol:ERC20Mock::decimals() (avg gas: 265 → 265 | 0 0%) [min 265→265, median 265→265, max 265→265, calls 268→268]
+  ↑ contracts/mocks/token/ERC20Mock.sol:ERC20Mock::mint(address,uint256) (avg gas: 51005 → 51029 | 24 0.047%) [min 28315→28315, median 51267→51267, max 68727→68727, calls 55003→55035]
+━ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock [deploy cost] (gas: 1100065 → 1100065 | 0 0%)
+━ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock [deploy size] (bytes: 5300 → 5300 | 0 0%)
+  ━ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock::allowance(address,address) (avg gas: 2799 → 2799 | 0 0%) [min 2799→2799, median 2799→2799, max 2799→2799, calls 964→964]
+  ━ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock::approve(address,uint256) (avg gas: 33114 → 33114 | 0 0%) [min 26229→26229, median 26457→26457, max 46741→46741, calls 2892→2892]
+  ━ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock::asset() (avg gas: 284 → 284 | 0 0%) [min 284→284, median 284→284, max 284→284, calls 241→241]
+  ━ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock::balanceOf(address) (avg gas: 2572 → 2572 | 0 0%) [min 2572→2572, median 2572→2572, max 2572→2572, calls 1928→1928]
+  ↓ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock::convertToAssets(uint256) (avg gas: 30253 → 30244 | -9 -0.03%) [min 30021→30009, median 30105→30093, max 30687→30687, calls 482→482]
+  ↓ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock::convertToShares(uint256) (avg gas: 30280 → 30266 | -14 -0.046%) [min 30043→30031, median 30139→30091, max 30709→30709, calls 482→482]
+  ↑ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock::deposit(uint256,address) (avg gas: 74522 → 74560 | 38 0.051%) [min 45540→45540, median 67711→67717, max 102073→102073, calls 26510→26510]
+  ━ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock::maxDeposit(address) (avg gas: 389 → 389 | 0 0%) [min 389→389, median 389→389, max 389→389, calls 241→241]
+  ━ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock::maxMint(address) (avg gas: 411 → 411 | 0 0%) [min 411→411, median 411→411, max 411→411, calls 241→241]
+  ━ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock::maxRedeem(address) (avg gas: 2626 → 2626 | 0 0%) [min 2626→2626, median 2626→2626, max 2626→2626, calls 241→241]
+  ↑ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock::maxWithdraw(address) (avg gas: 11285 → 11288 | 3 0.027%) [min 11140→11140, median 11140→11434, max 11434→11434, calls 241→241]
+  ↓ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock::mint(uint256,address) (avg gas: 57283 → 57221 | -62 -0.108%) [min 45502→45526, median 56840→56849, max 77609→77609, calls 1446→1446]
+  ↑ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock::previewDeposit(uint256) (avg gas: 30220 → 30237 | 17 0.056%) [min 30052→30052, median 30076→30088, max 30730→30706, calls 241→241]
+  ↓ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock::previewMint(uint256) (avg gas: 30257 → 30254 | -3 -0.01%) [min 30072→30072, median 30108→30108, max 30750→30726, calls 241→241]
+  ↓ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock::previewRedeem(uint256) (avg gas: 30226 → 30220 | -6 -0.02%) [min 30030→30030, median 30078→30066, max 30708→30696, calls 241→241]
+  ↓ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock::previewWithdraw(uint256) (avg gas: 30276 → 30275 | -1 -0.003%) [min 30096→30096, median 30132→30132, max 30774→30762, calls 241→241]
+  ↑ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock::redeem(uint256,address,address) (avg gas: 52650 → 52733 | 83 0.158%) [min 24419→24419, median 55515→55563, max 74962→74902, calls 1687→1687]
+  ━ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock::totalAssets() (avg gas: 5651 → 5651 | 0 0%) [min 5651→5651, median 5651→5651, max 5651→5651, calls 241→241]
+  ↑ contracts/mocks/token/ERC4626Mock.sol:ERC4626Mock::withdraw(uint256,address,address) (avg gas: 55574 → 55643 | 69 0.124%) [min 33021→33021, median 57918→57966, max 77341→80980, calls 1687→1687]
+━ test/account/utils/draft-ERC7579Utils.t.sol:ERC7579UtilsTest [deploy cost] (gas: 4194614 → 4194614 | 0 0%)
+━ test/account/utils/draft-ERC7579Utils.t.sol:ERC7579UtilsTest [deploy size] (bytes: 21244 → 21244 | 0 0%)
+  ━ test/account/utils/draft-ERC7579Utils.t.sol:ERC7579UtilsTest::callDecodeBatch(bytes) (avg gas: 963 → 963 | 0 0%) [min 588→588, median 1113→1113, max 1113→1113, calls 9→9]
+  ━ test/account/utils/draft-ERC7579Utils.t.sol:ERC7579UtilsTest::callDecodeBatchAndGetFirst(bytes) (avg gas: 1255 → 1255 | 0 0%) [min 1234→1234, median 1255→1255, max 1277→1277, calls 2→2]
+  ━ test/account/utils/draft-ERC7579Utils.t.sol:ERC7579UtilsTest::callDecodeBatchAndGetFirstBytes(bytes) (avg gas: 1496 → 1496 | 0 0%) [min 1301→1301, median 1496→1496, max 1692→1692, calls 2→2]
+  ━ test/account/utils/draft-ERC7579Utils.t.sol:ERC7579UtilsTest::hashUserOperation((address,uint256,bytes,bytes,bytes32,uint256,bytes32,bytes,bytes)) (avg gas: 6893 → 6893 | 0 0%) [min 6871→6871, median 6871→6871, max 6937→6937, calls 3→3]
+↓ test/governance/extensions/GovernorSuperQuorumGreaterThanQuorum.t.sol:GovernorHandler [deploy cost] (gas: 3814593 → 3814161 | -432 -0.011%)
+↓ test/governance/extensions/GovernorSuperQuorumGreaterThanQuorum.t.sol:GovernorHandler [deploy size] (bytes: 19667 → 19665 | -2 -0.01%)
+  ↓ test/governance/extensions/GovernorSuperQuorumGreaterThanQuorum.t.sol:GovernorHandler::$_updateQuorumNumerator(uint256) (avg gas: 22017 → 22013 | -4 -0.018%) [min 19377→19377, median 22177→22177, max 22177→22177, calls 6238→6198]
+  ↑ test/governance/extensions/GovernorSuperQuorumGreaterThanQuorum.t.sol:GovernorHandler::$_updateSuperQuorumNumerator(uint256) (avg gas: 21869 → 21872 | 3 0.014%) [min 19130→19130, median 21930→21930, max 21930→21930, calls 6128→5992]
+  ━ test/governance/extensions/GovernorSuperQuorumGreaterThanQuorum.t.sol:GovernorHandler::quorumNumerator() (avg gas: 4761 → 4761 | 0 0%) [min 4761→4761, median 4761→4761, max 4761→4761, calls 1→1]
+  ━ test/governance/extensions/GovernorSuperQuorumGreaterThanQuorum.t.sol:GovernorHandler::superQuorumNumerator() (avg gas: 4827 → 4827 | 0 0%) [min 4827→4827, median 4827→4827, max 4827→4827, calls 1→1]
+━ test/governance/extensions/GovernorSuperQuorumGreaterThanQuorum.t.sol:TokenMock [deploy cost] (gas: 1804101 → 1804101 | 0 0%)
+━ test/governance/extensions/GovernorSuperQuorumGreaterThanQuorum.t.sol:TokenMock [deploy size] (bytes: 8805 → 8805 | 0 0%)
+  ━ test/governance/extensions/GovernorSuperQuorumGreaterThanQuorum.t.sol:TokenMock::clock() (avg gas: 401 → 401 | 0 0%) [min 401→401, median 401→401, max 401→401, calls 12368→12192]
+━ test/metatx/ERC2771Forwarder.t.sol:ERC2771ForwarderMock [deploy cost] (gas: 945548 → 945548 | 0 0%)
+━ test/metatx/ERC2771Forwarder.t.sol:ERC2771ForwarderMock [deploy size] (bytes: 5208 → 5208 | 0 0%)
+  ↓ test/metatx/ERC2771Forwarder.t.sol:ERC2771ForwarderMock::execute((address,address,uint256,uint256,uint48,bytes,bytes)) (avg gas: 53579 → 53556 | -23 -0.043%) [min 35238→35238, median 50971→50971, max 69499→69499, calls 482→482]
+  ↓ test/metatx/ERC2771Forwarder.t.sol:ERC2771ForwarderMock::executeBatch((address,address,uint256,uint256,uint48,bytes,bytes)[],address) (avg gas: 123370 → 123363 | -7 -0.006%) [min 62991→62991, median 88375→88375, max 301587→301563, calls 723→723]
+  ━ test/metatx/ERC2771Forwarder.t.sol:ERC2771ForwarderMock::forwardRequestStructHash((address,address,uint256,uint256,uint48,bytes,bytes),uint256) (avg gas: 1914 → 1914 | 0 0%) [min 1914→1914, median 1914→1914, max 1914→1914, calls 3900→3895]
+  ━ test/metatx/ERC2771Forwarder.t.sol:ERC2771ForwarderMock::nonces(address) (avg gas: 2528 → 2528 | 0 0%) [min 2528→2528, median 2528→2528, max 2528→2528, calls 1100→1104]
+  ↓ test/metatx/ERC2771Forwarder.t.sol:ERC2771ForwarderMock::verify((address,address,uint256,uint256,uint48,bytes,bytes)) (avg gas: 13576 → 13535 | -41 -0.302%) [min 10637→10637, median 14182→14182, max 14182→14182, calls 241→241]
+━ test/proxy/Clones.t.sol:ClonesTest [deploy cost] (gas: 1403678 → 1403678 | 0 0%)
+━ test/proxy/Clones.t.sol:ClonesTest [deploy size] (bytes: 6847 → 6847 | 0 0%)
+  ━ test/proxy/Clones.t.sol:ClonesTest::getNumber() (avg gas: 264 → 264 | 0 0%) [min 264→264, median 264→264, max 264→264, calls 1932→1932]
+↓ test/token/ERC20/extensions/ERC4626.t.sol:ERC4626VaultOffsetMock [deploy cost] (gas: 1096764 → 1096752 | -12 -0.001%)
+━ test/token/ERC20/extensions/ERC4626.t.sol:ERC4626VaultOffsetMock [deploy size] (bytes: 5379 → 5379 | 0 0%)
+  ━ test/token/ERC20/extensions/ERC4626.t.sol:ERC4626VaultOffsetMock::decimals() (avg gas: 294 → 294 | 0 0%) [min 294→294, median 294→294, max 294→294, calls 241→241]
+━ test/token/ERC721/extensions/ERC721Consecutive.t.sol:ERC721ConsecutiveTarget [deploy cost] (gas: 1247670 → 1247670 | 0 0%)
+━ test/token/ERC721/extensions/ERC721Consecutive.t.sol:ERC721ConsecutiveTarget [deploy size] (bytes: 7545 → 7545 | 0 0%)
+  ━ test/token/ERC721/extensions/ERC721Consecutive.t.sol:ERC721ConsecutiveTarget::balanceOf(address) (avg gas: 2630 → 2630 | 0 0%) [min 2630→2630, median 2630→2630, max 2630→2630, calls 2169→2169]
+  ↓ test/token/ERC721/extensions/ERC721Consecutive.t.sol:ERC721ConsecutiveTarget::burn(uint256) (avg gas: 77474 → 77436 | -38 -0.049%) [min 62199→62199, median 78191→78191, max 80726→80808, calls 241→241]
+  ↓ test/token/ERC721/extensions/ERC721Consecutive.t.sol:ERC721ConsecutiveTarget::ownerOf(uint256) (avg gas: 10682 → 10680 | -2 -0.019%) [min 2695→2695, median 12020→12020, max 26328→26328, calls 2647→2647]
+  ━ test/token/ERC721/extensions/ERC721Consecutive.t.sol:ERC721ConsecutiveTarget::totalMinted() (avg gas: 2313 → 2313 | 0 0%) [min 2313→2313, median 2313→2313, max 2313→2313, calls 1442→1442]
+  ↑ test/token/ERC721/extensions/ERC721Consecutive.t.sol:ERC721ConsecutiveTarget::transferFrom(address,address,uint256) (avg gas: 69469 → 69470 | 1 0.001%) [min 69068→69080, median 69512→69512, max 69594→69594, calls 482→482]
+━ test/utils/NoncesKeyed.t.sol:NoncesKeyedMock [deploy cost] (gas: 263316 → 263316 | 0 0%)
+━ test/utils/NoncesKeyed.t.sol:NoncesKeyedMock [deploy size] (bytes: 1000 → 1000 | 0 0%)
+  ━ test/utils/NoncesKeyed.t.sol:NoncesKeyedMock::nonces(address,uint192) (avg gas: 2904 → 2904 | 0 0%) [min 2746→2746, median 2907→2907, max 2907→2907, calls 964→964]
+  ↓ test/utils/NoncesKeyed.t.sol:NoncesKeyedMock::useCheckedNonce(address,uint192,uint64) (avg gas: 44906 → 44905 | -1 -0.002%) [min 44557→44557, median 44910→44910, max 45258→45258, calls 482→482]
+  ↓ test/utils/NoncesKeyed.t.sol:NoncesKeyedMock::useNonce(address,uint192) (avg gas: 44558 → 44557 | -1 -0.002%) [min 44308→44308, median 44560→44548, max 44800→44800, calls 241→241]
+━ test/utils/ShortStrings.t.sol:ShortStringsTest [deploy cost] (gas: 1488567 → 1488567 | 0 0%)
+━ test/utils/ShortStrings.t.sol:ShortStringsTest [deploy size] (bytes: 7271 → 7271 | 0 0%)
+  ━ test/utils/ShortStrings.t.sol:ShortStringsTest::toShortString(string) (avg gas: 1027 → 1027 | 0 0%) [min 1017→1017, median 1026→1026, max 1050→1050, calls 241→241]
+↓ test/utils/cryptography/WebAuthn.t.sol:WebAuthnTest [deploy cost] (gas: 2575394 → 2574186 | -1208 -0.047%)
+↓ test/utils/cryptography/WebAuthn.t.sol:WebAuthnTest [deploy size] (bytes: 12699 → 12693 | -6 -0.047%)
+  ━ test/utils/cryptography/WebAuthn.t.sol:WebAuthnTest::tryDecodeAuth(bytes) (avg gas: 2994 → 2994 | 0 0%) [min 2983→2983, median 2995→2995, max 3013→3013, calls 241→241]
+  ━ test/utils/cryptography/WebAuthn.t.sol:WebAuthnTest::tryDecodeAuthDrop(bytes) (avg gas: 1548 → 1548 | 0 0%) [min 588→588, median 1855→1855, max 1940→1940, calls 8→8]
+━ test/utils/draft-InteroperableAddress.t.sol:InteroperableAddressTest [deploy cost] (gas: 1947873 → 1947873 | 0 0%)
+━ test/utils/draft-InteroperableAddress.t.sol:InteroperableAddressTest [deploy size] (bytes: 9565 → 9565 | 0 0%)
+  ━ test/utils/draft-InteroperableAddress.t.sol:InteroperableAddressTest::parseEvmV1Calldata(bytes) (avg gas: 2084 → 2084 | 0 0%) [min 2058→2058, median 2086→2086, max 2086→2086, calls 241→241]
+  ━ test/utils/draft-InteroperableAddress.t.sol:InteroperableAddressTest::parseV1Calldata(bytes) (avg gas: 1879 → 1879 | 0 0%) [min 1866→1866, median 1878→1878, max 1902→1902, calls 241→241]
+  ━ test/utils/draft-InteroperableAddress.t.sol:InteroperableAddressTest::tryParseEvmV1Calldata(bytes) (avg gas: 2065 → 2065 | 0 0%) [min 2039→2039, median 2067→2067, max 2067→2067, calls 241→241]
+  ━ test/utils/draft-InteroperableAddress.t.sol:InteroperableAddressTest::tryParseV1Calldata(bytes) (avg gas: 1833 → 1833 | 0 0%) [min 1820→1820, median 1832→1832, max 1856→1856, calls 241→241]
+━ test/utils/structs/Checkpoints.t.sol:CheckpointsTrace160Test [deploy cost] (gas: 1617906 → 1617906 | 0 0%)
+━ test/utils/structs/Checkpoints.t.sol:CheckpointsTrace160Test [deploy size] (bytes: 7917 → 7917 | 0 0%)
+  ━ test/utils/structs/Checkpoints.t.sol:CheckpointsTrace160Test::push(uint96,uint160) (avg gas: 26479 → 26479 | 0 0%) [min 26373→26373, median 26433→26433, max 26637→26637, calls 241→241]
+━ test/utils/structs/Checkpoints.t.sol:CheckpointsTrace208Test [deploy cost] (gas: 1611499 → 1611499 | 0 0%)
+━ test/utils/structs/Checkpoints.t.sol:CheckpointsTrace208Test [deploy size] (bytes: 7885 → 7885 | 0 0%)
+  ━ test/utils/structs/Checkpoints.t.sol:CheckpointsTrace208Test::push(uint48,uint208) (avg gas: 26454 → 26454 | 0 0%) [min 26327→26327, median 26399→26399, max 26663→26663, calls 241→241]
+━ test/utils/structs/Checkpoints.t.sol:CheckpointsTrace224Test [deploy cost] (gas: 1598085 → 1598085 | 0 0%)
+━ test/utils/structs/Checkpoints.t.sol:CheckpointsTrace224Test [deploy size] (bytes: 7818 → 7818 | 0 0%)
+  ━ test/utils/structs/Checkpoints.t.sol:CheckpointsTrace224Test::push(uint32,uint224) (avg gas: 26504 → 26504 | 0 0%) [min 26372→26372, median 26444→26444, max 26732→26732, calls 241→241]
+━ test/utils/structs/Checkpoints.t.sol:CheckpointsTrace256Test [deploy cost] (gas: 1461540 → 1461540 | 0 0%)
+━ test/utils/structs/Checkpoints.t.sol:CheckpointsTrace256Test [deploy size] (bytes: 7136 → 7136 | 0 0%)
+  ↓ test/utils/structs/Checkpoints.t.sol:CheckpointsTrace256Test::push(uint256,uint256) (avg gas: 28390 → 28387 | -3 -0.011%) [min 28227→28227, median 28347→28335, max 28635→28635, calls 241→241]
+18 contract(s) | deploy cost -1652 gas, deploy size -8 bytes | 61 function(s): 17 cheaper, 9 pricier, 35 unchanged (avg gas)
+[WARN] 12 gas-report entry(ies) were non-deterministic across 3 repeated runs with the same seed — see gasReportTable.nonDeterministic in the report.
+[WARN] 9 function(s) got MORE expensive (avg gas) per the gas-report table. Inspect before merging.
+
+Gas report saved: /home/mfav/gasopt-case-study/results/openzeppelin-contracts/gas.json
+GASOPT-EXIT-CODE=0

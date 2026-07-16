@@ -1,0 +1,18 @@
+=== cell cell-C-gasopt-standard  (dir=/home/mfav/gasopt-case-study/openzeppelin-contracts via_ir=false) ===
+  run1 rc=0 bytes=7949  (cell-C-gasopt-standard)
+  run2 rc=0 bytes=7949  (cell-C-gasopt-standard)
+  run3 rc=0 bytes=7949  (cell-C-gasopt-standard)
+=== cell cell-D-gasopt-viair  (dir=/home/mfav/gasopt-case-study/openzeppelin-contracts via_ir=true) ===
+  run1 rc=1 bytes=7940  (cell-D-gasopt-viair)
+  run2 rc=1 bytes=7940  (cell-D-gasopt-viair)
+  run3 rc=1 bytes=7940  (cell-D-gasopt-viair)
+=== preparing original-code worktree at b60a4b976f0804afbbfb2b957ab43681417261d8 -> /tmp/gasopt-rq5-orig-C5ULsO ===
+=== cell cell-A-orig-standard  (dir=/tmp/gasopt-rq5-orig-C5ULsO via_ir=false) ===
+  run1 rc=0 bytes=7949  (cell-A-orig-standard)
+  run2 rc=0 bytes=7949  (cell-A-orig-standard)
+  run3 rc=0 bytes=7949  (cell-A-orig-standard)
+=== cell cell-B-orig-viair  (dir=/tmp/gasopt-rq5-orig-C5ULsO via_ir=true) ===
+  run1 rc=1 bytes=7940  (cell-B-orig-viair)
+  run2 rc=1 bytes=7940  (cell-B-orig-viair)
+  run3 rc=1 bytes=7940  (cell-B-orig-viair)
+=== factorial done for results/openzeppelin-contracts ===

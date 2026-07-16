@@ -1,0 +1,16 @@
+=== cell cell-C-gasopt-standard  (dir=/home/mfav/gasopt-case-study/core-v3 via_ir=false) ===
+  run1 rc=1 bytes=58364  (cell-C-gasopt-standard)
+  run2 rc=1 bytes=58364  (cell-C-gasopt-standard)
+  run3 rc=1 bytes=58364  (cell-C-gasopt-standard)
+=== cell cell-D-gasopt-viair  (dir=/home/mfav/gasopt-case-study/core-v3 via_ir=true) ===
+  run1 rc=1 bytes=0  (cell-D-gasopt-viair)
+  -> run1 produced no gas JSON (deterministic compile/run failure); skipping remaining repeats for cell-D-gasopt-viair
+=== preparing original-code worktree at c16226fedd7dbb22c906c32bc44b470f61da7c52 -> /tmp/gasopt-rq5-orig-IIXZbX ===
+=== cell cell-A-orig-standard  (dir=/tmp/gasopt-rq5-orig-IIXZbX via_ir=false) ===
+  run1 rc=1 bytes=58364  (cell-A-orig-standard)
+  run2 rc=1 bytes=58364  (cell-A-orig-standard)
+  run3 rc=1 bytes=58364  (cell-A-orig-standard)
+=== cell cell-B-orig-viair  (dir=/tmp/gasopt-rq5-orig-IIXZbX via_ir=true) ===
+  run1 rc=1 bytes=0  (cell-B-orig-viair)
+  -> run1 produced no gas JSON (deterministic compile/run failure); skipping remaining repeats for cell-B-orig-viair
+=== factorial done for results/core-v3 ===

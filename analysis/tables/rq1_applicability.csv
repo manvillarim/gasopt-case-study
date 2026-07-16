@@ -1,4 +1,8 @@
 protocol,rewrite_ran,files_total,files_optimised,skipped_imports,skipped_compile,skipped_verify,gas_measured,end_to_end,failure_cause
+aave-v3-origin,True,186,66,0,0,0,True,True,
 core,True,128,50,0,1,2,True,True,
+core-v3,True,69,19,0,0,0,True,True,
 morpho-blue,True,17,2,0,0,0,True,True,
-v4-core,True,46,2,0,0,0,False,False,gas benchmark not produced (see run.log / notes)
+openzeppelin-contracts,True,248,39,0,0,0,True,True,
+seaport,True,48,20,0,1,0,False,False,gas benchmark not produced (see run.log / notes)
+v4-core,True,46,2,0,0,0,True,True,

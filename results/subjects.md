@@ -44,3 +44,18 @@ Rule for the paper: for DeFi subjects with a meaningful TVL, cite DefiLlama; for
 account-abstraction, Seaport, use the non-TVL adoption signal above (dependents / deployments /
 volume), consistent with the article's phrasing "selected by adoption (e.g., TVL, for the DeFi
 protocols among them)".
+
+## Final measured outcome (all 7 processed)
+| Dir | RQ1 rewrite | gas.json (RQ3/RQ4) | RQ5 factorial | Note |
+|---|---|---|---|---|
+| aave-v3-origin | 66/186, 213 rewrites | ✓ 82 contr, 0 regr | A/C only (B/D via-IR OOM @31GiB) | flagship: -0.98% deploy gas |
+| core (Lido) | 50/128, 212 rewrites | ✓ 0 regr | A/C only | -1.34% deploy gas |
+| core-v3 (Gearbox) | 19/69, 20 rewrites | ✓ 0 regr | A/C only (B/D via-IR stack-too-deep = project property) | |
+| morpho-blue | 2/17, 3 rewrites | ✓ 0 regr | full 2x2 | via-IR -26.7%, gasopt persists under it |
+| openzeppelin-contracts | 39/248, 173 rewrites | ✓ 0 regr, library-embedded | full 2x2 | needed `npm ci` |
+| seaport | 20/48, 86 rewrites | ✗ vm.getCode multiprofile | ✗ (no prod deployable in runnable suite) | **needed gasopt fix 751da96** |
+| v4-core | 2/46, 2 rewrites | ✓ 0 regr (runs=200) | full 2x2 | project-default via-IR/44M OOMs |
+
+**Zero `skippedAfterRewriteOnly` across every gas-measured subject.** The 7-vs-10: three
+dropped (account-abstraction/comet/fluid), replacements still to be chosen by the user; the
+article reports seven and flags the pending replacements in Threats to Validity.

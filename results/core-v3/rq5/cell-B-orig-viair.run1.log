@@ -1,0 +1,3 @@
+Error: Compiler run failed:
+Error: Yul exception:Variable expr_component is 1 too deep in the stack [ expr_component _5 _1 _4 _6 expr_mpos _3 _7 expr_component_2 _2 _20 var_i _mpos expr _13 _12 _21 ]
+No memoryguard was present. Consider using memory-safe assembly only and annotating it via 'assembly ("memory-safe") { ... }'.

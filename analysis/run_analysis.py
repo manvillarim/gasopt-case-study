@@ -75,6 +75,28 @@ def is_production(protocol: str, contract_key: str) -> bool:
     return any(path.startswith(pre) for pre in cfg.get("prod_prefixes", []))
 
 
+def is_library_embedded(protocol: str) -> bool:
+    """True for a pure-library subject (e.g. OpenZeppelin) whose contracts are never
+    deployed standalone: they are inherited/imported, so a Foundry gas report attributes
+    their deploy cost and runtime gas to the test/mock CONTRACTS that embed them. For such a
+    subject the strict production filter yields nothing, so we measure gasopt's effect through
+    the embedding harnesses instead, labelled 'library-embedded' so it is never conflated with
+    a standalone production-deployment saving. Gated on an explicit manifest flag."""
+    return bool(MANIFEST.get(protocol, {}).get("library_embedded", False))
+
+
+def gas_scope_contracts(protocol: str, contracts: list) -> tuple[list, str]:
+    """Return (contracts_to_count, scope_label). Strict production deployables when any exist;
+    otherwise, for a library_embedded subject, every gas-reported contract (the embedding
+    harnesses) with the 'library-embedded' label; otherwise an empty list ('none')."""
+    prod = [c for c in contracts if is_production(protocol, c.get("contract", ""))]
+    if prod:
+        return prod, "production"
+    if is_library_embedded(protocol):
+        return list(contracts), "library-embedded"
+    return [], "none"
+
+
 def protocols() -> list[str]:
     if not RESULTS.exists():
         return []
@@ -155,8 +177,7 @@ def rq3_effectiveness(protos: list[str]):
         if not gas:
             continue
         table = (gas.get("gasReportTable") or {})
-        contracts = [c for c in (table.get("contracts") or [])
-                     if is_production(p, c.get("contract", ""))]
+        contracts, scope = gas_scope_contracts(p, table.get("contracts") or [])
         dep_before = dep_after = 0
         size_before = size_after = 0
         n_dep = 0
@@ -182,6 +203,7 @@ def rq3_effectiveness(protos: list[str]):
                         fn_mean_deltas.append(100.0 * (ma - mb) / mb)
         per_proto.append({
             "protocol": p,
+            "scope": scope,
             "contracts_measured": n_dep,
             "deploy_gas_before": dep_before, "deploy_gas_after": dep_after,
             "deploy_gas_delta": dep_after - dep_before,
@@ -244,8 +266,12 @@ CELLS = {
 }
 
 
-def _parse_cell_runs(protocol: str, rq5_dir: Path, prefix: str) -> dict[str, float] | None:
-    """Return {contract: median production deployment gas across repeats}, or None if unmeasured."""
+def _parse_cell_runs(protocol: str, rq5_dir: Path, prefix: str,
+                     include_all: bool = False) -> dict[str, float] | None:
+    """Return {contract: median deployment gas across repeats}, or None if unmeasured.
+    include_all=True keeps every gas-reported contract (for a library_embedded subject whose
+    production code is only ever deployed inside test/mock harnesses); otherwise strict
+    production deployables only."""
     runs = sorted(rq5_dir.glob(f"{prefix}.run*.json"))
     per_contract: dict[str, list[float]] = {}
     any_ok = False
@@ -256,7 +282,7 @@ def _parse_cell_runs(protocol: str, rq5_dir: Path, prefix: str) -> dict[str, flo
         any_ok = True
         for e in arr:
             if isinstance(e, dict) and isinstance(e.get("contract"), str):
-                if not is_production(protocol, e["contract"]):
+                if not include_all and not is_production(protocol, e["contract"]):
                     continue
                 dep = (e.get("deployment") or {}).get("gas")
                 if dep is not None:
@@ -272,7 +298,9 @@ def rq5_factorial(protos: list[str]) -> pd.DataFrame:
         rq5_dir = RESULTS / p / "rq5"
         if not rq5_dir.exists():
             continue
-        cell_maps = {k: _parse_cell_runs(p, rq5_dir, CELLS[k][0]) for k in CELLS}
+        include_all = is_library_embedded(p)
+        cell_maps = {k: _parse_cell_runs(p, rq5_dir, CELLS[k][0], include_all=include_all)
+                     for k in CELLS}
         # sum deployment gas over contracts present in ALL measured cells (fair comparison)
         measured = {k: v for k, v in cell_maps.items() if v}
         if not measured:
@@ -286,6 +314,7 @@ def rq5_factorial(protos: list[str]) -> pd.DataFrame:
             return (100.0 * (to - frm) / frm) if (frm and to is not None) else None
         rows.append({
             "protocol": p,
+            "scope": "library-embedded" if include_all else "production",
             "contracts_compared": len(common),
             "A_orig_standard": A, "B_orig_viair": B,
             "C_gasopt_standard": C, "D_gasopt_viair": D,

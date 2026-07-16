@@ -1,0 +1,734 @@
+{
+  "tool": "solidity-gas-optimizer",
+  "generatedAt": "2026-07-15T19:11:06.095Z",
+  "target": "/home/mfav/gasopt-case-study/core-v3/contracts",
+  "dryRun": false,
+  "closedWorld": false,
+  "verify": true,
+  "enabledTransforms": [
+    "state-packing",
+    "struct-packing",
+    "avoid-zero-init",
+    "remove-const-loop",
+    "factor-loops",
+    "const-folding",
+    "demorgan",
+    "single-line-swap",
+    "delete-storage",
+    "cache-storage",
+    "cache-array-member",
+    "cache-array-length",
+    "loop-invariant",
+    "pre-increment",
+    "unchecked",
+    "require-error",
+    "short-circuit",
+    "const-folding-state",
+    "use-immutable",
+    "use-constant",
+    "avoid-zero-init-state",
+    "visibility",
+    "calldata-params",
+    "payable-constructor",
+    "loop-fusion"
+  ],
+  "summary": {
+    "filesTotal": 69,
+    "filesOptimised": 19,
+    "filesUnchanged": 50,
+    "filesSkipped": {
+      "imports": 0,
+      "compileErrors": 0,
+      "verifyFailed": 0
+    },
+    "contractsOptimised": 11,
+    "totalRewrites": 20,
+    "rulesApplied": {
+      "payable-constructor": 9,
+      "delete-storage": 6,
+      "avoid-zero-init": 2,
+      "unchecked": 2,
+      "short-circuit": 1
+    },
+    "layoutSafetySkips": {
+      "contracts": 38,
+      "structs": 3
+    }
+  },
+  "files": [
+    {
+      "file": "core/AliasedLossPolicyV3.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "AliasedLossPolicyV3",
+          "rewrites": 1,
+          "rules": {
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "AliasedLossPolicyV3",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "SharedInfo",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "TokenInfo",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        },
+        {
+          "target": "AliasedLossPolicyV3",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "AliasedLossPolicyV3",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "core/BotListV3.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "BotListV3",
+          "rewrites": 2,
+          "rules": {
+            "payable-constructor": 1,
+            "delete-storage": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "core/DefaultAccountFactoryV3.sol",
+      "status": "optimised",
+      "contracts": []
+    },
+    {
+      "file": "core/GearStakingV3.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "GearStakingV3",
+          "rewrites": 2,
+          "rules": {
+            "payable-constructor": 1,
+            "avoid-zero-init": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "GearStakingV3",
+          "rule": "state-packing",
+          "reason": "reorder would save 0 slots (6 -> 6)"
+        }
+      ]
+    },
+    {
+      "file": "core/PriceOracleV3.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "PriceOracleV3",
+          "rewrites": 1,
+          "rules": {
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "PriceOracleV3",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "PriceOracleV3",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "PriceOracleV3",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "credit/CreditAccountV3.sol",
+      "status": "optimised",
+      "contracts": []
+    },
+    {
+      "file": "credit/CreditConfiguratorV3.sol",
+      "status": "optimised",
+      "contracts": []
+    },
+    {
+      "file": "credit/CreditFacadeV3.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "CreditFacadeV3",
+          "rewrites": 2,
+          "rules": {
+            "payable-constructor": 1,
+            "delete-storage": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "CreditFacadeV3",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "CreditFacadeV3",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "CreditFacadeV3",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "credit/CreditManagerV3.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "CreditManagerV3",
+          "rewrites": 5,
+          "rules": {
+            "delete-storage": 3,
+            "payable-constructor": 1,
+            "short-circuit": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "CreditManagerV3",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "CreditManagerV3",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "CreditManagerV3",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "credit/CreditManagerV3_USDT.sol",
+      "status": "optimised",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IAliasedLossPolicyV3.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IBotListV3.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/ICreditAccountV3.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/ICreditConfiguratorV3.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/ICreditFacadeV3.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/ICreditFacadeV3Multicall.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/ICreditManagerV3.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IDefaultAccountFactoryV3.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IExceptions.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IGaugeV3.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IGearStakingV3.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/ILinearInterestRateModelV3.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IPoolQuotaKeeperV3.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IPoolV3.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/IPriceOracleV3.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/ITumblerV3.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/base/IACL.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/base/IACLTrait.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/base/IAccountFactory.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/base/IAdapter.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/base/IAddressProvider.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/base/IBot.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/base/IContractsRegister.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/base/IContractsRegisterTrait.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/base/IDegenNFT.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/base/IInterestRateModel.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/base/ILossPolicy.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "Params",
+          "rule": "struct-packing",
+          "reason": "field order is observable (positional/ABI/signature/open-world) — not reordered"
+        }
+      ]
+    },
+    {
+      "file": "interfaces/base/IPhantomToken.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/base/IPriceFeed.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/base/IPriceFeedStore.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/base/IRateKeeper.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/base/IStateSerializer.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/base/IVersion.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/base/IVotingContract.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/base/IZapper.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/external/IUSDT.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "interfaces/external/IWETH.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/BalancesLogic.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "BalancesLogic",
+          "rewrites": 1,
+          "rules": {
+            "avoid-zero-init": 1
+          }
+        }
+      ]
+    },
+    {
+      "file": "libraries/BitMask.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/CollateralLogic.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/Constants.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/CreditAccountHelper.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/CreditLogic.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "CreditLogic",
+          "rewrites": 2,
+          "rules": {
+            "unchecked": 2
+          }
+        }
+      ]
+    },
+    {
+      "file": "libraries/MarketHelper.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/OptionalCall.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/QuotasLogic.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "libraries/USDTFees.sol",
+      "status": "unchanged",
+      "contracts": []
+    },
+    {
+      "file": "pool/GaugeV3.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "GaugeV3",
+          "rewrites": 1,
+          "rules": {
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "GaugeV3",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "GaugeV3",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "GaugeV3",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "pool/LinearInterestRateModelV3.sol",
+      "status": "optimised",
+      "contracts": []
+    },
+    {
+      "file": "pool/PoolQuotaKeeperV3.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "PoolQuotaKeeperV3",
+          "rewrites": 2,
+          "rules": {
+            "payable-constructor": 1,
+            "delete-storage": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "PoolQuotaKeeperV3",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "PoolQuotaKeeperV3",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "PoolQuotaKeeperV3",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "pool/PoolV3.sol",
+      "status": "optimised",
+      "contracts": [
+        {
+          "name": "PoolV3",
+          "rewrites": 1,
+          "rules": {
+            "payable-constructor": 1
+          }
+        }
+      ],
+      "rulesDeclined": [
+        {
+          "target": "PoolV3",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "PoolV3",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "PoolV3",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "pool/PoolV3_USDT.sol",
+      "status": "optimised",
+      "contracts": []
+    },
+    {
+      "file": "pool/TumblerV3.sol",
+      "status": "optimised",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "TumblerV3",
+          "rule": "state-packing",
+          "reason": "reorder would save 0 slots (2 -> 2)"
+        }
+      ]
+    },
+    {
+      "file": "traits/ACLTrait.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ACLTrait",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ACLTrait",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ACLTrait",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "traits/ContractsRegisterTrait.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ContractsRegisterTrait",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ContractsRegisterTrait",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ContractsRegisterTrait",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "traits/PriceFeedValidationTrait.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "PriceFeedValidationTrait",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "PriceFeedValidationTrait",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "PriceFeedValidationTrait",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "traits/ReentrancyGuardTrait.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "ReentrancyGuardTrait",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "ReentrancyGuardTrait",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "ReentrancyGuardTrait",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "traits/SanityCheckTrait.sol",
+      "status": "unchanged",
+      "contracts": [],
+      "rulesDeclined": [
+        {
+          "target": "SanityCheckTrait",
+          "rule": "state-packing",
+          "reason": "storage layout is observable (upgradeable/inherited/storage/assembly)"
+        },
+        {
+          "target": "SanityCheckTrait",
+          "rule": "use-immutable",
+          "reason": "removing a slot would change an observable storage layout"
+        },
+        {
+          "target": "SanityCheckTrait",
+          "rule": "use-constant",
+          "reason": "removing a slot would change an observable storage layout"
+        }
+      ]
+    },
+    {
+      "file": "traits/USDT_Transfer.sol",
+      "status": "optimised",
+      "contracts": []
+    }
+  ]
+}
